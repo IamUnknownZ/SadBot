@@ -19,9 +19,8 @@ TOPICS = {
 INTENTS = {
     'comparison': [
         'เปรียบเทียบ','ต่างกัน','แตกต่าง','เทียบ','ต่างอย่างไร','ต่างยังไง',
-        'ดีกว่า','เร็วกว่า','ช้ากว่า','เหมาะกว่า','ประหยัดกว่า','อันไหน','แบบไหน',
-        'ตัวไหน','เลือกตัวไหน','ใช้ตัวไหนดี','ควรเลือก','ควรใช้','ข้อดีข้อเสีย',
-        'ข้อดีและข้อเสีย','เหมือนกันไหม','เหมือนหรือต่าง',
+        'ดีกว่า','เร็วกว่า','ช้ากว่า','เหมาะกว่า','ประหยัดกว่า',
+        'เหมือนกันไหม','เหมือนหรือต่าง',
         'compare','comparison','versus',' vs ','difference between','different from',
         'which is better','better than','pros and cons','advantages and disadvantages',
     ],
@@ -30,7 +29,13 @@ INTENTS = {
                    'complexity','big o','big-o','memory','efficiency','performance','inefficient','inefficiency','slow','quadratic'],
     'code': ['โค้ด','รหัสเทียม','โปรแกรม','code','pseudocode'],
     'steps': ['ทีละขั้น','ขั้นตอน','แต่ละรอบ','ไล่','ตัวอย่าง','step','trace','tee la khan'],
-    'explanation': ['อธิบาย','ทำไม','อย่างไร','ยังไง','เพราะ','why','how','tam ngai'],
+    'explanation': [
+        'อธิบาย','ทำไม','ทำไมถึง','อย่างไร','ยังไง','เพราะ','เหตุผล',
+        'ข้อดี','ข้อเสีย','ข้อจำกัด','จุดเด่น','จุดด้อย','ประโยชน์',
+        'เหมาะกับ','เหมาะเมื่อ','ควรใช้','ควรเลือก','ควรใช้เมื่อ','ใช้ตอนไหน','ใช้เมื่อไร','เลือกใช้',
+        'why','how','reason','advantage','disadvantage','limitation','benefit',
+        'strength','weakness','when to use','suitable for','tam ngai',
+    ],
 }
 
 SORT_KEYWORD_RE = re.compile(
@@ -92,7 +97,7 @@ def plan_query(query):
     # Mentioning multiple sorting methods in an otherwise plain request implies
     # that the user wants them related or contrasted, even without the literal
     # word "compare" (for example, "bubble กับ selection อันไหนดีกว่า").
-    if len(topics)>=2 and intent=='fact':intent='comparison'
+    if len(topics)>=2 and intent in ('fact','explanation'):intent='comparison'
     example=query_examples().get(compact(query))
     if example:topics=[example['topic']];intent=example['intent']
     return dict(original=query, normalized=normalized, topics=topics, intent=intent)
