@@ -17,7 +17,14 @@ TOPICS = {
     'principles': ['หลักการเรียง', 'การเรียงลำดับ', 'sorting', 'big o', 'big-o', 'สัญกรณ์','อัลกอริทึม','algorithm'],
 }
 INTENTS = {
-    'comparison': ['เปรียบเทียบ','ต่างกัน','แตกต่าง','เทียบ','compare','versus',' vs '],
+    'comparison': [
+        'เปรียบเทียบ','ต่างกัน','แตกต่าง','เทียบ','ต่างอย่างไร','ต่างยังไง',
+        'ดีกว่า','เร็วกว่า','ช้ากว่า','เหมาะกว่า','ประหยัดกว่า','อันไหน','แบบไหน',
+        'ตัวไหน','เลือกตัวไหน','ใช้ตัวไหนดี','ควรเลือก','ควรใช้','ข้อดีข้อเสีย',
+        'ข้อดีและข้อเสีย','เหมือนกันไหม','เหมือนหรือต่าง',
+        'compare','comparison','versus',' vs ','difference between','different from',
+        'which is better','better than','pros and cons','advantages and disadvantages',
+    ],
     'stability': ['เสถียร','stable','stability','คีย์เท่ากัน'],
     'complexity': ['ซับซ้อน','เวลา','พื้นที่','ต้นทุน','ประสิทธิภาพ','ประสิทธิภาพต่ำ','ความเร็ว','ช้า',
                    'complexity','big o','big-o','memory','efficiency','performance','inefficient','inefficiency','slow','quadratic'],
@@ -82,6 +89,10 @@ def plan_query(query):
     if len(topics)>1 and 'principles' in topics:
         topics.remove('principles')
     intent=next((i for i,words in INTENTS.items() if any(compact(w) in compact(normalized) for w in words+lexicon()['intents'].get(i,[]))), 'fact')
+    # Mentioning multiple sorting methods in an otherwise plain request implies
+    # that the user wants them related or contrasted, even without the literal
+    # word "compare" (for example, "bubble กับ selection อันไหนดีกว่า").
+    if len(topics)>=2 and intent=='fact':intent='comparison'
     example=query_examples().get(compact(query))
     if example:topics=[example['topic']];intent=example['intent']
     return dict(original=query, normalized=normalized, topics=topics, intent=intent)
