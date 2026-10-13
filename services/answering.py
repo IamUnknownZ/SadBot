@@ -171,6 +171,14 @@ def answer(query,data,root,*,budget=2048,dense_scores=None,section_id=None,selec
                 selection_state='local_comparison_fallback'
                 base['selection_state']=selection_state
         if not candidates:
+            # Generic outage fallback for every topic in the book, including
+            # concepts outside the five named sorting algorithms. Retrieval is
+            # still bounded to indexed PDF chunks and validated below.
+            candidates=retrieve(query,data,dense_scores=dense_scores)
+            if candidates:
+                selection_state='local_retrieval_fallback'
+                base['selection_state']=selection_state
+        if not candidates:
             return dict(base,status='search_unavailable',answer='ตอนนี้ AI ยังเลือกหลักฐานที่ตรงคำถามไม่ได้ครับ กรุณาลองใหม่อีกครั้ง ข้อผิดพลาดนี้ไม่ได้หมายความว่าไม่มีเนื้อหาในหนังสือ')
     if candidates is None:candidates=retrieve(query,data,dense_scores=dense_scores,section_id=section_id)
     if not candidates:return base
