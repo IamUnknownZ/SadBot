@@ -1,0 +1,64 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}body{margin:0;color:#24352c;font:14px system-ui,sans-serif;background:#f5f6f2}
+header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px;position:sticky;top:0;background:#f5f6f2;border-bottom:1px solid #dce2d9;z-index:2}
+button,select{font:inherit;padding:7px 11px;border:1px solid #cbd6cd;border-radius:8px;background:white;color:#244b3b;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #b3ccbb}
+#scroll{height:560px;overflow:auto;padding:14px}#paper{position:relative;background:white;margin:auto;box-shadow:0 2px 10px #0002;width:fit-content}canvas{display:block}#marks{position:absolute;inset:0;pointer-events:none}.mark{position:absolute;background:#ffdf3880;border-bottom:1px solid #c29342;mix-blend-mode:multiply;border-radius:2px}#state{padding:10px}#page{margin-right:auto}small{display:block;padding:7px 10px;color:#58675c}
+</style></head><body>
+<header><strong id="page">PDF ต้นฉบับ</strong><label>มุมมอง <select id="zoom" aria-label="มุมมอง PDF"><option value="focus">เน้นหลักฐาน</option><option value="fit">เต็มหน้า</option><option value="1">100%</option><option value="1.5">150%</option><option value="2">200%</option></select></label><button id="goto">ไปยังไฮไลต์</button></header>
+<div id="state" role="status">กำลังเปิดหน้าต้นฉบับ…</div><div id="scroll"><div id="paper"><canvas id="canvas" aria-label="หน้าต้นฉบับ PDF พร้อมไฮไลต์"></canvas><div id="marks"></div></div></div><small id="lines"></small>
+<script type="module">
+import * as pdfjs from './pdf.mjs';
+import {pdfHighlightBox} from './geometry.mjs';
+import {createPageLoader} from './document_loader.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc=new URL('./pdf.worker.mjs',import.meta.url).href;
+const send=(type,extra={})=>window.parent.postMessage({isStreamlitMessage:true,type,...extra},'*');
+const $=id=>document.getElementById(id);
+let payload=null,page=null,task=null,serial=0,loadSerial=0;
+const loadPage=createPageLoader(data=>pdfjs.getDocument({data,isEvalSupported:false}));
+function jump(){
+ const marks=[...document.querySelectorAll('.mark')];if(!marks.length)return;
+ const left=Math.min(...marks.map(m=>parseFloat(m.style.left))),top=Math.min(...marks.map(m=>parseFloat(m.style.top)));
+ const right=Math.max(...marks.map(m=>parseFloat(m.style.left)+parseFloat(m.style.width)));
+ const bottom=Math.max(...marks.map(m=>parseFloat(m.style.top)+parseFloat(m.style.height)));
+ const area=$('scroll');area.scrollTo({left:Math.max(0,left+(right-left)/2-area.clientWidth/2),top:Math.max(0,top+(bottom-top)/2-area.clientHeight/2),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
+async function render(){
+ if(!page)return;const mine=++serial;if(task){task.cancel();try{await task.promise;}catch{}task=null;}
+ const zoom=$('zoom').value,base=page.getViewport({scale:1});let scale;
+ if(zoom==='fit')scale=Math.max(.2,Math.min(($('scroll').clientWidth-30)/base.width,($('scroll').clientHeight-30)/base.height));
+ else if(zoom==='focus'){
+   const boxes=payload.pdf_rectangles,bounds=boxes.reduce((b,r)=>({x0:Math.min(b.x0,r[0]),y0:Math.min(b.y0,r[1]),x1:Math.max(b.x1,r[2]),y1:Math.max(b.y1,r[3])}),{x0:Infinity,y0:Infinity,x1:-Infinity,y1:-Infinity});
+   const width=Math.max(80,bounds.x1-bounds.x0),height=Math.max(36,bounds.y1-bounds.y0);
+   scale=Math.max(.85,Math.min(1.8,($('scroll').clientWidth-48)/width,($('scroll').clientHeight-86)/height));
+ }else scale=Number(zoom);
+ const viewport=page.getViewport({scale}),ratio=Math.min(devicePixelRatio||1,2),canvas=$('canvas');
+ canvas.width=Math.ceil(viewport.width*ratio);canvas.height=Math.ceil(viewport.height*ratio);canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';$('paper').style.width=viewport.width+'px';
+ task=page.render({canvasContext:canvas.getContext('2d'),viewport,transform:ratio===1?null:[ratio,0,0,ratio,0,0],annotationMode:pdfjs.AnnotationMode.DISABLE});
+ try{await task.promise;}catch(error){if(error.name==='RenderingCancelledException')return;throw error;}if(mine!==serial)return;
+ $('marks').replaceChildren();
+ for(const r of payload.pdf_rectangles){
+   const box=pdfHighlightBox(viewport,r);
+   const mark=document.createElement('div');mark.className='mark';Object.assign(mark.style,{left:box.left+'px',top:box.top+'px',width:box.width+'px',height:box.height+'px'});$('marks').append(mark);
+ }
+ $('state').hidden=true;jump();send('streamlit:setComponentValue',{value:{page:payload.source_page,rendered:true,highlights:payload.rectangles.length},dataType:'json'});
+}
+window.addEventListener('message',async event=>{
+ if(event.data.type!=='streamlit:render')return;
+ const next=event.data.args.payload;if(!next)return;
+ if(payload?.pdf===next.pdf&&JSON.stringify(payload.rectangles)===JSON.stringify(next.rectangles))return;
+ const loadId=++loadSerial;payload=next;$('zoom').value='focus';$('state').hidden=false;$('state').textContent='กำลังเปิดหน้าต้นฉบับ…';
+ try{
+  if(task){task.cancel();try{await task.promise;}catch{}task=null;}
+  const loaded=await loadPage(payload);if(loadId!==loadSerial)return;page=loaded;$('page').textContent='หน้า PDF '+payload.source_page;
+  $('lines').textContent='บรรทัดหลักฐาน: '+payload.line_ids.map(s=>s.split('-l').pop()).join(', ');
+  await render();
+ }catch(error){$('state').hidden=false;$('state').textContent='เปิด PDF ไม่สำเร็จ กรุณาใช้ปุ่มดาวน์โหลดหน้าพร้อมไฮไลต์ด้านล่าง';console.error('PDF renderer:',error.name,error.message);send('streamlit:setComponentValue',{value:{rendered:false},dataType:'json'});}
+});
+$('zoom').addEventListener('change',render);$('goto').addEventListener('click',jump);
+let timer;new ResizeObserver(()=>{clearTimeout(timer);timer=setTimeout(()=>{if(['fit','focus'].includes($('zoom').value))render();},160);}).observe($('scroll'));
+let outerHeight=800;try{outerHeight=window.parent.innerHeight;}catch{}
+const readerHeight=Math.max(300,Math.min(460,outerHeight*.58));
+$('scroll').style.height=(readerHeight-90)+'px';
+send('streamlit:componentReady',{apiVersion:1});send('streamlit:setFrameHeight',{height:readerHeight});
+</script></body></html>

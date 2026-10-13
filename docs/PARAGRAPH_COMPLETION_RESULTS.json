@@ -1,0 +1,15 @@
+{
+  "root_cause": [
+    "LLM-selected prose line range ended mid-sentence; accepted without paragraph completion",
+    "Definition fallback used hardcoded phrase endpoints that removed paragraph qualifications"
+  ],
+  "context_window_exhaustion": false,
+  "offline_answer": "Bubblesort is a popular, but inefﬁcient, sorting algorithm. It works by repeatedly\nswapping adjacent elements that are out of order.\n\nBubble sort repeatedly examines adjacent records and exchanges an out-of-order pair. For\nascending order, swap only when the left key is greater than the right key. Each exchange\nremoves exactly one inversion because the two records are adjacent and only their relative order\nchanges. A nonadjacent exchange does not have that same one-inversion property.\n\nProblem 2-2 scans from right to left in each inner loop. The smallest key in the remaining suffix\nmoves left through neighboring positions. After the pass for outer index i, A[i] contains a\nsmallest remaining key, and the finalized prefix grows by one.\nMany presentations scan left to right instead. That version moves a largest remaining key\ntoward the right end and grows a finalized suffix. Both are bubble sort, but their intermediate\narrays and invariants differ. A trace question must specify the scan direction and what counts as\none pass.",
+  "selected_source_after_completion": "Problem 2-2 scans from right to left in each inner loop. The smallest key in the remaining suffix\nmoves left through neighboring positions. After the pass for outer index i, A[i] contains a\nsmallest remaining key, and the finalized prefix grows by one.\nMany presentations scan left to right instead. That version moves a largest remaining key\ntoward the right end and grows a finalized suffix. Both are bubble sort, but their intermediate\narrays and invariants differ. A trace question must specify the scan direction and what counts as\none pass.",
+  "expected_tail": "arrays and invariants differ. A trace question must specify the scan direction and what counts as\none pass.",
+  "offline_has_tail": true,
+  "partial_selection_has_tail": true,
+  "source_offsets_exact": true,
+  "full_python_tests_passed": 120,
+  "cross_page_paragraphs_checked": 8
+}

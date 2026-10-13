@@ -1,0 +1,11 @@
+[
+  {
+    "id": "book-en",
+    "file": "book_data/Cormen_Basic_Sorting_100_Pages.pdf",
+    "title": "Basic Sorting Algorithms — English source and labeled supplements",
+    "sha256": "ec147b61a9beee8b5227a0b2dea0fbf07d7c99b15ba9acd0b5053b9890293509",
+    "language": "en",
+    "text_repair_revision": "8270ebd6f633f7162e37f1db80bf160e3bb81ca8e33fef6edbbe9a897489fd01",
+    "page_count": 100
+  }
+]

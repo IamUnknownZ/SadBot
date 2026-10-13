@@ -1,0 +1,50 @@
+{
+  "pages": 100,
+  "chunks": 857,
+  "repaired_lines": 768,
+  "repair_events": {
+    "glyph": 3079,
+    "subscript": 229,
+    "superscript": 133
+  },
+  "raw_spans_retained": true,
+  "unsafe_chunks": 0,
+  "original_pdf_and_image_files_unchanged": true,
+  "changed_preexisting_files": [
+    "app.py",
+    "docs/ENGLISH_SEARCH_RESULTS.json",
+    "scripts/audit_english_search.py",
+    "scripts/rescan.py",
+    "metadata/query_guidance.json",
+    "metadata/documents.json",
+    "metadata/images.json",
+    "metadata/keyword_index.json",
+    "metadata/chunks.json",
+    "metadata/page_audit.json",
+    "metadata/hierarchy.json",
+    "metadata/dataset.json",
+    "ui/evidence_groups.py",
+    "vector_store/status.json",
+    "services/search.py",
+    "services/structure.py",
+    "services/answering.py",
+    "services/evidence_selection.py",
+    "services/ingest.py",
+    "tests/test_query_recovery.py",
+    "tests/test_evidence_selection.py",
+    "tests/test_structure.py",
+    "tests/test_evidence_groups.py"
+  ],
+  "exact_heading_test": {
+    "query": "S6.7 Counting sort: deep questions, limits, and corpus audit",
+    "state": "direct_lookup",
+    "pages": [
+      100
+    ]
+  },
+  "limitations": [
+    "Glyph recovery is verified against custom-font atlas; it is not a full mathematical OCR benchmark.",
+    "Two-dimensional fractions and summation limits retain source geometry, but their linear reading order still needs source visual verification.",
+    "Unicode scripts are recovered only for supported glyphs with a nearby mathematical base; unsupported forms remain original."
+  ]
+}

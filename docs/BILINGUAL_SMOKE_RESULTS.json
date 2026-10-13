@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-13",
+  "method": "Live Gemini query embeddings; 12 functional smoke queries, not a research accuracy benchmark",
+  "batch_seconds": 19.09,
+  "results": [
+    {
+      "language": "th",
+      "query": "Bubble Sort ทีละขั้น",
+      "status": "answered",
+      "pages": [
+        38
+      ],
+      "image_page": 38,
+      "teaching_parts": 3
+    },
+    {
+      "language": "th",
+      "query": "Selection Sort ทีละขั้น",
+      "status": "answered",
+      "pages": [
+        47
+      ],
+      "image_page": 47,
+      "teaching_parts": 2
+    },
+    {
+      "language": "th",
+      "query": "Insertion Sort ทำงานอย่างไร",
+      "status": "answered",
+      "pages": [
+        67,
+        67
+      ],
+      "image_page": 67,
+      "teaching_parts": 0
+    },
+    {
+      "language": "th",
+      "query": "Merge Sort ใช้เวลาเท่าไร",
+      "status": "answered",
+      "pages": [
+        80
+      ],
+      "image_page": 80,
+      "teaching_parts": 0
+    },
+    {
+      "language": "th",
+      "query": "Counting Sort ขั้นตอน",
+      "status": "answered",
+      "pages": [
+        95,
+        95,
+        95
+      ],
+      "image_page": 91,
+      "teaching_parts": 3
+    },
+    {
+      "language": "en",
+      "query": "Bubble Sort step by step",
+      "status": "answered",
+      "pages": [
+        38
+      ],
+      "image_page": 38,
+      "teaching_parts": 3
+    },
+    {
+      "language": "en",
+      "query": "Selection Sort step by step",
+      "status": "answered",
+      "pages": [
+        47
+      ],
+      "image_page": 47,
+      "teaching_parts": 3
+    },
+    {
+      "language": "en",
+      "query": "Insertion Sort explain",
+      "status": "answered",
+      "pages": [
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "image_page": 67,
+      "teaching_parts": 0
+    },
+    {
+      "language": "en",
+      "query": "Merge Sort steps",
+      "status": "answered",
+      "pages": [
+        83,
+        83,
+        83,
+        83,
+        83,
+        83
+      ],
+      "image_page": 83,
+      "teaching_parts": 6
+    },
+    {
+      "language": "en",
+      "query": "Counting Sort step by step",
+      "status": "answered",
+      "pages": [
+        95,
+        95,
+        95,
+        95,
+        95
+      ],
+      "image_page": 95,
+      "teaching_parts": 5
+    },
+    {
+      "language": "th",
+      "query": "ทำไม 10 คูณ 10 เท่ากับ 100",
+      "status": "insufficient_evidence",
+      "pages": [],
+      "image_page": null,
+      "teaching_parts": 0
+    },
+    {
+      "language": "th",
+      "query": "Bubble Sort เรียง [9,7,4] ให้หน่อย",
+      "status": "insufficient_evidence",
+      "pages": [],
+      "image_page": null,
+      "teaching_parts": 0
+    }
+  ]
+}

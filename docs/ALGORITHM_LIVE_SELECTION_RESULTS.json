@@ -1,0 +1,187 @@
+{
+  "scope": "10 live Gemini evidence-selection calls, Thai questions across five algorithms; no embedding calls and no translation quality claim.",
+  "results": [
+    {
+      "question": "bubble sort คือ",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        34,
+        36
+      ],
+      "topics": [
+        "bubble"
+      ],
+      "chunks": 3,
+      "first_source": "Bubblesort is a popular, but inefﬁcient, sorting algorithm. It works by repeatedly\nswapping adjacent elements that are out of order.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "bubble sort ทำงานอย่างไร",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        34,
+        36
+      ],
+      "topics": [
+        "bubble"
+      ],
+      "chunks": 3,
+      "first_source": "Bubblesort is a popular, but inefﬁcient, sorting algorithm. It works by repeatedly\nswapping adjacent elements that are out of order.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "selection sort คือ",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        46
+      ],
+      "topics": [
+        "selection"
+      ],
+      "chunks": 1,
+      "first_source": "Selection sort divides the array into a finalized sorted prefix and an unresolved suffix. On pass i,\ninspect every record in the suffix and remember the position of a smallest key. Exchange that\nrecord with A[i]. Continue until only one unresolved record remains.\nThe scan determines where the minimum is; it does not need to rearrange the array while\nsearching. This is the essential distinction from bubble sort, which performs local exchanges\nduring its scan. Both can move a minimum to the left boundary, but selection uses one direct\nexchange rather than a chain of adjacent exchanges.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "selection sort ทำงานอย่างไร",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        46
+      ],
+      "topics": [
+        "selection"
+      ],
+      "chunks": 1,
+      "first_source": "Selection sort divides the array into a finalized sorted prefix and an unresolved suffix. On pass i,\ninspect every record in the suffix and remember the position of a smallest key. Exchange that\nrecord with A[i]. Continue until only one unresolved record remains.\nThe scan determines where the minimum is; it does not need to rearrange the array while\nsearching. This is the essential distinction from bubble sort, which performs local exchanges\nduring its scan. Both can move a minimum to the left boundary, but selection uses one direct\nexchange rather than a chain of adjacent exchanges.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "insertion sort คือ",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        55
+      ],
+      "topics": [
+        "insertion"
+      ],
+      "chunks": 1,
+      "first_source": "We start with insertion sort, which is an efﬁcient algorithm for sorting a small\nnumber of elements. Insertion sort works the way many people sort a hand of\nplaying cards. We start with an empty left hand and the cards face down on the\ntable. We then remove one card at a time from the table and insert it into the\ncorrect position in the left hand. To ﬁnd the correct position for a card, we compare\nit with each of the cards already in the hand, from right to left, as illustrated in\nFigure 2.1. At all times, the cards held in the left hand are sorted, and these cards\nwere originally the top cards of the pile on the table.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "insertion sort ทำงานอย่างไร",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        55
+      ],
+      "topics": [
+        "insertion"
+      ],
+      "chunks": 1,
+      "first_source": "We start with insertion sort, which is an efﬁcient algorithm for sorting a small\nnumber of elements. Insertion sort works the way many people sort a hand of\nplaying cards. We start with an empty left hand and the cards face down on the\ntable. We then remove one card at a time from the table and insert it into the\ncorrect position in the left hand. To ﬁnd the correct position for a card, we compare\nit with each of the cards already in the hand, from right to left, as illustrated in\nFigure 2.1. At all times, the cards held in the left hand are sorted, and these cards\nwere originally the top cards of the pile on the table.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "merge sort คือ",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        72,
+        73
+      ],
+      "topics": [
+        "merge"
+      ],
+      "chunks": 7,
+      "first_source": "The merge sort algorithm closely follows the divide-and-conquer paradigm. In-\ntuitively, it operates as follows.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "merge sort ทำงานอย่างไร",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        72,
+        73
+      ],
+      "topics": [
+        "merge"
+      ],
+      "chunks": 7,
+      "first_source": "The merge sort algorithm closely follows the divide-and-conquer paradigm. In-\ntuitively, it operates as follows.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "counting sort คือ",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        90
+      ],
+      "topics": [
+        "counting"
+      ],
+      "chunks": 2,
+      "first_source": "8.2\nCounting sort\nCounting sort assumes that each of the n input elements is an integer in the range\n0 to k, for some integer k. When k = O(n), the sort runs in Θ(n) time.",
+      "source_exact": true,
+      "headings_only": false
+    },
+    {
+      "question": "counting sort ทำงานอย่างไร",
+      "status": "answered",
+      "selection_state": "selected",
+      "reason": null,
+      "provider_status": null,
+      "pages": [
+        90,
+        91,
+        92
+      ],
+      "topics": [
+        "counting"
+      ],
+      "chunks": 4,
+      "first_source": "8.2\nCounting sort\nCounting sort assumes that each of the n input elements is an integer in the range\n0 to k, for some integer k. When k = O(n), the sort runs in Θ(n) time.",
+      "source_exact": true,
+      "headings_only": false
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "answered": 10,
+    "source_exact": 10,
+    "headings_only": 0
+  }
+}

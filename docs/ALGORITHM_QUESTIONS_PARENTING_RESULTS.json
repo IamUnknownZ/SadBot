@@ -1,0 +1,4075 @@
+{
+  "scope": "All 113 dataset guidance questions, all nonempty hierarchy headings, and 25 basic algorithm probes. Offline; not an LLM translation or human relevance benchmark.",
+  "summary": {
+    "questions": 113,
+    "by_topic": {
+      "selection": 23,
+      "merge": 19,
+      "counting": 18,
+      "principles": 20,
+      "bubble": 21,
+      "insertion": 12
+    },
+    "routed_target_complete": 113,
+    "candidate_target_present": 113,
+    "parent_nodes": 295,
+    "parent_complete_ordered": 295,
+    "citation_valid": 295,
+    "parent_without_orphan_heading_pages": 295,
+    "basic_probes": 25,
+    "basic_answered": 25
+  },
+  "questions": [
+    {
+      "question": "Must the remaining suffix be sorted?",
+      "topic": "selection",
+      "target": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "target_section_id": "book-en-section-0646",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the same proof valid for descending order?",
+      "topic": "selection",
+      "target": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "target_section_id": "book-en-section-0646",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does the proof establish stability?",
+      "topic": "selection",
+      "target": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "target_section_id": "book-en-section-0646",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why add the whole remaining left length?",
+      "topic": "merge",
+      "target": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "target_section_id": "book-en-section-1168",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "What happens on equality?",
+      "topic": "merge",
+      "target": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "target_section_id": "book-en-section-1168",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does counting modify data?",
+      "topic": "merge",
+      "target": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "target_section_id": "book-en-section-1168",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why decrement a count after placement?",
+      "topic": "counting",
+      "target": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "target_section_id": "book-en-section-1279",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are zeros absent from the histogram?",
+      "topic": "counting",
+      "target": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "target_section_id": "book-en-section-1279",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "What does C[v]=0 mean before placement?",
+      "topic": "counting",
+      "target": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "target_section_id": "book-en-section-1279",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can a Theta(n) algorithm also be O(n^2)?",
+      "topic": "principles",
+      "target": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "target_section_id": "book-en-section-0331",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does O(n^2) prove quadratic time for every input?",
+      "topic": "principles",
+      "target": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "target_section_id": "book-en-section-0331",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is an average-case bound a guarantee for each execution?",
+      "topic": "principles",
+      "target": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "target_section_id": "book-en-section-0331",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why is the inner invariant a suffix minimum?",
+      "topic": "bubble",
+      "target": "S2.4 Bubble sort: correctness of the CLRS version",
+      "source_page": 39,
+      "target_section_id": "book-en-section-0493",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does an outer invariant replace the inner proof?",
+      "topic": "bubble",
+      "target": "S2.4 Bubble sort: correctness of the CLRS version",
+      "source_page": 39,
+      "target_section_id": "book-en-section-0493",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does saved_key caching make all key evaluations constant in number?",
+      "topic": "insertion",
+      "target": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "target_section_id": "book-en-section-0917",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is sorting [] valid?",
+      "topic": "insertion",
+      "target": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "target_section_id": "book-en-section-0917",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "What identity check covers intermediate shifts?",
+      "topic": "insertion",
+      "target": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "target_section_id": "book-en-section-0917",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does in-place mean zero extra memory?",
+      "topic": "principles",
+      "target": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "target_section_id": "book-en-section-0316",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are comparisons and swaps interchangeable?",
+      "topic": "principles",
+      "target": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "target_section_id": "book-en-section-0316",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the fastest asymptotic method always fastest for five records?",
+      "topic": "principles",
+      "target": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "target_section_id": "book-en-section-0316",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Must every stable counting sort scan backward?",
+      "topic": "counting",
+      "target": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "target_section_id": "book-en-section-1295",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does reversing traversal break sortedness?",
+      "topic": "counting",
+      "target": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "target_section_id": "book-en-section-1295",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Where does permutation preservation come from?",
+      "topic": "counting",
+      "target": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "target_section_id": "book-en-section-1295",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is O(n log n) total allocation the same as O(n log n) auxiliary space?",
+      "topic": "merge",
+      "target": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "target_section_id": "book-en-section-1123",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does recursion automatically mean O(n) stack depth?",
+      "topic": "merge",
+      "target": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "target_section_id": "book-en-section-1123",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is sorted input always linear?",
+      "topic": "merge",
+      "target": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "target_section_id": "book-en-section-1123",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does early exit make bubble sort always linear?",
+      "topic": "bubble",
+      "target": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "target_section_id": "book-en-section-0509",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can bubble sort make few swaps but many comparisons?",
+      "topic": "bubble",
+      "target": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "target_section_id": "book-en-section-0509",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the formula valid with duplicates?",
+      "topic": "bubble",
+      "target": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "target_section_id": "book-en-section-0509",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can placement's mutated C answer later queries?",
+      "topic": "counting",
+      "target": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "target_section_id": "book-en-section-1338",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is counting sort the same as radix sort?",
+      "topic": "counting",
+      "target": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "target_section_id": "book-en-section-1338",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are duplicates ignored in range queries?",
+      "topic": "counting",
+      "target": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "target_section_id": "book-en-section-1338",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does never swapping equal keys prove stability?",
+      "topic": "selection",
+      "target": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "target_section_id": "book-en-section-0679",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can selection sort preserve ties accidentally?",
+      "topic": "selection",
+      "target": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "target_section_id": "book-en-section-0679",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is instability a loss of duplicate values?",
+      "topic": "selection",
+      "target": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "target_section_id": "book-en-section-0679",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is deterministic selection stable?",
+      "topic": "selection",
+      "target": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "target_section_id": "book-en-section-0679",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is every selection sort unstable?",
+      "topic": "selection",
+      "target": "S3.6 Selection sort: a stable extraction-and-shift variant",
+      "source_page": 51,
+      "target_section_id": "book-en-section-0694",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is this insertion sort?",
+      "topic": "selection",
+      "target": "S3.6 Selection sort: a stable extraction-and-shift variant",
+      "source_page": 51,
+      "target_section_id": "book-en-section-0694",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why are two identical numbers insufficient to test stability?",
+      "topic": "bubble",
+      "target": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "target_section_id": "book-en-section-0525",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does > versus >= affect only speed?",
+      "topic": "bubble",
+      "target": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "target_section_id": "book-en-section-0525",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can stable bubble sort be in place?",
+      "topic": "bubble",
+      "target": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "target_section_id": "book-en-section-0525",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does one displaced item always cause quadratic insertion time?",
+      "topic": "insertion",
+      "target": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "target_section_id": "book-en-section-0885",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is I the number of misplaced positions?",
+      "topic": "insertion",
+      "target": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "target_section_id": "book-en-section-0885",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does a small inversion count guarantee few comparisons?",
+      "topic": "insertion",
+      "target": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "target_section_id": "book-en-section-0885",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can these algorithms sort text?",
+      "topic": "principles",
+      "target": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "target_section_id": "book-en-section-0363",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can a negative value be a count-array index?",
+      "topic": "principles",
+      "target": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "target_section_id": "book-en-section-0363",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is reverse(sorted(records)) always stable descending order?",
+      "topic": "principles",
+      "target": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "target_section_id": "book-en-section-0363",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the processed prefix globally smallest?",
+      "topic": "insertion",
+      "target": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "target_section_id": "book-en-section-0868",
+      "expected_chunks": 11,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why not compare after overwriting saved?",
+      "topic": "insertion",
+      "target": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "target_section_id": "book-en-section-0868",
+      "expected_chunks": 11,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are shifts equivalent to repeated adjacent swaps?",
+      "topic": "insertion",
+      "target": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "target_section_id": "book-en-section-0868",
+      "expected_chunks": 11,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can counting sort handle negative keys?",
+      "topic": "counting",
+      "target": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "target_section_id": "book-en-section-1311",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Do two unique keys imply two counters?",
+      "topic": "counting",
+      "target": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "target_section_id": "book-en-section-1311",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does sparse input guarantee memory efficiency?",
+      "topic": "counting",
+      "target": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "target_section_id": "book-en-section-1311",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does returning a create a new list?",
+      "topic": "bubble",
+      "target": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "target_section_id": "book-en-section-0558",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does a sorted result alone validate stability?",
+      "topic": "bubble",
+      "target": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "target_section_id": "book-en-section-0558",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are the theoretical bounds Python timing predictions?",
+      "topic": "bubble",
+      "target": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "target_section_id": "book-en-section-0558",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why scan a sorted-looking array once more?",
+      "topic": "bubble",
+      "target": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "target_section_id": "book-en-section-0480",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "If swaps equal inversions, are comparisons equal inversions too?",
+      "topic": "bubble",
+      "target": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "target_section_id": "book-en-section-0480",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Which values are final after pass 1?",
+      "topic": "bubble",
+      "target": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "target_section_id": "book-en-section-0480",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why reset swapped?",
+      "topic": "bubble",
+      "target": "S2.2 Bubble sort: baseline and early-exit pseudocode",
+      "source_page": 37,
+      "target_section_id": "book-en-section-0465",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are these two listings interchangeable for a trace?",
+      "topic": "bubble",
+      "target": "S2.2 Bubble sort: baseline and early-exit pseudocode",
+      "source_page": 37,
+      "target_section_id": "book-en-section-0465",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are the two original halves already ordered?",
+      "topic": "merge",
+      "target": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "target_section_id": "book-en-section-1091",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Must the length be a power of two?",
+      "topic": "merge",
+      "target": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "target_section_id": "book-en-section-1091",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is merge sort equivalent to concatenating sorted halves?",
+      "topic": "merge",
+      "target": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "target_section_id": "book-en-section-1091",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why keep scanning after seeing a small value?",
+      "topic": "selection",
+      "target": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "target_section_id": "book-en-section-0633",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can there be zero swaps in a pass?",
+      "topic": "selection",
+      "target": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "target_section_id": "book-en-section-0633",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the prefix [1,2] final after pass 2?",
+      "topic": "selection",
+      "target": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "target_section_id": "book-en-section-0633",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why does the trace differ from bubble sort?",
+      "topic": "selection",
+      "target": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "target_section_id": "book-en-section-0633",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does it sort by counting comparisons?",
+      "topic": "counting",
+      "target": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "target_section_id": "book-en-section-1263",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is k always the number of different observed keys?",
+      "topic": "counting",
+      "target": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "target_section_id": "book-en-section-1263",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why can it beat n log n?",
+      "topic": "counting",
+      "target": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "target_section_id": "book-en-section-1263",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does a semantically similar question always have the same answer?",
+      "topic": "principles",
+      "target": "S1.7 Semantic retrieval: concepts, conditions, and answer structure",
+      "source_page": 32,
+      "target_section_id": "book-en-section-0380",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "What should happen when a variant is unspecified?",
+      "topic": "principles",
+      "target": "S1.7 Semantic retrieval: concepts, conditions, and answer structure",
+      "source_page": 32,
+      "target_section_id": "book-en-section-0380",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is selection adaptive to sorted input?",
+      "topic": "selection",
+      "target": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "target_section_id": "book-en-section-0662",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does O(n) swaps make the total time O(n)?",
+      "topic": "selection",
+      "target": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "target_section_id": "book-en-section-0662",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why use Theta rather than only O for comparisons?",
+      "topic": "selection",
+      "target": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "target_section_id": "book-en-section-0662",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does a large value always move to the right on every pass?",
+      "topic": "bubble",
+      "target": "S2.1 Bubble sort: local exchanges and pass direction",
+      "source_page": 36,
+      "target_section_id": "book-en-section-0449",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is one pass enough?",
+      "topic": "bubble",
+      "target": "S2.1 Bubble sort: local exchanges and pass direction",
+      "source_page": 36,
+      "target_section_id": "book-en-section-0449",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is merge sort inherently stable?",
+      "topic": "merge",
+      "target": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "target_section_id": "book-en-section-1152",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is it always recursive?",
+      "topic": "merge",
+      "target": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "target_section_id": "book-en-section-1152",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does skipping a merge prove the two halves were originally ordered?",
+      "topic": "merge",
+      "target": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "target_section_id": "book-en-section-1152",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is \"the last swap\" the last value moved?",
+      "topic": "bubble",
+      "target": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "target_section_id": "book-en-section-0541",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does bidirectional scanning guarantee linear time on nearly sorted input?",
+      "topic": "bubble",
+      "target": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "target_section_id": "book-en-section-0541",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why is a shrinking suffix safe?",
+      "topic": "bubble",
+      "target": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "target_section_id": "book-en-section-0541",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Which elementary method is suitable when writes are expensive?",
+      "topic": "selection",
+      "target": "S3.8 Selection sort: deep questions and neighboring concepts",
+      "source_page": 53,
+      "target_section_id": "book-en-section-0724",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is there a universal fastest method for every input?",
+      "topic": "selection",
+      "target": "S3.8 Selection sort: deep questions and neighboring concepts",
+      "source_page": 53,
+      "target_section_id": "book-en-section-0724",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does a stable test failure make this routine numerically wrong?",
+      "topic": "selection",
+      "target": "S3.7 Selection sort: implementation, boundaries, and checks",
+      "source_page": 52,
+      "target_section_id": "book-en-section-0711",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can the minimum index be reused between passes?",
+      "topic": "selection",
+      "target": "S3.7 Selection sort: implementation, boundaries, and checks",
+      "source_page": 52,
+      "target_section_id": "book-en-section-0711",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why cache the keys?",
+      "topic": "counting",
+      "target": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "target_section_id": "book-en-section-1327",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can a float silently serve as an index?",
+      "topic": "counting",
+      "target": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "target_section_id": "book-en-section-1327",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is the returned list a deep copy?",
+      "topic": "counting",
+      "target": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "target_section_id": "book-en-section-1327",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does binary search make insertion sort faster asymptotically?",
+      "topic": "insertion",
+      "target": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "target_section_id": "book-en-section-0901",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Where should an equal new key be inserted?",
+      "topic": "insertion",
+      "target": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "target_section_id": "book-en-section-0901",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Are O(1) linked-list insertion and O(1) sorted insertion the same claim?",
+      "topic": "insertion",
+      "target": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "target_section_id": "book-en-section-0901",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is an invariant a condition tested in the program?",
+      "topic": "principles",
+      "target": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "target_section_id": "book-en-section-0347",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does termination alone show correctness?",
+      "topic": "principles",
+      "target": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "target_section_id": "book-en-section-0347",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is a sorted prefix enough to prove selection sort?",
+      "topic": "principles",
+      "target": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "target_section_id": "book-en-section-0347",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does this function modify a?",
+      "topic": "merge",
+      "target": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "target_section_id": "book-en-section-1139",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is a fresh list a deep copy of payloads?",
+      "topic": "merge",
+      "target": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "target_section_id": "book-en-section-1139",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can < replace <= without consequence?",
+      "topic": "merge",
+      "target": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "target_section_id": "book-en-section-1139",
+      "expected_chunks": 6,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is stability the same as deterministic output?",
+      "topic": "principles",
+      "target": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "target_section_id": "book-en-section-0300",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why does stability matter if all keys differ?",
+      "topic": "principles",
+      "target": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "target_section_id": "book-en-section-0300",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can descending order be stable?",
+      "topic": "principles",
+      "target": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "target_section_id": "book-en-section-0300",
+      "expected_chunks": 9,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why not search the full runs for the minimum every time?",
+      "topic": "merge",
+      "target": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "target_section_id": "book-en-section-1110",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is copying the remainder free?",
+      "topic": "merge",
+      "target": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "target_section_id": "book-en-section-1110",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Must merge alternate between runs?",
+      "topic": "merge",
+      "target": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "target_section_id": "book-en-section-1110",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Can merge sort without sorting each half first?",
+      "topic": "merge",
+      "target": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "target_section_id": "book-en-section-1110",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does selection sort compare only the first and last items?",
+      "topic": "selection",
+      "target": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "target_section_id": "book-en-section-0617",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Is its prefix merely sorted, as in insertion sort?",
+      "topic": "selection",
+      "target": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "target_section_id": "book-en-section-0617",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Why no separate last pass?",
+      "topic": "selection",
+      "target": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "target_section_id": "book-en-section-0617",
+      "expected_chunks": 10,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does sorting remove duplicates?",
+      "topic": "principles",
+      "target": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "target_section_id": "book-en-section-0285",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does ascending mean strictly increasing?",
+      "topic": "principles",
+      "target": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "target_section_id": "book-en-section-0285",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    },
+    {
+      "question": "Does rearranging keys alone sort records?",
+      "topic": "principles",
+      "target": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "target_section_id": "book-en-section-0285",
+      "expected_chunks": 8,
+      "retrieval_covers_target": true,
+      "candidate_has_target": true
+    }
+  ],
+  "parents": [
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0001",
+      "title": "Front matter",
+      "kind": "chapter",
+      "expected": 42,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0002",
+      "title": "Cover",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0012",
+      "title": "Title page",
+      "kind": "section",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0016",
+      "title": "Copyright",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0027",
+      "title": "Contents",
+      "kind": "section",
+      "expected": 20,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0048",
+      "title": "1  Principles of sorting",
+      "kind": "chapter",
+      "expected": 235,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0049",
+      "title": "Original source reading",
+      "kind": "section",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0050",
+      "title": "1 The Role of Algorithms in Computing",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0053",
+      "title": "1.1 Algorithms",
+      "kind": "section",
+      "expected": 53,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0063",
+      "title": "What kinds of problems are solved by algorithms?",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0068",
+      "title": "Efﬁciency",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0076",
+      "title": "Algorithms and other technologies",
+      "kind": "subsection",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0087",
+      "title": "Introduction",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0092",
+      "title": "The structure of the data",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0096",
+      "title": "Why sorting?",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0104",
+      "title": "Sorting algorithms",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0114",
+      "title": "Order statistics",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0118",
+      "title": "Background",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0121",
+      "title": "8 Sorting in Linear Time",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0127",
+      "title": "8.1 Lower bounds for sorting",
+      "kind": "section",
+      "expected": 24,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0134",
+      "title": "Figure 8.1",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0138",
+      "title": "The decision-tree model",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0142",
+      "title": "A lower bound for the worst case",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0145",
+      "title": "Theorem 8.1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0148",
+      "title": "Proof",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0154",
+      "title": "Corollary 8.2",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0157",
+      "title": "Proof",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0160",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0162",
+      "title": "8.1-1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0165",
+      "title": "3 Growth of Functions",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0170",
+      "title": "3.1 Asymptotic notation",
+      "kind": "section",
+      "expected": 87,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0173",
+      "title": "Asymptotic notation, functions, and running times",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0178",
+      "title": "Θ-notation",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0187",
+      "title": "Figure 3.1",
+      "kind": "subsection",
+      "expected": 11,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0200",
+      "title": "O-notation",
+      "kind": "subsection",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0211",
+      "title": "Ω-notation",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0217",
+      "title": "Theorem 3.1",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0223",
+      "title": "Asymptotic notation in equations and inequalities",
+      "kind": "subsection",
+      "expected": 14,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0239",
+      "title": "o-notation",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0246",
+      "title": "ω-notation",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0252",
+      "title": "Comparing functions",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0255",
+      "title": "Transitivity:",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0258",
+      "title": "Reﬂexivity:",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0263",
+      "title": "Symmetry:",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0266",
+      "title": "Transpose symmetry:",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0275",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0277",
+      "title": "3.1-1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0280",
+      "title": "3.1-2",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0285",
+      "title": "S1.1 Sorting as a precise contract",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0287",
+      "title": "Input, output, and identity",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0290",
+      "title": "A contract before an implementation",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0293",
+      "title": "Worked interpretation",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0300",
+      "title": "S1.2 Stability, tie rules, and multiple keys",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0302",
+      "title": "What stability guarantees",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0305",
+      "title": "Local rules with global consequences",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0308",
+      "title": "Multiple-key sorting",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0316",
+      "title": "S1.3 Cost models: time, space, and data movement",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0318",
+      "title": "Choose the quantities being measured",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0321",
+      "title": "Auxiliary space versus input size",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0324",
+      "title": "Tradeoffs instead of one universal winner",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0331",
+      "title": "S1.4 Bounds, input cases, and average-case assumptions",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0333",
+      "title": "Separate the function from its bound",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0336",
+      "title": "Average is a model, not a typical-looking picture",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0339",
+      "title": "A concrete comparison",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0347",
+      "title": "S1.5 Correctness: invariants, termination, and permutations",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0349",
+      "title": "A complete proof has more than sortedness",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0352",
+      "title": "Three different regions",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0355",
+      "title": "Useful counterexamples",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0363",
+      "title": "S1.6 Input contracts and exceptional cases",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0365",
+      "title": "Empty, singleton, repeated, and signed keys",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0368",
+      "title": "Ascending, descending, and custom keys",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0371",
+      "title": "Preconditions and output behavior",
+      "kind": "subsection",
+      "expected": 7,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0380",
+      "title": "S1.7 Semantic retrieval: concepts, conditions, and answer structure",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0382",
+      "title": "From wording to a mathematical concept",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0385",
+      "title": "Answer template",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0388",
+      "title": "Retrieval boundaries",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0395",
+      "title": "S1.8 Choosing and validating a sorting method",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0397",
+      "title": "A decision based on the contract",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0400",
+      "title": "A compact comparison",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0403",
+      "title": "Evidence from an implementation",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0406",
+      "title": "Scope and provenance",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0413",
+      "title": "2  Bubble sort",
+      "kind": "chapter",
+      "expected": 108,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0414",
+      "title": "Original source reading",
+      "kind": "section",
+      "expected": 28,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0421",
+      "title": "Correctness of bubblesort",
+      "kind": "subsection",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0432",
+      "title": "Correctness of Horner’s rule",
+      "kind": "subsection",
+      "expected": 11,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0445",
+      "title": "Inversions",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0449",
+      "title": "S2.1 Bubble sort: local exchanges and pass direction",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0451",
+      "title": "The basic operation",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0454",
+      "title": "The CLRS direction",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0457",
+      "title": "A right-to-left pass",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0465",
+      "title": "S2.2 Bubble sort: baseline and early-exit pseudocode",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0467",
+      "title": "Zero-based fixed-loop version",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0472",
+      "title": "An optimized left-to-right version",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0476",
+      "title": "Interpret the condition carefully",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0480",
+      "title": "S2.3 Bubble sort: a complete trace and operation counts",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0482",
+      "title": "Follow the exact left-to-right early-exit procedure",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0485",
+      "title": "Explain a state rather than guess it",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0493",
+      "title": "S2.4 Bubble sort: correctness of the CLRS version",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0495",
+      "title": "Inner-loop invariant",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0498",
+      "title": "Outer-loop invariant",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0501",
+      "title": "The additional obligation in Problem 2-2(a)",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0509",
+      "title": "S2.5 Bubble sort: best, worst, and expected costs",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0511",
+      "title": "Fixed comparisons",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0514",
+      "title": "Exchanges and inversions",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0517",
+      "title": "Early termination changes the best case",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0525",
+      "title": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0527",
+      "title": "Why strict adjacent exchange is stable",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0530",
+      "title": "An unstable modification",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0533",
+      "title": "Move the whole record",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0541",
+      "title": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0543",
+      "title": "Safe boundaries",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0546",
+      "title": "Useful adaptations",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0549",
+      "title": "Debugging by smallest counterexample",
+      "kind": "subsection",
+      "expected": 7,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0558",
+      "title": "S2.8 Bubble sort: reference implementation and checks",
+      "kind": "section",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0560",
+      "title": "An in-place stable implementation",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0564",
+      "title": "Independent properties to check",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0567",
+      "title": "Instrument without changing the algorithm",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0571",
+      "title": "S2.9 Bubble sort: deep questions and counterexamples",
+      "kind": "section",
+      "expected": 12,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0573",
+      "title": "How can a local algorithm establish global order?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0576",
+      "title": "Why is it inferior to insertion sort on a displaced minimum?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0579",
+      "title": "Can the number of passes identify the algorithm?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0582",
+      "title": "Does swapping remove exactly one inversion every time?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0585",
+      "title": "Can bubble sort be useful beyond teaching?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0588",
+      "title": "Answer variants",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0596",
+      "title": "3  Selection sort",
+      "kind": "chapter",
+      "expected": 80,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0597",
+      "title": "Original source reading",
+      "kind": "section",
+      "expected": 7,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0599",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0601",
+      "title": "2.2-1",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0604",
+      "title": "2.2-2",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0607",
+      "title": "2.2-3",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0610",
+      "title": "2.2-4",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0613",
+      "title": "2.3 Designing algorithms",
+      "kind": "section",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0617",
+      "title": "S3.1 Selection sort: finding the next extremum",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0619",
+      "title": "Selection rather than adjacent exchange",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0622",
+      "title": "Zero-based pseudocode",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0625",
+      "title": "Why m is an index",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0633",
+      "title": "S3.2 Selection sort: a complete trace",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0635",
+      "title": "Array states at the end of each pass",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0638",
+      "title": "Count the declared operation",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0646",
+      "title": "S3.3 Selection sort: proof of correctness",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0648",
+      "title": "Inner search invariant",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0651",
+      "title": "Outer invariant",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0654",
+      "title": "Why the globally-smallest clause matters",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0662",
+      "title": "S3.4 Selection sort: exact comparisons and limited writes",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0664",
+      "title": "Comparison count independent of input order",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0668",
+      "title": "At most one nontrivial swap per pass",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0671",
+      "title": "When writes are expensive",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0679",
+      "title": "S3.5 Selection sort: why the usual exchange is unstable",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0681",
+      "title": "A minimal counterexample",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0684",
+      "title": "Why first-minimum selection is not enough",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0687",
+      "title": "Restore a stable result deliberately",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0694",
+      "title": "S3.6 Selection sort: a stable extraction-and-shift variant",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0696",
+      "title": "Change the movement, not just the tie test",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0700",
+      "title": "Why equal records retain order",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0703",
+      "title": "The tradeoff",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0711",
+      "title": "S3.7 Selection sort: implementation, boundaries, and checks",
+      "kind": "section",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0713",
+      "title": "In-place ordinary selection",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0717",
+      "title": "Common failures",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0720",
+      "title": "Checks that match the contract",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0724",
+      "title": "S3.8 Selection sort: deep questions and neighboring concepts",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0726",
+      "title": "Why must the suffix be scanned even if the prefix is ordered?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0729",
+      "title": "Why do n-1 passes suffice?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0732",
+      "title": "Selection sort versus selecting one rank",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0735",
+      "title": "Selection versus insertion",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0738",
+      "title": "Selection versus bubble",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0745",
+      "title": "4  Insertion sort",
+      "kind": "chapter",
+      "expected": 139,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0746",
+      "title": "Original source reading",
+      "kind": "section",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0747",
+      "title": "2 Getting Started",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0750",
+      "title": "2.1 Insertion sort",
+      "kind": "section",
+      "expected": 58,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0758",
+      "title": "Figure 2.1",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0766",
+      "title": "Figure 2.2",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0770",
+      "title": "Loop invariants and the correctness of insertion sort",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0773",
+      "title": "invariant:",
+      "kind": "subsection",
+      "expected": 15,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0790",
+      "title": "Pseudocode conventions",
+      "kind": "subsection",
+      "expected": 18,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0810",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0812",
+      "title": "2.1-1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0815",
+      "title": "2.1-2",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0818",
+      "title": "2.1-3",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0823",
+      "title": "2.1-4",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0826",
+      "title": "2.2 Analyzing algorithms",
+      "kind": "section",
+      "expected": 35,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0835",
+      "title": "Analysis of insertion sort",
+      "kind": "subsection",
+      "expected": 19,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0856",
+      "title": "Worst-case and average-case analysis",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0863",
+      "title": "Order of growth",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0868",
+      "title": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "kind": "section",
+      "expected": 11,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0870",
+      "title": "Processed order rather than global selection",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0873",
+      "title": "One insertion in detail",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0876",
+      "title": "Zero-based procedure",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0885",
+      "title": "S4.2 Insertion sort: inversions and adaptive running time",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0887",
+      "title": "A sharper parameter than input length alone",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0890",
+      "title": "Important cases",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0893",
+      "title": "Counts are not identical",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0901",
+      "title": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0903",
+      "title": "Stable placement among equals",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0906",
+      "title": "Binary insertion separates search from movement",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0909",
+      "title": "Arrays and linked lists",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0917",
+      "title": "S4.4 Insertion sort: implementation and proof obligations",
+      "kind": "section",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0919",
+      "title": "In-place stable implementation",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0922",
+      "title": "Outer correctness argument",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0925",
+      "title": "Trace and failure checks",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0929",
+      "title": "S4.5 Insertion sort: deep questions and hybrid use",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0931",
+      "title": "Why is insertion useful inside a merge-based algorithm?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0934",
+      "title": "Does stable insertion repair an unstable merge?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0937",
+      "title": "Why not use insertion for every large input?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0940",
+      "title": "Question bank",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0943",
+      "title": "A proof-focused answer",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-0950",
+      "title": "5  Merge sort",
+      "kind": "chapter",
+      "expected": 169,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-0952",
+      "title": "2.3.1 The divide-and-conquer approach",
+      "kind": "section",
+      "expected": 44,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0975",
+      "title": "Figure 2.3",
+      "kind": "subsection",
+      "expected": 14,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-0991",
+      "title": "Figure 2.3, continued",
+      "kind": "subsection",
+      "expected": 7,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1000",
+      "title": "2.3.2 Analyzing divide-and-conquer algorithms",
+      "kind": "section",
+      "expected": 64,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1014",
+      "title": "Figure 2.4",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1020",
+      "title": "Analysis of merge sort",
+      "kind": "subsection",
+      "expected": 16,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1037",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 15,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1039",
+      "title": "2.3-1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1042",
+      "title": "2.3-2",
+      "kind": "subsection",
+      "expected": 13,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1057",
+      "title": "Figure 2.5",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1060",
+      "title": "2.3-3",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1064",
+      "title": "2.3-4",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1067",
+      "title": "2.3-5",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1070",
+      "title": "2.3-6",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1073",
+      "title": "2.3-7",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1076",
+      "title": "Problems",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1079",
+      "title": "Insertion sort on small arrays in merge sort",
+      "kind": "subsection",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1084",
+      "title": "Chapter notes",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1091",
+      "title": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1093",
+      "title": "Divide, conquer, and combine",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1096",
+      "title": "Half-open ranges",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1099",
+      "title": "A complete split pattern",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1102",
+      "title": "Why recursion terminates",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1110",
+      "title": "S5.2 The merge operation: a full two-pointer trace",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1112",
+      "title": "The smallest available head",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1115",
+      "title": "Invariant for the output prefix",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1123",
+      "title": "S5.3 Merge sort: time recurrences and memory accounting",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1125",
+      "title": "A recurrence with uneven splits",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1128",
+      "title": "Peak auxiliary space",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1131",
+      "title": "Comparison lower bound",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1139",
+      "title": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "kind": "section",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1141",
+      "title": "A fresh-output version",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1145",
+      "title": "Sentinels are a separate design",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1148",
+      "title": "Proof obligations and checks",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1152",
+      "title": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1154",
+      "title": "Stability requires consistent tie handling",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1157",
+      "title": "Skip a merge only when justified",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1160",
+      "title": "Natural runs and bottom-up merging",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1168",
+      "title": "S5.6 Merge sort: inversion counting as a derived application",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1170",
+      "title": "Count pairs across the split",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1173",
+      "title": "A worked merge",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1176",
+      "title": "Use the result carefully",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1184",
+      "title": "S5.7 Merge sort: deep questions and practical boundaries",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1186",
+      "title": "Can merge sort be in place?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1189",
+      "title": "Why does merging help external sorting?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1192",
+      "title": "Parallel work is not automatic speedup",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1195",
+      "title": "Question bank",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1198",
+      "title": "Answering a variant question",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-chapter-1205",
+      "title": "6  Counting sort",
+      "kind": "chapter",
+      "expected": 95,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1206",
+      "title": "Original source reading",
+      "kind": "section",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1208",
+      "title": "8.1-2",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1211",
+      "title": "8.1-3",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1214",
+      "title": "8.1-4",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1217",
+      "title": "8.2 Counting sort",
+      "kind": "section",
+      "expected": 27,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1232",
+      "title": "Figure 8.2",
+      "kind": "subsection",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1242",
+      "title": "Exercises",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1244",
+      "title": "8.2-1",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1247",
+      "title": "8.2-2",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1250",
+      "title": "8.2-3",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1254",
+      "title": "8.2-4",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1257",
+      "title": "8.3 Radix sort",
+      "kind": "section",
+      "expected": 4,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1263",
+      "title": "S6.1 Counting sort: domain and range are part of the input",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1265",
+      "title": "Integer keys with a manageable range",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1268",
+      "title": "Two forms with different promises",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1271",
+      "title": "Mapping other domains",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1279",
+      "title": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1281",
+      "title": "Histogram phase",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1284",
+      "title": "Cumulative phase",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1287",
+      "title": "Placement phase",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1295",
+      "title": "S6.3 Counting sort: stable placement and correctness",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1297",
+      "title": "Disjoint reserved intervals",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1300",
+      "title": "Why reverse input traversal is stable",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1303",
+      "title": "A different stable forward variant",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1311",
+      "title": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "kind": "section",
+      "expected": 9,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1313",
+      "title": "Offset the key domain",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1316",
+      "title": "Range size controls feasibility",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1319",
+      "title": "Space distinctions",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1327",
+      "title": "S6.5 Counting sort: a stable record implementation",
+      "kind": "section",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1329",
+      "title": "Contract and implementation",
+      "kind": "subsection",
+      "expected": 3,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1334",
+      "title": "Checks and cost",
+      "kind": "subsection",
+      "expected": 2,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1338",
+      "title": "S6.6 Counting sort: range queries and radix-sort connections",
+      "kind": "section",
+      "expected": 8,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1340",
+      "title": "Preprocess inclusive range counts",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1343",
+      "title": "Why a digit pass needs stability",
+      "kind": "subsection",
+      "expected": 6,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-section-1351",
+      "title": "S6.7 Counting sort: deep questions, limits, and corpus audit",
+      "kind": "section",
+      "expected": 10,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1353",
+      "title": "Does linear counting sort contradict a lower bound?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1356",
+      "title": "Is it always the fastest of these five methods?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1359",
+      "title": "Can it be stable and in place simultaneously?",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1362",
+      "title": "Coverage audit of this combined corpus",
+      "kind": "subsection",
+      "expected": 1,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    },
+    {
+      "no_heading_only_display_pages": true,
+      "id": "book-en-subsection-1365",
+      "title": "Remaining boundaries",
+      "kind": "subsection",
+      "expected": 5,
+      "complete_and_ordered": true,
+      "citations_exact": true
+    }
+  ],
+  "basic_probes": [
+    {
+      "question": "bubble sort",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        34,
+        36
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "bubble sort คือ",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        34,
+        36
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "bubble sort คืออะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        34,
+        36
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "bubble sort คือ อะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        34,
+        36
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "bubble sort ทีละขั้น",
+      "status": "answered",
+      "method": "exact_heading",
+      "pages": [
+        38
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "selection sort",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        46
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "selection sort คือ",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        46
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "selection sort คืออะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        46
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "selection sort คือ อะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        46
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "selection sort ทีละขั้น",
+      "status": "answered",
+      "method": "exact_heading",
+      "pages": [
+        47
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "insertion sort",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        55
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "insertion sort คือ",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        55
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "insertion sort คืออะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        55
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "insertion sort คือ อะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        55
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "insertion sort ทีละขั้น",
+      "status": "answered",
+      "method": "exact_heading",
+      "pages": [
+        67
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "merge sort",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        72
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "merge sort คือ",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        72
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "merge sort คืออะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        72
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "merge sort คือ อะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        72
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "merge sort ทีละขั้น",
+      "status": "answered",
+      "method": "exact_heading",
+      "pages": [
+        83
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "counting sort",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        90
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "counting sort คือ",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        90
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "counting sort คืออะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        90
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "counting sort คือ อะไร",
+      "status": "answered",
+      "method": "definition",
+      "pages": [
+        90
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    },
+    {
+      "question": "counting sort ทีละขั้น",
+      "status": "answered",
+      "method": "exact_heading",
+      "pages": [
+        95
+      ],
+      "topic_matches": true,
+      "only_headings": false
+    }
+  ],
+  "clrs_direction": {
+    "text": "The CLRS direction\nProblem 2-2 scans from right to left in each inner loop. The smallest key in the remaining suffix\nmoves left through neighboring positions. After the pass for outer index i, A[i] contains a\nsmallest remaining key, and the finalized prefix grows by one.\nMany presentations scan left to right instead. That version moves a largest remaining key\ntoward the right end and grows a finalized suffix. Both are bubble sort, but their intermediate\narrays and invariants differ. A trace question must specify the scan direction and what counts as\none pass.",
+    "expected_passage_exact": true,
+    "pages": [
+      36
+    ],
+    "method": "exact_heading"
+  }
+}

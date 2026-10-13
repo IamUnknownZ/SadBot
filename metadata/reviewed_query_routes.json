@@ -1,0 +1,684 @@
+{
+  "source_sha256": "ec147b61a9beee8b5227a0b2dea0fbf07d7c99b15ba9acd0b5053b9890293509",
+  "policy": "Questions are routing guidance only; original answers are archived outside runtime and must never be used as evidence.",
+  "routes": [
+    {
+      "query": "Must the remaining suffix be sorted?",
+      "target_title": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "topic": "selection"
+    },
+    {
+      "query": "Is the same proof valid for descending order?",
+      "target_title": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "topic": "selection"
+    },
+    {
+      "query": "Does the proof establish stability?",
+      "target_title": "S3.3 Selection sort: proof of correctness",
+      "source_page": 48,
+      "topic": "selection"
+    },
+    {
+      "query": "Why add the whole remaining left length?",
+      "target_title": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "topic": "merge"
+    },
+    {
+      "query": "What happens on equality?",
+      "target_title": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "topic": "merge"
+    },
+    {
+      "query": "Does counting modify data?",
+      "target_title": "S5.6 Merge sort: inversion counting as a derived application",
+      "source_page": 88,
+      "topic": "merge"
+    },
+    {
+      "query": "Why decrement a count after placement?",
+      "target_title": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "topic": "counting"
+    },
+    {
+      "query": "Are zeros absent from the histogram?",
+      "target_title": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "topic": "counting"
+    },
+    {
+      "query": "What does C[v]=0 mean before placement?",
+      "target_title": "S6.2 Counting sort: histogram, cumulative counts, and positions",
+      "source_page": 95,
+      "topic": "counting"
+    },
+    {
+      "query": "Can a Theta(n) algorithm also be O(n^2)?",
+      "target_title": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "topic": "principles"
+    },
+    {
+      "query": "Does O(n^2) prove quadratic time for every input?",
+      "target_title": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "topic": "principles"
+    },
+    {
+      "query": "Is an average-case bound a guarantee for each execution?",
+      "target_title": "S1.4 Bounds, input cases, and average-case assumptions",
+      "source_page": 29,
+      "topic": "principles"
+    },
+    {
+      "query": "Why is the inner invariant a suffix minimum?",
+      "target_title": "S2.4 Bubble sort: correctness of the CLRS version",
+      "source_page": 39,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does an outer invariant replace the inner proof?",
+      "target_title": "S2.4 Bubble sort: correctness of the CLRS version",
+      "source_page": 39,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does saved_key caching make all key evaluations constant in number?",
+      "target_title": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "topic": "insertion"
+    },
+    {
+      "query": "Is sorting [] valid?",
+      "target_title": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "topic": "insertion"
+    },
+    {
+      "query": "What identity check covers intermediate shifts?",
+      "target_title": "S4.4 Insertion sort: implementation and proof obligations",
+      "source_page": 70,
+      "topic": "insertion"
+    },
+    {
+      "query": "Does in-place mean zero extra memory?",
+      "target_title": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "topic": "principles"
+    },
+    {
+      "query": "Are comparisons and swaps interchangeable?",
+      "target_title": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "topic": "principles"
+    },
+    {
+      "query": "Is the fastest asymptotic method always fastest for five records?",
+      "target_title": "S1.3 Cost models: time, space, and data movement",
+      "source_page": 28,
+      "topic": "principles"
+    },
+    {
+      "query": "Must every stable counting sort scan backward?",
+      "target_title": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "topic": "counting"
+    },
+    {
+      "query": "Does reversing traversal break sortedness?",
+      "target_title": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "topic": "counting"
+    },
+    {
+      "query": "Where does permutation preservation come from?",
+      "target_title": "S6.3 Counting sort: stable placement and correctness",
+      "source_page": 96,
+      "topic": "counting"
+    },
+    {
+      "query": "Is O(n log n) total allocation the same as O(n log n) auxiliary space?",
+      "target_title": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "topic": "merge"
+    },
+    {
+      "query": "Does recursion automatically mean O(n) stack depth?",
+      "target_title": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "topic": "merge"
+    },
+    {
+      "query": "Is sorted input always linear?",
+      "target_title": "S5.3 Merge sort: time recurrences and memory accounting",
+      "source_page": 85,
+      "topic": "merge"
+    },
+    {
+      "query": "Does early exit make bubble sort always linear?",
+      "target_title": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "topic": "bubble"
+    },
+    {
+      "query": "Can bubble sort make few swaps but many comparisons?",
+      "target_title": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "topic": "bubble"
+    },
+    {
+      "query": "Is the formula valid with duplicates?",
+      "target_title": "S2.5 Bubble sort: best, worst, and expected costs",
+      "source_page": 40,
+      "topic": "bubble"
+    },
+    {
+      "query": "Can placement's mutated C answer later queries?",
+      "target_title": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "topic": "counting"
+    },
+    {
+      "query": "Is counting sort the same as radix sort?",
+      "target_title": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "topic": "counting"
+    },
+    {
+      "query": "Are duplicates ignored in range queries?",
+      "target_title": "S6.6 Counting sort: range queries and radix-sort connections",
+      "source_page": 99,
+      "topic": "counting"
+    },
+    {
+      "query": "Does never swapping equal keys prove stability?",
+      "target_title": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "topic": "selection"
+    },
+    {
+      "query": "Can selection sort preserve ties accidentally?",
+      "target_title": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "topic": "selection"
+    },
+    {
+      "query": "Is instability a loss of duplicate values?",
+      "target_title": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "topic": "selection"
+    },
+    {
+      "query": "Is deterministic selection stable?",
+      "target_title": "S3.5 Selection sort: why the usual exchange is unstable",
+      "source_page": 50,
+      "topic": "selection"
+    },
+    {
+      "query": "Is every selection sort unstable?",
+      "target_title": "S3.6 Selection sort: a stable extraction-and-shift variant",
+      "source_page": 51,
+      "topic": "selection"
+    },
+    {
+      "query": "Is this insertion sort?",
+      "target_title": "S3.6 Selection sort: a stable extraction-and-shift variant",
+      "source_page": 51,
+      "topic": "selection"
+    },
+    {
+      "query": "Why are two identical numbers insufficient to test stability?",
+      "target_title": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does > versus >= affect only speed?",
+      "target_title": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "topic": "bubble"
+    },
+    {
+      "query": "Can stable bubble sort be in place?",
+      "target_title": "S2.6 Bubble sort: stability and record-safe exchanges",
+      "source_page": 41,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does one displaced item always cause quadratic insertion time?",
+      "target_title": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "topic": "insertion"
+    },
+    {
+      "query": "Is I the number of misplaced positions?",
+      "target_title": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "topic": "insertion"
+    },
+    {
+      "query": "Does a small inversion count guarantee few comparisons?",
+      "target_title": "S4.2 Insertion sort: inversions and adaptive running time",
+      "source_page": 68,
+      "topic": "insertion"
+    },
+    {
+      "query": "Can these algorithms sort text?",
+      "target_title": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "topic": "principles"
+    },
+    {
+      "query": "Can a negative value be a count-array index?",
+      "target_title": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "topic": "principles"
+    },
+    {
+      "query": "Is reverse(sorted(records)) always stable descending order?",
+      "target_title": "S1.6 Input contracts and exceptional cases",
+      "source_page": 31,
+      "topic": "principles"
+    },
+    {
+      "query": "Is the processed prefix globally smallest?",
+      "target_title": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "topic": "insertion"
+    },
+    {
+      "query": "Why not compare after overwriting saved?",
+      "target_title": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "topic": "insertion"
+    },
+    {
+      "query": "Are shifts equivalent to repeated adjacent swaps?",
+      "target_title": "S4.1 Insertion sort: the saved key and the temporary hole",
+      "source_page": 67,
+      "topic": "insertion"
+    },
+    {
+      "query": "Can counting sort handle negative keys?",
+      "target_title": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "topic": "counting"
+    },
+    {
+      "query": "Do two unique keys imply two counters?",
+      "target_title": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "topic": "counting"
+    },
+    {
+      "query": "Does sparse input guarantee memory efficiency?",
+      "target_title": "S6.4 Counting sort: signed integers, sparse ranges, and space",
+      "source_page": 97,
+      "topic": "counting"
+    },
+    {
+      "query": "Does returning a create a new list?",
+      "target_title": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does a sorted result alone validate stability?",
+      "target_title": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "topic": "bubble"
+    },
+    {
+      "query": "Are the theoretical bounds Python timing predictions?",
+      "target_title": "S2.8 Bubble sort: reference implementation and checks",
+      "source_page": 43,
+      "topic": "bubble"
+    },
+    {
+      "query": "Why scan a sorted-looking array once more?",
+      "target_title": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "topic": "bubble"
+    },
+    {
+      "query": "If swaps equal inversions, are comparisons equal inversions too?",
+      "target_title": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "topic": "bubble"
+    },
+    {
+      "query": "Which values are final after pass 1?",
+      "target_title": "S2.3 Bubble sort: a complete trace and operation counts",
+      "source_page": 38,
+      "topic": "bubble"
+    },
+    {
+      "query": "Why reset swapped?",
+      "target_title": "S2.2 Bubble sort: baseline and early-exit pseudocode",
+      "source_page": 37,
+      "topic": "bubble"
+    },
+    {
+      "query": "Are these two listings interchangeable for a trace?",
+      "target_title": "S2.2 Bubble sort: baseline and early-exit pseudocode",
+      "source_page": 37,
+      "topic": "bubble"
+    },
+    {
+      "query": "Are the two original halves already ordered?",
+      "target_title": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "topic": "merge"
+    },
+    {
+      "query": "Must the length be a power of two?",
+      "target_title": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "topic": "merge"
+    },
+    {
+      "query": "Is merge sort equivalent to concatenating sorted halves?",
+      "target_title": "S5.1 Merge sort: ranges, recursion, and recombination",
+      "source_page": 83,
+      "topic": "merge"
+    },
+    {
+      "query": "Why keep scanning after seeing a small value?",
+      "target_title": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "topic": "selection"
+    },
+    {
+      "query": "Can there be zero swaps in a pass?",
+      "target_title": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "topic": "selection"
+    },
+    {
+      "query": "Is the prefix [1,2] final after pass 2?",
+      "target_title": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "topic": "selection"
+    },
+    {
+      "query": "Why does the trace differ from bubble sort?",
+      "target_title": "S3.2 Selection sort: a complete trace",
+      "source_page": 47,
+      "topic": "selection"
+    },
+    {
+      "query": "Does it sort by counting comparisons?",
+      "target_title": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "topic": "counting"
+    },
+    {
+      "query": "Is k always the number of different observed keys?",
+      "target_title": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "topic": "counting"
+    },
+    {
+      "query": "Why can it beat n log n?",
+      "target_title": "S6.1 Counting sort: domain and range are part of the input",
+      "source_page": 94,
+      "topic": "counting"
+    },
+    {
+      "query": "Does a semantically similar question always have the same answer?",
+      "target_title": "S1.7 Semantic retrieval: concepts, conditions, and answer structure",
+      "source_page": 32,
+      "topic": "principles"
+    },
+    {
+      "query": "What should happen when a variant is unspecified?",
+      "target_title": "S1.7 Semantic retrieval: concepts, conditions, and answer structure",
+      "source_page": 32,
+      "topic": "principles"
+    },
+    {
+      "query": "Is selection adaptive to sorted input?",
+      "target_title": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "topic": "selection"
+    },
+    {
+      "query": "Does O(n) swaps make the total time O(n)?",
+      "target_title": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "topic": "selection"
+    },
+    {
+      "query": "Why use Theta rather than only O for comparisons?",
+      "target_title": "S3.4 Selection sort: exact comparisons and limited writes",
+      "source_page": 49,
+      "topic": "selection"
+    },
+    {
+      "query": "Does a large value always move to the right on every pass?",
+      "target_title": "S2.1 Bubble sort: local exchanges and pass direction",
+      "source_page": 36,
+      "topic": "bubble"
+    },
+    {
+      "query": "Is one pass enough?",
+      "target_title": "S2.1 Bubble sort: local exchanges and pass direction",
+      "source_page": 36,
+      "topic": "bubble"
+    },
+    {
+      "query": "Is merge sort inherently stable?",
+      "target_title": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "topic": "merge"
+    },
+    {
+      "query": "Is it always recursive?",
+      "target_title": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "topic": "merge"
+    },
+    {
+      "query": "Does skipping a merge prove the two halves were originally ordered?",
+      "target_title": "S5.5 Merge sort: stability, descending order, and adaptivity",
+      "source_page": 87,
+      "topic": "merge"
+    },
+    {
+      "query": "Is \"the last swap\" the last value moved?",
+      "target_title": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "topic": "bubble"
+    },
+    {
+      "query": "Does bidirectional scanning guarantee linear time on nearly sorted input?",
+      "target_title": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "topic": "bubble"
+    },
+    {
+      "query": "Why is a shrinking suffix safe?",
+      "target_title": "S2.7 Bubble sort: boundaries, variants, and common failures",
+      "source_page": 42,
+      "topic": "bubble"
+    },
+    {
+      "query": "Which elementary method is suitable when writes are expensive?",
+      "target_title": "S3.8 Selection sort: deep questions and neighboring concepts",
+      "source_page": 53,
+      "topic": "selection"
+    },
+    {
+      "query": "Is there a universal fastest method for every input?",
+      "target_title": "S3.8 Selection sort: deep questions and neighboring concepts",
+      "source_page": 53,
+      "topic": "selection"
+    },
+    {
+      "query": "Does a stable test failure make this routine numerically wrong?",
+      "target_title": "S3.7 Selection sort: implementation, boundaries, and checks",
+      "source_page": 52,
+      "topic": "selection"
+    },
+    {
+      "query": "Can the minimum index be reused between passes?",
+      "target_title": "S3.7 Selection sort: implementation, boundaries, and checks",
+      "source_page": 52,
+      "topic": "selection"
+    },
+    {
+      "query": "Why cache the keys?",
+      "target_title": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "topic": "counting"
+    },
+    {
+      "query": "Can a float silently serve as an index?",
+      "target_title": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "topic": "counting"
+    },
+    {
+      "query": "Is the returned list a deep copy?",
+      "target_title": "S6.5 Counting sort: a stable record implementation",
+      "source_page": 98,
+      "topic": "counting"
+    },
+    {
+      "query": "Does binary search make insertion sort faster asymptotically?",
+      "target_title": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "topic": "insertion"
+    },
+    {
+      "query": "Where should an equal new key be inserted?",
+      "target_title": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "topic": "insertion"
+    },
+    {
+      "query": "Are O(1) linked-list insertion and O(1) sorted insertion the same claim?",
+      "target_title": "S4.3 Insertion sort: ties, binary search, and data structures",
+      "source_page": 69,
+      "topic": "insertion"
+    },
+    {
+      "query": "Is an invariant a condition tested in the program?",
+      "target_title": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "topic": "principles"
+    },
+    {
+      "query": "Does termination alone show correctness?",
+      "target_title": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "topic": "principles"
+    },
+    {
+      "query": "Is a sorted prefix enough to prove selection sort?",
+      "target_title": "S1.5 Correctness: invariants, termination, and permutations",
+      "source_page": 30,
+      "topic": "principles"
+    },
+    {
+      "query": "Does this function modify a?",
+      "target_title": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "topic": "merge"
+    },
+    {
+      "query": "Is a fresh list a deep copy of payloads?",
+      "target_title": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "topic": "merge"
+    },
+    {
+      "query": "Can < replace <= without consequence?",
+      "target_title": "S5.4 Merge sort: a stable sentinel-free implementation",
+      "source_page": 86,
+      "topic": "merge"
+    },
+    {
+      "query": "Is stability the same as deterministic output?",
+      "target_title": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "topic": "principles"
+    },
+    {
+      "query": "Why does stability matter if all keys differ?",
+      "target_title": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "topic": "principles"
+    },
+    {
+      "query": "Can descending order be stable?",
+      "target_title": "S1.2 Stability, tie rules, and multiple keys",
+      "source_page": 27,
+      "topic": "principles"
+    },
+    {
+      "query": "Why not search the full runs for the minimum every time?",
+      "target_title": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "topic": "merge"
+    },
+    {
+      "query": "Is copying the remainder free?",
+      "target_title": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "topic": "merge"
+    },
+    {
+      "query": "Must merge alternate between runs?",
+      "target_title": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "topic": "merge"
+    },
+    {
+      "query": "Can merge sort without sorting each half first?",
+      "target_title": "S5.2 The merge operation: a full two-pointer trace",
+      "source_page": 84,
+      "topic": "merge"
+    },
+    {
+      "query": "Does selection sort compare only the first and last items?",
+      "target_title": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "topic": "selection"
+    },
+    {
+      "query": "Is its prefix merely sorted, as in insertion sort?",
+      "target_title": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "topic": "selection"
+    },
+    {
+      "query": "Why no separate last pass?",
+      "target_title": "S3.1 Selection sort: finding the next extremum",
+      "source_page": 46,
+      "topic": "selection"
+    },
+    {
+      "query": "Does sorting remove duplicates?",
+      "target_title": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "topic": "principles"
+    },
+    {
+      "query": "Does ascending mean strictly increasing?",
+      "target_title": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "topic": "principles"
+    },
+    {
+      "query": "Does rearranging keys alone sort records?",
+      "target_title": "S1.1 Sorting as a precise contract",
+      "source_page": 26,
+      "topic": "principles"
+    }
+  ]
+}

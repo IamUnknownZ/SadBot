@@ -1,0 +1,47 @@
+{
+  "query": "bubble sort",
+  "status": "answered",
+  "selection_state": "selected",
+  "provider_response": [
+    {
+      "intent": "definition",
+      "selections": [
+        {
+          "id": "p36-c0370",
+          "first_line": "p36-l5",
+          "last_line": "p36-l8"
+        },
+        {
+          "id": "p36-c0372",
+          "first_line": "p36-l10",
+          "last_line": "p36-l14"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "p34-c0344",
+      "page": 34,
+      "text": "Bubblesort is a popular, but inefﬁcient, sorting algorithm. It works by repeatedly\nswapping adjacent elements that are out of order.",
+      "completion": null,
+      "source_exact": true
+    },
+    {
+      "id": "p36-c0370",
+      "page": 36,
+      "text": "Bubble sort repeatedly examines adjacent records and exchanges an out-of-order pair. For\nascending order, swap only when the left key is greater than the right key. Each exchange\nremoves exactly one inversion because the two records are adjacent and only their relative order\nchanges. A nonadjacent exchange does not have that same one-inversion property.",
+      "completion": "complete_source_paragraph",
+      "source_exact": true
+    },
+    {
+      "id": "p36-c0372",
+      "page": 36,
+      "text": "Problem 2-2 scans from right to left in each inner loop. The smallest key in the remaining suffix\nmoves left through neighboring positions. After the pass for outer index i, A[i] contains a\nsmallest remaining key, and the finalized prefix grows by one.\nMany presentations scan left to right instead. That version moves a largest remaining key\ntoward the right end and grows a finalized suffix. Both are bubble sort, but their intermediate\narrays and invariants differ. A trace question must specify the scan direction and what counts as\none pass.",
+      "completion": "complete_source_paragraph",
+      "source_exact": true
+    }
+  ],
+  "clrs_direction_selected": true,
+  "complete_direction_tail_present": true
+}

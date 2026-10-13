@@ -1,0 +1,1207 @@
+{
+  "schema_version": 1,
+  "source": "User-supplied benchmark workbook; routes only, never answer evidence.",
+  "count": 200,
+  "items": [
+    {
+      "id": "SORT-0001",
+      "question": "วัตถุประสงค์หลักของการเรียงลำดับข้อมูล (Sorting) คืออะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0002",
+      "question": "การเรียงลำดับแบบ Ascending และ Descending ต่างกันอย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0003",
+      "question": "ทำไมการเรียงข้อมูลตัวเลขในรูปข้อความจึงอาจเกิดข้อผิดพลาด",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0004",
+      "question": "เครื่องหมายเปรียบเทียบ > และ < มีผลต่อทิศทางการเรียงลำดับอย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0005",
+      "question": "การสลับตำแหน่งสมาชิก 2 ตัวในอาร์เรย์ต้องทำอย่างไรเพื่อไม่ให้ข้อมูลสูญหาย",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0006",
+      "question": "การเลื่อนสมาชิก (Shifting) ในอาร์เรย์ทำอย่างไรและใช้ในกรณีใด",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0007",
+      "question": "การวัดประสิทธิภาพด้านเวลา (Time Complexity) ของอัลกอริทึมเรียงลำดับประเมินจากอะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0008",
+      "question": "Space Complexity ของอัลกอริทึมเรียงลำดับหมายถึงอะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0009",
+      "question": "Stable Sort หมายถึงอะไร และมีความสำคัญอย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0010",
+      "question": "ข้อดีของการใช้ In-place Sorting Algorithm คืออะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0011",
+      "question": "การเรียงลำดับลิสต์ของดิคชันนารีหรืออ็อบเจกต์ทำอย่างไรใน Python",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0012",
+      "question": "เกิดอะไรขึ้นหากใช้เครื่องหมาย >= แทน > ในการสลับ Bubble Sort",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0013",
+      "question": "หลังการเรียงลำดับ ควรตรวจสอบผลลัพธ์ในประเด็นใดบ้าง",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0014",
+      "question": "การเรียงลำดับข้อมูลส่งผลต่อการค้นหาข้อมูลด้วย Binary Search อย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0015",
+      "question": "ปัจจัยสำคัญในการเลือกใช้อัลกอริทึมเรียงลำดับมีอะไรบ้าง",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0016",
+      "question": "การเรียงลำดับสตริงใน Python แบบ Case-sensitive และ Case-insensitive ต่างกันอย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0017",
+      "question": "อัลกอริทึมการเรียงลำดับแบบ Recursive อาจเกิดปัญหา Stack Overflow ได้อย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0018",
+      "question": "แนวคิดหลักการทำงานของ Bubble Sort คืออะไร",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0019",
+      "question": "เงื่อนไขใดใน Bubble Sort ที่ทำให้เกิดการสลับสมาชิกในการเรียงจากน้อยไปมาก",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0020",
+      "question": "เมื่อ Bubble Sort ทำงานจบ 1 รอบ (Pass 1) ผลลัพธ์ที่การันตีคืออะไร",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0021",
+      "question": "Bubble Sort เวอร์ชันปกติมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงล่วงหน้าแล้ว",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0022",
+      "question": "จงติดตามผลลัพธ์ของ Bubble Sort ในรอบแรก (Pass 1) สำหรับอาร์เรย์ [5, 1, 4, 2, 8]",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0023",
+      "question": "ในการเรียงอาร์เรย์ขนาด n สมาชิก ด้วย Bubble Sort ต้องใช้วงลูปนอกทั้งหมดกี่รอบในกรณีแย่ที่สุด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0024",
+      "question": "หากต้องการดัดแปลง Bubble Sort ให้เรียงจากมากไปน้อย ต้องแก้ไขส่วนใด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0025",
+      "question": "Bubble Sort ทำงานอย่างไรเมื่อรับอาร์เรย์ที่มีสมาชิกซ้ำกันทั้งหมด เช่น [3, 3, 3, 3]",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0026",
+      "question": "จงเขียน Pseudocode สำหรับ Optimized Bubble Sort",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0027",
+      "question": "จงเขียนฟังก์ชัน Python สำหรับ Optimized Bubble Sort",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0028",
+      "question": "การเพิ่ม swapped flag ให้ Bubble Sort ช่วยปรับปรุงประสิทธิภาพในกรณีใด และ Time Complexity กลายเป็นเท่าใด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0029",
+      "question": "จงสรุป Time Complexity ของ Bubble Sort ใน Best, Average และ Worst Case",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0030",
+      "question": "Bubble Sort มี Space Complexity เท่าใด และเป็น Stable Sort หรือไม่",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0031",
+      "question": "ข้อดีและข้อจำกัดหลักของ Bubble Sort คืออะไร และควรเลือกใช้ในสถานการณ์ใด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0032",
+      "question": "ค้นหาบั๊กในโค้ด: `for j in range(0, n): if arr[j] > arr[j+1]: arr[j], arr[j+1] = arr[j+1], arr[j]`",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0033",
+      "question": "จงคำนวณจำนวนการเปรียบเทียบและการสลับข้อมูลของ Bubble Sort สำหรับข้อมูล 5 สมาชิกในกรณีแย่ที่สุด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0034",
+      "question": "Cocktail Shaker Sort ปรับปรุงจุดอ่อนเรื่อง 'Turtle Elements' ของ Bubble Sort อย่างไร",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0035",
+      "question": "แนวคิดหลักการทำงานของ Selection Sort คืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0036",
+      "question": "ในการเรียงจากน้อยไปมาก Selection Sort มีขั้นตอนค้นหาค่าน้อยที่สุดอย่างไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0037",
+      "question": "เมื่อ Selection Sort ทำงานจบ 1 รอบ (Pass 1) ผลลัพธ์ที่การันตีคืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0038",
+      "question": "Selection Sort มีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงเรียบร้อยมาแล้ว",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0039",
+      "question": "จงติดตามผลลัพธ์ของ Selection Sort ในรอบที่ 1 สำหรับอาร์เรย์ [29, 10, 14, 37, 13]",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0040",
+      "question": "จากอาร์เรย์ [10, 29, 14, 37, 13] จงติดตามผลลัพธ์ในรอบที่ 2 (Pass 2)",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0041",
+      "question": "หากต้องการดัดแปลง Selection Sort ให้เรียงจากมากไปน้อย ต้องปรับเปลี่ยนแนวคิดอย่างไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0042",
+      "question": "ข้อดีของการสลับข้อมูล (Swap) ใน Selection Sort เมื่อเทียบกับ Bubble Sort คืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0043",
+      "question": "จงเขียน Pseudocode สำหรับ Selection Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0044",
+      "question": "จงเขียนฟังก์ชัน Python สำหรับ Selection Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0045",
+      "question": "ค้นหาบั๊กในโค้ด: `for i in range(n): min_idx = i; for j in range(i+1, n): if arr[j] < arr[i]: min_idx = j; arr[i], arr[min_idx] = arr[min_idx], arr[i]`",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0046",
+      "question": "จงสรุป Time Complexity ของ Selection Sort ใน Best, Average และ Worst Case",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0047",
+      "question": "Selection Sort เป็น Stable Sort หรือไม่ เพราะเหตุใด",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0048",
+      "question": "จงเปรียบเทียบ Selection Sort และ Bubble Sort ในแง่จำนวนการเปรียบเทียบและการสลับข้อมูล",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0049",
+      "question": "สถานการณ์ใดที่ควรเลือกใช้ Selection Sort มากกว่า Bubble Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0050",
+      "question": "Bidirectional Selection Sort (Min-Max Selection Sort) ทำงานอย่างไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0051",
+      "question": "เหตุใดจึงควรเพิ่มเงื่อนไข `if min_idx != i:` ก่อนทำการสลับใน Selection Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0052",
+      "question": "แนวคิดหลักการทำงานของ Insertion Sort คืออะไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0053",
+      "question": "การนำ Key ไปแทรกใน Insertion Sort มีขั้นตอนเลื่อนสมาชิกอย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0054",
+      "question": "ในขั้นตอนเริ่มต้นของ Insertion Sort อาร์เรย์ถูกแบ่งอย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0055",
+      "question": "Insertion Sort มีประสิทธิภาพสูงเป็นพิเศษกับข้อมูลรูปแบบใด",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0056",
+      "question": "จงติดตามผลลัพธ์ของ Insertion Sort ในรอบที่ 1 (i=1) สำหรับอาร์เรย์ [12, 11, 13, 5, 6]",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0057",
+      "question": "จาก [11, 12, 13, 5, 6] จงติดตามผลลัพธ์ในรอบที่ 3 (i=3, key=5)",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0058",
+      "question": "หากต้องการดัดแปลง Insertion Sort ให้เรียงจากมากไปน้อย ต้องแก้ไขเงื่อนไขใด",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0059",
+      "question": "Insertion Sort มีพฤติกรรมอย่างไรเมื่อข้อมูลว่างหรือมีสมาชิกเพียง 1 ตัว",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0060",
+      "question": "จงเขียน Pseudocode สำหรับ Insertion Sort",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0061",
+      "question": "จงเขียนฟังก์ชัน Python สำหรับ Insertion Sort",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0062",
+      "question": "ค้นหาบั๊กในโค้ด: `while key < arr[j]: arr[j+1] = arr[j]; j -= 1; arr[j+1] = key`",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0063",
+      "question": "จงสรุป Time Complexity ของ Insertion Sort ใน Best, Average และ Worst Case",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0064",
+      "question": "Insertion Sort มี Space Complexity เท่าใด และเป็น Stable Sort หรือไม่",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0065",
+      "question": "ทำไม Insertion Sort จึงนิยมนำไปใช้เป็นอัลกอริทึมย่อยใน Hybrid Sort (เช่น Timsort / IntroSort) เมื่อข้อมูลมีขนาดเล็ก",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0066",
+      "question": "ทำไม Insertion Sort จึงถือว่าเป็น Online Algorithm",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0067",
+      "question": "Binary Insertion Sort ช่วยปรับปรุงประสิทธิภาพของ Insertion Sort อย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0068",
+      "question": "ทำไม Insertion Sort ที่ใช้การเลื่อนสมาชิก (Shift) จึงทำงานไวกว่าการสลับตำแหน่ง (Swap)",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0069",
+      "question": "แนวคิดหลัก Divide and Conquer ของ Merge Sort ประกอบด้วยขั้นตอนใดบ้าง",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0070",
+      "question": "ฟังก์ชัน Merge ใน Merge Sort มีหลักการผสานอาร์เรย์ย่อย 2 ส่วนอย่างไร",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0071",
+      "question": "Base Case (เงื่อนไขการหยุดเรียกตัวเอง) ของ Merge Sort คืออะไร",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0072",
+      "question": "กระบวนการ Divide ของ Merge Sort มีจำนวนระดับความลึก (Depth of Recursion) เป็นเท่าใดสำหรับอาร์เรย์ขนาด n",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0073",
+      "question": "จงติดตามขั้นตอน Divide ของ Merge Sort สำหรับอาร์เรย์ [38, 27, 43, 3, 9, 82, 10]",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0074",
+      "question": "จงติดตามขั้นตอนการผสาน (Merge) สองอาร์เรย์ย่อยที่เรียงแล้ว [27, 38, 43] และ [3, 9, 10, 82]",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0075",
+      "question": "หากต้องการดัดแปลง Merge Sort ให้เรียงจากมากไปน้อย ต้องปรับเปลี่ยนในขั้นตอนใด",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0076",
+      "question": "ปัจจัยใดในขั้นตอน Merge ที่กำหนดให้ Merge Sort เป็น Stable Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0077",
+      "question": "จงเขียน Pseudocode สำหรับ Merge Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0078",
+      "question": "จงเขียนโค้ด Python สำหรับ Merge Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0079",
+      "question": "ค้นหาบั๊กในโค้ด: `mid = len(arr) // 2; left = merge_sort(arr[:mid]); right = merge_sort(arr[mid:])` โดยลืมใส่ `if len(arr) <= 1: return arr`",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0080",
+      "question": "จงวิเคราะห์ Time Complexity ของ Merge Sort ใน Best, Average และ Worst Case",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0081",
+      "question": "Space Complexity ของ Merge Sort เป็นเท่าใด และเพราะเหตุใด",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0082",
+      "question": "เปรียบเทียบ Merge Sort กับ Bubble/Selection/Insertion Sort เมื่อเรียงข้อมูลขนาดใหญ่ เช่น n = 1,000,000",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0083",
+      "question": "ทำไม Merge Sort จึงเป็นอัลกอริทึมหลักที่ใช้ใน External Sorting (การเรียงข้อมูลที่มีขนาดใหญ่เกิน RAM)",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0084",
+      "question": "จงสรุปจุดเด่นและข้อเสียหลักของ Merge Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0085",
+      "question": "แนวคิดหลักของ Counting Sort แตกต่างจากอัลกอริทึมการเรียงลำดับทั่วไปอย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0086",
+      "question": "Counting Sort มีข้อกำหนดหรือข้อจำกัดเกี่ยวกับข้อมูลที่จะนำมาเรียงอย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0087",
+      "question": "ขั้นตอนการนับความถี่ (Count Array) ใน Counting Sort ทำอย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0088",
+      "question": "ขั้นตอนการทำ Prefix Sum (Cumulative Count) ใน Counting Sort มีวัตถุประสงค์เพื่ออะไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0089",
+      "question": "ขั้นตอนสร้าง Output Array ของ Counting Sort ต้องวนลูปอย่างไรเพื่อรักษาความเสถียร (Stability)",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0090",
+      "question": "จงหา Count Array (ก่อน Prefix Sum) ของอาร์เรย์ [4, 2, 2, 8, 3, 3, 1]",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0091",
+      "question": "จาก Count Array [0, 1, 2, 2, 1, 0, 0, 0, 1] เมื่อทำ Prefix Sum จะได้ผลลัพธ์อย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0092",
+      "question": "หากต้องการดัดแปลง Counting Sort ให้เรียงจากมากไปน้อย ทำได้อย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0093",
+      "question": "หากข้อมูลมีจำนวนเต็มลบ (Negative Integers) จะต้องปรับเปลี่ยน Counting Sort อย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0094",
+      "question": "จงเขียน Pseudocode สำหรับ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0095",
+      "question": "จงเขียนโค้ด Python สำหรับ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0096",
+      "question": "ค้นหาบั๊กในโค้ด: `count = [0] * max(arr)`",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0097",
+      "question": "จงวิเคราะห์ Time Complexity ของ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0098",
+      "question": "Space Complexity ของ Counting Sort มีค่าเท่าใด",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0099",
+      "question": "เกิดอะไรขึ้นหากนำ Counting Sort ไปใช้กับข้อมูลจำนวน n = 10 ตัว แต่มีค่าสูงสุด k = 1,000,000,000",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0100",
+      "question": "จงสรุปเปรียบเทียบ Time, Space Complexity และ Stability ของทั้ง 5 อัลกอริทึม (Bubble, Selection, Insertion, Merge, Counting)",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0101",
+      "question": "ช่วยอธิบายว่า วัตถุประสงค์หลักของการเรียงลำดับข้อมูล (Sorting) หมายถึงอะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0102",
+      "question": "จาก Dataset ช่วยตอบว่า การเรียงลำดับแบบ Ascending และ Descending แตกต่างกันตรงไหน",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0103",
+      "question": "โปรดอธิบายตาม Dataset: ทำไมการเรียงข้อมูลตัวเลขในรูปข้อความจึงอาจเกิดข้อผิดพลาด",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0104",
+      "question": "อ้างอิง Dataset แล้วตอบว่า การสลับตำแหน่งสมาชิก 2 ตัวในอาร์เรย์ต้องทำอย่างไรเพื่อไม่ให้ข้อมูลสูญหาย",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0105",
+      "question": "ในเนื้อหาที่ให้มา การเลื่อนสมาชิก (Shifting) ในอาร์เรย์ทำแบบใดและใช้ในกรณีใด",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0106",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า การวัดประสิทธิภาพด้านเวลา (Time Complexity) ของอัลกอริทึมเรียงลำดับประเมินจากอะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0107",
+      "question": "จากชุดข้อมูลนี้ Stable Sort หมายถึงอะไร และมีความสำคัญอย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0108",
+      "question": "ขอคำตอบจาก Dataset ว่า ข้อดีของการใช้ In-place Sorting Algorithm คืออะไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0109",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า การเรียงลำดับลิสต์ของดิคชันนารีหรืออ็อบเจกต์ทำอย่างไรใน Python",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0110",
+      "question": "พิจารณาคำถามนี้จาก Dataset: หลังการเรียงลำดับ ควรตรวจสอบผลลัพธ์ในประเด็นใดบ้าง",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0111",
+      "question": "ช่วยอธิบายว่า การเรียงลำดับข้อมูลส่งผลต่อการค้นหาข้อมูลด้วย Binary Search อย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0112",
+      "question": "จาก Dataset ช่วยตอบว่า ปัจจัยสำคัญในการเลือกใช้อัลกอริทึมเรียงลำดับมีอะไรบ้าง",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0113",
+      "question": "โปรดอธิบายตาม Dataset: อัลกอริทึมการเรียงลำดับแบบ Recursive อาจเกิดปัญหา Stack Overflow ได้อย่างไร",
+      "topic": "principles",
+      "negative": false
+    },
+    {
+      "id": "SORT-0114",
+      "question": "อ้างอิง Dataset แล้วตอบว่า แนวคิดหลักการทำงานของ Bubble Sort คืออะไร",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0115",
+      "question": "ในเนื้อหาที่ให้มา เงื่อนไขใดใน Bubble Sort ที่ทำให้เกิดการสลับสมาชิกในการเรียงจากน้อยไปมาก",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0116",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า Bubble Sort เวอร์ชันปกติมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงล่วงหน้าแล้ว",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0117",
+      "question": "จากชุดข้อมูลนี้ จงติดตามผลลัพธ์ของ Bubble Sort ในรอบแรก (Pass 1) สำหรับอาร์เรย์ [5, 1, 4, 2, 8]",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0118",
+      "question": "ขอคำตอบจาก Dataset ว่า ในการเรียงอาร์เรย์ขนาด n สมาชิก ด้วย Bubble Sort ต้องใช้วงลูปนอกทั้งหมดกี่รอบในกรณีแย่ที่สุด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0119",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า Bubble Sort ทำงานอย่างไรเมื่อรับอาร์เรย์ที่มีสมาชิกซ้ำกันทั้งหมด เช่น [3, 3, 3, 3]",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0120",
+      "question": "พิจารณาคำถามนี้จาก Dataset: จงเขียน Pseudocode สำหรับ Optimized Bubble Sort",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0121",
+      "question": "ช่วยอธิบายว่า จงเขียนฟังก์ชัน Python สำหรับ Optimized Bubble Sort",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0122",
+      "question": "จาก Dataset ช่วยตอบว่า จงสรุป Time Complexity ของ Bubble Sort ใน Best, Average และ Worst Case",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0123",
+      "question": "โปรดอธิบายตาม Dataset: Bubble Sort มี Space Complexity เท่าใด และเป็น Stable Sort หรือไม่",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0124",
+      "question": "อ้างอิง Dataset แล้วตอบว่า ข้อดีและข้อจำกัดหลักของ Bubble Sort คืออะไร และควรเลือกใช้ในสถานการณ์ใด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0125",
+      "question": "ในเนื้อหาที่ให้มา จงคำนวณจำนวนการเปรียบเทียบและการสลับข้อมูลของ Bubble Sort สำหรับข้อมูล 5 สมาชิกในกรณีแย่ที่สุด",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0126",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า Cocktail Shaker Sort ปรับปรุงจุดอ่อนเรื่อง 'Turtle Elements' ของ Bubble Sort อย่างไร",
+      "topic": "bubble",
+      "negative": false
+    },
+    {
+      "id": "SORT-0127",
+      "question": "จากชุดข้อมูลนี้ แนวคิดหลักการทำงานของ Selection Sort คืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0128",
+      "question": "ขอคำตอบจาก Dataset ว่า เมื่อ Selection Sort ทำงานจบ 1 รอบ (Pass 1) ผลลัพธ์ที่การันตีคืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0129",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า  Selection Sort มีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงเรียบร้อยมาแล้ว",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0130",
+      "question": "พิจารณาคำถามนี้จาก Dataset: จงติดตามผลลัพธ์ของ Selection Sort ในรอบที่ 1 สำหรับอาร์เรย์ [29, 10, 14, 37, 13]",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0131",
+      "question": "ช่วยอธิบายว่า หากต้องการดัดแปลง Selection Sort ให้เรียงจากมากไปน้อย ต้องปรับเปลี่ยนแนวคิดอย่างไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0132",
+      "question": "จาก Dataset ช่วยตอบว่า ข้อดีของการสลับข้อมูล (Swap) ใน Selection Sort เมื่อเทียบกับ Bubble Sort คืออะไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0133",
+      "question": "โปรดอธิบายตาม Dataset: จงเขียน Pseudocode สำหรับ Selection Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0134",
+      "question": "อ้างอิง Dataset แล้วตอบว่า ค้นหาบั๊กในโค้ด: `for i in range(n): min_idx = i; for j in range(i+1, n): if arr[j] < arr[i]: min_idx = j; arr[i], arr[min_idx] = arr[min_idx], arr[i]`",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0135",
+      "question": "ในเนื้อหาที่ให้มา จงสรุป Time Complexity ของ Selection Sort ใน Best, Average และ Worst Case",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0136",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า Selection Sort เป็น Stable Sort หรือไม่ เพราะเหตุใด",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0137",
+      "question": "จากชุดข้อมูลนี้ สถานการณ์ใดที่ควรเลือกใช้ Selection Sort มากกว่า Bubble Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0138",
+      "question": "ขอคำตอบจาก Dataset ว่า Bidirectional Selection Sort (Min-Max Selection Sort) ทำงานอย่างไร",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0139",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า เหตุใดจึงควรเพิ่มเงื่อนไข `if min_idx != i:` ก่อนทำการสลับใน Selection Sort",
+      "topic": "selection",
+      "negative": false
+    },
+    {
+      "id": "SORT-0140",
+      "question": "พิจารณาคำถามนี้จาก Dataset: การนำ Key ไปแทรกใน Insertion Sort มีขั้นตอนเลื่อนสมาชิกอย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0141",
+      "question": "ช่วยอธิบายว่า ในขั้นตอนเริ่มต้นของ Insertion Sort อาร์เรย์ถูกแบ่งอย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0142",
+      "question": "จาก Dataset ช่วยตอบว่า Insertion Sort มีประสิทธิภาพสูงเป็นพิเศษกับข้อมูลรูปแบบใด",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0143",
+      "question": "โปรดอธิบายตาม Dataset: จาก [11, 12, 13, 5, 6] จงติดตามผลลัพธ์ในรอบที่ 3 (i=3, key=5)",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0144",
+      "question": "อ้างอิง Dataset แล้วตอบว่า หากต้องการดัดแปลง Insertion Sort ให้เรียงจากมากไปน้อย ต้องแก้ไขเงื่อนไขใด",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0145",
+      "question": "ในเนื้อหาที่ให้มา Insertion Sort มีพฤติกรรมแบบใดเมื่อข้อมูลว่างหรือมีสมาชิกเพียง 1 ตัว",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0146",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า จงเขียนฟังก์ชัน Python สำหรับ Insertion Sort",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0147",
+      "question": "จากชุดข้อมูลนี้ ค้นหาบั๊กในโค้ด: `while key < arr[j]: arr[j+1] = arr[j]; j -= 1; arr[j+1] = key`",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0148",
+      "question": "ขอคำตอบจาก Dataset ว่า จงสรุป Time Complexity ของ Insertion Sort ใน Best, Average และ Worst Case",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0149",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า ทำไม Insertion Sort จึงนิยมนำไปใช้เป็นอัลกอริทึมย่อยใน Hybrid Sort (เช่น Timsort / IntroSort) เมื่อข้อมูลมีขนาดเล็ก",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0150",
+      "question": "พิจารณาคำถามนี้จาก Dataset: ทำไม Insertion Sort จึงถือว่าเป็น Online Algorithm",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0151",
+      "question": "ช่วยอธิบายว่า Binary Insertion Sort ช่วยปรับปรุงประสิทธิภาพของ Insertion Sort อย่างไร",
+      "topic": "insertion",
+      "negative": false
+    },
+    {
+      "id": "SORT-0152",
+      "question": "จาก Dataset ช่วยตอบว่า แนวคิดหลัก Divide and Conquer ของ Merge Sort ประกอบด้วยขั้นตอนใดบ้าง",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0153",
+      "question": "โปรดอธิบายตาม Dataset: ฟังก์ชัน Merge ใน Merge Sort มีหลักการผสานอาร์เรย์ย่อย 2 ส่วนอย่างไร",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0154",
+      "question": "อ้างอิง Dataset แล้วตอบว่า Base Case (เงื่อนไขการหยุดเรียกตัวเอง) ของ Merge Sort คืออะไร",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0155",
+      "question": "ในเนื้อหาที่ให้มา จงติดตามขั้นตอน Divide ของ Merge Sort สำหรับอาร์เรย์ [38, 27, 43, 3, 9, 82, 10]",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0156",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า จงติดตามขั้นตอนการผสาน (Merge) สองอาร์เรย์ย่อยที่เรียงแล้ว [27, 38, 43] และ [3, 9, 10, 82]",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0157",
+      "question": "จากชุดข้อมูลนี้ หากต้องการดัดแปลง Merge Sort ให้เรียงจากมากไปน้อย ต้องปรับเปลี่ยนในขั้นตอนใด",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0158",
+      "question": "ขอคำตอบจาก Dataset ว่า จงเขียน Pseudocode สำหรับ Merge Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0159",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า จงเขียนโค้ด Python สำหรับ Merge Sort",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0160",
+      "question": "พิจารณาคำถามนี้จาก Dataset: ค้นหาบั๊กในโค้ด: `mid = len(arr) // 2; left = merge_sort(arr[:mid]); right = merge_sort(arr[mid:])` โดยลืมใส่ `if len(arr) <= 1: return arr`",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0161",
+      "question": "ช่วยอธิบายว่า Space Complexity ของ Merge Sort เป็นเท่าใด และเพราะเหตุใด",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0162",
+      "question": "จาก Dataset ช่วยตอบว่า เปรียบเทียบ Merge Sort กับ Bubble/Selection/Insertion Sort เมื่อเรียงข้อมูลขนาดใหญ่ เช่น n = 1,000,000",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0163",
+      "question": "โปรดอธิบายตาม Dataset: ทำไม Merge Sort จึงเป็นอัลกอริทึมหลักที่ใช้ใน External Sorting (การเรียงข้อมูลที่มีขนาดใหญ่เกิน RAM)",
+      "topic": "merge",
+      "negative": false
+    },
+    {
+      "id": "SORT-0164",
+      "question": "อ้างอิง Dataset แล้วตอบว่า แนวคิดหลักของ Counting Sort แตกต่างจากอัลกอริทึมการเรียงลำดับทั่วไปอย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0165",
+      "question": "ในเนื้อหาที่ให้มา Counting Sort มีข้อกำหนดหรือข้อจำกัดเกี่ยวกับข้อมูลที่จะนำมาเรียงแบบใด",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0166",
+      "question": "ช่วยตอบโดยยึดข้อมูลเดิมว่า ขั้นตอนการนับความถี่ (Count Array) ใน Counting Sort ทำอย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0167",
+      "question": "จากชุดข้อมูลนี้ ขั้นตอนสร้าง Output Array ของ Counting Sort ต้องวนลูปอย่างไรเพื่อรักษาความเสถียร (Stability)",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0168",
+      "question": "ขอคำตอบจาก Dataset ว่า จงหา Count Array (ก่อน Prefix Sum) ของอาร์เรย์ [4, 2, 2, 8, 3, 3, 1]",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0169",
+      "question": "อธิบายตามข้อมูลต้นฉบับว่า จาก Count Array [0, 1, 2, 2, 1, 0, 0, 0, 1] เมื่อทำ Prefix Sum จะได้ผลลัพธ์อย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0170",
+      "question": "พิจารณาคำถามนี้จาก Dataset: หากข้อมูลมีจำนวนเต็มลบ (Negative Integers) จะต้องปรับเปลี่ยน Counting Sort อย่างไร",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0171",
+      "question": "ช่วยอธิบายว่า จงเขียน Pseudocode สำหรับ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0172",
+      "question": "จาก Dataset ช่วยตอบว่า จงเขียนโค้ด Python สำหรับ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0173",
+      "question": "โปรดอธิบายตาม Dataset: จงวิเคราะห์ Time Complexity ของ Counting Sort",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0174",
+      "question": "อ้างอิง Dataset แล้วตอบว่า Space Complexity ของ Counting Sort มีค่าเท่าใด",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0175",
+      "question": "ในเนื้อหาที่ให้มา เกิดอะไรขึ้นหากนำ Counting Sort ไปใช้กับข้อมูลจำนวน n = 10 ตัว แต่มีค่าสูงสุด k = 1,000,000,000",
+      "topic": "counting",
+      "negative": false
+    },
+    {
+      "id": "SORT-0176",
+      "question": "มะนาวมีรสเปรี้ยวไหม?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0177",
+      "question": "วันนี้กรุงเทพฯ มีอุณหภูมิกี่องศา?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0178",
+      "question": "ประเทศญี่ปุ่นมีเมืองหลวงชื่ออะไร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0179",
+      "question": "ดวงจันทร์มีเส้นผ่านศูนย์กลางกี่กิโลเมตร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0180",
+      "question": "วันนี้หุ้นบริษัทใดปิดบวกมากที่สุด?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0181",
+      "question": "ต้มยำกุ้งใส่เครื่องปรุงอะไรบ้าง?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0182",
+      "question": "คำว่า “apple” แปลเป็นภาษาไทยว่าอะไร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0183",
+      "question": "ฟุตบอลโลกครั้งหน้าจัดที่ประเทศใด?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0184",
+      "question": "น้ำเดือดที่ระดับน้ำทะเลกี่องศาเซลเซียส?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0185",
+      "question": "ควรปลูกมะเขือเทศในฤดูใด?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0186",
+      "question": "ใครเป็นผู้ชนะการแข่งขันกีฬาเมื่อวานนี้?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0187",
+      "question": "ระยะทางจากกรุงเทพฯ ถึงเชียงใหม่กี่กิโลเมตร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0188",
+      "question": "สีอะไรผสมกันแล้วได้สีม่วง?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0189",
+      "question": "จริงหรือไม่ว่า Dataset ระบุว่ามะนาวมีรสเปรี้ยวเพราะ Bubble Sort?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0190",
+      "question": "Dataset บอกอุณหภูมิวันนี้ในกรุงเทพฯ ไว้กี่องศา?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0191",
+      "question": "ตาม Dataset เมืองหลวงของญี่ปุ่นคือเมืองใด?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0192",
+      "question": "Dataset ระบุเส้นผ่านศูนย์กลางของดวงจันทร์ไว้เท่าไร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0193",
+      "question": "Dataset ยืนยันว่าหุ้นตัวใดปิดบวกมากที่สุดวันนี้?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0194",
+      "question": "ตาม Dataset สูตรต้มยำกุ้งต้องใส่อะไรบ้าง?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0195",
+      "question": "Dataset แปลคำว่า “apple” ว่าอะไร?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0196",
+      "question": "Dataset ระบุประเทศเจ้าภาพฟุตบอลโลกครั้งหน้าหรือไม่?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0197",
+      "question": "ตาม Dataset น้ำเดือดที่ระดับน้ำทะเลมีกี่องศา?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0198",
+      "question": "Dataset แนะนำให้ปลูกมะเขือเทศในฤดูใด?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0199",
+      "question": "ตาม Dataset ใครชนะการแข่งขันกีฬาเมื่อวานนี้?",
+      "topic": null,
+      "negative": true
+    },
+    {
+      "id": "SORT-0200",
+      "question": "Dataset ระบุระยะทางกรุงเทพฯ ถึงเชียงใหม่ไว้กี่กิโลเมตร?",
+      "topic": null,
+      "negative": true
+    }
+  ]
+}

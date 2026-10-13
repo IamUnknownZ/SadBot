@@ -1,0 +1,9 @@
+{
+  "schema_version": 3,
+  "source_language": "en",
+  "documents": [
+    "book_data/Cormen_Basic_Sorting_100_Pages.pdf"
+  ],
+  "dataset": "metadata/dataset.json",
+  "vectors": "vector_store/text_index.json"
+}

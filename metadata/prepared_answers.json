@@ -1,0 +1,1239 @@
+{
+  "schema_version": 2,
+  "routes": {
+    "วัตถุประสงค์หลักของการเรียงลําดับข้อมูล(sorting)คืออะไร": {
+      "status": "answered",
+      "answer": "• การเรียงลำดับข้อมูลคือกระบวนการจัดเรียงสมาชิกในเซตข้อมูลตามลำดับที่กำหนด (เช่น น้อยไปมาก หรือ มากไปน้อย) วัตถุประสงค์หลักเพื่อเพิ่มประสิทธิภาพในการค้นหาข้อมูล (Search) และช่วยให้วิเคราะห์/แสดงผลข้อมูลได้ง่ายขึ้น",
+      "evidence_ids": [
+        "p10-c0083",
+        "p10-c0084",
+        "p10-c0085",
+        "p10-c0086",
+        "p10-c0087",
+        "p10-c0088"
+      ],
+      "record_id": "SORT-0001"
+    },
+    "การเรียงลําดับแบบascendingและdescendingต่างกันอย่างไร": {
+      "status": "answered",
+      "answer": "• Ascending คือการเรียงลำดับจากค่าน้อยไปหาค่ามาก (เช่น 1, 2, 3) ส่วน Descending คือการเรียงลำดับจากค่ามากไปหาน้อย (เช่น 3, 2, 1)",
+      "evidence_ids": [],
+      "record_id": "SORT-0002"
+    },
+    "ทําไมการเรียงข้อมูลตัวเลขในรูปข้อความจึงอาจเกิดข้อผิดพลาด": {
+      "status": "answered",
+      "answer": "• การเรียงข้อมูลตัวเลขที่เก็บในรูปข้อความ (String) จะใช้ลำดับ Lexicographical ทำให้ '10' ถูกจัดล่วงหน้าก่อน '2' เพราะตัวอักษร '1' มาก่อน '2' จึงต้องแปลงเป็นตัวเลข (int/float) ก่อนเรียง",
+      "evidence_ids": [],
+      "record_id": "SORT-0003"
+    },
+    "เครื่องหมายเปรียบเทียบ>และ<มีผลต่อทิศทางการเรียงลําดับอย่างไร": {
+      "status": "answered",
+      "answer": "• เครื่องหมาย > ใช้ตรวจว่าค่าซ้ายมากกว่าค่าขวาหรือไม่ เพื่อตัดสินใจสลับในการเรียงจากน้อยไปมาก ส่วนเครื่องหมาย < ใช้ตรวจตัดสินใจสลับในการเรียงจากมากไปน้อย",
+      "evidence_ids": [],
+      "record_id": "SORT-0004"
+    },
+    "การสลับตําแหน่งสมาชิก2ตัวในอาร์เรย์ต้องทําอย่างไรเพื่อไม่ให้ข้อมูลสูญหาย": {
+      "status": "answered",
+      "answer": "• ต้องใช้ตัวแปรชั่วคราว (Temporary Variable) เพื่อเก็บค่าจากตำแหน่งแรกไว้ก่อน จากนั้นนำค่าตำแหน่งที่สองมาวางในตำแหน่งแรก แล้วจึงนำค่าในตัวแปรชั่วคราวมาวางในตำแหน่งที่สอง หรือใช้ Tuple Unpacking ใน Python (a, b = b, a)",
+      "evidence_ids": [],
+      "record_id": "SORT-0005"
+    },
+    "การเลื่อนสมาชิก(shifting)ในอาร์เรย์ทําอย่างไรและใช้ในกรณีใด": {
+      "status": "answered",
+      "answer": "• การเลื่อนสมาชิกคือการย้ายค่าในอาร์เรย์ไปทางขวาหรือซ้ายทีละตำแหน่ง เพื่อสร้างช่องว่างสำหรับแทรกค่าใหม่ มักทำจากขวาไปซ้ายเพื่อไม่ให้ทับค่าถัดไป นิยมใช้ใน Insertion Sort",
+      "evidence_ids": [],
+      "record_id": "SORT-0006"
+    },
+    "การวัดประสิทธิภาพด้านเวลา(timecomplexity)ของอัลกอริทึมเรียงลําดับประเมินจากอะไร": {
+      "status": "answered",
+      "answer": "• ประเมินจากจำนวนรอบการเปรียบเทียบ (Comparisons) และจำนวนการสลับ/เคลื่อนย้ายข้อมูล (Swaps/Movements) ในกรณี Best Case, Average Case และ Worst Case โดยแสดงในรูป Big O Notation เช่น O(n log n) หรือ O(n^2)",
+      "evidence_ids": [],
+      "record_id": "SORT-0007"
+    },
+    "spacecomplexityของอัลกอริทึมเรียงลําดับหมายถึงอะไร": {
+      "status": "answered",
+      "answer": "• คือปริมาณหน่วยความจำชั่วคราวเพิ่มเติม (Auxiliary Memory) ที่อัลกอริทึมต้องใช้ในการทำงาน หากใช้ O(1) เรียกว่า In-place Sorting แต่หากต้องสร้างอาร์เรย์ใหม่ขนาดเท่าเดิมจะใช้ O(n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0008"
+    },
+    "stablesortหมายถึงอะไรและมีความสําคัญอย่างไร": {
+      "status": "answered",
+      "answer": "• Stable Sort (การเรียงลำดับแบบเสถียร) คืออัลกอริทึมที่รักษาลำดับดั้งเดิมของสมาชิกที่มีค่าเท่ากันไว้หลังจากการเรียง มีความสำคัญเมื่อต้องการเรียงลำดับข้อมูลหลายคีย์ (Multi-level sorting)",
+      "evidence_ids": [],
+      "record_id": "SORT-0009"
+    },
+    "ข้อดีของการใช้in-placesortingalgorithmคืออะไร": {
+      "status": "answered",
+      "answer": "• ประหยัดหน่วยความจำ เนื่องจากปรับเปลี่ยนตำแหน่งสมาชิกภายในอาร์เรย์เดิมโดยตรง ไม่ต้องสร้างอาร์เรย์สำรองขนาดใหญ่ เหมาะกับระบบที่มีหน่วยความจำจำกัด",
+      "evidence_ids": [],
+      "record_id": "SORT-0010"
+    },
+    "การเรียงลําดับลิสต์ของดิคชันนารีหรืออ็อบเจกต์ทําอย่างไรในpython": {
+      "status": "answered",
+      "answer": "• ใช้พารามิเตอร์ key ร่วมกับฟังก์ชัน lambda หรือ operator.attrgetter / itemgetter เพื่อระบุฟิลด์ที่ต้องการใช้เป็นหลักในการเปรียบเทียบ",
+      "evidence_ids": [],
+      "record_id": "SORT-0011"
+    },
+    "เกิดอะไรขึ้นหากใช้เครื่องหมาย>=แทน>ในการสลับbubblesort": {
+      "status": "answered",
+      "answer": "• หากใช้ >= อัลกอริทึมจะทำการสลับตำแหน่งสมาชิกแม้ค่าจะเท่ากัน ซึ่งทำให้เสียเวลาประมวลผลเพิ่มขึ้นโดยไม่จำเป็น และทำให้ Bubble Sort เสียคุณสมบัติความเสถียร (Unstable)",
+      "evidence_ids": [],
+      "record_id": "SORT-0012"
+    },
+    "หลังการเรียงลําดับควรตรวจสอบผลลัพธ์ในประเด็นใดบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• ตรวจสอบว่าสมาชิกถูกจัดเรียงตามเงื่อนไข (น้อยไปมาก/มากไปน้อย) ถูกต้องทุกคู่\n2\n• ตรวจสอบว่าจำนวนสมาชิกและข้อมูลเดิมยังอยู่ครบถ้วน ไม่สูญหายหรือถูกทับ",
+      "evidence_ids": [],
+      "record_id": "SORT-0013"
+    },
+    "การเรียงลําดับข้อมูลส่งผลต่อการค้นหาข้อมูลด้วยbinarysearchอย่างไร": {
+      "status": "answered",
+      "answer": "• Binary Search จำเป็นต้องทำงานบนข้อมูลที่จัดเรียงลำดับแล้วเท่านั้น หากข้อมูลเรียงลำดับแล้วจะลดเวลาค้นหาจาก O(n) เหลือเพียง O(log n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0014"
+    },
+    "ปัจจัยสําคัญในการเลือกใช้อัลกอริทึมเรียงลําดับมีอะไรบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• ขนาดของข้อมูล (n)\n2\n• ลักษณะของข้อมูลเดิม (เรียงแล้วบางส่วนหรือไม่)\n3\n• ข้อจำกัดด้านหน่วยความจำ (RAM)\n4\n• ความต้องการความเสถียร (Stability)",
+      "evidence_ids": [],
+      "record_id": "SORT-0015"
+    },
+    "การเรียงลําดับสตริงในpythonแบบcase-sensitiveและcase-insensitiveต่างกันอย่างไร": {
+      "status": "answered",
+      "answer": "• Case-sensitive: เรียงตามรหัส ASCII ตัวอักษรพิมพ์ใหญ่ (A-Z) จะถูกจัดเรียงก่อนตัวพิมพ์เล็ก (a-z) เสมอ\n• Case-insensitive: แปลงสตริงทุกตัวเป็นตัวพิมพ์เล็กหรือตัวพิมพ์ใหญ่ก่อนเรียง ด้วยพารามิเตอร์ key=str.lower",
+      "evidence_ids": [],
+      "record_id": "SORT-0016"
+    },
+    "อัลกอริทึมการเรียงลําดับแบบrecursiveอาจเกิดปัญหาstackoverflowได้อย่างไร": {
+      "status": "answered",
+      "answer": "• สาเหตุ: การเรียกตัวเองหลายระดับชั้น (Recursive Calls) เกินกว่าขนาด Call Stack ของระบบ\n• ผลกระทบ: หากอัลกอริทึมไม่มี Base Case ที่ถูกต้อง หรือมีการกระจายตัวลึกเกินไป (เช่น Quick Sort ใน Worst Case O(n)) จะเกิด RecursionError\n• การป้องกัน: ใช้ Iterative หรือจำกัดระดับ Recursion Depth",
+      "evidence_ids": [],
+      "record_id": "SORT-0017"
+    },
+    "แนวคิดหลักการทํางานของbubblesortคืออะไร": {
+      "status": "answered",
+      "answer": "• Bubble Sort ทำงานโดยการเปรียบเทียบสมาชิกคู่ที่อยู่ติดกัน (Adjacent elements) จากซ้ายไปขวา หากพบว่าคู่ใดผิดลำดับจะทำการสลับตำแหน่ง (Swap) ทำให้ค่าที่มากที่สุดค่อยๆ 'ลอย' ไปอยู่ตำแหน่งท้ายสุดเหมือนฟองอากาศในแต่ละรอบ",
+      "evidence_ids": [
+        "p34-c0344",
+        "p36-c0370",
+        "p36-c0372"
+      ],
+      "record_id": "SORT-0018"
+    },
+    "เงื่อนไขใดในbubblesortที่ทําให้เกิดการสลับสมาชิกในการเรียงจากน้อยไปมาก": {
+      "status": "answered",
+      "answer": "• เงื่อนไข `arr[j] > arr[j+1]` (สมาชิกตัวซ้ายมากกว่าตัวขวา) เมื่อเงื่อนไขนี้เป็นจริง จะทำการสลับตำแหน่งระหว่าง arr[j] และ arr[j+1]",
+      "evidence_ids": [],
+      "record_id": "SORT-0019"
+    },
+    "เมื่อbubblesortทํางานจบ1รอบ(pass1)ผลลัพธ์ที่การันตีคืออะไร": {
+      "status": "answered",
+      "answer": "• ผลลัพธ์ที่การันตีคือ สมาชิกที่มีค่ามากที่สุดในอาร์เรย์จะถูกย้ายไปอยู่ในตำแหน่งท้ายสุดของอาร์เรย์ (ตำแหน่ง index n-1) อย่างแน่นอน",
+      "evidence_ids": [],
+      "record_id": "SORT-0020"
+    },
+    "bubblesortเวอร์ชันปกติมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงล่วงหน้าแล้ว": {
+      "status": "answered",
+      "answer": "• Bubble Sort เวอร์ชันปกติที่ไม่มีการปรับแต่ง จะยังคงทำการเปรียบเทียบสมาชิกทุกคู่ครบ n(n-1)/2 ครั้งเช่นเดิม แม้จะไม่มีการสลับตำแหน่งเลย ทำให้ Time Complexity เป็น O(n^2) เสมอ",
+      "evidence_ids": [],
+      "record_id": "SORT-0021"
+    },
+    "จงติดตามผลลัพธ์ของbubblesortในรอบแรก(pass1)สําหรับอาร์เรย์[5,1,4,2,8]": {
+      "status": "answered",
+      "answer": "• เปรียบเทียบ (5,1)->สลับ [1,5,4,2,8] -> เปรียบเทียบ (5,4)->สลับ [1,4,5,2,8] -> เปรียบเทียบ (5,2)->สลับ [1,4,2,5,8] -> เปรียบเทียบ (5,8)->ไม่สลับ ผลลัพธ์จบ Pass 1 คือ [1, 4, 2, 5, 8]",
+      "evidence_ids": [],
+      "record_id": "SORT-0022"
+    },
+    "ในการเรียงอาร์เรย์ขนาดnสมาชิกด้วยbubblesortต้องใช้วงลูปนอกทั้งหมดกี่รอบในกรณีแย่ที่สุด": {
+      "status": "answered",
+      "answer": "• ใช้วงลูปนอกทั้งหมด n-1 รอบ เนื่องจากเมื่อวางตำแหน่งสมาชิก n-1 ตัวถูกต้องแล้ว สมาชิกตัวสุดท้ายจะอยู่ในตำแหน่งที่ถูกต้องโดยอัตโนมัติ",
+      "evidence_ids": [],
+      "record_id": "SORT-0023"
+    },
+    "หากต้องการดัดแปลงbubblesortให้เรียงจากมากไปน้อยต้องแก้ไขส่วนใด": {
+      "status": "answered",
+      "answer": "• เปลี่ยนเงื่อนไขการเปรียบเทียบในวงลูปใน จาก `arr[j] > arr[j+1]` เป็น `arr[j] < arr[j+1]` เพื่อสลับให้ค่าน้อยลอยไปอยู่ด้านท้ายแทน",
+      "evidence_ids": [],
+      "record_id": "SORT-0024"
+    },
+    "bubblesortทํางานอย่างไรเมื่อรับอาร์เรย์ที่มีสมาชิกซ้ํากันทั้งหมดเช่น[3,3,3,3]": {
+      "status": "answered",
+      "answer": "• จะไม่เกิดการสลับตำแหน่งเลย เนื่องจากเงื่อนไข > ไม่เป็นจริง ทำให้ลำดับดั้งเดิมคงเดิม และหากมี Flag จะจบการทำงานทันทีในรอบแรก",
+      "evidence_ids": [],
+      "record_id": "SORT-0025"
+    },
+    "จงเขียนpseudocodeสําหรับoptimizedbubblesort": {
+      "status": "answered",
+      "answer": "• Procedure BubbleSort(A : list of sortable items)\n    n = length(A)\n    repeat\n        swapped = false\n        for i = 1 to n-1 do\n            if A[i-1] > A[i] then\n                swap(A[i-1], A[i])\n                swapped = true\n            end if\n        end for\n        n = n - 1\n    until not swapped\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0026"
+    },
+    "จงเขียนฟังก์ชันpythonสําหรับoptimizedbubblesort": {
+      "status": "answered",
+      "answer": "• def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr",
+      "evidence_ids": [],
+      "record_id": "SORT-0027"
+    },
+    "การเพิ่มswappedflagให้bubblesortช่วยปรับปรุงประสิทธิภาพในกรณีใดและtimecomplexityกลายเป็นเท่าใด": {
+      "status": "answered",
+      "answer": "• ช่วยปรับปรุงประสิทธิภาพใน Best Case (เมื่อข้อมูลจัดเรียงล่วงหน้ามาแล้ว) โดยจะวนลูปเปรียบเทียบเพียงรอบเดียว (n-1 ครั้ง) แล้วพบว่า swapped เป็น False จึงหยุดทำงาน ทำให้ Best Case Time Complexity เป็น O(n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0028"
+    },
+    "จงสรุปtimecomplexityของbubblesortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n) (กรณีมี swapped flag และข้อมูลเรียงแล้ว)\nAverage Case: O(n^2)\nWorst Case: O(n^2) (กรณีข้อมูลเรียงกลับทิศทาง)",
+      "evidence_ids": [],
+      "record_id": "SORT-0029"
+    },
+    "bubblesortมีspacecomplexityเท่าใดและเป็นstablesortหรือไม่": {
+      "status": "answered",
+      "answer": "• Space Complexity เป็น O(1) (In-place) เพราะใช้ตัวแปรชั่วคราวในการสลับข้อมูลเท่านั้น และเป็น Stable Sort (เรียงลำดับแบบเสถียร) เพราะไม่มีการสลับสมาชิกที่มีค่าเท่ากัน",
+      "evidence_ids": [],
+      "record_id": "SORT-0030"
+    },
+    "ข้อดีและข้อจํากัดหลักของbubblesortคืออะไรและควรเลือกใช้ในสถานการณ์ใด": {
+      "status": "answered",
+      "answer": "• ข้อดี: เขียนง่าย เข้าใจง่าย เป็น In-place และ Stable\nข้อจำกัด: ประสิทธิภาพต่ำ O(n^2) มีการสลับข้อมูลบ่อยครั้ง ไม่เหมาะกับข้อมูลขนาดใหญ่\nสถานการณ์ใช้งาน: ใช้เพื่อการศึกษาเรียนรู้เบื้องต้น หรือใช้กับข้อมูลขนาดเล็กมาก (n < 20)",
+      "evidence_ids": [],
+      "record_id": "SORT-0031"
+    },
+    "ค้นหาบั๊กในโค้ด:`forjinrange(0,n):ifarr[j]>arr[j+1]:arr[j],arr[j+1]=arr[j+1],arr[j]`": {
+      "status": "answered",
+      "answer": "• เกิดข้อผิดพลาด `IndexError: list index out of range` เนื่องจากลูปวนถึง j = n-1 ทำให้เมื่อเข้าเงื่อนไข `arr[j+1]` จะอ้างอิงถึง index n ซึ่งเกินขอบเขต แก้ไขเป็น `for j in range(0, n - i - 1):`",
+      "evidence_ids": [],
+      "record_id": "SORT-0032"
+    },
+    "จงคํานวณจํานวนการเปรียบเทียบและการสลับข้อมูลของbubblesortสําหรับข้อมูล5สมาชิกในกรณีแย่ที่สุด": {
+      "status": "answered",
+      "answer": "• จำนวนการเปรียบเทียบ: n(n-1)/2 = 5*4/2 = 10 ครั้ง\n• จำนวนการสลับข้อมูล (Swaps): n(n-1)/2 = 10 ครั้ง (เมื่อข้อมูลเรียงกลับทิศทางตั้งแต่ต้น)",
+      "evidence_ids": [],
+      "record_id": "SORT-0033"
+    },
+    "cocktailshakersortปรับปรุงจุดอ่อนเรื่อง'turtleelements'ของbubblesortอย่างไร": {
+      "status": "answered",
+      "answer": "• จุดอ่อน Bubble Sort: ค่าน้อยที่อยู่ท้ายอาร์เรย์ (Turtles) จะเคลื่อนมาด้านหน้าได้ทีละ 1 ตำแหน่งต่อ 1 รอบ ทำให้อัลกอริทึมช้า\n• การปรับปรุง: Cocktail Shaker Sort วนลูปเปรียบเทียบ 2 ทิศทาง ทั้งจากซ้ายไปขวา และจากขวาไปซ้ายสลับกันในแต่ละรอบ ทำให้ค่าน้อยเคลื่อนกลับหน้าได้รวดเร็วขึ้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0034"
+    },
+    "แนวคิดหลักการทํางานของselectionsortคืออะไร": {
+      "status": "answered",
+      "answer": "• Selection Sort ทำงานโดยแบ่งอาร์เรย์เป็น 2 ส่วน คือส่วนที่เรียงลำดับแล้วและยังไม่ได้เรียง ในแต่ละรอบจะทำการค้นหาตำแหน่งของสมาชิกที่มีค่าน้อยที่สุดในส่วนที่ยังไม่ได้เรียง แล้วนำมาสลับกับสมาชิกตัวแรกของส่วนที่ยังไม่ได้เรียงนั้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0035"
+    },
+    "ในการเรียงจากน้อยไปมากselectionsortมีขั้นตอนค้นหาค่าน้อยที่สุดอย่างไร": {
+      "status": "answered",
+      "answer": "• กำหนดให้ index ปัจจุบัน (i) เป็น min_idx จากนั้นวนลูปจดจำ index j (ตั้งแต่ i+1 ถึง n-1) หากพบ arr[j] < arr[min_idx] จะอัปเดต min_idx = j เมื่อจบการวนลูปจึงสลับ arr[i] กับ arr[min_idx]",
+      "evidence_ids": [],
+      "record_id": "SORT-0036"
+    },
+    "เมื่อselectionsortทํางานจบ1รอบ(pass1)ผลลัพธ์ที่การันตีคืออะไร": {
+      "status": "answered",
+      "answer": "• สมาชิกที่มีค่าน้อยที่สุดในอาร์เรย์จะถูกย้ายมาวางไว้ในตำแหน่งแรกสุด (index 0) อย่างถูกต้องแน่นอน",
+      "evidence_ids": [],
+      "record_id": "SORT-0037"
+    },
+    "selectionsortมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงเรียบร้อยมาแล้ว": {
+      "status": "answered",
+      "answer": "• ยังคงทำการเปรียบเทียบสมาชิกครบ n(n-1)/2 ครั้งเช่นเดิม เนื่องจากต้องวนลูปค้นหาค่าน้อยที่สุดจนจบส่วนที่เหลือเสมอ จึงมี Time Complexity เป็น O(n^2) ในทุกกรณี",
+      "evidence_ids": [],
+      "record_id": "SORT-0038"
+    },
+    "จงติดตามผลลัพธ์ของselectionsortในรอบที่1สําหรับอาร์เรย์[29,10,14,37,13]": {
+      "status": "answered",
+      "answer": "• ค้นหาค่าน้อยสุดใน [29, 10, 14, 37, 13] พบ 10 (index 1) สลับตำแหน่งกับ 29 (index 0) ได้ผลลัพธ์จบ Pass 1 เป็น [10, 29, 14, 37, 13]",
+      "evidence_ids": [],
+      "record_id": "SORT-0039"
+    },
+    "จากอาร์เรย์[10,29,14,37,13]จงติดตามผลลัพธ์ในรอบที่2(pass2)": {
+      "status": "answered",
+      "answer": "• พิจารณาช่วง [29, 14, 37, 13] พบ 13 เป็นค่าน้อยที่สุดในส่วนที่เหลือ สลับ 13 กับ 29 ได้ผลลัพธ์จบ Pass 2 เป็น [10, 13, 14, 37, 29]",
+      "evidence_ids": [],
+      "record_id": "SORT-0040"
+    },
+    "หากต้องการดัดแปลงselectionsortให้เรียงจากมากไปน้อยต้องปรับเปลี่ยนแนวคิดอย่างไร": {
+      "status": "answered",
+      "answer": "• ปรับเปลี่ยนจากการค้นหาค่าน้อยที่สุด (Minimum) เป็นการค้นหาค่ามากที่สุด (Maximum) ในส่วนที่ยังไม่ได้เรียง แล้วสลับมาไว้ในตำแหน่งหน้าสุดของรอบนั้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0041"
+    },
+    "ข้อดีของการสลับข้อมูล(swap)ในselectionsortเมื่อเทียบกับbubblesortคืออะไร": {
+      "status": "answered",
+      "answer": "• Selection Sort มีจำนวนการสลับข้อมูลสูงสุดเพียง n-1 ครั้ง (เกิดการสลับ 1 ครั้งต่อ 1 รอบลูปนอก) ในขณะที่ Bubble Sort อาจต้องสลับข้อมูลมากถึง O(n^2) ครั้ง ทำให้ Selection Sort เหมาะเมื่อต้นทุนการเขียนข้อมูลสูง",
+      "evidence_ids": [],
+      "record_id": "SORT-0042"
+    },
+    "จงเขียนpseudocodeสําหรับselectionsort": {
+      "status": "answered",
+      "answer": "• Procedure SelectionSort(A : list of sortable items)\n    n = length(A)\n    for i = 0 to n-2 do\n        min_idx = i\n        for j = i+1 to n-1 do\n            if A[j] < A[min_idx] then\n                min_idx = j\n            end if\n        end for\n        if min_idx != i then\n            swap(A[i], A[min_idx])\n        end if\n    end for\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0043"
+    },
+    "จงเขียนฟังก์ชันpythonสําหรับselectionsort": {
+      "status": "answered",
+      "answer": "• def selection_sort(arr):\n    n = len(arr)\n    for i in range(n - 1):\n        min_idx = i\n        for j in range(i + 1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr",
+      "evidence_ids": [],
+      "record_id": "SORT-0044"
+    },
+    "ค้นหาบั๊กในโค้ด:`foriinrange(n):min_idx=i;forjinrange(i+1,n):ifarr[j]<arr[i]:min_idx=j;arr[i],arr[min_idx]=arr[min_idx],arr[i]`": {
+      "status": "answered",
+      "answer": "• เกิดบั๊กในเงื่อนไข `arr[j] < arr[i]` ซึ่งเป็นการเปรียบเทียบ arr[j] กับ arr[i] (ค่าเริ่มต้น) แทนที่จะเทียบกับ `arr[min_idx]` ที่อัปเดตล่าสุด ทำให้ไม่ได้ค่าน้อยที่สุดจริง",
+      "evidence_ids": [],
+      "record_id": "SORT-0045"
+    },
+    "จงสรุปtimecomplexityของselectionsortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n^2)\nAverage Case: O(n^2)\nWorst Case: O(n^2)\nเนื่องจากต้องวนลูปค้นหาค่าน้อยที่สุดในส่วนที่เหลือครบทุกรอบเสมอโดยไม่ขึ้นกับรูปแบบข้อมูลเดิม",
+      "evidence_ids": [],
+      "record_id": "SORT-0046"
+    },
+    "selectionsortเป็นstablesortหรือไม่เพราะเหตุใด": {
+      "status": "answered",
+      "answer": "• Selection Sort เวอร์ชันมาตรฐานเป็น **Unstable Sort** (ไม่เสถียร) เนื่องจากกระบวนการสลับข้อมูลข้ามตำแหน่งไกลๆ อาจข้ามสมาชิกที่มีค่าเท่ากันและทำให้ลำดับดั้งเดิมเปลี่ยนไป",
+      "evidence_ids": [],
+      "record_id": "SORT-0047"
+    },
+    "จงเปรียบเทียบselectionsortและbubblesortในแง่จํานวนการเปรียบเทียบและการสลับข้อมูล": {
+      "status": "answered",
+      "answer": "• จำนวนการเปรียบเทียบ: ทั้งคู่ใช้ O(n^2) การเปรียบเทียบ\nจำนวนการสลับข้อมูล: Selection Sort สลับเพียง O(n) ครั้ง ขณะที่ Bubble Sort สลับได้ถึง O(n^2) ครั้ง ดังนั้น Selection Sort จึงมีประสิทธิภาพดีกว่าเมื่อการสลับข้อมูลแพง",
+      "evidence_ids": [],
+      "record_id": "SORT-0048"
+    },
+    "สถานการณ์ใดที่ควรเลือกใช้selectionsortมากกว่าbubblesort": {
+      "status": "answered",
+      "answer": "• เมื่อการเขียนข้อมูลลงหน่วยความจำ (Flash Memory / EEPROM) มีต้นทุนสูงหรือมีอายุการใช้งานจำกัด (Write operations are expensive) เนื่องจาก Selection Sort ทำการสลับข้อมูลน้อยมากเพียง n-1 ครั้ง",
+      "evidence_ids": [],
+      "record_id": "SORT-0049"
+    },
+    "bidirectionalselectionsort(min-maxselectionsort)ทํางานอย่างไร": {
+      "status": "answered",
+      "answer": "• หลักการ: ค้นหาทั้งตำแหน่งค่าน้อยที่สุด (min_idx) และค่ามากที่สุด (max_idx) ในการสแกนลูปใน 1 รอบพร้อมกัน\n• ขั้นตอน: สลับค่าน้อยสุดไว้ตำแหน่งหน้าสุด และสลับค่ามากสุดไว้ตำแหน่งท้ายสุด ทำให้ลดจำนวนรอบลูปนอกลงเหลือ n/2 รอบ",
+      "evidence_ids": [],
+      "record_id": "SORT-0050"
+    },
+    "เหตุใดจึงควรเพิ่มเงื่อนไข`ifmin_idx!=i:`ก่อนทําการสลับในselectionsort": {
+      "status": "answered",
+      "answer": "• สาเหตุ: ในกรณีที่สมาชิกตำแหน่ง i มีค่าน้อยที่สุดอยู่แล้ว (`min_idx == i`)\n• ประโยชน์: การเพิ่มเงื่อนไขป้องกันการสลับกับตัวเอง (Self-swap) ช่วยประหยัดเวลาประมวลผลไม่ต้องทำขั้นตอนสลับข้อมูลโดยไม่จำเป็น",
+      "evidence_ids": [],
+      "record_id": "SORT-0051"
+    },
+    "แนวคิดหลักการทํางานของinsertionsortคืออะไร": {
+      "status": "answered",
+      "answer": "• Insertion Sort ทำงานคล้ายการเรียงไพ่ในมือ โดยแบ่งข้อมูลเป็นส่วนที่เรียงแล้วและยังไม่ได้เรียง ในแต่ละรอบจะหยิบสมาชิกตัวแรกจากส่วนที่ยังไม่ได้เรียง (Key) แล้วนำไปแทรกในตำแหน่งที่ถูกต้องของส่วนที่เรียงแล้ว โดยการเลื่อนสมาชิกที่มากกว่าไปทางขวา",
+      "evidence_ids": [],
+      "record_id": "SORT-0052"
+    },
+    "การนําkeyไปแทรกในinsertionsortมีขั้นตอนเลื่อนสมาชิกอย่างไร": {
+      "status": "answered",
+      "answer": "• เก็บค่าสมาชิกที่จะแทรกไว้ในตัวแปร `key` จากนั้นเปรียบเทียบ key กับสมาชิกด้านซ้าย (arr[j]) หาก arr[j] > key ให้เลื่อน arr[j] ไปทางขวาหนึ่งตำแหน่ง (`arr[j+1] = arr[j]`) ทำซ้ำไปทางซ้ายเรื่อยๆ จนกว่าจะพบค่าที่น้อยกว่าหรือเท่ากับ key หรือถึงขอบเขต แล้ววาง `arr[j+1] = key`",
+      "evidence_ids": [],
+      "record_id": "SORT-0053"
+    },
+    "ในขั้นตอนเริ่มต้นของinsertionsortอาร์เรย์ถูกแบ่งอย่างไร": {
+      "status": "answered",
+      "answer": "• ณ จุดเริ่มต้น ให้สมาชิกตัวแรก (index 0) เป็นส่วนที่เรียงแล้ว (Sorted Part มีขนาด 1) และสมาชิกตั้งแต่ index 1 ถึง n-1 เป็นส่วนที่ยังไม่ได้เรียง (Unsorted Part)",
+      "evidence_ids": [],
+      "record_id": "SORT-0054"
+    },
+    "insertionsortมีประสิทธิภาพสูงเป็นพิเศษกับข้อมูลรูปแบบใด": {
+      "status": "answered",
+      "answer": "• ข้อมูลที่จัดเรียงล่วงหน้ามาแล้ว หรือจัดเรียงแล้วเกือบสมบูรณ์ (Nearly Sorted / Partially Sorted) เนื่องจากจะเกิดการเลื่อนขลุกขลิกเพียงไม่กี่ครั้ง ทำให้ Time Complexity เข้าใกล้ O(n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0055"
+    },
+    "จงติดตามผลลัพธ์ของinsertionsortในรอบที่1(i=1)สําหรับอาร์เรย์[12,11,13,5,6]": {
+      "status": "answered",
+      "answer": "• Key = 11 (index 1), เปรียบเทียบกับ 12 (arr[0]), เนื่องจาก 12 > 11 เลื่อน 12 ไปทางขวา [12, 12, 13, 5, 6] แล้ววาง key=11 ที่ index 0 ผลลัพธ์จบ Pass 1 คือ [11, 12, 13, 5, 6]",
+      "evidence_ids": [],
+      "record_id": "SORT-0056"
+    },
+    "จาก[11,12,13,5,6]จงติดตามผลลัพธ์ในรอบที่3(i=3,key=5)": {
+      "status": "answered",
+      "answer": "• Key = 5 (index 3), เปรียบเทียบเลื่อน 13, 12, 11 ไปทางขวาเนื่องจากทุกตัว > 5 แล้ววาง 5 ที่ index 0 ผลลัพธ์จบ Pass 3 คือ [5, 11, 12, 13, 6]",
+      "evidence_ids": [],
+      "record_id": "SORT-0057"
+    },
+    "หากต้องการดัดแปลงinsertionsortให้เรียงจากมากไปน้อยต้องแก้ไขเงื่อนไขใด": {
+      "status": "answered",
+      "answer": "• แก้ไขเงื่อนไขในลูป while จาก `key < arr[j]` เป็น `key > arr[j]` เพื่อเลื่อนสมาชิกที่มีค่าน้อยกว่า key ไปทางขวาแทน",
+      "evidence_ids": [],
+      "record_id": "SORT-0058"
+    },
+    "insertionsortมีพฤติกรรมอย่างไรเมื่อข้อมูลว่างหรือมีสมาชิกเพียง1ตัว": {
+      "status": "answered",
+      "answer": "• อัลกอริทึมจะทำงานจบทันทีเนื่องจากวงลูป `for i in range(1, len(arr))` จะไม่ถูกทำ (หรือทำ 0 รอบ) และส่งคืนอาร์เรย์เดิมโดยไม่เกิดข้อผิดพลาด",
+      "evidence_ids": [],
+      "record_id": "SORT-0059"
+    },
+    "จงเขียนpseudocodeสําหรับinsertionsort": {
+      "status": "answered",
+      "answer": "• Procedure InsertionSort(A : list of sortable items)\n    n = length(A)\n    for i = 1 to n-1 do\n        key = A[i]\n        j = i - 1\n        while j >= 0 and A[j] > key do\n            A[j + 1] = A[j]\n            j = j - 1\n        end while\n        A[j + 1] = key\n    end for\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0060"
+    },
+    "จงเขียนฟังก์ชันpythonสําหรับinsertionsort": {
+      "status": "answered",
+      "answer": "• def insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and key < arr[j]:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr",
+      "evidence_ids": [],
+      "record_id": "SORT-0061"
+    },
+    "ค้นหาบั๊กในโค้ด:`whilekey<arr[j]:arr[j+1]=arr[j];j-=1;arr[j+1]=key`": {
+      "status": "answered",
+      "answer": "• เกิดบั๊ก `IndexError: list index out of range` เมื่อ j ลดลงจนกระทั่ง j = -1 เนื่องจากขาดเงื่อนไขการตรวจขอบเขต `j >= 0` ในลูป while",
+      "evidence_ids": [],
+      "record_id": "SORT-0062"
+    },
+    "จงสรุปtimecomplexityของinsertionsortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n) (ข้อมูลจัดเรียงล่วงหน้าเรียบร้อยแล้ว)\nAverage Case: O(n^2)\nWorst Case: O(n^2) (ข้อมูลจัดเรียงย้อนกลับทิศทาง)",
+      "evidence_ids": [],
+      "record_id": "SORT-0063"
+    },
+    "insertionsortมีspacecomplexityเท่าใดและเป็นstablesortหรือไม่": {
+      "status": "answered",
+      "answer": "• Space Complexity เป็น O(1) (In-place) และเป็น **Stable Sort** (เรียงลำดับแบบเสถียร) เนื่องจากลูป while เลื่อนเฉพาะสมาชิกที่ `arr[j] > key` เท่านั้น สมาชิกที่มีค่าเท่ากันจะไม่ถูกเลื่อนข้าม",
+      "evidence_ids": [],
+      "record_id": "SORT-0064"
+    },
+    "ทําไมinsertionsortจึงนิยมนําไปใช้เป็นอัลกอริทึมย่อยในhybridsort(เช่นtimsort/introsort)เมื่อข้อมูลมีขนาดเล็ก": {
+      "status": "answered",
+      "answer": "• เนื่องจากมีค่า Overhead (ค่าธรรมเนียมในการจัดการฟังก์ชันและโครงสร้างข้อมูล) ต่ำมาก และทำแคชฮิต (Cache Locality) ได้ดี ทำให้อัลกอริทึมทำงานได้เร็วกว่า O(n log n) เมื่อ n มีขนาดเล็ก (เช่น n < 10-64)",
+      "evidence_ids": [],
+      "record_id": "SORT-0065"
+    },
+    "ทําไมinsertionsortจึงถือว่าเป็นonlinealgorithm": {
+      "status": "answered",
+      "answer": "• เพราะสามารถรับข้อมูลเข้ามาทีละสมาชิก (Data Stream) แล้วแทรกเข้าไปในตำแหน่งที่ถูกต้องของอาร์เรย์ที่เรียงลำดับอยู่แล้วได้ทันที โดยไม่จำเป็นต้องมีข้อมูลทั้งหมดล่วงหน้าก่อนเริ่มเรียง",
+      "evidence_ids": [],
+      "record_id": "SORT-0066"
+    },
+    "binaryinsertionsortช่วยปรับปรุงประสิทธิภาพของinsertionsortอย่างไร": {
+      "status": "answered",
+      "answer": "• การปรับปรุง: ใช้ Binary Search ในการค้นหาตำแหน่งแทรกของ key แทนการสแกนทีละตัว\n• ผลลัพธ์: ลดจำนวนรอบการเปรียบเทียบจาก O(n^2) เหลือ O(n log n)\n• ข้อจำกัด: จำนวนการเลื่อนสมาชิก (Shifting) ยังคงเป็น O(n^2) เช่นเดิม",
+      "evidence_ids": [],
+      "record_id": "SORT-0067"
+    },
+    "ทําไมinsertionsortที่ใช้การเลื่อนสมาชิก(shift)จึงทํางานไวกว่าการสลับตําแหน่ง(swap)": {
+      "status": "answered",
+      "answer": "• การ Shift: ทำการคัดลอกค่าเพียง 1 Assignment ต่อรอบลูปใน (`arr[j+1] = arr[j]`) และวาง key เมื่อจบลูป\n• การ Swap: ต้องทำ 3 Assignments ต่อรอบลูปใน (`temp=a; a=b; b=temp`)\n• สรุป: การ Shift ใช้การทำงานน้อยกว่า 3 เท่าในลูปใน",
+      "evidence_ids": [],
+      "record_id": "SORT-0068"
+    },
+    "แนวคิดหลักdivideandconquerของmergesortประกอบด้วยขั้นตอนใดบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• Divide: แบ่งอาร์เรย์ออกเป็น 2 ส่วนเท่าๆ กันตรงจุดครึ่งหนึ่งแบบเรียกตัวเอง (Recursion)\n2\n• Conquer: เรียงลำดับอาร์เรย์ย่อยทั้งสอง (ย่อยจนเหลือสมาชิก 1 ตัว)\n3\n• Combine/Merge: ผสานอาร์เรย์ย่อยสองส่วนที่จัดเรียงแล้วเข้าด้วยกันเป็นอาร์เรย์เดียวที่สมบูรณ์",
+      "evidence_ids": [],
+      "record_id": "SORT-0069"
+    },
+    "ฟังก์ชันmergeในmergesortมีหลักการผสานอาร์เรย์ย่อย2ส่วนอย่างไร": {
+      "status": "answered",
+      "answer": "• ใช้ตัวชี้ (Pointer) 2 ตัวชี้ที่ตำแหน่งแรกของอาร์เรย์ย่อยซ้ายและขวา เปรียบเทียบสมาชิกตรงตัวชี้ นำตัวที่มีค่าน้อยกว่าใส่ลงในอาร์เรย์ผลลัพธ์แล้วเลื่อนตัวชี้นั้นไปข้างหน้า ทำซ้ำจนกว่าอาร์เรย์ฝ่ายใดฝ่ายหนึ่งจะหมด แล้วคัดลอกสมาชิกที่เหลือทั้งหมดต่อท้าย",
+      "evidence_ids": [],
+      "record_id": "SORT-0070"
+    },
+    "basecase(เงื่อนไขการหยุดเรียกตัวเอง)ของmergesortคืออะไร": {
+      "status": "answered",
+      "answer": "• คือเมื่ออาร์เรย์ย่อยมีขนาดสมาชิกเหลือเพียง 1 ตัว หรือ 0 ตัว (`len(arr) <= 1`) เนื่องจากอาร์เรย์ที่มีสมาชิกไม่เกิน 1 ตัวถือว่าจัดเรียงเรียบร้อยแล้วในตัวเอง",
+      "evidence_ids": [],
+      "record_id": "SORT-0071"
+    },
+    "กระบวนการdivideของmergesortมีจํานวนระดับความลึก(depthofrecursion)เป็นเท่าใดสําหรับอาร์เรย์ขนาดn": {
+      "status": "answered",
+      "answer": "• จำนวนระดับความลึกของแผนภาพการแบ่ง (Recursion Tree) มีค่าเท่ากับ log2(n) ระดับ เนื่องจากข้อมูลถูกแบ่งครึ่งลงเรื่อยๆ ในแต่ละขั้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0072"
+    },
+    "จงติดตามขั้นตอนdivideของmergesortสําหรับอาร์เรย์[38,27,43,3,9,82,10]": {
+      "status": "answered",
+      "answer": "• แบ่งครึ่งแรกได้ [38, 27, 43] และ [3, 9, 82, 10] -> [38, 27, 43] แบ่งเป็น [38] และ [27, 43] -> [27, 43] แบ่งเป็น [27] และ [43] -> แบ่งย่อยจนกระทั่งทุกตัวกลายเป็นสมาชิกเดี่ยว",
+      "evidence_ids": [],
+      "record_id": "SORT-0073"
+    },
+    "จงติดตามขั้นตอนการผสาน(merge)สองอาร์เรย์ย่อยที่เรียงแล้ว[27,38,43]และ[3,9,10,82]": {
+      "status": "answered",
+      "answer": "• เทียบ 27 กับ 3 (เลือก 3) -> เทียบ 27 กับ 9 (เลือก 9) -> เทียบ 27 กับ 10 (เลือก 10) -> เทียบ 27 กับ 82 (เลือก 27) -> เทียบ 38 กับ 82 (เลือก 38) -> เทียบ 43 กับ 82 (เลือก 43) -> เติม 82 ที่เหลือ ผลลัพธ์: [3, 9, 10, 27, 38, 43, 82]",
+      "evidence_ids": [],
+      "record_id": "SORT-0074"
+    },
+    "หากต้องการดัดแปลงmergesortให้เรียงจากมากไปน้อยต้องปรับเปลี่ยนในขั้นตอนใด": {
+      "status": "answered",
+      "answer": "• ปรับเปลี่ยนในฟังก์ชัน Merge โดยเปลี่ยนเงื่อนไขการเลือกสมาชิกจาก `left[i] <= right[j]` เป็น `left[i] >= right[j]` เพื่อเลือกตัวที่มีค่ามากกว่าลงในอาร์เรย์ผลลัพธ์ก่อน",
+      "evidence_ids": [],
+      "record_id": "SORT-0075"
+    },
+    "ปัจจัยใดในขั้นตอนmergeที่กําหนดให้mergesortเป็นstablesort": {
+      "status": "answered",
+      "answer": "• การใช้เครื่องหมาย `<=` ในการเปรียบเทียบ (`if left[i] <= right[j]`) เมื่อสมาชิกมีค่าเท่ากัน จะเลือกสมาชิกจากฝั่งซ้าย (`left`) ลงก่อนเสมอ ทำให้รักษาลำดับดั้งเดิมไว้ได้",
+      "evidence_ids": [],
+      "record_id": "SORT-0076"
+    },
+    "จงเขียนpseudocodeสําหรับmergesort": {
+      "status": "answered",
+      "answer": "• Function MergeSort(A)\n    if length(A) <= 1 then return A\n    mid = length(A) / 2\n    left = MergeSort(A[0..mid-1])\n    right = MergeSort(A[mid..end])\n    return Merge(left, right)\nEnd Function",
+      "evidence_ids": [],
+      "record_id": "SORT-0077"
+    },
+    "จงเขียนโค้ดpythonสําหรับmergesort": {
+      "status": "answered",
+      "answer": "• def merge_sort(arr):\n    if len(arr) <= 1: return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i]); i += 1\n        else:\n            result.append(right[j]); j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result",
+      "evidence_ids": [],
+      "record_id": "SORT-0078"
+    },
+    "ค้นหาบั๊กในโค้ด:`mid=len(arr)//2;left=merge_sort(arr[:mid]);right=merge_sort(arr[mid:])`โดยลืมใส่`iflen(arr)<=1:returnarr`": {
+      "status": "answered",
+      "answer": "• เกิดข้อผิดพลาด `RecursionError: maximum recursion depth exceeded` เนื่องจากขาด Base Case ทำให้ฟังก์ชันเรียกตัวเองอย่างไม่สิ้นสุดจนหน่วยความจำสแต็กเต็ม",
+      "evidence_ids": [],
+      "record_id": "SORT-0079"
+    },
+    "จงวิเคราะห์timecomplexityของmergesortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best, Average, และ Worst Case มี Time Complexity เป็น **O(n log n)** เท่ากันหมดในทุกกรณี เนื่องจากไม่ว่าข้อมูลเดิมจะเรียงอย่างไรก็ตาม กระบวนการยังคงต้องแบ่งครึ่ง log n ระดับ และผสานรวม n สมาชิกในแต่ละระดับเสมอ",
+      "evidence_ids": [],
+      "record_id": "SORT-0080"
+    },
+    "spacecomplexityของmergesortเป็นเท่าใดและเพราะเหตุใด": {
+      "status": "answered",
+      "answer": "• Space Complexity เป็น **O(n)** (ไม่ใช่อัลกอริทึมแบบ In-place) เนื่องจากต้องสร้างอาร์เรย์สำรอง (Auxiliary Arrays) สำหรับเก็บผลลัพธ์ย่อยระหว่างการผสานข้อมูลในแต่ละระดับ",
+      "evidence_ids": [],
+      "record_id": "SORT-0081"
+    },
+    "เปรียบเทียบmergesortกับbubble/selection/insertionsortเมื่อเรียงข้อมูลขนาดใหญ่เช่นn=1,000,000": {
+      "status": "answered",
+      "answer": "•  Merge Sort ใช้เวลา O(n log n) ประมวลผลประมาณ 2x10^7 การทำงานเสร็จในเศษเสี้ยววินาที ขณะที่ O(n^2) อัลกอริทึมต้องประมวลผลถึง 10^12 การทำงานซึ่งอาจใช้เวลาหลายชั่วโมง ต่างกันมหาศาล",
+      "evidence_ids": [],
+      "record_id": "SORT-0082"
+    },
+    "ทําไมmergesortจึงเป็นอัลกอริทึมหลักที่ใช้ในexternalsorting(การเรียงข้อมูลที่มีขนาดใหญ่เกินram)": {
+      "status": "answered",
+      "answer": "• เพราะกลไกการ Merge อ่านและเขียนข้อมูลตามลำดับต่อเนื่อง (Sequential Access) สามารถอ่านบล็อกข้อมูลจากดิสก์ภายนอกเข้ามาผสานใน RAM ทีละส่วนแล้วเขียนกลับลงดิสก์ได้โดยไม่ต้องเข้าถึงแบบสุ่ม (Random Access)",
+      "evidence_ids": [],
+      "record_id": "SORT-0083"
+    },
+    "จงสรุปจุดเด่นและข้อเสียหลักของmergesort": {
+      "status": "answered",
+      "answer": "• จุดเด่น: เวลาการทำงานการันตี O(n log n) เสมอ มีความเสถียร (Stable Sort) เหมาะกับข้อมูลขนาดใหญ่และ External Sorting\nข้อเสีย: กินหน่วยความจำ RAM เพิ่มเติม O(n) และมี overhead จากการเรียกตัวเองแบบ Recursion",
+      "evidence_ids": [],
+      "record_id": "SORT-0084"
+    },
+    "แนวคิดหลักของcountingsortแตกต่างจากอัลกอริทึมการเรียงลําดับทั่วไปอย่างไร": {
+      "status": "answered",
+      "answer": "• Counting Sort เป็น **Non-comparison Sort** (อัลกอริทึมเรียงลำดับแบบไม่เปรียบเทียบ) โดยไม่ต้องเปรียบเทียบค่าระหว่างสมาชิกคู่ใดเลย แต่นับจำนวนความถี่ (Frequency) ของแต่ละค่าตัวเลข แล้วคำนวณตำแหน่งลงในอาร์เรย์ผลลัพธ์โดยตรง",
+      "evidence_ids": [],
+      "record_id": "SORT-0085"
+    },
+    "countingsortมีข้อกําหนดหรือข้อจํากัดเกี่ยวกับข้อมูลที่จะนํามาเรียงอย่างไร": {
+      "status": "answered",
+      "answer": "• ข้อมูลต้องเป็น **จำนวนเต็ม (Integers)** เท่านั้น (หรือแมปเป็นจำนวนเต็มได้) และต้องทราบช่วงของข้อมูล (Range k = max - min) ชัดเจน โดยช่วง k ไม่ควรใหญ่กว่าจำนวนสมาชิก n มากเกินไป",
+      "evidence_ids": [],
+      "record_id": "SORT-0086"
+    },
+    "ขั้นตอนการนับความถี่(countarray)ในcountingsortทําอย่างไร": {
+      "status": "answered",
+      "answer": "• สร้างอาร์เรย์ `count` ขนาด k+1 โดยให้มีค่าเริ่มต้นเป็น 0 ทุกตำแหน่ง จากนั้นวนลูปอ่านสมาชิก x แต่ละตัวในอาร์เรย์เดิม แล้วเพิ่มค่า `count[x] += 1` เพื่อเก็บบันทึกความถี่",
+      "evidence_ids": [],
+      "record_id": "SORT-0087"
+    },
+    "ขั้นตอนการทําprefixsum(cumulativecount)ในcountingsortมีวัตถุประสงค์เพื่ออะไร": {
+      "status": "answered",
+      "answer": "• คำนวณ `count[i] = count[i] + count[i-1]` เพื่อปรับเปลี่ยนค่าความถี่ให้กลายเป็นตำแหน่งดรรชนีสุดท้าย (Last Index) ของค่านั้นๆ ในอาร์เรย์ผลลัพธ์ที่จัดเรียงแล้ว",
+      "evidence_ids": [],
+      "record_id": "SORT-0088"
+    },
+    "ขั้นตอนสร้างoutputarrayของcountingsortต้องวนลูปอย่างไรเพื่อรักษาความเสถียร(stability)": {
+      "status": "answered",
+      "answer": "• ต้องวนลูปอ่านสมาชิกในอาร์เรย์เดิมจาก **ขวาไปซ้าย (ถอยหลังจาก n-1 ถึง 0)** นำค่าวางใน output ตามตำแหน่ง `count[num]-1` แล้วลดค่า `count[num] -= 1` เพื่อคงลำดับดั้งเดิมของตัวเลขที่ซ้ำกัน",
+      "evidence_ids": [],
+      "record_id": "SORT-0089"
+    },
+    "จงหาcountarray(ก่อนprefixsum)ของอาร์เรย์[4,2,2,8,3,3,1]": {
+      "status": "answered",
+      "answer": "• ค่าสูงสุดคือ 8 สร้าง count ขนาด 9 ได้ความถี่: index 1:1, index 2:2, index 3:2, index 4:1, index 8:1 (index อื่นเป็น 0)\nCount Array = [0, 1, 2, 2, 1, 0, 0, 0, 1]",
+      "evidence_ids": [],
+      "record_id": "SORT-0090"
+    },
+    "จากcountarray[0,1,2,2,1,0,0,0,1]เมื่อทําprefixsumจะได้ผลลัพธ์อย่างไร": {
+      "status": "answered",
+      "answer": "• บวกสะสมทีละ index: [0, 1, 1+2=3, 3+2=5, 5+1=6, 6, 6, 6, 6+1=7]\nPrefix Sum Array = [0, 1, 3, 5, 6, 6, 6, 6, 7]",
+      "evidence_ids": [],
+      "record_id": "SORT-0091"
+    },
+    "หากต้องการดัดแปลงcountingsortให้เรียงจากมากไปน้อยทําได้อย่างไร": {
+      "status": "answered",
+      "answer": "• ทำได้โดยการวนลูปสร้าง Output จากค่ามากไปค่าน้อย หรือดัดแปลงตอน Prefix Sum ให้สะสมจาก index สูงสุดลงมายัง index 0",
+      "evidence_ids": [],
+      "record_id": "SORT-0092"
+    },
+    "หากข้อมูลมีจํานวนเต็มลบ(negativeintegers)จะต้องปรับเปลี่ยนcountingsortอย่างไร": {
+      "status": "answered",
+      "answer": "• หาค่าต่ำสุด (min_val) หาก min_val < 0 ให้ลบ min_val ออกจากทุกสมาชิก (หรือบวก abs(min_val)) เป็น Offset เพื่อปรับให้ดรรชนีเริ่มต้นที่ 0 แล้วจึงย้อนค่าคืนเมื่อสร้าง output",
+      "evidence_ids": [],
+      "record_id": "SORT-0093"
+    },
+    "จงเขียนpseudocodeสําหรับcountingsort": {
+      "status": "answered",
+      "answer": "• Procedure CountingSort(A, k)\n    create count array of size k+1 initialized to 0\n    create output array of size length(A)\n    for i = 0 to length(A)-1 do\n        count[A[i]] = count[A[i]] + 1\n    for i = 1 to k do\n        count[i] = count[i] + count[i-1]\n    for i = length(A)-1 down to 0 do\n        output[count[A[i]] - 1] = A[i]\n        count[A[i]] = count[A[i]] - 1\n    return output\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0094"
+    },
+    "จงเขียนโค้ดpythonสําหรับcountingsort": {
+      "status": "answered",
+      "answer": "• def counting_sort(arr):\n    if not arr: return []\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    output = [0] * len(arr)\n    for num in arr:\n        count[num] += 1\n    for i in range(1, len(count)):\n        count[i] += count[i - 1]\n    for i in range(len(arr) - 1, -1, -1):\n        output[count[arr[i]] - 1] = arr[i]\n        count[arr[i]] -= 1\n    return output",
+      "evidence_ids": [],
+      "record_id": "SORT-0095"
+    },
+    "ค้นหาบั๊กในโค้ด:`count=[0]*max(arr)`": {
+      "status": "answered",
+      "answer": "• เกิดบั๊ก `IndexError: list index out of range` เมื่อเจอค่าเท่ากับ `max(arr)` เนื่องจากขนาดอาร์เรย์ควรเป็น `max(arr) + 1` เพื่อให้รองรับดรรชนีตั้งแต่ 0 ถึง max(arr)",
+      "evidence_ids": [],
+      "record_id": "SORT-0096"
+    },
+    "จงวิเคราะห์timecomplexityของcountingsort": {
+      "status": "answered",
+      "answer": "• Time Complexity คือ **O(n + k)** โดย n คือจำนวนสมาชิก และ k คือช่วงของข้อมูล (Range: max - min) หาก k <= O(n) จะทำให้ Counting Sort มี Time Complexity เป็น **O(n)** (Linear Time) เร็วกว่าอัลกอริทึมการเปรียบเทียบทุกชนิด",
+      "evidence_ids": [],
+      "record_id": "SORT-0097"
+    },
+    "spacecomplexityของcountingsortมีค่าเท่าใด": {
+      "status": "answered",
+      "answer": "• Space Complexity เท่ากับ **O(n + k)** เนื่องจากต้องใช้หน่วยความจำสร้างอาร์เรย์ count ขนาด k+1 และอาร์เรย์ output ขนาด n",
+      "evidence_ids": [],
+      "record_id": "SORT-0098"
+    },
+    "เกิดอะไรขึ้นหากนําcountingsortไปใช้กับข้อมูลจํานวนn=10ตัวแต่มีค่าสูงสุดk=1,000,000,000": {
+      "status": "answered",
+      "answer": "• จะเกิดปัญหาการสิ้นเปลืองหน่วยความจำอย่างรุนแรง (Memory Waste) และทำงานช้าลงมาก เนื่องจากต้องสร้าง count array ขนาด 1 พันล้านช่องเพื่อเก็บข้อมูลเพียง 10 ตัว ทำให้ Time Complexity O(n + k) กลายเป็น O(k) ซึ่งไร้ประสิทธิภาพ",
+      "evidence_ids": [],
+      "record_id": "SORT-0099"
+    },
+    "จงสรุปเปรียบเทียบtime,spacecomplexityและstabilityของทั้ง5อัลกอริทึม(bubble,selection,insertion,merge,counting)": {
+      "status": "answered",
+      "answer": "• 1\n• Bubble Sort: Time O(n^2), Space O(1), Stable\n2\n• Selection Sort: Time O(n^2), Space O(1), Unstable\n3\n• Insertion Sort: Time O(n^2), Space O(1), Stable\n4\n• Merge Sort: Time O(n log n), Space O(n), Stable\n5\n• Counting Sort: Time O(n+k), Space O(n+k), Stable (Non-comparison)",
+      "evidence_ids": [],
+      "record_id": "SORT-0100"
+    },
+    "ช่วยอธิบายว่าวัตถุประสงค์หลักของการเรียงลําดับข้อมูล(sorting)หมายถึงอะไร": {
+      "status": "answered",
+      "answer": "• การเรียงลำดับข้อมูลคือกระบวนการจัดเรียงสมาชิกในเซตข้อมูลตามลำดับที่กำหนด (เช่น น้อยไปมาก หรือ มากไปน้อย) วัตถุประสงค์หลักเพื่อเพิ่มประสิทธิภาพในการค้นหาข้อมูล (Search) และช่วยให้วิเคราะห์/แสดงผลข้อมูลได้ง่ายขึ้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0101"
+    },
+    "จากdatasetช่วยตอบว่าการเรียงลําดับแบบascendingและdescendingแตกต่างกันตรงไหน": {
+      "status": "answered",
+      "answer": "• Ascending คือการเรียงลำดับจากค่าน้อยไปหาค่ามาก (เช่น 1, 2, 3) ส่วน Descending คือการเรียงลำดับจากค่ามากไปหาน้อย (เช่น 3, 2, 1)",
+      "evidence_ids": [],
+      "record_id": "SORT-0102"
+    },
+    "โปรดอธิบายตามdataset:ทําไมการเรียงข้อมูลตัวเลขในรูปข้อความจึงอาจเกิดข้อผิดพลาด": {
+      "status": "answered",
+      "answer": "• การเรียงข้อมูลตัวเลขที่เก็บในรูปข้อความ (String) จะใช้ลำดับ Lexicographical ทำให้ '10' ถูกจัดล่วงหน้าก่อน '2' เพราะตัวอักษร '1' มาก่อน '2' จึงต้องแปลงเป็นตัวเลข (int/float) ก่อนเรียง",
+      "evidence_ids": [],
+      "record_id": "SORT-0103"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าการสลับตําแหน่งสมาชิก2ตัวในอาร์เรย์ต้องทําอย่างไรเพื่อไม่ให้ข้อมูลสูญหาย": {
+      "status": "answered",
+      "answer": "• ต้องใช้ตัวแปรชั่วคราว (Temporary Variable) เพื่อเก็บค่าจากตำแหน่งแรกไว้ก่อน จากนั้นนำค่าตำแหน่งที่สองมาวางในตำแหน่งแรก แล้วจึงนำค่าในตัวแปรชั่วคราวมาวางในตำแหน่งที่สอง หรือใช้ Tuple Unpacking ใน Python (a, b = b, a)",
+      "evidence_ids": [],
+      "record_id": "SORT-0104"
+    },
+    "ในเนื้อหาที่ให้มาการเลื่อนสมาชิก(shifting)ในอาร์เรย์ทําแบบใดและใช้ในกรณีใด": {
+      "status": "answered",
+      "answer": "• การเลื่อนสมาชิกคือการย้ายค่าในอาร์เรย์ไปทางขวาหรือซ้ายทีละตำแหน่ง เพื่อสร้างช่องว่างสำหรับแทรกค่าใหม่ มักทำจากขวาไปซ้ายเพื่อไม่ให้ทับค่าถัดไป นิยมใช้ใน Insertion Sort",
+      "evidence_ids": [],
+      "record_id": "SORT-0105"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าการวัดประสิทธิภาพด้านเวลา(timecomplexity)ของอัลกอริทึมเรียงลําดับประเมินจากอะไร": {
+      "status": "answered",
+      "answer": "• ประเมินจากจำนวนรอบการเปรียบเทียบ (Comparisons) และจำนวนการสลับ/เคลื่อนย้ายข้อมูล (Swaps/Movements) ในกรณี Best Case, Average Case และ Worst Case โดยแสดงในรูป Big O Notation เช่น O(n log n) หรือ O(n^2)",
+      "evidence_ids": [],
+      "record_id": "SORT-0106"
+    },
+    "จากชุดข้อมูลนี้stablesortหมายถึงอะไรและมีความสําคัญอย่างไร": {
+      "status": "answered",
+      "answer": "• Stable Sort (การเรียงลำดับแบบเสถียร) คืออัลกอริทึมที่รักษาลำดับดั้งเดิมของสมาชิกที่มีค่าเท่ากันไว้หลังจากการเรียง มีความสำคัญเมื่อต้องการเรียงลำดับข้อมูลหลายคีย์ (Multi-level sorting)",
+      "evidence_ids": [],
+      "record_id": "SORT-0107"
+    },
+    "ขอคําตอบจากdatasetว่าข้อดีของการใช้in-placesortingalgorithmคืออะไร": {
+      "status": "answered",
+      "answer": "• ประหยัดหน่วยความจำ เนื่องจากปรับเปลี่ยนตำแหน่งสมาชิกภายในอาร์เรย์เดิมโดยตรง ไม่ต้องสร้างอาร์เรย์สำรองขนาดใหญ่ เหมาะกับระบบที่มีหน่วยความจำจำกัด",
+      "evidence_ids": [],
+      "record_id": "SORT-0108"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าการเรียงลําดับลิสต์ของดิคชันนารีหรืออ็อบเจกต์ทําอย่างไรในpython": {
+      "status": "answered",
+      "answer": "• ใช้พารามิเตอร์ key ร่วมกับฟังก์ชัน lambda หรือ operator.attrgetter / itemgetter เพื่อระบุฟิลด์ที่ต้องการใช้เป็นหลักในการเปรียบเทียบ",
+      "evidence_ids": [],
+      "record_id": "SORT-0109"
+    },
+    "พิจารณาคําถามนี้จากdataset:หลังการเรียงลําดับควรตรวจสอบผลลัพธ์ในประเด็นใดบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• ตรวจสอบว่าสมาชิกถูกจัดเรียงตามเงื่อนไข (น้อยไปมาก/มากไปน้อย) ถูกต้องทุกคู่\n2\n• ตรวจสอบว่าจำนวนสมาชิกและข้อมูลเดิมยังอยู่ครบถ้วน ไม่สูญหายหรือถูกทับ",
+      "evidence_ids": [],
+      "record_id": "SORT-0110"
+    },
+    "ช่วยอธิบายว่าการเรียงลําดับข้อมูลส่งผลต่อการค้นหาข้อมูลด้วยbinarysearchอย่างไร": {
+      "status": "answered",
+      "answer": "• Binary Search จำเป็นต้องทำงานบนข้อมูลที่จัดเรียงลำดับแล้วเท่านั้น หากข้อมูลเรียงลำดับแล้วจะลดเวลาค้นหาจาก O(n) เหลือเพียง O(log n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0111"
+    },
+    "จากdatasetช่วยตอบว่าปัจจัยสําคัญในการเลือกใช้อัลกอริทึมเรียงลําดับมีอะไรบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• ขนาดของข้อมูล (n)\n2\n• ลักษณะของข้อมูลเดิม (เรียงแล้วบางส่วนหรือไม่)\n3\n• ข้อจำกัดด้านหน่วยความจำ (RAM)\n4\n• ความต้องการความเสถียร (Stability)",
+      "evidence_ids": [],
+      "record_id": "SORT-0112"
+    },
+    "โปรดอธิบายตามdataset:อัลกอริทึมการเรียงลําดับแบบrecursiveอาจเกิดปัญหาstackoverflowได้อย่างไร": {
+      "status": "answered",
+      "answer": "• สาเหตุ: การเรียกตัวเองหลายระดับชั้น (Recursive Calls) เกินกว่าขนาด Call Stack ของระบบ\n• ผลกระทบ: หากอัลกอริทึมไม่มี Base Case ที่ถูกต้อง หรือมีการกระจายตัวลึกเกินไป (เช่น Quick Sort ใน Worst Case O(n)) จะเกิด RecursionError\n• การป้องกัน: ใช้ Iterative หรือจำกัดระดับ Recursion Depth",
+      "evidence_ids": [],
+      "record_id": "SORT-0113"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าแนวคิดหลักการทํางานของbubblesortคืออะไร": {
+      "status": "answered",
+      "answer": "• Bubble Sort ทำงานโดยการเปรียบเทียบสมาชิกคู่ที่อยู่ติดกัน (Adjacent elements) จากซ้ายไปขวา หากพบว่าคู่ใดผิดลำดับจะทำการสลับตำแหน่ง (Swap) ทำให้ค่าที่มากที่สุดค่อยๆ 'ลอย' ไปอยู่ตำแหน่งท้ายสุดเหมือนฟองอากาศในแต่ละรอบ",
+      "evidence_ids": [],
+      "record_id": "SORT-0114"
+    },
+    "ในเนื้อหาที่ให้มาเงื่อนไขใดในbubblesortที่ทําให้เกิดการสลับสมาชิกในการเรียงจากน้อยไปมาก": {
+      "status": "answered",
+      "answer": "• เงื่อนไข `arr[j] > arr[j+1]` (สมาชิกตัวซ้ายมากกว่าตัวขวา) เมื่อเงื่อนไขนี้เป็นจริง จะทำการสลับตำแหน่งระหว่าง arr[j] และ arr[j+1]",
+      "evidence_ids": [],
+      "record_id": "SORT-0115"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าbubblesortเวอร์ชันปกติมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงล่วงหน้าแล้ว": {
+      "status": "answered",
+      "answer": "• Bubble Sort เวอร์ชันปกติที่ไม่มีการปรับแต่ง จะยังคงทำการเปรียบเทียบสมาชิกทุกคู่ครบ n(n-1)/2 ครั้งเช่นเดิม แม้จะไม่มีการสลับตำแหน่งเลย ทำให้ Time Complexity เป็น O(n^2) เสมอ",
+      "evidence_ids": [],
+      "record_id": "SORT-0116"
+    },
+    "จากชุดข้อมูลนี้จงติดตามผลลัพธ์ของbubblesortในรอบแรก(pass1)สําหรับอาร์เรย์[5,1,4,2,8]": {
+      "status": "answered",
+      "answer": "• เปรียบเทียบ (5,1)->สลับ [1,5,4,2,8] -> เปรียบเทียบ (5,4)->สลับ [1,4,5,2,8] -> เปรียบเทียบ (5,2)->สลับ [1,4,2,5,8] -> เปรียบเทียบ (5,8)->ไม่สลับ ผลลัพธ์จบ Pass 1 คือ [1, 4, 2, 5, 8]",
+      "evidence_ids": [],
+      "record_id": "SORT-0117"
+    },
+    "ขอคําตอบจากdatasetว่าในการเรียงอาร์เรย์ขนาดnสมาชิกด้วยbubblesortต้องใช้วงลูปนอกทั้งหมดกี่รอบในกรณีแย่ที่สุด": {
+      "status": "answered",
+      "answer": "• ใช้วงลูปนอกทั้งหมด n-1 รอบ เนื่องจากเมื่อวางตำแหน่งสมาชิก n-1 ตัวถูกต้องแล้ว สมาชิกตัวสุดท้ายจะอยู่ในตำแหน่งที่ถูกต้องโดยอัตโนมัติ",
+      "evidence_ids": [],
+      "record_id": "SORT-0118"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าbubblesortทํางานอย่างไรเมื่อรับอาร์เรย์ที่มีสมาชิกซ้ํากันทั้งหมดเช่น[3,3,3,3]": {
+      "status": "answered",
+      "answer": "• จะไม่เกิดการสลับตำแหน่งเลย เนื่องจากเงื่อนไข > ไม่เป็นจริง ทำให้ลำดับดั้งเดิมคงเดิม และหากมี Flag จะจบการทำงานทันทีในรอบแรก",
+      "evidence_ids": [],
+      "record_id": "SORT-0119"
+    },
+    "พิจารณาคําถามนี้จากdataset:จงเขียนpseudocodeสําหรับoptimizedbubblesort": {
+      "status": "answered",
+      "answer": "• Procedure BubbleSort(A : list of sortable items)\n    n = length(A)\n    repeat\n        swapped = false\n        for i = 1 to n-1 do\n            if A[i-1] > A[i] then\n                swap(A[i-1], A[i])\n                swapped = true\n            end if\n        end for\n        n = n - 1\n    until not swapped\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0120"
+    },
+    "ช่วยอธิบายว่าจงเขียนฟังก์ชันpythonสําหรับoptimizedbubblesort": {
+      "status": "answered",
+      "answer": "• def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr",
+      "evidence_ids": [],
+      "record_id": "SORT-0121"
+    },
+    "จากdatasetช่วยตอบว่าจงสรุปtimecomplexityของbubblesortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n) (กรณีมี swapped flag และข้อมูลเรียงแล้ว)\nAverage Case: O(n^2)\nWorst Case: O(n^2) (กรณีข้อมูลเรียงกลับทิศทาง)",
+      "evidence_ids": [],
+      "record_id": "SORT-0122"
+    },
+    "โปรดอธิบายตามdataset:bubblesortมีspacecomplexityเท่าใดและเป็นstablesortหรือไม่": {
+      "status": "answered",
+      "answer": "• Space Complexity เป็น O(1) (In-place) เพราะใช้ตัวแปรชั่วคราวในการสลับข้อมูลเท่านั้น และเป็น Stable Sort (เรียงลำดับแบบเสถียร) เพราะไม่มีการสลับสมาชิกที่มีค่าเท่ากัน",
+      "evidence_ids": [],
+      "record_id": "SORT-0123"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าข้อดีและข้อจํากัดหลักของbubblesortคืออะไรและควรเลือกใช้ในสถานการณ์ใด": {
+      "status": "answered",
+      "answer": "• ข้อดี: เขียนง่าย เข้าใจง่าย เป็น In-place และ Stable\nข้อจำกัด: ประสิทธิภาพต่ำ O(n^2) มีการสลับข้อมูลบ่อยครั้ง ไม่เหมาะกับข้อมูลขนาดใหญ่\nสถานการณ์ใช้งาน: ใช้เพื่อการศึกษาเรียนรู้เบื้องต้น หรือใช้กับข้อมูลขนาดเล็กมาก (n < 20)",
+      "evidence_ids": [],
+      "record_id": "SORT-0124"
+    },
+    "ในเนื้อหาที่ให้มาจงคํานวณจํานวนการเปรียบเทียบและการสลับข้อมูลของbubblesortสําหรับข้อมูล5สมาชิกในกรณีแย่ที่สุด": {
+      "status": "answered",
+      "answer": "• จำนวนการเปรียบเทียบ: n(n-1)/2 = 5*4/2 = 10 ครั้ง\n• จำนวนการสลับข้อมูล (Swaps): n(n-1)/2 = 10 ครั้ง (เมื่อข้อมูลเรียงกลับทิศทางตั้งแต่ต้น)",
+      "evidence_ids": [],
+      "record_id": "SORT-0125"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าcocktailshakersortปรับปรุงจุดอ่อนเรื่อง'turtleelements'ของbubblesortอย่างไร": {
+      "status": "answered",
+      "answer": "• จุดอ่อน Bubble Sort: ค่าน้อยที่อยู่ท้ายอาร์เรย์ (Turtles) จะเคลื่อนมาด้านหน้าได้ทีละ 1 ตำแหน่งต่อ 1 รอบ ทำให้อัลกอริทึมช้า\n• การปรับปรุง: Cocktail Shaker Sort วนลูปเปรียบเทียบ 2 ทิศทาง ทั้งจากซ้ายไปขวา และจากขวาไปซ้ายสลับกันในแต่ละรอบ ทำให้ค่าน้อยเคลื่อนกลับหน้าได้รวดเร็วขึ้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0126"
+    },
+    "จากชุดข้อมูลนี้แนวคิดหลักการทํางานของselectionsortคืออะไร": {
+      "status": "answered",
+      "answer": "• Selection Sort ทำงานโดยแบ่งอาร์เรย์เป็น 2 ส่วน คือส่วนที่เรียงลำดับแล้วและยังไม่ได้เรียง ในแต่ละรอบจะทำการค้นหาตำแหน่งของสมาชิกที่มีค่าน้อยที่สุดในส่วนที่ยังไม่ได้เรียง แล้วนำมาสลับกับสมาชิกตัวแรกของส่วนที่ยังไม่ได้เรียงนั้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0127"
+    },
+    "ขอคําตอบจากdatasetว่าเมื่อselectionsortทํางานจบ1รอบ(pass1)ผลลัพธ์ที่การันตีคืออะไร": {
+      "status": "answered",
+      "answer": "• สมาชิกที่มีค่าน้อยที่สุดในอาร์เรย์จะถูกย้ายมาวางไว้ในตำแหน่งแรกสุด (index 0) อย่างถูกต้องแน่นอน",
+      "evidence_ids": [],
+      "record_id": "SORT-0128"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าselectionsortมีพฤติกรรมอย่างไรเมื่อรับข้อมูลที่จัดเรียงเรียบร้อยมาแล้ว": {
+      "status": "answered",
+      "answer": "• ยังคงทำการเปรียบเทียบสมาชิกครบ n(n-1)/2 ครั้งเช่นเดิม เนื่องจากต้องวนลูปค้นหาค่าน้อยที่สุดจนจบส่วนที่เหลือเสมอ จึงมี Time Complexity เป็น O(n^2) ในทุกกรณี",
+      "evidence_ids": [],
+      "record_id": "SORT-0129"
+    },
+    "พิจารณาคําถามนี้จากdataset:จงติดตามผลลัพธ์ของselectionsortในรอบที่1สําหรับอาร์เรย์[29,10,14,37,13]": {
+      "status": "answered",
+      "answer": "• ค้นหาค่าน้อยสุดใน [29, 10, 14, 37, 13] พบ 10 (index 1) สลับตำแหน่งกับ 29 (index 0) ได้ผลลัพธ์จบ Pass 1 เป็น [10, 29, 14, 37, 13]",
+      "evidence_ids": [],
+      "record_id": "SORT-0130"
+    },
+    "ช่วยอธิบายว่าหากต้องการดัดแปลงselectionsortให้เรียงจากมากไปน้อยต้องปรับเปลี่ยนแนวคิดอย่างไร": {
+      "status": "answered",
+      "answer": "• ปรับเปลี่ยนจากการค้นหาค่าน้อยที่สุด (Minimum) เป็นการค้นหาค่ามากที่สุด (Maximum) ในส่วนที่ยังไม่ได้เรียง แล้วสลับมาไว้ในตำแหน่งหน้าสุดของรอบนั้น",
+      "evidence_ids": [],
+      "record_id": "SORT-0131"
+    },
+    "จากdatasetช่วยตอบว่าข้อดีของการสลับข้อมูล(swap)ในselectionsortเมื่อเทียบกับbubblesortคืออะไร": {
+      "status": "answered",
+      "answer": "• Selection Sort มีจำนวนการสลับข้อมูลสูงสุดเพียง n-1 ครั้ง (เกิดการสลับ 1 ครั้งต่อ 1 รอบลูปนอก) ในขณะที่ Bubble Sort อาจต้องสลับข้อมูลมากถึง O(n^2) ครั้ง ทำให้ Selection Sort เหมาะเมื่อต้นทุนการเขียนข้อมูลสูง",
+      "evidence_ids": [],
+      "record_id": "SORT-0132"
+    },
+    "โปรดอธิบายตามdataset:จงเขียนpseudocodeสําหรับselectionsort": {
+      "status": "answered",
+      "answer": "• Procedure SelectionSort(A : list of sortable items)\n    n = length(A)\n    for i = 0 to n-2 do\n        min_idx = i\n        for j = i+1 to n-1 do\n            if A[j] < A[min_idx] then\n                min_idx = j\n            end if\n        end for\n        if min_idx != i then\n            swap(A[i], A[min_idx])\n        end if\n    end for\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0133"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าค้นหาบั๊กในโค้ด:`foriinrange(n):min_idx=i;forjinrange(i+1,n):ifarr[j]<arr[i]:min_idx=j;arr[i],arr[min_idx]=arr[min_idx],arr[i]`": {
+      "status": "answered",
+      "answer": "• เกิดบั๊กในเงื่อนไข `arr[j] < arr[i]` ซึ่งเป็นการเปรียบเทียบ arr[j] กับ arr[i] (ค่าเริ่มต้น) แทนที่จะเทียบกับ `arr[min_idx]` ที่อัปเดตล่าสุด ทำให้ไม่ได้ค่าน้อยที่สุดจริง",
+      "evidence_ids": [],
+      "record_id": "SORT-0134"
+    },
+    "ในเนื้อหาที่ให้มาจงสรุปtimecomplexityของselectionsortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n^2)\nAverage Case: O(n^2)\nWorst Case: O(n^2)\nเนื่องจากต้องวนลูปค้นหาค่าน้อยที่สุดในส่วนที่เหลือครบทุกรอบเสมอโดยไม่ขึ้นกับรูปแบบข้อมูลเดิม",
+      "evidence_ids": [],
+      "record_id": "SORT-0135"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าselectionsortเป็นstablesortหรือไม่เพราะเหตุใด": {
+      "status": "answered",
+      "answer": "• Selection Sort เวอร์ชันมาตรฐานเป็น **Unstable Sort** (ไม่เสถียร) เนื่องจากกระบวนการสลับข้อมูลข้ามตำแหน่งไกลๆ อาจข้ามสมาชิกที่มีค่าเท่ากันและทำให้ลำดับดั้งเดิมเปลี่ยนไป",
+      "evidence_ids": [],
+      "record_id": "SORT-0136"
+    },
+    "จากชุดข้อมูลนี้สถานการณ์ใดที่ควรเลือกใช้selectionsortมากกว่าbubblesort": {
+      "status": "answered",
+      "answer": "• เมื่อการเขียนข้อมูลลงหน่วยความจำ (Flash Memory / EEPROM) มีต้นทุนสูงหรือมีอายุการใช้งานจำกัด (Write operations are expensive) เนื่องจาก Selection Sort ทำการสลับข้อมูลน้อยมากเพียง n-1 ครั้ง",
+      "evidence_ids": [],
+      "record_id": "SORT-0137"
+    },
+    "ขอคําตอบจากdatasetว่าbidirectionalselectionsort(min-maxselectionsort)ทํางานอย่างไร": {
+      "status": "answered",
+      "answer": "• หลักการ: ค้นหาทั้งตำแหน่งค่าน้อยที่สุด (min_idx) และค่ามากที่สุด (max_idx) ในการสแกนลูปใน 1 รอบพร้อมกัน\n• ขั้นตอน: สลับค่าน้อยสุดไว้ตำแหน่งหน้าสุด และสลับค่ามากสุดไว้ตำแหน่งท้ายสุด ทำให้ลดจำนวนรอบลูปนอกลงเหลือ n/2 รอบ",
+      "evidence_ids": [],
+      "record_id": "SORT-0138"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าเหตุใดจึงควรเพิ่มเงื่อนไข`ifmin_idx!=i:`ก่อนทําการสลับในselectionsort": {
+      "status": "answered",
+      "answer": "• สาเหตุ: ในกรณีที่สมาชิกตำแหน่ง i มีค่าน้อยที่สุดอยู่แล้ว (`min_idx == i`)\n• ประโยชน์: การเพิ่มเงื่อนไขป้องกันการสลับกับตัวเอง (Self-swap) ช่วยประหยัดเวลาประมวลผลไม่ต้องทำขั้นตอนสลับข้อมูลโดยไม่จำเป็น",
+      "evidence_ids": [],
+      "record_id": "SORT-0139"
+    },
+    "พิจารณาคําถามนี้จากdataset:การนําkeyไปแทรกในinsertionsortมีขั้นตอนเลื่อนสมาชิกอย่างไร": {
+      "status": "answered",
+      "answer": "• เก็บค่าสมาชิกที่จะแทรกไว้ในตัวแปร `key` จากนั้นเปรียบเทียบ key กับสมาชิกด้านซ้าย (arr[j]) หาก arr[j] > key ให้เลื่อน arr[j] ไปทางขวาหนึ่งตำแหน่ง (`arr[j+1] = arr[j]`) ทำซ้ำไปทางซ้ายเรื่อยๆ จนกว่าจะพบค่าที่น้อยกว่าหรือเท่ากับ key หรือถึงขอบเขต แล้ววาง `arr[j+1] = key`",
+      "evidence_ids": [],
+      "record_id": "SORT-0140"
+    },
+    "ช่วยอธิบายว่าในขั้นตอนเริ่มต้นของinsertionsortอาร์เรย์ถูกแบ่งอย่างไร": {
+      "status": "answered",
+      "answer": "• ณ จุดเริ่มต้น ให้สมาชิกตัวแรก (index 0) เป็นส่วนที่เรียงแล้ว (Sorted Part มีขนาด 1) และสมาชิกตั้งแต่ index 1 ถึง n-1 เป็นส่วนที่ยังไม่ได้เรียง (Unsorted Part)",
+      "evidence_ids": [],
+      "record_id": "SORT-0141"
+    },
+    "จากdatasetช่วยตอบว่าinsertionsortมีประสิทธิภาพสูงเป็นพิเศษกับข้อมูลรูปแบบใด": {
+      "status": "answered",
+      "answer": "• ข้อมูลที่จัดเรียงล่วงหน้ามาแล้ว หรือจัดเรียงแล้วเกือบสมบูรณ์ (Nearly Sorted / Partially Sorted) เนื่องจากจะเกิดการเลื่อนขลุกขลิกเพียงไม่กี่ครั้ง ทำให้ Time Complexity เข้าใกล้ O(n)",
+      "evidence_ids": [],
+      "record_id": "SORT-0142"
+    },
+    "โปรดอธิบายตามdataset:จาก[11,12,13,5,6]จงติดตามผลลัพธ์ในรอบที่3(i=3,key=5)": {
+      "status": "answered",
+      "answer": "• Key = 5 (index 3), เปรียบเทียบเลื่อน 13, 12, 11 ไปทางขวาเนื่องจากทุกตัว > 5 แล้ววาง 5 ที่ index 0 ผลลัพธ์จบ Pass 3 คือ [5, 11, 12, 13, 6]",
+      "evidence_ids": [],
+      "record_id": "SORT-0143"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าหากต้องการดัดแปลงinsertionsortให้เรียงจากมากไปน้อยต้องแก้ไขเงื่อนไขใด": {
+      "status": "answered",
+      "answer": "• แก้ไขเงื่อนไขในลูป while จาก `key < arr[j]` เป็น `key > arr[j]` เพื่อเลื่อนสมาชิกที่มีค่าน้อยกว่า key ไปทางขวาแทน",
+      "evidence_ids": [],
+      "record_id": "SORT-0144"
+    },
+    "ในเนื้อหาที่ให้มาinsertionsortมีพฤติกรรมแบบใดเมื่อข้อมูลว่างหรือมีสมาชิกเพียง1ตัว": {
+      "status": "answered",
+      "answer": "• อัลกอริทึมจะทำงานจบทันทีเนื่องจากวงลูป `for i in range(1, len(arr))` จะไม่ถูกทำ (หรือทำ 0 รอบ) และส่งคืนอาร์เรย์เดิมโดยไม่เกิดข้อผิดพลาด",
+      "evidence_ids": [],
+      "record_id": "SORT-0145"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าจงเขียนฟังก์ชันpythonสําหรับinsertionsort": {
+      "status": "answered",
+      "answer": "• def insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and key < arr[j]:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr",
+      "evidence_ids": [],
+      "record_id": "SORT-0146"
+    },
+    "จากชุดข้อมูลนี้ค้นหาบั๊กในโค้ด:`whilekey<arr[j]:arr[j+1]=arr[j];j-=1;arr[j+1]=key`": {
+      "status": "answered",
+      "answer": "• เกิดบั๊ก `IndexError: list index out of range` เมื่อ j ลดลงจนกระทั่ง j = -1 เนื่องจากขาดเงื่อนไขการตรวจขอบเขต `j >= 0` ในลูป while",
+      "evidence_ids": [],
+      "record_id": "SORT-0147"
+    },
+    "ขอคําตอบจากdatasetว่าจงสรุปtimecomplexityของinsertionsortในbest,averageและworstcase": {
+      "status": "answered",
+      "answer": "• Best Case: O(n) (ข้อมูลจัดเรียงล่วงหน้าเรียบร้อยแล้ว)\nAverage Case: O(n^2)\nWorst Case: O(n^2) (ข้อมูลจัดเรียงย้อนกลับทิศทาง)",
+      "evidence_ids": [],
+      "record_id": "SORT-0148"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าทําไมinsertionsortจึงนิยมนําไปใช้เป็นอัลกอริทึมย่อยในhybridsort(เช่นtimsort/introsort)เมื่อข้อมูลมีขนาดเล็ก": {
+      "status": "answered",
+      "answer": "• เนื่องจากมีค่า Overhead (ค่าธรรมเนียมในการจัดการฟังก์ชันและโครงสร้างข้อมูล) ต่ำมาก และทำแคชฮิต (Cache Locality) ได้ดี ทำให้อัลกอริทึมทำงานได้เร็วกว่า O(n log n) เมื่อ n มีขนาดเล็ก (เช่น n < 10-64)",
+      "evidence_ids": [],
+      "record_id": "SORT-0149"
+    },
+    "พิจารณาคําถามนี้จากdataset:ทําไมinsertionsortจึงถือว่าเป็นonlinealgorithm": {
+      "status": "answered",
+      "answer": "• เพราะสามารถรับข้อมูลเข้ามาทีละสมาชิก (Data Stream) แล้วแทรกเข้าไปในตำแหน่งที่ถูกต้องของอาร์เรย์ที่เรียงลำดับอยู่แล้วได้ทันที โดยไม่จำเป็นต้องมีข้อมูลทั้งหมดล่วงหน้าก่อนเริ่มเรียง",
+      "evidence_ids": [],
+      "record_id": "SORT-0150"
+    },
+    "ช่วยอธิบายว่าbinaryinsertionsortช่วยปรับปรุงประสิทธิภาพของinsertionsortอย่างไร": {
+      "status": "answered",
+      "answer": "• การปรับปรุง: ใช้ Binary Search ในการค้นหาตำแหน่งแทรกของ key แทนการสแกนทีละตัว\n• ผลลัพธ์: ลดจำนวนรอบการเปรียบเทียบจาก O(n^2) เหลือ O(n log n)\n• ข้อจำกัด: จำนวนการเลื่อนสมาชิก (Shifting) ยังคงเป็น O(n^2) เช่นเดิม",
+      "evidence_ids": [],
+      "record_id": "SORT-0151"
+    },
+    "จากdatasetช่วยตอบว่าแนวคิดหลักdivideandconquerของmergesortประกอบด้วยขั้นตอนใดบ้าง": {
+      "status": "answered",
+      "answer": "• 1\n• Divide: แบ่งอาร์เรย์ออกเป็น 2 ส่วนเท่าๆ กันตรงจุดครึ่งหนึ่งแบบเรียกตัวเอง (Recursion)\n2\n• Conquer: เรียงลำดับอาร์เรย์ย่อยทั้งสอง (ย่อยจนเหลือสมาชิก 1 ตัว)\n3\n• Combine/Merge: ผสานอาร์เรย์ย่อยสองส่วนที่จัดเรียงแล้วเข้าด้วยกันเป็นอาร์เรย์เดียวที่สมบูรณ์",
+      "evidence_ids": [],
+      "record_id": "SORT-0152"
+    },
+    "โปรดอธิบายตามdataset:ฟังก์ชันmergeในmergesortมีหลักการผสานอาร์เรย์ย่อย2ส่วนอย่างไร": {
+      "status": "answered",
+      "answer": "• ใช้ตัวชี้ (Pointer) 2 ตัวชี้ที่ตำแหน่งแรกของอาร์เรย์ย่อยซ้ายและขวา เปรียบเทียบสมาชิกตรงตัวชี้ นำตัวที่มีค่าน้อยกว่าใส่ลงในอาร์เรย์ผลลัพธ์แล้วเลื่อนตัวชี้นั้นไปข้างหน้า ทำซ้ำจนกว่าอาร์เรย์ฝ่ายใดฝ่ายหนึ่งจะหมด แล้วคัดลอกสมาชิกที่เหลือทั้งหมดต่อท้าย",
+      "evidence_ids": [],
+      "record_id": "SORT-0153"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าbasecase(เงื่อนไขการหยุดเรียกตัวเอง)ของmergesortคืออะไร": {
+      "status": "answered",
+      "answer": "• คือเมื่ออาร์เรย์ย่อยมีขนาดสมาชิกเหลือเพียง 1 ตัว หรือ 0 ตัว (`len(arr) <= 1`) เนื่องจากอาร์เรย์ที่มีสมาชิกไม่เกิน 1 ตัวถือว่าจัดเรียงเรียบร้อยแล้วในตัวเอง",
+      "evidence_ids": [],
+      "record_id": "SORT-0154"
+    },
+    "ในเนื้อหาที่ให้มาจงติดตามขั้นตอนdivideของmergesortสําหรับอาร์เรย์[38,27,43,3,9,82,10]": {
+      "status": "answered",
+      "answer": "• แบ่งครึ่งแรกได้ [38, 27, 43] และ [3, 9, 82, 10] -> [38, 27, 43] แบ่งเป็น [38] และ [27, 43] -> [27, 43] แบ่งเป็น [27] และ [43] -> แบ่งย่อยจนกระทั่งทุกตัวกลายเป็นสมาชิกเดี่ยว",
+      "evidence_ids": [],
+      "record_id": "SORT-0155"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าจงติดตามขั้นตอนการผสาน(merge)สองอาร์เรย์ย่อยที่เรียงแล้ว[27,38,43]และ[3,9,10,82]": {
+      "status": "answered",
+      "answer": "• เทียบ 27 กับ 3 (เลือก 3) -> เทียบ 27 กับ 9 (เลือก 9) -> เทียบ 27 กับ 10 (เลือก 10) -> เทียบ 27 กับ 82 (เลือก 27) -> เทียบ 38 กับ 82 (เลือก 38) -> เทียบ 43 กับ 82 (เลือก 43) -> เติม 82 ที่เหลือ ผลลัพธ์: [3, 9, 10, 27, 38, 43, 82]",
+      "evidence_ids": [],
+      "record_id": "SORT-0156"
+    },
+    "จากชุดข้อมูลนี้หากต้องการดัดแปลงmergesortให้เรียงจากมากไปน้อยต้องปรับเปลี่ยนในขั้นตอนใด": {
+      "status": "answered",
+      "answer": "• ปรับเปลี่ยนในฟังก์ชัน Merge โดยเปลี่ยนเงื่อนไขการเลือกสมาชิกจาก `left[i] <= right[j]` เป็น `left[i] >= right[j]` เพื่อเลือกตัวที่มีค่ามากกว่าลงในอาร์เรย์ผลลัพธ์ก่อน",
+      "evidence_ids": [],
+      "record_id": "SORT-0157"
+    },
+    "ขอคําตอบจากdatasetว่าจงเขียนpseudocodeสําหรับmergesort": {
+      "status": "answered",
+      "answer": "• Function MergeSort(A)\n    if length(A) <= 1 then return A\n    mid = length(A) / 2\n    left = MergeSort(A[0..mid-1])\n    right = MergeSort(A[mid..end])\n    return Merge(left, right)\nEnd Function",
+      "evidence_ids": [],
+      "record_id": "SORT-0158"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าจงเขียนโค้ดpythonสําหรับmergesort": {
+      "status": "answered",
+      "answer": "• def merge_sort(arr):\n    if len(arr) <= 1: return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i]); i += 1\n        else:\n            result.append(right[j]); j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result",
+      "evidence_ids": [],
+      "record_id": "SORT-0159"
+    },
+    "พิจารณาคําถามนี้จากdataset:ค้นหาบั๊กในโค้ด:`mid=len(arr)//2;left=merge_sort(arr[:mid]);right=merge_sort(arr[mid:])`โดยลืมใส่`iflen(arr)<=1:returnarr`": {
+      "status": "answered",
+      "answer": "• เกิดข้อผิดพลาด `RecursionError: maximum recursion depth exceeded` เนื่องจากขาด Base Case ทำให้ฟังก์ชันเรียกตัวเองอย่างไม่สิ้นสุดจนหน่วยความจำสแต็กเต็ม",
+      "evidence_ids": [],
+      "record_id": "SORT-0160"
+    },
+    "ช่วยอธิบายว่าspacecomplexityของmergesortเป็นเท่าใดและเพราะเหตุใด": {
+      "status": "answered",
+      "answer": "• Space Complexity เป็น **O(n)** (ไม่ใช่อัลกอริทึมแบบ In-place) เนื่องจากต้องสร้างอาร์เรย์สำรอง (Auxiliary Arrays) สำหรับเก็บผลลัพธ์ย่อยระหว่างการผสานข้อมูลในแต่ละระดับ",
+      "evidence_ids": [],
+      "record_id": "SORT-0161"
+    },
+    "จากdatasetช่วยตอบว่าเปรียบเทียบmergesortกับbubble/selection/insertionsortเมื่อเรียงข้อมูลขนาดใหญ่เช่นn=1,000,000": {
+      "status": "answered",
+      "answer": "•  Merge Sort ใช้เวลา O(n log n) ประมวลผลประมาณ 2x10^7 การทำงานเสร็จในเศษเสี้ยววินาที ขณะที่ O(n^2) อัลกอริทึมต้องประมวลผลถึง 10^12 การทำงานซึ่งอาจใช้เวลาหลายชั่วโมง ต่างกันมหาศาล",
+      "evidence_ids": [],
+      "record_id": "SORT-0162"
+    },
+    "โปรดอธิบายตามdataset:ทําไมmergesortจึงเป็นอัลกอริทึมหลักที่ใช้ในexternalsorting(การเรียงข้อมูลที่มีขนาดใหญ่เกินram)": {
+      "status": "answered",
+      "answer": "• เพราะกลไกการ Merge อ่านและเขียนข้อมูลตามลำดับต่อเนื่อง (Sequential Access) สามารถอ่านบล็อกข้อมูลจากดิสก์ภายนอกเข้ามาผสานใน RAM ทีละส่วนแล้วเขียนกลับลงดิสก์ได้โดยไม่ต้องเข้าถึงแบบสุ่ม (Random Access)",
+      "evidence_ids": [],
+      "record_id": "SORT-0163"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าแนวคิดหลักของcountingsortแตกต่างจากอัลกอริทึมการเรียงลําดับทั่วไปอย่างไร": {
+      "status": "answered",
+      "answer": "• Counting Sort เป็น **Non-comparison Sort** (อัลกอริทึมเรียงลำดับแบบไม่เปรียบเทียบ) โดยไม่ต้องเปรียบเทียบค่าระหว่างสมาชิกคู่ใดเลย แต่นับจำนวนความถี่ (Frequency) ของแต่ละค่าตัวเลข แล้วคำนวณตำแหน่งลงในอาร์เรย์ผลลัพธ์โดยตรง",
+      "evidence_ids": [],
+      "record_id": "SORT-0164"
+    },
+    "ในเนื้อหาที่ให้มาcountingsortมีข้อกําหนดหรือข้อจํากัดเกี่ยวกับข้อมูลที่จะนํามาเรียงแบบใด": {
+      "status": "answered",
+      "answer": "• ข้อมูลต้องเป็น **จำนวนเต็ม (Integers)** เท่านั้น (หรือแมปเป็นจำนวนเต็มได้) และต้องทราบช่วงของข้อมูล (Range k = max - min) ชัดเจน โดยช่วง k ไม่ควรใหญ่กว่าจำนวนสมาชิก n มากเกินไป",
+      "evidence_ids": [],
+      "record_id": "SORT-0165"
+    },
+    "ช่วยตอบโดยยึดข้อมูลเดิมว่าขั้นตอนการนับความถี่(countarray)ในcountingsortทําอย่างไร": {
+      "status": "answered",
+      "answer": "• สร้างอาร์เรย์ `count` ขนาด k+1 โดยให้มีค่าเริ่มต้นเป็น 0 ทุกตำแหน่ง จากนั้นวนลูปอ่านสมาชิก x แต่ละตัวในอาร์เรย์เดิม แล้วเพิ่มค่า `count[x] += 1` เพื่อเก็บบันทึกความถี่",
+      "evidence_ids": [],
+      "record_id": "SORT-0166"
+    },
+    "จากชุดข้อมูลนี้ขั้นตอนสร้างoutputarrayของcountingsortต้องวนลูปอย่างไรเพื่อรักษาความเสถียร(stability)": {
+      "status": "answered",
+      "answer": "• ต้องวนลูปอ่านสมาชิกในอาร์เรย์เดิมจาก **ขวาไปซ้าย (ถอยหลังจาก n-1 ถึง 0)** นำค่าวางใน output ตามตำแหน่ง `count[num]-1` แล้วลดค่า `count[num] -= 1` เพื่อคงลำดับดั้งเดิมของตัวเลขที่ซ้ำกัน",
+      "evidence_ids": [],
+      "record_id": "SORT-0167"
+    },
+    "ขอคําตอบจากdatasetว่าจงหาcountarray(ก่อนprefixsum)ของอาร์เรย์[4,2,2,8,3,3,1]": {
+      "status": "answered",
+      "answer": "• ค่าสูงสุดคือ 8 สร้าง count ขนาด 9 ได้ความถี่: index 1:1, index 2:2, index 3:2, index 4:1, index 8:1 (index อื่นเป็น 0)\nCount Array = [0, 1, 2, 2, 1, 0, 0, 0, 1]",
+      "evidence_ids": [],
+      "record_id": "SORT-0168"
+    },
+    "อธิบายตามข้อมูลต้นฉบับว่าจากcountarray[0,1,2,2,1,0,0,0,1]เมื่อทําprefixsumจะได้ผลลัพธ์อย่างไร": {
+      "status": "answered",
+      "answer": "• บวกสะสมทีละ index: [0, 1, 1+2=3, 3+2=5, 5+1=6, 6, 6, 6, 6+1=7]\nPrefix Sum Array = [0, 1, 3, 5, 6, 6, 6, 6, 7]",
+      "evidence_ids": [],
+      "record_id": "SORT-0169"
+    },
+    "พิจารณาคําถามนี้จากdataset:หากข้อมูลมีจํานวนเต็มลบ(negativeintegers)จะต้องปรับเปลี่ยนcountingsortอย่างไร": {
+      "status": "answered",
+      "answer": "• หาค่าต่ำสุด (min_val) หาก min_val < 0 ให้ลบ min_val ออกจากทุกสมาชิก (หรือบวก abs(min_val)) เป็น Offset เพื่อปรับให้ดรรชนีเริ่มต้นที่ 0 แล้วจึงย้อนค่าคืนเมื่อสร้าง output",
+      "evidence_ids": [],
+      "record_id": "SORT-0170"
+    },
+    "ช่วยอธิบายว่าจงเขียนpseudocodeสําหรับcountingsort": {
+      "status": "answered",
+      "answer": "• Procedure CountingSort(A, k)\n    create count array of size k+1 initialized to 0\n    create output array of size length(A)\n    for i = 0 to length(A)-1 do\n        count[A[i]] = count[A[i]] + 1\n    for i = 1 to k do\n        count[i] = count[i] + count[i-1]\n    for i = length(A)-1 down to 0 do\n        output[count[A[i]] - 1] = A[i]\n        count[A[i]] = count[A[i]] - 1\n    return output\nend Procedure",
+      "evidence_ids": [],
+      "record_id": "SORT-0171"
+    },
+    "จากdatasetช่วยตอบว่าจงเขียนโค้ดpythonสําหรับcountingsort": {
+      "status": "answered",
+      "answer": "• def counting_sort(arr):\n    if not arr: return []\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    output = [0] * len(arr)\n    for num in arr:\n        count[num] += 1\n    for i in range(1, len(count)):\n        count[i] += count[i - 1]\n    for i in range(len(arr) - 1, -1, -1):\n        output[count[arr[i]] - 1] = arr[i]\n        count[arr[i]] -= 1\n    return output",
+      "evidence_ids": [],
+      "record_id": "SORT-0172"
+    },
+    "โปรดอธิบายตามdataset:จงวิเคราะห์timecomplexityของcountingsort": {
+      "status": "answered",
+      "answer": "• Time Complexity คือ **O(n + k)** โดย n คือจำนวนสมาชิก และ k คือช่วงของข้อมูล (Range: max - min) หาก k <= O(n) จะทำให้ Counting Sort มี Time Complexity เป็น **O(n)** (Linear Time) เร็วกว่าอัลกอริทึมการเปรียบเทียบทุกชนิด",
+      "evidence_ids": [],
+      "record_id": "SORT-0173"
+    },
+    "อ้างอิงdatasetแล้วตอบว่าspacecomplexityของcountingsortมีค่าเท่าใด": {
+      "status": "answered",
+      "answer": "• Space Complexity เท่ากับ **O(n + k)** เนื่องจากต้องใช้หน่วยความจำสร้างอาร์เรย์ count ขนาด k+1 และอาร์เรย์ output ขนาด n",
+      "evidence_ids": [],
+      "record_id": "SORT-0174"
+    },
+    "ในเนื้อหาที่ให้มาเกิดอะไรขึ้นหากนําcountingsortไปใช้กับข้อมูลจํานวนn=10ตัวแต่มีค่าสูงสุดk=1,000,000,000": {
+      "status": "answered",
+      "answer": "• จะเกิดปัญหาการสิ้นเปลืองหน่วยความจำอย่างรุนแรง (Memory Waste) และทำงานช้าลงมาก เนื่องจากต้องสร้าง count array ขนาด 1 พันล้านช่องเพื่อเก็บข้อมูลเพียง 10 ตัว ทำให้ Time Complexity O(n + k) กลายเป็น O(k) ซึ่งไร้ประสิทธิภาพ",
+      "evidence_ids": [],
+      "record_id": "SORT-0175"
+    },
+    "มะนาวมีรสเปรี้ยวไหม?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0176"
+    },
+    "วันนี้กรุงเทพฯมีอุณหภูมิกี่องศา?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0177"
+    },
+    "ประเทศญี่ปุ่นมีเมืองหลวงชื่ออะไร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0178"
+    },
+    "ดวงจันทร์มีเส้นผ่านศูนย์กลางกี่กิโลเมตร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0179"
+    },
+    "วันนี้หุ้นบริษัทใดปิดบวกมากที่สุด?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0180"
+    },
+    "ต้มยํากุ้งใส่เครื่องปรุงอะไรบ้าง?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0181"
+    },
+    "คําว่า“apple”แปลเป็นภาษาไทยว่าอะไร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0182"
+    },
+    "ฟุตบอลโลกครั้งหน้าจัดที่ประเทศใด?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0183"
+    },
+    "น้ําเดือดที่ระดับน้ําทะเลกี่องศาเซลเซียส?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0184"
+    },
+    "ควรปลูกมะเขือเทศในฤดูใด?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0185"
+    },
+    "ใครเป็นผู้ชนะการแข่งขันกีฬาเมื่อวานนี้?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0186"
+    },
+    "ระยะทางจากกรุงเทพฯถึงเชียงใหม่กี่กิโลเมตร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0187"
+    },
+    "สีอะไรผสมกันแล้วได้สีม่วง?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0188"
+    },
+    "จริงหรือไม่ว่าdatasetระบุว่ามะนาวมีรสเปรี้ยวเพราะbubblesort?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0189"
+    },
+    "datasetบอกอุณหภูมิวันนี้ในกรุงเทพฯไว้กี่องศา?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0190"
+    },
+    "ตามdatasetเมืองหลวงของญี่ปุ่นคือเมืองใด?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0191"
+    },
+    "datasetระบุเส้นผ่านศูนย์กลางของดวงจันทร์ไว้เท่าไร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0192"
+    },
+    "datasetยืนยันว่าหุ้นตัวใดปิดบวกมากที่สุดวันนี้?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0193"
+    },
+    "ตามdatasetสูตรต้มยํากุ้งต้องใส่อะไรบ้าง?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0194"
+    },
+    "datasetแปลคําว่า“apple”ว่าอะไร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0195"
+    },
+    "datasetระบุประเทศเจ้าภาพฟุตบอลโลกครั้งหน้าหรือไม่?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0196"
+    },
+    "ตามdatasetน้ําเดือดที่ระดับน้ําทะเลมีกี่องศา?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0197"
+    },
+    "datasetแนะนําให้ปลูกมะเขือเทศในฤดูใด?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0198"
+    },
+    "ตามdatasetใครชนะการแข่งขันกีฬาเมื่อวานนี้?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0199"
+    },
+    "datasetระบุระยะทางกรุงเทพฯถึงเชียงใหม่ไว้กี่กิโลเมตร?": {
+      "status": "insufficient_evidence",
+      "answer": null,
+      "evidence_ids": [],
+      "record_id": "SORT-0200"
+    },
+    "__bubble_definition__": {
+      "status": "answered",
+      "answer": "• Bubble Sort ทำงานโดยการเปรียบเทียบสมาชิกคู่ที่อยู่ติดกัน (Adjacent elements) จากซ้ายไปขวา หากพบว่าคู่ใดผิดลำดับจะทำการสลับตำแหน่ง (Swap) ทำให้ค่าที่มากที่สุดค่อยๆ 'ลอย' ไปอยู่ตำแหน่งท้ายสุดเหมือนฟองอากาศในแต่ละรอบ",
+      "evidence_ids": [
+        "p34-c0344",
+        "p36-c0370",
+        "p36-c0372"
+      ],
+      "record_id": "SORT-0018"
+    },
+    "__why_sorting__": {
+      "status": "answered",
+      "answer": "• การเรียงลำดับข้อมูลคือกระบวนการจัดเรียงสมาชิกในเซตข้อมูลตามลำดับที่กำหนด (เช่น น้อยไปมาก หรือ มากไปน้อย) วัตถุประสงค์หลักเพื่อเพิ่มประสิทธิภาพในการค้นหาข้อมูล (Search) และช่วยให้วิเคราะห์/แสดงผลข้อมูลได้ง่ายขึ้น",
+      "evidence_ids": [
+        "p10-c0083",
+        "p10-c0084",
+        "p10-c0085",
+        "p10-c0086",
+        "p10-c0087",
+        "p10-c0088"
+      ],
+      "record_id": "SORT-0001"
+    }
+  }
+}

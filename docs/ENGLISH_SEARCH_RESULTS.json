@@ -1,0 +1,853 @@
+{
+  "source": {
+    "id": "book-en",
+    "file": "book_data/Cormen_Basic_Sorting_100_Pages.pdf",
+    "title": "Basic Sorting Algorithms — English source and labeled supplements",
+    "sha256": "ec147b61a9beee8b5227a0b2dea0fbf07d7c99b15ba9acd0b5053b9890293509",
+    "language": "en",
+    "text_repair_revision": "8270ebd6f633f7162e37f1db80bf160e3bb81ca8e33fef6edbbe9a897489fd01",
+    "page_count": 100
+  },
+  "revision": "c73107ea3ea3de5527e18be713f620301ce758d4672172c9b515758f09dbbc41",
+  "counts": {
+    "document": 1,
+    "chapter": 7,
+    "section": 64,
+    "paragraph": 855,
+    "subsection": 225,
+    "chunks": 868,
+    "vocabulary": 2972,
+    "images": 48,
+    "query_guidance": 113
+  },
+  "excluded_editor_qa": {
+    "editor_qa_headings": 0,
+    "editor_qa_chunks": 0,
+    "editor_qa_line_ids": []
+  },
+  "new_search": [
+    {
+      "query": "Efficiency",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [
+        7,
+        8
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 6,
+      "ids": [
+        "p7-c0058",
+        "p7-c0059",
+        "p7-c0060",
+        "p7-c0061",
+        "p8-c0062",
+        "p8-c0063"
+      ]
+    },
+    {
+      "query": "Performance",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [
+        7,
+        8
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 6,
+      "ids": [
+        "p7-c0058",
+        "p7-c0059",
+        "p7-c0060",
+        "p7-c0061",
+        "p8-c0062",
+        "p8-c0063"
+      ]
+    },
+    {
+      "query": "ประสิทธิภาพ",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [
+        7,
+        8
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 6,
+      "ids": [
+        "p7-c0058",
+        "p7-c0059",
+        "p7-c0060",
+        "p7-c0061",
+        "p8-c0062",
+        "p8-c0063"
+      ]
+    },
+    {
+      "query": "อธิบายเรื่องประสิทธิภาพ",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [
+        7,
+        8
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 6,
+      "ids": [
+        "p7-c0058",
+        "p7-c0059",
+        "p7-c0060",
+        "p7-c0061",
+        "p8-c0062",
+        "p8-c0063"
+      ]
+    },
+    {
+      "query": "Algorithms and other technologies",
+      "expected_pages": [
+        8
+      ],
+      "found_pages": [
+        8
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 9,
+      "ids": [
+        "p8-c0065",
+        "p8-c0066",
+        "p8-c0067",
+        "p8-c0068",
+        "p8-c0069",
+        "p8-c0070",
+        "p8-c0071",
+        "p8-c0072",
+        "p8-c0073"
+      ]
+    },
+    {
+      "query": "The structure of the data",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "found_pages": [
+        9,
+        10
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 3,
+      "ids": [
+        "p9-c0079",
+        "p9-c0080",
+        "p10-c0081"
+      ]
+    },
+    {
+      "query": "ISBN",
+      "expected_pages": [
+        3
+      ],
+      "found_pages": [
+        3
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 1,
+      "ids": [
+        "p3-c0018"
+      ]
+    },
+    {
+      "query": "Contents",
+      "expected_pages": [
+        4
+      ],
+      "found_pages": [
+        4
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 20,
+      "ids": [
+        "p4-c0022",
+        "p4-c0023",
+        "p4-c0024",
+        "p4-c0025",
+        "p4-c0026",
+        "p4-c0027",
+        "p4-c0028",
+        "p4-c0029",
+        "p4-c0030",
+        "p4-c0031",
+        "p4-c0032",
+        "p4-c0033",
+        "p4-c0034",
+        "p4-c0035",
+        "p4-c0036",
+        "p4-c0037",
+        "p4-c0038",
+        "p4-c0039",
+        "p4-c0040",
+        "p4-c0041"
+      ]
+    },
+    {
+      "query": "Introduction",
+      "expected_pages": [
+        9
+      ],
+      "found_pages": [
+        9
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 3,
+      "ids": [
+        "p9-c0075",
+        "p9-c0076",
+        "p9-c0077"
+      ]
+    },
+    {
+      "query": "satellite",
+      "expected_pages": [
+        9,
+        10,
+        26,
+        46,
+        92,
+        94,
+        97
+      ],
+      "found_pages": [
+        9,
+        10,
+        26,
+        46,
+        92,
+        94,
+        97
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 9,
+      "ids": [
+        "p9-c0079",
+        "p10-c0088",
+        "p97-c1049",
+        "p9-c0080",
+        "p10-c0081",
+        "p46-c0496",
+        "p92-c0991",
+        "p94-c1011",
+        "p26-c0244"
+      ]
+    },
+    {
+      "query": "Analyzing algorithms",
+      "expected_pages": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "found_pages": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 0.5,
+      "chunks": 35,
+      "ids": [
+        "p61-c0655",
+        "p61-c0656",
+        "p61-c0657",
+        "p61-c0658",
+        "p62-c0659",
+        "p62-c0660",
+        "p62-c0661",
+        "p62-c0662",
+        "p62-c0664",
+        "p63-c0665",
+        "p63-c0666",
+        "p63-c0667",
+        "p63-c0668",
+        "p64-c0669",
+        "p64-c0670",
+        "p64-c0671",
+        "p64-c0672",
+        "p64-c0673",
+        "p64-c0674",
+        "p64-c0675",
+        "p64-c0676",
+        "p65-c0677",
+        "p65-c0678",
+        "p65-c0679",
+        "p65-c0680",
+        "p65-c0681",
+        "p65-c0682",
+        "p65-c0684",
+        "p65-c0685",
+        "p65-c0686",
+        "p66-c0687",
+        "p66-c0688",
+        "p66-c0690",
+        "p66-c0691",
+        "p66-c0692"
+      ]
+    },
+    {
+      "query": "Bubble Sort ทีละขั้น",
+      "expected_pages": [
+        38
+      ],
+      "found_pages": [
+        38
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 8,
+      "ids": [
+        "p38-c0391",
+        "p38-c0393",
+        "p38-c0395",
+        "p38-c0396",
+        "p38-c0397",
+        "p38-c0398",
+        "p38-c0399",
+        "p38-c0400"
+      ]
+    },
+    {
+      "query": "Selection Sort ขั้นตอน",
+      "expected_pages": [
+        47
+      ],
+      "found_pages": [
+        47
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 8,
+      "ids": [
+        "p47-c0502",
+        "p47-c0504",
+        "p47-c0506",
+        "p47-c0507",
+        "p47-c0508",
+        "p47-c0509",
+        "p47-c0510",
+        "p47-c0511"
+      ]
+    },
+    {
+      "query": "Insertion Sort ทีละขั้น",
+      "expected_pages": [
+        67
+      ],
+      "found_pages": [
+        67
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 11,
+      "ids": [
+        "p67-c0693",
+        "p67-c0695",
+        "p67-c0697",
+        "p67-c0698",
+        "p67-c0699",
+        "p67-c0700",
+        "p67-c0701",
+        "p67-c0702",
+        "p67-c0703",
+        "p67-c0704",
+        "p67-c0705"
+      ]
+    },
+    {
+      "query": "Merge Sort ทีละขั้น",
+      "expected_pages": [
+        83
+      ],
+      "found_pages": [
+        83
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 10,
+      "ids": [
+        "p83-c0878",
+        "p83-c0880",
+        "p83-c0882",
+        "p83-c0884",
+        "p83-c0886",
+        "p83-c0887",
+        "p83-c0888",
+        "p83-c0889",
+        "p83-c0890",
+        "p83-c0891"
+      ]
+    },
+    {
+      "query": "Counting Sort ขั้นตอน",
+      "expected_pages": [
+        95
+      ],
+      "found_pages": [
+        95
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 9,
+      "ids": [
+        "p95-c1019",
+        "p95-c1021",
+        "p95-c1023",
+        "p95-c1025",
+        "p95-c1026",
+        "p95-c1027",
+        "p95-c1028",
+        "p95-c1029",
+        "p95-c1030"
+      ]
+    }
+  ],
+  "legacy_search": [
+    {
+      "query": "Efficiency",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "Performance",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "ประสิทธิภาพ",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "อธิบายเรื่องประสิทธิภาพ",
+      "expected_pages": [
+        7,
+        8
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "Algorithms and other technologies",
+      "expected_pages": [
+        8
+      ],
+      "found_pages": [
+        8,
+        26,
+        27,
+        29,
+        31,
+        32,
+        33
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p32-c2",
+        "p33-c4",
+        "p8-c5",
+        "p31-c4",
+        "p32-c3",
+        "p26-c2",
+        "p29-c4",
+        "p32-c1",
+        "p33-c1",
+        "p29-c1",
+        "p26-c1",
+        "p27-c3"
+      ]
+    },
+    {
+      "query": "The structure of the data",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "ISBN",
+      "expected_pages": [
+        3
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "Contents",
+      "expected_pages": [
+        4
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "Introduction",
+      "expected_pages": [
+        9
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "satellite",
+      "expected_pages": [
+        9,
+        10,
+        26,
+        46,
+        92,
+        94,
+        97
+      ],
+      "found_pages": [],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 0,
+      "ids": []
+    },
+    {
+      "query": "Analyzing algorithms",
+      "expected_pages": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "found_pages": [
+        26,
+        27,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "page_recall": 0.0,
+      "first_12_page_recall": 0.0,
+      "chunks": 12,
+      "ids": [
+        "p33-c4",
+        "p26-c1",
+        "p32-c2",
+        "p31-c4",
+        "p26-c2",
+        "p33-c5",
+        "p32-c1",
+        "p29-c4",
+        "p31-c2",
+        "p30-c1",
+        "p27-c2",
+        "p33-c3"
+      ]
+    },
+    {
+      "query": "Bubble Sort ทีละขั้น",
+      "expected_pages": [
+        38
+      ],
+      "found_pages": [
+        36,
+        38,
+        39,
+        43,
+        44
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p38-c1",
+        "p38-c2",
+        "p38-c4",
+        "p38-c3",
+        "p36-c2",
+        "p36-c3",
+        "p36-c5",
+        "p36-c1",
+        "p36-c4",
+        "p44-c2",
+        "p43-c1",
+        "p39-c3"
+      ]
+    },
+    {
+      "query": "Selection Sort ขั้นตอน",
+      "expected_pages": [
+        47
+      ],
+      "found_pages": [
+        46,
+        47,
+        48,
+        52
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p47-c3",
+        "p47-c2",
+        "p47-c1",
+        "p47-c4",
+        "p46-c1",
+        "p46-c2",
+        "p46-c4",
+        "p46-c5",
+        "p46-c3",
+        "p48-c3",
+        "p52-c1",
+        "p52-c3"
+      ]
+    },
+    {
+      "query": "Insertion Sort ทีละขั้น",
+      "expected_pages": [
+        67
+      ],
+      "found_pages": [
+        67,
+        68,
+        70
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p67-c2",
+        "p67-c3",
+        "p67-c5",
+        "p67-c1",
+        "p67-c4",
+        "p68-c2",
+        "p68-c5",
+        "p68-c4",
+        "p68-c6",
+        "p68-c1",
+        "p68-c3",
+        "p70-c4"
+      ]
+    },
+    {
+      "query": "Merge Sort ทีละขั้น",
+      "expected_pages": [
+        83
+      ],
+      "found_pages": [
+        82,
+        83,
+        84,
+        86
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p83-c3",
+        "p83-c1",
+        "p83-c6",
+        "p83-c5",
+        "p83-c4",
+        "p83-c2",
+        "p84-c1",
+        "p84-c3",
+        "p84-c4",
+        "p84-c2",
+        "p82-c4",
+        "p86-c1"
+      ]
+    },
+    {
+      "query": "Counting Sort ขั้นตอน",
+      "expected_pages": [
+        95
+      ],
+      "found_pages": [
+        94,
+        95,
+        97,
+        99
+      ],
+      "page_recall": 1.0,
+      "first_12_page_recall": 1.0,
+      "chunks": 12,
+      "ids": [
+        "p95-c4",
+        "p95-c1",
+        "p95-c3",
+        "p95-c2",
+        "p95-c5",
+        "p94-c3",
+        "p94-c2",
+        "p94-c4",
+        "p94-c5",
+        "p94-c1",
+        "p99-c4",
+        "p97-c2"
+      ]
+    }
+  ],
+  "metrics": {
+    "heading_recall": {
+      "found": 295,
+      "total": 295
+    },
+    "section_coverage": {
+      "complete": 295,
+      "total": 295
+    },
+    "mean_gold_page_recall": 1.0,
+    "legacy_mean_gold_page_recall": 0.375,
+    "citation_integrity": {
+      "valid": 868,
+      "total": 868
+    },
+    "body_line_coverage": {
+      "indexed": 4446,
+      "expected": 4446,
+      "exact": true
+    },
+    "image_link_integrity": {
+      "valid": 48,
+      "total": 48
+    },
+    "retrieval_relevance_and_translation_fidelity": "Structural tests plus limited manual live samples, not a human benchmark or 100% semantic guarantee"
+  },
+  "chunk_size_experiments": [
+    {
+      "max_chars": 900,
+      "overlap": 0,
+      "chunks": 877,
+      "mean_chars": 225.84036488027365,
+      "p95_chars": 705,
+      "max_actual_chars": 900,
+      "mean_gold_page_recall": 1.0
+    },
+    {
+      "max_chars": 1800,
+      "overlap": 0,
+      "chunks": 868,
+      "mean_chars": 228.19239631336404,
+      "p95_chars": 705,
+      "max_actual_chars": 1323,
+      "mean_gold_page_recall": 1.0
+    },
+    {
+      "max_chars": 3000,
+      "overlap": 0,
+      "chunks": 868,
+      "mean_chars": 228.19239631336404,
+      "p95_chars": 705,
+      "max_actual_chars": 1323,
+      "mean_gold_page_recall": 1.0
+    }
+  ],
+  "negative_search": [
+    {
+      "query": "10 คูณ 10 ทำไมเท่ากับ 100",
+      "status": "insufficient_evidence"
+    },
+    {
+      "query": "หวยคืนนี้ออกเลขอะไร",
+      "status": "insufficient_evidence"
+    },
+    {
+      "query": "ผู้แต่ง Bubble Sort คือใคร",
+      "status": "insufficient_evidence"
+    },
+    {
+      "query": "Bubble Sort เรียง [9,7,4] ให้หน่อย",
+      "status": "insufficient_evidence"
+    }
+  ],
+  "vectors": {
+    "state": "incomplete",
+    "model": "gemini-embedding-001",
+    "dimensions": 768,
+    "revision": "c73107ea3ea3de5527e18be713f620301ce758d4672172c9b515758f09dbbc41",
+    "source_language": "en",
+    "expected": 868,
+    "completed": 0,
+    "error": "Embedding provider unavailable (status 429); offline search remains available"
+  },
+  "parser_warnings": {
+    "chunks_with_uncertain_math_text_layer": 0,
+    "action": "Verified font-specific glyph recovery; raw spans and PDF retained. Two-dimensional formulas still require visual source verification; no LLM formula guessing"
+  },
+  "unavailable_tests": [
+    "Live rebuilt-vector Recall@k: blocked by daily Gemini embedding quota",
+    "Preface/appendix retrieval: these sections are not present in this 100-page corpus"
+  ]
+}

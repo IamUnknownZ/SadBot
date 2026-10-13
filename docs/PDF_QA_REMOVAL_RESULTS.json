@@ -1,0 +1,14 @@
+{
+  "pages_verified": 100,
+  "removed_blocks": 39,
+  "affected_pages": 39,
+  "retained_words_checked": 34720,
+  "maximum_retained_word_coordinate_delta_points": 0.0,
+  "outside_removal_pixels_changed": 0,
+  "geometry_and_bookmarks_unchanged": true,
+  "source_before_sha256": "0f4ed60719cbe7df3c099edd211ddbfe6b56ec2070e2852a0364195f465bd432",
+  "source_after_sha256": "ec147b61a9beee8b5227a0b2dea0fbf07d7c99b15ba9acd0b5053b9890293509",
+  "archived_qa_pairs": 113,
+  "routing_questions_retained": 113,
+  "mapped_font_streams_unchanged": true
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "source_sha256": "ec147b61a9beee8b5227a0b2dea0fbf07d7c99b15ba9acd0b5053b9890293509",
+  "verified_on": "2026-10-13",
+  "method": "Rendered source-glyph atlas visual review + embedded-font hash + glyph ID. No LLM/OCR guesses.",
+  "fonts": {
+    "MT2SYS": {
+      "sha256": "21e3c1c1b914e03dbe14999bae49b2ed70fa26ec391183ac512474b592696b85",
+      "glyphs": {
+        "8": "=",
+        "5": "+",
+        "16": "′",
+        "15": "→",
+        "17": "∞",
+        "25": "−"
+      }
+    },
+    "MT2MIT": {
+      "sha256": "4cb46f2cba062a095643acca9c48d2c9a563720f2276e9ac159bb90f127ea0fd",
+      "glyphs": {
+        "61": "(",
+        "63": ")",
+        "64": ",",
+        "62": ".",
+        "68": "/",
+        "70": "Θ",
+        "93": "Ω",
+        "95": "]",
+        "73": "[",
+        "57": "ω",
+        "81": "!",
+        "87": "λ",
+        "90": "ν",
+        "83": "π"
+      }
+    },
+    "MT2SYT": {
+      "sha256": "5cd45aec802b8feb4f620600fbe0155e85a43178659a37fe61228ab88cefe9f5",
+      "glyphs": {
+        "8": "=",
+        "5": "+",
+        "49": "−",
+        "50": "·",
+        "46": "≤",
+        "48": "≥",
+        "44": "⊆",
+        "41": "≈",
+        "11": "⟨",
+        "12": "⟩",
+        "9": "{",
+        "10": "}",
+        "17": ":",
+        "18": "∈",
+        "29": "∞",
+        "40": "≠",
+        "13": "|",
+        "16": "⌊",
+        "2": "⌋",
+        "3": "⌈",
+        "7": "⌉"
+      }
+    },
+    "MT2MIS": {
+      "sha256": "3fc05a1f31e7ee7b67c62486f88d171d188b4c33b3e879e61818137fb6db3dfa",
+      "glyphs": {
+        "52": "(",
+        "54": ")",
+        "66": "π"
+      }
+    },
+    "MT2SYF": {
+      "sha256": "2bd518cc18e72e20c5b32b8a0bc95f5d22998558046843b8bf072ddfbdbd6749",
+      "glyphs": {
+        "9": "•"
+      }
+    },
+    "MT2BMIT": {
+      "sha256": "281f5736ee538753c29cf73e1f4018e17e170f254ace6e90da854dcd90cb2674",
+      "glyphs": {
+        "20": "Θ",
+        "15": "ω",
+        "27": "Ω",
+        "21": "*"
+      }
+    },
+    "MT2EXA": {
+      "sha256": "2a6fc377dfa41fb8dc06df34bfcdd96af5b3803a5c45f24adce692e10f2d27c9",
+      "glyphs": {
+        "4": "√",
+        "7": "∑",
+        "1": "∑",
+        "49": "(",
+        "38": ")",
+        "40": "(",
+        "42": ")",
+        "17": "{"
+      }
+    }
+  },
+  "review_atlases": [
+    "glyph-atlas-00.png",
+    "glyph-atlas-01.png"
+  ],
+  "scope": "Decode verified math-font glyphs only; preserve normal text, original PDF and layout coordinates.",
+  "layout_policy": "Restore unambiguous inline super/subscripts from adjacent base-font origins. Preserve 2D source geometry; do not invent fraction/sum linearizations.",
+  "previous_source_sha256": "0f4ed60719cbe7df3c099edd211ddbfe6b56ec2070e2852a0364195f465bd432",
+  "source_revision_note": "Removed 39 editor Q&A blocks only; all mapped font bytes and non-Q&A pixels verified unchanged."
+}

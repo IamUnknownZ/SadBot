@@ -1,0 +1,680 @@
+[
+  {
+    "query": "Must the remaining suffix be sorted?",
+    "target_section_id": "book-en-section-0646",
+    "source_page": 48,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the same proof valid for descending order?",
+    "target_section_id": "book-en-section-0646",
+    "source_page": 48,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does the proof establish stability?",
+    "target_section_id": "book-en-section-0646",
+    "source_page": 48,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why add the whole remaining left length?",
+    "target_section_id": "book-en-section-1168",
+    "source_page": 88,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "What happens on equality?",
+    "target_section_id": "book-en-section-1168",
+    "source_page": 88,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does counting modify data?",
+    "target_section_id": "book-en-section-1168",
+    "source_page": 88,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why decrement a count after placement?",
+    "target_section_id": "book-en-section-1279",
+    "source_page": 95,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are zeros absent from the histogram?",
+    "target_section_id": "book-en-section-1279",
+    "source_page": 95,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "What does C[v]=0 mean before placement?",
+    "target_section_id": "book-en-section-1279",
+    "source_page": 95,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can a Theta(n) algorithm also be O(n^2)?",
+    "target_section_id": "book-en-section-0331",
+    "source_page": 29,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does O(n^2) prove quadratic time for every input?",
+    "target_section_id": "book-en-section-0331",
+    "source_page": 29,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is an average-case bound a guarantee for each execution?",
+    "target_section_id": "book-en-section-0331",
+    "source_page": 29,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why is the inner invariant a suffix minimum?",
+    "target_section_id": "book-en-section-0493",
+    "source_page": 39,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does an outer invariant replace the inner proof?",
+    "target_section_id": "book-en-section-0493",
+    "source_page": 39,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does saved_key caching make all key evaluations constant in number?",
+    "target_section_id": "book-en-section-0917",
+    "source_page": 70,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is sorting [] valid?",
+    "target_section_id": "book-en-section-0917",
+    "source_page": 70,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "What identity check covers intermediate shifts?",
+    "target_section_id": "book-en-section-0917",
+    "source_page": 70,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does in-place mean zero extra memory?",
+    "target_section_id": "book-en-section-0316",
+    "source_page": 28,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are comparisons and swaps interchangeable?",
+    "target_section_id": "book-en-section-0316",
+    "source_page": 28,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the fastest asymptotic method always fastest for five records?",
+    "target_section_id": "book-en-section-0316",
+    "source_page": 28,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Must every stable counting sort scan backward?",
+    "target_section_id": "book-en-section-1295",
+    "source_page": 96,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does reversing traversal break sortedness?",
+    "target_section_id": "book-en-section-1295",
+    "source_page": 96,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Where does permutation preservation come from?",
+    "target_section_id": "book-en-section-1295",
+    "source_page": 96,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is O(n log n) total allocation the same as O(n log n) auxiliary space?",
+    "target_section_id": "book-en-section-1123",
+    "source_page": 85,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does recursion automatically mean O(n) stack depth?",
+    "target_section_id": "book-en-section-1123",
+    "source_page": 85,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is sorted input always linear?",
+    "target_section_id": "book-en-section-1123",
+    "source_page": 85,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does early exit make bubble sort always linear?",
+    "target_section_id": "book-en-section-0509",
+    "source_page": 40,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can bubble sort make few swaps but many comparisons?",
+    "target_section_id": "book-en-section-0509",
+    "source_page": 40,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the formula valid with duplicates?",
+    "target_section_id": "book-en-section-0509",
+    "source_page": 40,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can placement's mutated C answer later queries?",
+    "target_section_id": "book-en-section-1338",
+    "source_page": 99,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is counting sort the same as radix sort?",
+    "target_section_id": "book-en-section-1338",
+    "source_page": 99,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are duplicates ignored in range queries?",
+    "target_section_id": "book-en-section-1338",
+    "source_page": 99,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does never swapping equal keys prove stability?",
+    "target_section_id": "book-en-section-0679",
+    "source_page": 50,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can selection sort preserve ties accidentally?",
+    "target_section_id": "book-en-section-0679",
+    "source_page": 50,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is instability a loss of duplicate values?",
+    "target_section_id": "book-en-section-0679",
+    "source_page": 50,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is deterministic selection stable?",
+    "target_section_id": "book-en-section-0679",
+    "source_page": 50,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is every selection sort unstable?",
+    "target_section_id": "book-en-section-0694",
+    "source_page": 51,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is this insertion sort?",
+    "target_section_id": "book-en-section-0694",
+    "source_page": 51,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why are two identical numbers insufficient to test stability?",
+    "target_section_id": "book-en-section-0525",
+    "source_page": 41,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does > versus >= affect only speed?",
+    "target_section_id": "book-en-section-0525",
+    "source_page": 41,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can stable bubble sort be in place?",
+    "target_section_id": "book-en-section-0525",
+    "source_page": 41,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does one displaced item always cause quadratic insertion time?",
+    "target_section_id": "book-en-section-0885",
+    "source_page": 68,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is I the number of misplaced positions?",
+    "target_section_id": "book-en-section-0885",
+    "source_page": 68,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does a small inversion count guarantee few comparisons?",
+    "target_section_id": "book-en-section-0885",
+    "source_page": 68,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can these algorithms sort text?",
+    "target_section_id": "book-en-section-0363",
+    "source_page": 31,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can a negative value be a count-array index?",
+    "target_section_id": "book-en-section-0363",
+    "source_page": 31,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is reverse(sorted(records)) always stable descending order?",
+    "target_section_id": "book-en-section-0363",
+    "source_page": 31,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the processed prefix globally smallest?",
+    "target_section_id": "book-en-section-0868",
+    "source_page": 67,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why not compare after overwriting saved?",
+    "target_section_id": "book-en-section-0868",
+    "source_page": 67,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are shifts equivalent to repeated adjacent swaps?",
+    "target_section_id": "book-en-section-0868",
+    "source_page": 67,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can counting sort handle negative keys?",
+    "target_section_id": "book-en-section-1311",
+    "source_page": 97,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Do two unique keys imply two counters?",
+    "target_section_id": "book-en-section-1311",
+    "source_page": 97,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does sparse input guarantee memory efficiency?",
+    "target_section_id": "book-en-section-1311",
+    "source_page": 97,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does returning a create a new list?",
+    "target_section_id": "book-en-section-0558",
+    "source_page": 43,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does a sorted result alone validate stability?",
+    "target_section_id": "book-en-section-0558",
+    "source_page": 43,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are the theoretical bounds Python timing predictions?",
+    "target_section_id": "book-en-section-0558",
+    "source_page": 43,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why scan a sorted-looking array once more?",
+    "target_section_id": "book-en-section-0480",
+    "source_page": 38,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "If swaps equal inversions, are comparisons equal inversions too?",
+    "target_section_id": "book-en-section-0480",
+    "source_page": 38,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Which values are final after pass 1?",
+    "target_section_id": "book-en-section-0480",
+    "source_page": 38,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why reset swapped?",
+    "target_section_id": "book-en-section-0465",
+    "source_page": 37,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are these two listings interchangeable for a trace?",
+    "target_section_id": "book-en-section-0465",
+    "source_page": 37,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are the two original halves already ordered?",
+    "target_section_id": "book-en-section-1091",
+    "source_page": 83,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Must the length be a power of two?",
+    "target_section_id": "book-en-section-1091",
+    "source_page": 83,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is merge sort equivalent to concatenating sorted halves?",
+    "target_section_id": "book-en-section-1091",
+    "source_page": 83,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why keep scanning after seeing a small value?",
+    "target_section_id": "book-en-section-0633",
+    "source_page": 47,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can there be zero swaps in a pass?",
+    "target_section_id": "book-en-section-0633",
+    "source_page": 47,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the prefix [1,2] final after pass 2?",
+    "target_section_id": "book-en-section-0633",
+    "source_page": 47,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why does the trace differ from bubble sort?",
+    "target_section_id": "book-en-section-0633",
+    "source_page": 47,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does it sort by counting comparisons?",
+    "target_section_id": "book-en-section-1263",
+    "source_page": 94,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is k always the number of different observed keys?",
+    "target_section_id": "book-en-section-1263",
+    "source_page": 94,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why can it beat n log n?",
+    "target_section_id": "book-en-section-1263",
+    "source_page": 94,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does a semantically similar question always have the same answer?",
+    "target_section_id": "book-en-section-0380",
+    "source_page": 32,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "What should happen when a variant is unspecified?",
+    "target_section_id": "book-en-section-0380",
+    "source_page": 32,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is selection adaptive to sorted input?",
+    "target_section_id": "book-en-section-0662",
+    "source_page": 49,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does O(n) swaps make the total time O(n)?",
+    "target_section_id": "book-en-section-0662",
+    "source_page": 49,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why use Theta rather than only O for comparisons?",
+    "target_section_id": "book-en-section-0662",
+    "source_page": 49,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does a large value always move to the right on every pass?",
+    "target_section_id": "book-en-section-0449",
+    "source_page": 36,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is one pass enough?",
+    "target_section_id": "book-en-section-0449",
+    "source_page": 36,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is merge sort inherently stable?",
+    "target_section_id": "book-en-section-1152",
+    "source_page": 87,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is it always recursive?",
+    "target_section_id": "book-en-section-1152",
+    "source_page": 87,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does skipping a merge prove the two halves were originally ordered?",
+    "target_section_id": "book-en-section-1152",
+    "source_page": 87,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is \"the last swap\" the last value moved?",
+    "target_section_id": "book-en-section-0541",
+    "source_page": 42,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does bidirectional scanning guarantee linear time on nearly sorted input?",
+    "target_section_id": "book-en-section-0541",
+    "source_page": 42,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why is a shrinking suffix safe?",
+    "target_section_id": "book-en-section-0541",
+    "source_page": 42,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Which elementary method is suitable when writes are expensive?",
+    "target_section_id": "book-en-section-0724",
+    "source_page": 53,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is there a universal fastest method for every input?",
+    "target_section_id": "book-en-section-0724",
+    "source_page": 53,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does a stable test failure make this routine numerically wrong?",
+    "target_section_id": "book-en-section-0711",
+    "source_page": 52,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can the minimum index be reused between passes?",
+    "target_section_id": "book-en-section-0711",
+    "source_page": 52,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why cache the keys?",
+    "target_section_id": "book-en-section-1327",
+    "source_page": 98,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can a float silently serve as an index?",
+    "target_section_id": "book-en-section-1327",
+    "source_page": 98,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is the returned list a deep copy?",
+    "target_section_id": "book-en-section-1327",
+    "source_page": 98,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does binary search make insertion sort faster asymptotically?",
+    "target_section_id": "book-en-section-0901",
+    "source_page": 69,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Where should an equal new key be inserted?",
+    "target_section_id": "book-en-section-0901",
+    "source_page": 69,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Are O(1) linked-list insertion and O(1) sorted insertion the same claim?",
+    "target_section_id": "book-en-section-0901",
+    "source_page": 69,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is an invariant a condition tested in the program?",
+    "target_section_id": "book-en-section-0347",
+    "source_page": 30,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does termination alone show correctness?",
+    "target_section_id": "book-en-section-0347",
+    "source_page": 30,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is a sorted prefix enough to prove selection sort?",
+    "target_section_id": "book-en-section-0347",
+    "source_page": 30,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does this function modify a?",
+    "target_section_id": "book-en-section-1139",
+    "source_page": 86,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is a fresh list a deep copy of payloads?",
+    "target_section_id": "book-en-section-1139",
+    "source_page": 86,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can < replace <= without consequence?",
+    "target_section_id": "book-en-section-1139",
+    "source_page": 86,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is stability the same as deterministic output?",
+    "target_section_id": "book-en-section-0300",
+    "source_page": 27,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why does stability matter if all keys differ?",
+    "target_section_id": "book-en-section-0300",
+    "source_page": 27,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can descending order be stable?",
+    "target_section_id": "book-en-section-0300",
+    "source_page": 27,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why not search the full runs for the minimum every time?",
+    "target_section_id": "book-en-section-1110",
+    "source_page": 84,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is copying the remainder free?",
+    "target_section_id": "book-en-section-1110",
+    "source_page": 84,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Must merge alternate between runs?",
+    "target_section_id": "book-en-section-1110",
+    "source_page": 84,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Can merge sort without sorting each half first?",
+    "target_section_id": "book-en-section-1110",
+    "source_page": 84,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does selection sort compare only the first and last items?",
+    "target_section_id": "book-en-section-0617",
+    "source_page": 46,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Is its prefix merely sorted, as in insertion sort?",
+    "target_section_id": "book-en-section-0617",
+    "source_page": 46,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Why no separate last pass?",
+    "target_section_id": "book-en-section-0617",
+    "source_page": 46,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does sorting remove duplicates?",
+    "target_section_id": "book-en-section-0285",
+    "source_page": 26,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does ascending mean strictly increasing?",
+    "target_section_id": "book-en-section-0285",
+    "source_page": 26,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  },
+  {
+    "query": "Does rearranging keys alone sort records?",
+    "target_section_id": "book-en-section-0285",
+    "source_page": 26,
+    "provenance": "Reviewed question route; original Q&A archived outside runtime; never answer evidence"
+  }
+]
