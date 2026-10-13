@@ -90,9 +90,11 @@ def generation_provider(key,model,*,max_output_tokens=400,fallback_key=None,time
                         config=dict(temperature=0,max_output_tokens=max_output_tokens,
                             response_mime_type='application/json',
                             automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
-                        # Keep Flash-Lite requests on the existing no-thinking setting.
+                        # Gemini 3 uses thinking_level rather than the 2.5-era
+                        # thinking_budget. "minimal" is the lowest supported
+                        # 3.1 Flash-Lite level and minimizes latency/cost.
                         if 'flash-lite' in model or 'flash_lite' in model:
-                            config['thinking_config']=types.ThinkingConfig(thinking_budget=0)
+                            config['thinking_config']=types.ThinkingConfig(thinking_level='minimal')
                         result=client.models.generate_content(model=model,contents=prompt,
                             config=types.GenerateContentConfig(**config))
                         return json.loads(result.text or '{}')

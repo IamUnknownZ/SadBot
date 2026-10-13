@@ -2,22 +2,26 @@
 
 ## เริ่มอ่านตรงนี้
 
-### เส้นทาง Gemini เป็นตัวหลัก — แก้วันที่ 13 ตุลาคม 2026
+### สถานะ Runtime ปัจจุบัน — อัปเดตวันที่ 13 ตุลาคม 2026
 
-ข้อกำหนดล่าสุด: ทุกคำถามเนื้อหาต้องเข้า Gemini ก่อน ให้ Gemini ตัดสิน `direct` (ดึงตรง), `interpret` (ตีความก่อนค้น) หรือ `out_of_scope` ห้ามใช้การพบชื่อ algorithm เป็นเหตุข้ามขั้นตีความ ส่วนคำทักทายสั้นที่รู้จักยังตอบในเครื่องได้
+คำถามไม่จำเป็นต้องเข้า Gemini ทุกครั้ง ระบบตรวจเส้นทางที่รู้จักในเครื่องก่อน แล้วใช้ Gemini เมื่อเป็นคำถามใหม่หรือจำเป็นต้องตีความภาษามนุษย์
 
-- จุดเข้าปัจจุบัน: `app.submit` → `services.answering.answer_question` → `services.question_routing.interpret_question` ใช้ Gemini API/model เดิมของผู้ใช้
-- ส่งคำถามเดิม ประวัติคำถามที่ตอบแล้วล่าสุดไม่เกิน 2 ข้อ และรายการหัวข้อพร้อม ID จริงจาก dataset; ชุดปัจจุบันมี 295 หัวข้อที่มี chunks ค่า 295 วัดจากข้อมูล ไม่ใช่ค่าที่ตั้งตายตัว
-- Gemini คืนเฉพาะ `mode`, `search_query`, `section_id`; ไม่รับข้อความคำตอบหรือคำอธิบายความคิด การตรวจป้องกัน ID ปลอม การเพิ่ม/เปลี่ยนตัวเลข และลำดับอาร์เรย์
-- `direct` ที่ระบุหัวข้อดึงข้อความครบตามหัวข้อ; `direct` ที่เป็นคำถามธรรมชาติใช้ตัวเลือกหลักฐานตามความจำเป็น
-- `interpret` ค้นคำถามอังกฤษที่ Gemini ส่งมา ถ้า Gemini ชี้หัวข้อเฉพาะจะจำกัด candidates ในหัวข้อนั้น แล้วเลือกบรรทัดด้วยคำถามต้นฉบับ หากต้องใช้หลายหัวข้อ Gemini ต้องส่ง section_id=null คำค้นที่ตรงชื่อหัวข้อจะไม่ทำให้ bypass ขั้นเลือกหรือเปิดทั้งหัวข้อเอง
-- Embeddings เป็นส่วนเสริม; ไม่ต้องสร้าง vectors เพื่อใช้สองเส้นทางนี้ ผลลัพธ์ทุกข้อความยังตรวจเทียบ text offsets กับ PDF และใช้ปุ่มหลักฐานเดิม
-- เพดานตีความ 1200 output tokens: เผื่อ JSON กับคำค้นที่รักษาเงื่อนไขของคำถาม ต่ำกว่านี้เสี่ยงผลไม่ครบ สูงกว่านี้เปิดให้ใช้ token เพิ่ม ยังไม่มีการทดลองหาค่าที่ดีที่สุด เลือกหลักฐาน 1800 และแปล 6000 เท่าเดิม; temperature=0
-- คำขอ Gemini ลองสูงสุด 2 ครั้งเมื่อได้ 429/500/502/503/504 เว้น 0.5 วินาทีก่อนลองซ้ำ จำกัดเพื่อให้รับมือเหตุชั่วคราวโดยไม่วนไม่จบ; ค่าเหล่านี้เป็นนโยบายวิศวกรรม ไม่ใช่ผล benchmark ปิด retries ภายใน SDK (`attempts=1`) ให้จำนวนครั้งไม่ซ้อนกัน timeout 20 วินาทีต่อครั้ง
-- ข้อผิดพลาดบันทึกเฉพาะ stage/reason/status ใน server log และ session metadata ไม่บันทึก API key หรือ prompt ถ้าแผนตีความใช้ไม่ได้จะไม่แอบกลับไปให้ heuristic ตีความแทน Gemini
-- Regression: `tests/test_question_routing.py`, `tests/test_generation_retry.py`; UI fixture จำลองเฉพาะการตอบของ API แต่ใช้ retrieval, source validation และ Streamlit จริง ผลนี้แยกจากการเรียก Gemini จริง
+- ลำดับปัจจุบัน: small talk → prepared answer → known negative → known topic → exact heading → Gemini question routing
+- ชื่ออัลกอริทึมตรง ๆ และคำถามที่เตรียมไว้ตอบได้เร็วโดยไม่รอ API
+- คำถามใหม่ส่งเข้า `services.question_routing.interpret_question` แล้ว Gemini คืนเฉพาะ `mode`, `search_query`, `section_id`
+- ขั้นเลือกหลักฐานรับได้เฉพาะ source IDs และช่วงบรรทัดที่ระบบส่งให้ โมเดลไม่ได้เขียนข้อเท็จจริงแทนหนังสือ
+- โมเดลถูกตรึงใน `app.py` เป็น `gemini-3.1-flash-lite`; ค่า `GEMINI_MODEL` ใน `.env` หรือ Secrets ไม่เปลี่ยนรุ่น
+- ตีความและเลือกหลักฐานใช้ `max_output_tokens=300`; แปลใช้ `1,800`; `temperature=0`; Flash Lite ใช้ `thinking_level="minimal"` ซึ่งเป็นระดับต่ำสุดที่ Gemini 3.1 รองรับ
+- Timeout คือ `120,000 ms` ต่อคำขอ ขั้นตีความ/เลือกหลักฐานลองสูงสุด 2 ครั้งต่อ key เมื่อได้ 429/500/502/503/504 ส่วนการแปลลอง 1 ครั้งต่อ key
+- หากมี key สำรอง ระบบลอง key สำรองหลัง key หลักใช้ไม่ได้ จึงอาจมีเวลารอรวมมากกว่าค่า timeout ของคำขอเดียว
+- การแปลใช้คำแปลที่ตรวจเองก่อน ปัจจุบันมี Selection Sort ที่ผูกกับข้อความอังกฤษต้นฉบับ ส่วนอื่นใช้ Gemini หากแปลไม่สำเร็จจะแสดงอังกฤษ
+- PDF ภาษาไทยเก่าใน `OLD/` ไม่ได้ใช้เป็น Runtime เพราะข้อความถูกแยกคำและตัดย่อหน้าไม่เหมาะกับการอ่าน
+- Dataset ปัจจุบันมี 100 หน้า, 868 chunks, 48 รูป และ query guidance 113 รายการ
+- Embedding index ยังไม่พร้อม: `0/868`; ระบบยังใช้ exact heading, aliases, keyword/BM25 และ Gemini selection ได้
 
-การแก้รอบนี้เป็น source ใน workspace ต้องนำเวอร์ชันนี้ขึ้น deployment จึงจะเปลี่ยนพฤติกรรมเว็บที่เผยแพร่แล้ว เอกสารส่วนประวัติด้านล่างอาจกล่าวถึงเส้นทางค้นก่อน Gemini ซึ่งเป็นวิธีเดิม
+Commit ที่รวมการแก้คำแปลล่าสุดคือ `8c03804` ก่อนส่งงานให้ตรวจ `git status`, remote และ deployment revision อีกครั้ง
+
+หัวข้อถัดไปบางส่วนบันทึกประวัติการแก้ก่อน Dataset รุ่นปัจจุบัน ตัวเลขสถานะล่าสุดให้ยึดหัวข้อนี้เป็นหลัก
 
 Sorty เป็น Streamlit chatbot เรื่อง sorting algorithms รับคำถามไทย/อังกฤษ ค้นหลักฐานจาก PDF ภาษาอังกฤษ แล้วใช้ Gemini เลือกช่วงหลักฐานและแปลเป็นไทย ไม่ใช้ฐานข้อมูลผู้ใช้ ไม่มีบัญชีผู้ใช้ และไม่เก็บบทสนทนาแบบถาวร มีประวัติระหว่าง session เท่านั้น
 
@@ -49,7 +53,7 @@ Copy-Item .env.example .env
 .\venv\Scripts\python.exe -m streamlit run app.py --server.port 8502
 ```
 
-ใส่ key ของผู้รับเองใน `.env` ช่อง `GEMINI_API_KEY` ห้าม commit ไฟล์นี้ `GEMINI_MODEL` ใน template เป็นรุ่นที่โครงการตั้งใช้อยู่ หากบัญชีผู้รับไม่มีสิทธิ์ใช้รุ่นนี้ให้เลือกรุ่นที่บัญชีรองรับ `requirements-handoff-lock.txt` บันทึกเวอร์ชันที่ติดตั้งบนเครื่องต้นทางเพื่อช่วยทำซ้ำ ส่วน requirements.txt เป็นข้อกำหนดติดตั้งหลัก
+ใส่ key ของผู้รับเองใน `.env` ช่อง `GEMINI_API_KEY` และ `GEMINI_API_KEY_FALLBACK` ห้าม commit ไฟล์นี้ รุ่นข้อความถูกตรึงใน `app.py` เป็น `gemini-3.1-flash-lite`; `GEMINI_MODEL` ในไฟล์ตั้งค่าไม่มีผลต่อ Runtime ปัจจุบัน `requirements-handoff-lock.txt` บันทึกเวอร์ชันจากเครื่องต้นทาง ส่วน `requirements.txt` เป็นข้อกำหนดติดตั้งหลัก
 
 เปิด `http://localhost:8502` บนเครื่องเดียวกัน Linux มี `./run.sh` ซึ่งใช้ venv เดิมและผูกกับ 127.0.0.1 พอร์ต 8502 หากพอร์ตชนให้เปลี่ยนพอร์ตในคำสั่งเริ่ม ไม่ต้องมี Node, npm, database หรือบริการ backend เพิ่มเพื่อเปิดแอป
 
@@ -73,13 +77,13 @@ LLM เลือกหลักฐานโดยตอบ JSON ไม่ได�
 
 1. ฟอนต์คณิตศาสตร์ฝังใน PDF มี text mapping ผิด เช่น `D` ในฟอนต์หนึ่งจริง ๆ เป็น `=` และ `‚` เป็น `Θ` การแทนตัวอักษรทั่วทั้งเล่มจะทำให้ข้อความธรรมดาเสีย จึงตรวจภาพ glyph atlas แล้วทำ mapping ตาม font + glyph ID ผูกกับ SHA-256 ของ PDF และฟอนต์เท่านั้น ใช้ตำแหน่งของ span กู้ script ที่ระบุได้ เก็บข้อความดิบและพิกัดไว้ครบ ไม่ใช้ LLM เดาสูตร
 2. Exact heading ที่ขึ้นต้น `S6.7` หลุดหลังคำถามถูกแปลงเป็นตัวพิมพ์เล็ก เพราะ regex เดิมรองรับเฉพาะ S ตัวใหญ่ ส่งผลให้ไปค้น candidate ทั่วไปและได้ Merge sort ปน แก้ regex ให้ไม่ขึ้นกับตัวพิมพ์ เพิ่ม regression ทั้ง S6.7/s6.7 และห้ามเรียก selector ในการทดสอบนี้ ต้องได้เฉพาะหน้า 100
-3. จำนวน chunks เปลี่ยน 867 เป็น 864 เพราะข้อความที่กู้แล้วทำให้การจัดกลุ่มบางจุดเปลี่ยน ล้างความเข้ากันของ vector revision เดิมโดยอัปเดต fingerprint ไม่สร้าง embeddings ใหม่ผ่าน API ในรอบนี้
+3. ประวัติรอบกู้ข้อความเคยทำให้จำนวน chunks เปลี่ยนหลายครั้ง ปัจจุบันต้องยึด `metadata/dataset.json` ซึ่งมี 868 chunks และไม่ใช้ vector revision เก่าที่สร้างจากข้อความหรือ IDs คนละชุด
 
 ไฟล์ production ที่แก้ในรอบนี้: `services/ingest.py`, `services/math_repair.py` (ใหม่), `services/search.py`, `scripts/rescan.py` และ math glyph map รวมถึง metadata ที่ rebuild รายการละเอียดและสรุป audit อยู่ `docs/MATH_REPAIR_RESULTS.json` ไม่เปลี่ยน UI, API key, source PDF หรือ binary รูปภาพ
 
 ## สถานะข้อมูลและผลตรวจ
 
-หลัง rebuild มี 100 หน้า, 864 chunks, 64 sections, 236 subsections, 7 chapter nodes (รวม front matter), 851 paragraph nodes และ 48 รูปที่ตรวจแล้ว กู้ข้อความ 768 บรรทัด: 3,079 glyph substitutions, 229 subscript events, 133 superscript events ตัวเลข events ไม่ใช่จำนวนสูตร
+Dataset ปัจจุบันมี 100 หน้า, 868 chunks, 64 sections, 225 subsections, 7 chapter nodes, 855 paragraph nodes และ 48 รูปที่ตรวจแล้ว ตัวเลขนี้อ่านจาก `metadata/dataset.json` รอบล่าสุด ส่วนผลกู้ glyph ในรายงานเดิมเป็นประวัติของขั้น rebuild และไม่ควรใช้แทนจำนวนโครงสร้างปัจจุบัน
 
 ดู `docs/ENGLISH_SEARCH_RESULTS.json` สำหรับผลค้น 16 คำถาม, exact heading/parent-child coverage, citation offsets, body-line coverage และ image links; `docs/MATH_REPAIR_RESULTS.json` สำหรับความคงเดิมของต้นฉบับ, จำนวนซ่อม และกรณี S6.7 ผลทดสอบ Python อยู่ `tmp/math_repair/full-tests-final.txt` รายงานจำนวนจริงท้ายไฟล์ ไม่ใช้เอกสารเก่าที่ระบุ 867 เป็นผลล่าสุด
 
@@ -105,7 +109,7 @@ LLM เลือกหลักฐานโดยตอบ JSON ไม่ได�
 
 ## Embeddings และข้อจำกัดที่ต้องทราบ
 
-สถานะปัจจุบันคือ 0/864 embeddings โมเดล gemini-embedding-001 ขนาด 768 ก่อนหน้านี้ API ตอบ quota 429 จึงยังไม่มี rebuilt-vector benchmark การค้น exact heading/keyword และ LLM selection ยังใช้ได้ตามเงื่อนไข key/provider แต่ไม่ควรรายงานว่าระบบนี้ทดสอบ vector retrieval ครบแล้ว `scripts/build_vectors.py --help` อธิบาย options ก่อนสร้าง ใช้ RETRIEVAL_DOCUMENT สำหรับเอกสารและ RETRIEVAL_QUERY สำหรับคำถาม โมเดลและมิติต้องตรงกัน ตรวจ status.json หลังสร้างเสร็จ
+สถานะปัจจุบันคือ 0/868 embeddings โมเดล `gemini-embedding-001` ขนาด 768 ก่อนหน้านี้ API ตอบ quota 429 จึงยังไม่มี rebuilt-vector benchmark การค้น exact heading/keyword และ LLM selection ยังใช้ได้ตามเงื่อนไข key/provider แต่ไม่ควรรายงานว่าระบบนี้ทดสอบ vector retrieval ครบแล้ว `scripts/build_vectors.py --help` อธิบาย options ก่อนสร้าง ใช้ `RETRIEVAL_DOCUMENT` สำหรับเอกสารและ `RETRIEVAL_QUERY` สำหรับคำถาม โมเดลและมิติต้องตรงกัน ตรวจ `status.json` หลังสร้างเสร็จ
 
 จำนวนข้อความที่ตรงตัวตรวจสัญลักษณ์เสียเหลือ 0 ไม่ได้หมายความว่าสูตรทั้งหมดถูกต้องแล้ว เศษส่วน, summation limits และโครงสร้างสองมิติยังอาจมี reading order ไม่ตรงภาพ PDF การกู้ glyph ไม่ใช่ OCR สมบูรณ์ ให้ตรวจ Source Text และภาพ highlight ร่วมกัน สูตรที่ยังระบุ script ไม่ได้จะไม่ถูกเดา ผู้รับควรทำรายการสูตรสองมิติและ human verification ก่อนใช้เป็นผลประเมินความแม่นยำทางคณิตศาสตร์
 
@@ -160,7 +164,7 @@ Parenting ตรวจหัวข้อที่มีเนื้อหาค�
 
 ## สถานะล่าสุดหลังผู้ใช้สั่งให้ทำต่อในโครงการ (ยังไม่ ZIP)
 
-ดู `docs/HEADING_PAGE_EVIDENCE_FIX_TH.md` เป็นสถานะปัจจุบัน: 857 chunks, 295 หัวข้อที่มีเนื้อหา, parenting/citation/body-line coverage ผ่านครบ และ Python tests 114 ผ่าน รวมปุ่มหลักฐานตามหน้า PDF และการจัดกลุ่ม highlight แล้ว ข้อมูลจำนวน 864/306 ในหัวข้อก่อนหน้าเป็นผลก่อนแก้ hierarchy รอบล่าสุด ZIP ที่ทำไว้ก่อนหน้านี้ไม่ได้อัปเดตและไม่ควรใช้เป็นชุดส่งมอบล่าสุด
+`docs/HEADING_PAGE_EVIDENCE_FIX_TH.md` บันทึกผลรอบก่อนที่มี 857 chunks จึงใช้เป็นประวัติการแก้ heading และหลักฐานเท่านั้น สถานะ Runtime ปัจจุบันคือ 868 chunks ตาม `metadata/dataset.json` ZIP ที่สร้างก่อนการแก้ล่าสุดไม่ควรใช้เป็นชุดส่งมอบปัจจุบัน
 
 ## ปัจจุบัน: ลบ Q&A จาก PDF จริงแล้ว
 
