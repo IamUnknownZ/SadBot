@@ -52,20 +52,17 @@ class ExactPhraseSearchTests(unittest.TestCase):
 
     def test_app_does_not_translate_embed_or_select_an_exact_source_fragment(self):
         messages=[]
-        expected=dict(query={},status='answered',answer='',evidence=[],image=None)
         with patch.object(app.st,'session_state',SimpleNamespace(messages=messages)), \
-             patch.object(app,'smalltalk',return_value=None), \
-             patch.object(app,'resolve_query',side_effect=AssertionError('exact phrases must keep the typed text')), \
-             patch.object(app,'answer',return_value=expected) as answer_mock, \
-             patch('services.translation.translate_query',side_effect=AssertionError('must not translate')) as translate, \
-             patch.object(app,'search_index',side_effect=AssertionError('must not embed')) as embed, \
-             patch.object(app,'generation_provider',side_effect=AssertionError('must not select')):
+             patch.object(app,'generation_provider',return_value=lambda _: self.fail('Copied text must not call Gemini')), \
+             patch('services.translation.translate_passages',side_effect=AssertionError('must not translate')) as translate, \
+             patch.object(app,'search_index',side_effect=AssertionError('must not embed')) as embed:
             app.submit('A version that always executes',{'en':self.data},'en',True,'configured-key',
-                       'configured-model',{'en':{'ready':True}})
+                       'configured-model',{'en':{'ready':True}},format_with_ai=False)
 
         translate.assert_not_called()
         embed.assert_not_called()
-        self.assertIsNone(answer_mock.call_args.kwargs['select_generate'])
+        self.assertEqual(messages[-1]['status'],'answered')
+        self.assertEqual({r['page'] for r in messages[-1]['evidence']},{47})
         self.assertEqual(messages[-1]['query']['original'],'A version that always executes')
 
     def test_linebreak_case_and_outer_quotes_are_normalized(self):

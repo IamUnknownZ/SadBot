@@ -109,6 +109,11 @@ def terms(text):return re.findall(r'[a-z]+(?:-[a-z]+)*|\d+|[\u0e00-\u0e7f]+',nor
 def heading_query(query):
     q=normalize(query)
     for phrase in THAI_WRAPPERS:q=q.replace(phrase,' ')
+    q=normalize(q)
+    # These standalone terms refer to the source's "Efficiency" section.
+    # Do not rewrite larger questions such as "performance of merge sort".
+    if q in ('ประสิทธิภาพ','สมรรถนะ','performance'):
+        return 'efficiency'
     q=expanded(q)
     q=re.sub(r'^(?:explain|what is|tell me about|show|describe)\s+','',q)
     return heading_name(normalize(q).strip(' ?!.'))
@@ -140,11 +145,10 @@ def matched_headings(query,data):
         else:
             regular=[item for item in numbered if not item[1][0]]
             if regular:numbered=regular
-        if len(numbered)==1:return [numbered[0][0]]
+        # A real number with an unrelated title must not open a whole chapter.
         exact=[node for node,candidate in numbered if candidate[2]==title]
         if exact:return exact
-        prefix=[node for node,candidate in numbered if candidate[2].startswith(title)]
-        return prefix or [node for node,_ in numbered]
+        return [node for node,candidate in numbered if candidate[2].startswith(title)]
     queries={heading_query(query),heading_name(query)}
     return [n for n in data.get('nodes',[]) if n['kind'] in ('chapter','section','subsection') and heading_name(n['title']) in queries]
 
@@ -249,6 +253,10 @@ def hybrid_retrieve(query,data,limit=12,dense_scores=None,section_id=None,candid
     if section_id:
         hits=[n for n in nodes if n['id']==section_id]
         if not hits:raise ValueError('Unknown source section')
+    # Numbered title lookups are precise references, not a license to fall
+    # back to lexical words from a differently titled numbered section.
+    if not section_id and not candidate_mode and has_numbered_heading_prefix(query) and not hits:
+        return []
     if not candidate_mode and not hits and any(t in normalize(query) for t in ['ทีละขั้น','ขั้นตอน','step by step']):
         from .retrieval import plan_query
         topic=plan_query(query)['topics']

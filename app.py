@@ -9,7 +9,7 @@ from services.ingest import load_dataset,safe_path
 from services.answering import answer_question
 from services.formatting import reading_blocks
 from services.retrieval import plan_query
-from services.conversation import smalltalk,generation_provider
+from services.conversation import smalltalk,generation_provider,resolve_query
 from services.vectors import fingerprint,provider,search_index,MODEL,DIMENSIONS
 from ui.document_viewer import evidence_preview,pdf_payload,show_pdf
 from ui.reading_view import reading_html
@@ -78,7 +78,10 @@ def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=Tr
     # latency without restricting the PDF evidence shown to the reader.
     interpreter=generation_provider(key,model,max_output_tokens=300,fallback_key=fallback_key) if key else None
     dense_search=(lambda query:search_index(query,data,indexes['en'],embed=provider(key))) if key and indexes.get('en') else None
-    result=answer_question(question,data,ROOT,history,generate=interpreter,select_generate=interpreter,
+    # Preserve the user's wording while resolving explicit follow-ups to the
+    # last answered book topic. New independent questions remain unchanged.
+    lookup_question=question if section_id else resolve_query(question,history)
+    result=answer_question(lookup_question,data,ROOT,history,generate=interpreter,select_generate=interpreter,
                            dense_search=dense_search,section_id=section_id)
     result['query']['original']=question;result['source_language']='en';result['steps']=[]
     # Human-reviewed translations work without an API. Gemini is only needed

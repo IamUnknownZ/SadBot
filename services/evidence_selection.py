@@ -170,6 +170,13 @@ def select_evidence(question,candidates,data,*,generate):
                     line_ids=[l['id'] for l in lines],bbox=union(lines),kind=classify(lines),contains_heading=False,
                     retrieval_method='llm_selected',selection_intent=value['intent'],
                     selection_completion='complete_source_paragraph')
+        # A syntactically valid source ID is not evidence of relevance.
+        # Do not let a selector answer a single-algorithm question using
+        # unrelated front matter or a different algorithm's source chunks.
+        requested_topics=set(requested_plan['topics'])-{'principles'}
+        if requested_topics and value['intent']!='comparison' and any(
+                row.get('topic') not in requested_topics for row in complete.values()):
+            return fallback
         return dict(state='selected',evidence=sorted(complete.values(),key=lambda c:c['order']),intent=value['intent'])
     except (ValueError,KeyError,TypeError,AttributeError) as exc:
         if str(exc).startswith('Model unavailable'):

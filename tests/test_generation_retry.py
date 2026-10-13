@@ -71,11 +71,11 @@ class GenerationRetryTests(unittest.TestCase):
         self.assertEqual(fallback.models.generate_content.call_count, 1)
         self.assertTrue(all(option.timeout == 15000 for option in options))
 
-    def test_flash_lite_2_5_disables_thinking_for_fast_structured_work(self):
+    def test_flash_lite_3_1_uses_minimal_thinking_for_structured_work(self):
         client = MagicMock()
         client.__enter__.return_value = client
         client.models.generate_content.return_value = SimpleNamespace(text='{"ok":true}')
         with patch('google.genai.Client', return_value=client):
-            generation_provider('test-key', 'gemini-2.5-flash-lite')('question')
+            generation_provider('test-key', 'gemini-3.1-flash-lite')('question')
         config=client.models.generate_content.call_args.kwargs['config']
-        self.assertEqual(config.thinking_config.thinking_budget,0)
+        self.assertEqual(config.thinking_config.thinking_level.value.casefold(),'minimal')

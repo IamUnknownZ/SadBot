@@ -2,12 +2,12 @@ import unittest
 from services import translation
 
 class TranslationTests(unittest.TestCase):
-    def test_masks_use_ascii_markers_that_a_text_model_can_copy_exactly(self):
+    def test_masks_use_exact_protected_markers_a_text_model_can_copy(self):
         masked,kept=translation.mask_source(dict(
             text='Read A[i] only after the boundary check. Strict > keeps stability.',
             protected_spans=[]))
-        self.assertIn('__KEEP_0__', masked)
-        self.assertTrue(all(marker.startswith('__KEEP_') for marker,_ in kept))
+        self.assertIn('⟦KEEP_0⟧', masked)
+        self.assertTrue(all(marker.startswith('⟦KEEP_') and marker.endswith('⟧') for marker,_ in kept))
         self.assertIn('>', [value for _,value in kept])
 
     def test_dropped_or_changed_protected_content_falls_back_to_source(self):

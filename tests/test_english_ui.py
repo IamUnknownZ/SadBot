@@ -106,7 +106,7 @@ class EnglishUITests(OfflineAITestCase):
         self.assertFalse(app.exception)
         message=app.session_state['messages'][-1]
         self.assertEqual([e['page'] for e in message['evidence']],[34,36,36])
-        self.assertEqual(message['retrieval_method'],'llm_selected_with_definition')
+        self.assertEqual(message['retrieval_method'],'prepared_answer')
         self.assertTrue(any('สลับสมาชิกที่อยู่ติดกัน' in m.value for m in app.markdown))
         self.assertFalse(any('**S2.' in m.value or '**Correctness' in m.value for m in app.markdown))
 
@@ -125,9 +125,11 @@ class EnglishUITests(OfflineAITestCase):
             app=AppTest.from_file(str(ROOT/'app.py'),default_timeout=30).run()
             app.chat_input[0].set_value('Selection Sort คืออะไร').run()
         self.assertFalse(app.exception)
-        self.assertEqual(len(calls),2)
+        # This recognized topic takes the local alias route rather than
+        # calling the model merely to select its source definition.
+        self.assertEqual(len(calls),0)
         message=app.session_state['messages'][-1]
-        self.assertEqual(message['selection_state'],'selected')
+        self.assertEqual(message['retrieval_method'],'known_topic_alias')
         self.assertEqual(message['query']['original'],'Selection Sort คืออะไร')
         self.assertEqual({e['page'] for e in message['evidence']},{46})
 

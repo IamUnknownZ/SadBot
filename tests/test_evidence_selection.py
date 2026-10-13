@@ -115,7 +115,11 @@ class EvidenceSelectionTests(unittest.TestCase):
             calls=[]
             def generate(prompt):
                 payload=json.loads(prompt);calls.append(payload)
-                row=next(r for r in payload['candidates'] if r['kind']=='paragraph')
+                from services.retrieval import plan_query
+                source_by_id={chunk['id']:chunk for chunk in self.data['chunks']}
+                requested=set(plan_query(query)['topics'])
+                row=next(r for r in payload['candidates'] if r['kind']=='paragraph'
+                         and source_by_id[r['id']]['topic'] in requested)
                 return {'intent':'explanation','selections':[dict(id=row['id'],first_line=row['lines'][0]['id'],last_line=row['lines'][-1]['id'])]}
             result=answer(query,self.data,ROOT,select_generate=generate)
             self.assertEqual(len(calls),1,query)

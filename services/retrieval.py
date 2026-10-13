@@ -93,7 +93,11 @@ def plan_query(query):
         # sorting problem rather than an unrelated English meaning.
         normalized = 'sorting'
     # Normalize image-intent words (including common Thai misspellings like รุป)
-    normalized = re.sub(r'(?:รุปภาพ|รูปภาพ|รุป|รูป|ภาพ)|\b(?:picture|photo|diagram|illustration|figure)\b', 'diagram', normalized)
+    # Match explicit image requests, not syllables embedded in Thai words.
+    # In particular, ประสิทธิภาพ / คุณภาพ / สรุป must not become "diagram".
+    thai_image = (r'(?<![\u0e00-\u0e7f])(?:รูปภาพ|รุปภาพ|ภาพประกอบ|รูป|รุป|ภาพ)(?![\u0e00-\u0e7f])'
+                  r'|(?:ขอ|ดู|วาด|แสดง|อยากได้|มี)(?:รูปภาพ|รุปภาพ|ภาพประกอบ|รูป|รุป|ภาพ)(?![\u0e00-\u0e7f])')
+    normalized = re.sub(thai_image + r'|\b(?:picture|photo|diagram|illustration|figure)\b', 'diagram', normalized)
     for word in re.findall(r'[a-z]{4,}', normalized):
         match=get_close_matches(word, ['bubble','selection','insertion','merge','counting'],n=1,cutoff=.78)
         if match:

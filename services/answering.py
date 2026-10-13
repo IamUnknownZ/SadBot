@@ -26,6 +26,14 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     base=dict(query=plan_query(question),status='insufficient_evidence',
               answer='ไม่พบข้อมูลที่รองรับคำถามนี้ในหนังสือภาษาอังกฤษครับ',
               evidence=[],image=None,choices=[])
+    # A user-selected child overrides the broad parent question that opened
+    # the menu; otherwise clicking "read this section" loops back to the menu.
+    if section_id:
+        result=answer(question,data,root,section_id=section_id)
+        result['query']['original']=question
+        if result['status']=='answered':
+            result['retrieval_method']='user_selected_section'
+        return result
     from .prepared_answers import answer_for
     prepared=answer_for(question,data)
     if prepared:
@@ -34,6 +42,26 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     from .known_questions import known_negative_question
     if known_negative_question(question):
         return base
+    # An exact copied fragment is already verifiable against the source and
+    # should never be paraphrased or reinterpreted by an external model.
+    from .search import exact_phrase_lookup
+    if not section_id and exact_phrase_lookup(question,data):
+        result=answer(question,data,root)
+        result['query']['original']=question
+        return result
+    # Explicit named-algorithm steps without a new input array are a locally
+    # indexed worked trace. This avoids an unnecessary model selection which
+    # can otherwise return a single stray paragraph or no trace at all.
+    step_plan=plan_query(question)
+    named=[topic for topic in step_plan['topics'] if topic in ('bubble','selection','insertion','merge','counting')]
+    if (not section_id and step_plan['intent']=='steps' and len(named)==1
+            and len(step_plan['topics'])==1 and not re.search(r'\d',question)):
+        result=answer(question,data,root)
+        if (result['status']=='answered' and result['evidence']
+                and all(row['topic']==named[0] for row in result['evidence'])):
+            result['query']['original']=question
+            result['retrieval_method']='known_steps_source'
+            return result
     # Broad requests such as "compare every sort" have a dedicated source
     # summary and running-time table. Opening that compact section is faster
     # and more relevant than asking the selector to combine arbitrary mentions
@@ -73,14 +101,22 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
         result['retrieval_method']='known_topic_alias'
         return result
     # Longer exact English headings retain the parent-and-child reader view.
-    from .search import matched_headings,normalize,heading_name
-    exact_heading=[node for node in matched_headings(question,data)
-                   if normalize(question)==heading_name(node['title'])]
+    from .search import matched_headings,normalize,heading_name,heading_query,numbered_heading_parts
+    heading_matches=matched_headings(question,data)
+    # Numbered source headings are already disambiguated by
+    # matched_headings(). Compare their number and title together instead of
+    # comparing "1.1 Algorithms" with a number-stripped "Algorithms".
+    exact_heading=(heading_matches if numbered_heading_parts(question) and len(heading_matches)==1
+                   else [node for node in heading_matches
+                         if heading_name(node['title']) in (normalize(question),heading_query(question))])
     if len(exact_heading)==1:
-        result=answer(question,data,root,section_id=exact_heading[0]['id'])
+        # Keep broad-heading pagination/child-choice safeguards. Passing the
+        # section_id here would force an entire large chapter into the reply.
+        result=answer(question,data,root)
         result['query']['original']=question
         result['prepared']=True
-        result['retrieval_method']='exact_heading_parent_children'
+        if result['status']=='answered':
+            result['retrieval_method']='exact_heading_parent_children'
         return result
     if not generate:
         return dict(base,status='search_unavailable',question_route_state='unavailable',
@@ -97,7 +133,10 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
         # Try the deterministic heading/alias/BM25 path without another model
         # call. It still returns only PDF evidence and preserves all offset
         # checks. If local retrieval has no support, keep the explicit error.
-        if provider_error:
+        from .search import matched_headings,definition_rows,exact_phrase_lookup
+        if provider_error and (matched_headings(question,data)
+                               or definition_rows(question,data)
+                               or exact_phrase_lookup(question,data)):
             local=answer(question,data,root,select_generate=None)
             if local.get('status')=='answered':
                 local['query']['original']=question
@@ -198,13 +237,16 @@ def answer(query,data,root,*,budget=2048,dense_scores=None,section_id=None,selec
                 selection_state='local_comparison_fallback'
                 base['selection_state']=selection_state
         if not candidates:
-            # Generic outage fallback for every topic in the book, including
-            # concepts outside the five named sorting algorithms. Retrieval is
-            # still bounded to indexed PDF chunks and validated below.
-            candidates=retrieve(query,data,dense_scores=dense_scores)
-            if candidates:
-                selection_state='local_retrieval_fallback'
-                base['selection_state']=selection_state
+            # A lexical hit alone does not establish that it answers a natural
+            # question. Fail closed when the model is unavailable rather than
+            # dumping unrelated book pages under a valid-looking citation.
+            # Precise copied passages and headings are still safe to retrieve.
+            from .search import exact_phrase_lookup
+            if matched_headings(query,data) or exact_phrase_lookup(source_query,data):
+                candidates=retrieve(query,data,dense_scores=dense_scores)
+                if candidates:
+                    selection_state='local_retrieval_fallback'
+                    base['selection_state']=selection_state
         if not candidates:
             return dict(base,status='search_unavailable',answer='ตอนนี้ AI ยังเลือกหลักฐานที่ตรงคำถามไม่ได้ครับ กรุณาลองใหม่อีกครั้ง ข้อผิดพลาดนี้ไม่ได้หมายความว่าไม่มีเนื้อหาในหนังสือ')
     if candidates is None:candidates=retrieve(query,data,dense_scores=dense_scores,section_id=section_id)

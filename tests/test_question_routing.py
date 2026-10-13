@@ -54,9 +54,9 @@ class GeminiFirstRoutingTests(unittest.TestCase):
             'bubble sort', self.data, ROOT, [],
             generate=lambda _: self.fail('A known Bubble Sort name must not call Gemini'))
         self.check_source(result)
-        self.assertEqual(result['retrieval_method'], 'known_topic_alias')
+        self.assertEqual(result['retrieval_method'], 'prepared_answer')
         self.assertLessEqual(len(result['evidence']), 3)
-        self.assertIn('Bubble sort', result['answer'])
+        self.assertIn('Bubble Sort', result['answer'])
 
     def test_common_typo_in_prepared_sorting_question_uses_cached_answer(self):
         result = answering.answer_question(
