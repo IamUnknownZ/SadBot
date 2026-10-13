@@ -23,6 +23,41 @@ class EvidenceSelectionTests(unittest.TestCase):
             self.assertEqual(result['state'],'selected')
             self.assertEqual(result['evidence'][0]['text'],row['text'])
 
+    def test_compact_id_only_selector_recovers_exact_pdf_evidence(self):
+        from services.evidence_selection import select_evidence
+        row=next(c for c in self.data['chunks'] if c['id']=='p90-c0970')
+        def generate(prompt):
+            payload=json.loads(prompt)
+            self.assertIn('"ids"',payload['task'])
+            self.assertEqual(payload['candidates'][0]['id'],row['id'])
+            return {'intent':'definition','ids':[row['id']]}
+        result=select_evidence('What is counting sort?',[row],self.data,generate=generate)
+        self.assertEqual(result['state'],'selected')
+        self.assertEqual(len(result['evidence']),1)
+        chosen=result['evidence'][0]
+        page=self.data['pages'][chosen['page']-1]
+        self.assertEqual(chosen['text'],page['text'][chosen['char_start']:chosen['char_end']])
+        self.assertIn('Counting sort assumes',chosen['text'])
+
+    def test_compact_selector_refuses_invented_ids_duplicates_extra_keys_and_wrong_topic(self):
+        from services.evidence_selection import select_evidence
+        bubble=next(c for c in self.data['chunks'] if c['id']=='p34-c0344')
+        counting=next(c for c in self.data['chunks'] if c['id']=='p90-c0970')
+        cases=[
+            ({'intent':'definition','ids':['invented']},'invalid_selection_unknown_id'),
+            ({'intent':'definition','ids':[bubble['id'],bubble['id']]},'invalid_selection_duplicate'),
+            ({'intent':'definition','ids':[bubble['id']],'answer':'made up'},'invalid_selection_schema'),
+            ({'intent':'out_of_scope','ids':[bubble['id']]},'invalid_selection_scope'),
+            ({'intent':'explanation','ids':[counting['id']]},'invalid_selection_off_topic'),
+        ]
+        for response,reason in cases:
+            with self.subTest(response=response):
+                result=select_evidence('bubble sort',[bubble,counting],self.data,
+                    generate=lambda _,value=response:value)
+                self.assertEqual(result['state'],'unavailable')
+                self.assertEqual(result['reason'],reason)
+                self.assertFalse(result['evidence'])
+
     def test_numeric_page_line_numbers_resolve_only_inside_selected_chunk(self):
         from services.evidence_selection import select_evidence
         row=next(c for c in self.data['chunks'] if c['page']==46 and 'Selection sort divides' in c['text'])
@@ -71,6 +106,17 @@ class EvidenceSelectionTests(unittest.TestCase):
         for selection in bad:
             result=select_evidence('โค้ด',[row],self.data,generate=lambda p,s=selection:{'intent':'code','selections':[s]})
             self.assertEqual(result['state'],'unavailable')
+
+    def test_selector_failure_recovers_only_from_verified_question_route(self):
+        question='Do Big-O, Omega, and Theta notation identify best, worst, or average cases by themselves?'
+        result=answer(question,self.data,ROOT,select_generate=lambda _: (_ for _ in ()).throw(ValueError('Model unavailable (status 503)')))
+        self.assertEqual(result['status'],'answered')
+        self.assertEqual(result['selection_state'],'verified_question_fallback')
+        self.assertEqual({row['page'] for row in result['evidence']},{29})
+        self.assertIn('do not themselves mean worst, best, or average case',result['answer'])
+        unrelated=answer('Is the entire source book about the weather?',self.data,ROOT,
+            select_generate=lambda _: (_ for _ in ()).throw(ValueError('Model unavailable (status 503)')))
+        self.assertNotEqual(unrelated['status'],'answered')
 
     def test_valid_empty_selection_refuses_instead_of_using_irrelevant_top_result(self):
         result=answer('Selection Sort มีการส่งอีเมลไหม',self.data,ROOT,

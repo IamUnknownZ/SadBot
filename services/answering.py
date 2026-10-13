@@ -295,7 +295,15 @@ def answer(query,data,root,*,budget=2048,dense_scores=None,section_id=None,selec
         else:selection_state='direct_lookup'
     base['selection_state']=selection_state
     if candidates is None and selection_state=='unavailable':
+        # Reuse only explicitly reviewed PDF question routes. A 503 or invalid
+        # LLM selection does not justify guessing from the top lexical hit.
         candidates=definition_rows(query,data)
+        if not candidates:
+            from .common_questions import source_evidence
+            candidates=source_evidence(selection_question or source_query,data)
+            if candidates:
+                selection_state='verified_question_fallback'
+                base['selection_state']=selection_state
         if not candidates and original_plan['intent']=='comparison' and len(original_plan['topics'])>=2:
             # When the selector is temporarily unavailable, reconstruct a
             # comparison from each requested topic's source definition. This
