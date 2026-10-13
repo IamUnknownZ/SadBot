@@ -8,6 +8,8 @@
 
 - ลำดับปัจจุบัน: small talk → prepared answer → known negative → known topic → exact heading → Gemini question routing
 - ชื่ออัลกอริทึมตรง ๆ และคำถามที่เตรียมไว้ตอบได้เร็วโดยไม่รอ API
+- นิยาม Sorting Algorithms แบบพื้นฐาน (รวมคำถาม `What is Sorting algorithms`) ให้ใช้ห้าย่อหน้าแรกของหัวข้อ `1.1 Algorithms` หน้า 5 จาก PDF จริง ไม่ใช่หัวข้อซ้ำ `Sorting algorithms` ในหน้าอื่น และไม่เปิดเมนูเลือกหัวข้อย่อย แม้ Gemini ตอบ 503 ก็ต้องอ่านหลักฐานนี้ได้
+- หัวข้อใหญ่ที่ผู้ใช้ระบุชัดเจน เช่น `1.1 Algorithms` แสดงข้อความส่วนเริ่มต้นทันที ไม่แสดงปุ่มเลือกหัวข้อย่อยบังคับ ส่วนการเปิด section ผ่าน ID ยังคงให้ดูเนื้อหาทั้ง section ได้
 - คำถามใหม่ส่งเข้า `services.question_routing.interpret_question` แล้ว Gemini คืนเฉพาะ `mode`, `search_query`, `section_id`
 - ขั้นเลือกหลักฐานรับได้เฉพาะ source IDs และช่วงบรรทัดที่ระบบส่งให้ โมเดลไม่ได้เขียนข้อเท็จจริงแทนหนังสือ
 - โมเดลถูกตรึงใน `app.py` เป็น `gemini-3.1-flash-lite`; ค่า `GEMINI_MODEL` ใน `.env` หรือ Secrets ไม่เปลี่ยนรุ่น

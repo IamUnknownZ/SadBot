@@ -80,14 +80,14 @@ class ExactPhraseSearchTests(unittest.TestCase):
         self.assertEqual(exact_phrase_lookup('running time of',self.data),[])
         self.assertEqual(exact_phrase_lookup('New explanatory material',self.data),[])
 
-    def test_broad_numbered_parent_offers_subsections_instead_of_dumping_the_whole_parent(self):
+    def test_broad_numbered_parent_shows_source_opening_instead_of_a_menu(self):
         result=answer('1.1 Algorithms',self.data,ROOT)
 
-        self.assertEqual(result['status'],'choose_section')
-        self.assertFalse(result['evidence'])
-        self.assertGreater(len(result['choices']),1)
-        self.assertLess(len(result['choices']),20)
-        self.assertTrue(all(choice['kind']=='subsection' for choice in result['choices']))
+        self.assertEqual(result['status'],'answered')
+        self.assertFalse(result['choices'])
+        self.assertEqual(len(result['evidence']),5)
+        self.assertEqual({c['page'] for c in result['evidence']},{5})
+        self.assertIn('Input: A sequence of n numbers',result['answer'])
 
     def test_numbered_heading_selects_that_section_without_asking_the_user(self):
         target=next(node for node in self.data['nodes'] if node['title']=='8.2 Counting sort')

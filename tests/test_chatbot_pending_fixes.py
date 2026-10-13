@@ -16,26 +16,65 @@ class ChatbotPendingFixesTests(unittest.TestCase):
     def setUpClass(cls):
         cls.data = load_dataset(ROOT)
 
-    def test_broad_numbered_heading_offers_child_sections_without_api(self):
+    def test_broad_numbered_heading_returns_its_actual_opening_without_menu(self):
         response = answer_question('1.1 Algorithms', self.data, ROOT, [],
                                    generate=lambda _: self.fail('Exact section needs no Gemini'))
-        self.assertEqual(response['status'], 'choose_section')
-        self.assertFalse(response['evidence'])
-        self.assertTrue(response['choices'])
-        self.assertTrue(all(c['page_start'] >= 5 for c in response['choices']))
+        self.assertEqual(response['status'], 'answered')
+        self.assertEqual([c['page'] for c in response['evidence']], [5]*5)
+        self.assertEqual(response['choices'], [])
+        self.assertIn('Informally, an algorithm', response['answer'])
+        self.assertIn('⟨26, 31, 41, 41, 58, 59⟩', response['answer'])
+
+    def test_what_is_sorting_algorithms_uses_intro_even_on_gemini_503(self):
+        def unavailable(_):
+            raise ValueError('Model unavailable (status 503)')
+        for question in ('What is Sorting algorithms', 'What are sorting algorithms?',
+                         'What is a sorting algorithm?', 'Sorting algorithms คืออะไร',
+                         'อัลกอริทึมการเรียงลำดับคืออะไร'):
+            with self.subTest(question=question):
+                result = answer_question(question,self.data,ROOT,[],generate=unavailable,
+                                         select_generate=unavailable)
+                self.assertEqual(result['status'],'answered')
+                self.assertEqual(result['choices'],[])
+                self.assertEqual(len(result['evidence']),5)
+                self.assertEqual({c['page'] for c in result['evidence']},{5})
+                self.assertTrue(result['answer'].startswith('1.1' + chr(10) + 'Algorithms'))
+                self.assertIn('Input: A sequence of n numbers',result['answer'])
+                self.assertIn('Output: A permutation',result['answer'])
+                self.assertIn('⟨26, 31, 41, 41, 58, 59⟩',result['answer'])
+                self.assertIn('needed to compute a solution to the problem.',result['answer'])
+                self.assertNotIn('Because many programs use it',result['answer'])
+                for c in result['evidence']:
+                    page=self.data['pages'][c['page']-1]
+                    self.assertEqual(c['text'],page['text'][c['char_start']:c['char_end']])
+
+    def test_streamlit_question_submit_renders_intro_when_gemini_unavailable(self):
+        from streamlit.testing.v1 import AppTest
+        from unittest.mock import patch
+        def offline_failure(_):
+            raise ValueError('Model unavailable (status 503)')
+        with patch.dict('os.environ',{'GEMINI_API_KEY':'test-key'}), \
+             patch('services.conversation.generation_provider',return_value=offline_failure):
+            app=AppTest.from_file(str(ROOT/'app.py'),default_timeout=30).run()
+            app.chat_input[0].set_value('What is Sorting algorithms').run()
+        self.assertFalse(app.exception)
+        result=app.session_state['messages'][-1]
+        self.assertEqual(result['status'],'answered')
+        self.assertFalse(result['choices'])
+        self.assertEqual(len(result['evidence']),5)
+        self.assertEqual({row['page'] for row in result['evidence']},{5})
 
     def test_wrong_title_with_valid_number_does_not_open_unrelated_section(self):
         self.assertEqual(matched_headings('1.1 Absolutely Not Algorithms', self.data), [])
         self.assertEqual(retrieve('1.1 Absolutely Not Algorithms', self.data), [])
 
-    def test_selecting_a_child_from_broad_numbered_heading_opens_it(self):
-        first = answer_question('1.1 Algorithms', self.data, ROOT, [], generate=None)
-        self.assertEqual(first['status'], 'choose_section')
-        selected = first['choices'][0]
+    def test_explicit_section_id_still_opens_complete_source_without_menu(self):
+        selected = next(n for n in self.data['nodes'] if n['title']=='1.1 Algorithms')
         result = answer_question('1.1 Algorithms', self.data, ROOT, [],
-                                 generate=lambda _: self.fail('Explicit choice needs no API'),
+                                 generate=lambda _: self.fail('Direct section needs no API'),
                                  section_id=selected['id'])
         self.assertEqual(result['status'], 'answered')
+        self.assertEqual(result['choices'], [])
         self.assertEqual({row['id'] for row in result['evidence']}, set(selected['chunk_ids']))
 
     def test_copied_source_fragment_needs_no_llm(self):

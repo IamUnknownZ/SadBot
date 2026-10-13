@@ -8,16 +8,37 @@ from .images import select_image
 from .ingest import safe_path
 
 
-def _broad_heading_choices(query,hits,data):
-    if len(hits)!=1 or not re.match(r'^\s*(?:S?\d+(?:\.\d+)*)\s+',query,re.I):return []
-    full_scope=('ทั้งบท','ทั้งหัวข้อ','ทั้งหมด','ทุกส่วน','อ่านครบ','อ่านทั้งหมด')
-    if any(term in query for term in full_scope) or re.search(r'\b(?:all|everything|entire|whole|full)\b',query,re.I):return []
-    parent=hits[0]
-    if len(parent.get('chunk_ids',[]))<=20:return []
-    by_id={node['id']:node for node in data.get('nodes',[])}
-    return [by_id[ident] for ident in parent.get('child_ids',[])
-            if ident in by_id and by_id[ident]['kind'] in ('chapter','section','subsection')
-            and by_id[ident].get('chunk_ids')]
+def is_sorting_algorithms_overview(question):
+    """A narrow beginner-definition route; never hijack complexity or comparisons."""
+    from .search import normalize
+    q=normalize(question).strip(' ?!.,。！？')
+    english=(r'(?:(?:what (?:is|are) (?:a |an |the )?|define |explain )?'
+             r'sorting algorithms?)')
+    thai=rf'(?:sorting algorithms?|{re.escape(normalize("อัลกอริทึมการเรียงลำดับ"))})(?:\s*(?:คืออะไร|หมายถึงอะไร|คือ))'
+    return bool(re.fullmatch(english,q) or re.fullmatch(thai,q))
+
+
+def _sorting_intro_evidence(question,data):
+    """First source paragraphs of 1.1; never flatten descendant subsections."""
+    from .search import normalize
+    if not (is_sorting_algorithms_overview(question) or normalize(question)=='1.1 algorithms'):
+        return []
+    parent=next((n for n in data.get('nodes',[])
+                 if n.get('kind')=='section' and normalize(n['title'])=='1.1 algorithms'),None)
+    if not parent:return []
+    rows=[c for c in data.get('chunks',[])
+          if c.get('parent_id')==parent['id'] and c.get('kind')=='paragraph'
+          and c.get('curriculum_status')=='primary']
+    rows.sort(key=lambda c:c['order'])
+    opening=rows[:5]
+    # These anchors guard against silently presenting the wrong passage when
+    # the source PDF or hierarchy changes. Every selected byte remains from PDF.
+    if (len(opening)!=5 or not opening[0]['text'].startswith('1.1\nAlgorithms\n')
+        or 'formally deﬁne the sorting problem:' not in opening[2]['text']
+        or 'Input:' not in opening[3]['text'] or 'Output:' not in opening[3]['text']
+        or 'instance of the sorting problem' not in opening[4]['text']):return []
+    return [dict(c,score=1.,retrieval_method='source_intro',matched_heading_ids=[parent['id']])
+            for c in opening]
 
 
 def answer_question(question,data,root,history,*,generate,select_generate=None,dense_search=None,section_id=None):
@@ -42,6 +63,13 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     from .known_questions import known_negative_question
     if known_negative_question(question):
         return base
+    # A beginner definition is explicitly grounded in the opening of 1.1,
+    # irrespective of Gemini quota, model availability, or a later same-named
+    # subsection about comparing sorting algorithms.
+    if is_sorting_algorithms_overview(question):
+        result=answer(question,data,root)
+        result['query']['original']=question
+        return result
     # An exact copied fragment is already verifiable against the source and
     # should never be paraphrased or reinterpreted by an external model.
     from .search import exact_phrase_lookup
@@ -186,27 +214,16 @@ def answer(query,data,root,*,budget=2048,dense_scores=None,section_id=None,selec
     hits=matched_headings(query,data) if not section_id and not force_selection else []
     if len(hits)>1 and not definition_rows(query,data):
         return dict(base,status='choose_section',answer='พบหัวข้อชื่อเดียวกันหลายแห่ง เลือกส่วนที่ต้องการอ่านครับ',choices=hits)
-    # A compact numbered section is a precise target; avoid a child menu for
-    # its figure/exercise labels. Keep the safeguard for broad parents such as
-    # "1.1 Algorithms", which contains many named subsections.
-    child_ids=set(hits[0].get('child_ids',[])) if len(hits)==1 else set()
-    child_heading_count=sum(node['id'] in child_ids
-                            and node.get('kind') in ('chapter','section','subsection')
-                            and bool(node.get('chunk_ids'))
-                            for node in data.get('nodes',[]))
-    exact_numbered_section=(has_numbered_heading_prefix(query) and len(hits)==1
-                            and hits[0].get('kind') in ('section','subsection')
-                            and child_heading_count<=2)
-    broad_choices=[] if exact_numbered_section else _broad_heading_choices(query,hits,data)
-    if broad_choices:
-        return dict(base,status='choose_section',selection_state='broad_heading',
-                    answer='หัวข้อนี้มีหลายส่วน ผมแสดงหัวข้อย่อยให้เลือกก่อน เพื่อไม่รวมข้อความจำนวนมากในคำตอบเดียวครับ',
-                    choices=broad_choices)
+    # Broad headings are answered with source passages, not a forced
+    # subsection-picker menu. The 1.1 introduction is a bounded, verified
+    # five-paragraph reading; other explicit headings retain their complete
+    # reader view with pagination when needed.
+    intro=_sorting_intro_evidence(source_query,data) if not section_id and not force_selection else []
     from .search import exact_phrase_lookup
-    exact=exact_phrase_lookup(source_query,data) if not section_id and not hits and not force_selection else []
-    candidates=exact or None
-    selection_state='exact_phrase' if exact else 'not_requested'
-    if select_generate and not exact:
+    exact=exact_phrase_lookup(source_query,data) if not intro and not section_id and not hits and not force_selection else []
+    candidates=intro or exact or None
+    selection_state='source_intro' if intro else 'exact_phrase' if exact else 'not_requested'
+    if select_generate and not exact and not intro:
         from .evidence_selection import direct_lookup,candidate_pool,select_evidence
         if force_selection or not direct_lookup(query,data,section_id):
             corrected=(selection_question or source_query) if force_selection else plan_query(selection_question or query)['normalized']
