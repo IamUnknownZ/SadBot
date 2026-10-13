@@ -106,6 +106,15 @@ def source_ids_for(question):
         'Big-O, Omega, Theta ต่างกับ best worst average case อย่างไร',
     )}:
         return ('p29-c0278',)
+    # Check prerequisites before choosing counting sort: the book explicitly
+    # requires integer keys and a manageable range. Keep this route exact so
+    # qualified questions still require evidence tailored to their conditions.
+    if q in {normalize(x).strip(' ?!.,。！？') for x in (
+        'What should we check before using counting sort?',
+        'What should I check before choosing counting sort?',
+        'ก่อนใช้ Counting Sort ควรตรวจสอบอะไรบ้าง',
+    )}:
+        return ('p90-c0970','p94-c1009','p94-c1013','p97-c1047')
     topics,remainder=_topic_and_remainder(question)
     if not _clear_simple(normalized,topics):return None
     if len(topics)==2 and plan_query(question)['intent']=='comparison':

@@ -92,6 +92,19 @@ class CoreStudentQuestionAudit(unittest.TestCase):
         self.assertEqual(same['retrieval_method'],'common_source_question')
         self.assertIsNone(source_ids_for(question+' for a given Bubble Sort input [3,1]'))
 
+    def test_counting_sort_prerequisites_without_gemini(self):
+        question='What should we check before using counting sort?'
+        result=self.source_checked(question)
+        self.assertEqual(result['retrieval_method'],'common_source_question')
+        self.assertEqual({r['page'] for r in result['evidence']},{90,94,97})
+        text=result['answer'].lower()
+        self.assertIn('integer',text)
+        self.assertIn('range',text)
+        same=answer_question(question,self.data,ROOT,[],
+            generate=lambda _:self.fail('Counting sort prerequisites called Gemini'))
+        self.assertEqual(same['status'],'answered')
+        self.assertIsNone(source_ids_for(question+' with floating-point keys'))
+
     def test_qualified_requests_do_not_get_wrong_prepared_answer(self):
         for question in (
             'Why does Merge Sort need auxiliary space?',
