@@ -80,6 +80,18 @@ class CoreStudentQuestionAudit(unittest.TestCase):
             with self.subTest(question=question):
                 self.source_checked(question)
 
+    def test_notation_bounds_are_not_input_cases_without_gemini(self):
+        question='Do Big-O, Omega, and Theta notation identify best, worst, or average cases by themselves?'
+        result=self.source_checked(question)
+        self.assertEqual(result['retrieval_method'],'common_source_question')
+        self.assertIn('do not themselves mean worst, best, or average case',result['answer'])
+        self.assertEqual({row['page'] for row in result['evidence']},{29})
+        # A 503 must never be reached for this exact locally answerable question.
+        same=answer_question(question,self.data,ROOT,[],
+            generate=lambda _:self.fail('Simple notation question called Gemini'))
+        self.assertEqual(same['retrieval_method'],'common_source_question')
+        self.assertIsNone(source_ids_for(question+' for a given Bubble Sort input [3,1]'))
+
     def test_qualified_requests_do_not_get_wrong_prepared_answer(self):
         for question in (
             'Why does Merge Sort need auxiliary space?',

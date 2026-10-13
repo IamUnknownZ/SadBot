@@ -98,6 +98,14 @@ def source_ids_for(question):
         return ('p40-c0417',)
     if q in {normalize(x) for x in ('which sorting algorithm is best','ควรใช้อัลกอริทึมเรียงลำดับตัวไหนดี')}:
         return ('p33-c0326',)
+    # Explicit notation-versus-input-case misconception: match narrowly so
+    # added algorithms, array examples or qualifications still get interpreted.
+    if q in {normalize(x).strip(' ?!.,。！？') for x in (
+        'Do Big-O, Omega, and Theta notation identify best, worst, or average cases by themselves?',
+        'Do Big O, Omega and Theta represent best, worst and average cases?',
+        'Big-O, Omega, Theta ต่างกับ best worst average case อย่างไร',
+    )}:
+        return ('p29-c0278',)
     topics,remainder=_topic_and_remainder(question)
     if not _clear_simple(normalized,topics):return None
     if len(topics)==2 and plan_query(question)['intent']=='comparison':
