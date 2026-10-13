@@ -66,6 +66,18 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
         reason='provider_unavailable' if provider_error else 'invalid_question_route'
         status=int(match[1]) if match else None
         logging.getLogger(__name__).warning('Gemini question routing: reason=%s status=%s',reason,status)
+        # A transient Gemini outage must not disable source-grounded lookup.
+        # Try the deterministic heading/alias/BM25 path without another model
+        # call. It still returns only PDF evidence and preserves all offset
+        # checks. If local retrieval has no support, keep the explicit error.
+        if provider_error:
+            local=answer(question,data,root,select_generate=None)
+            if local.get('status')=='answered':
+                local['query']['original']=question
+                local['question_route_state']='local_fallback'
+                local['question_route_reason']=reason
+                local['question_route_provider_status']=status
+                return local
         return dict(base,status='search_unavailable',question_route_state='unavailable',
                     question_route_reason=reason,question_route_provider_status=status,
                     answer='Gemini ยังส่งผลการตีความคำถามที่ระบบใช้ค้นได้ไม่สำเร็จครับ กรุณาลองใหม่อีกครั้ง')
