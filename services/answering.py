@@ -157,6 +157,19 @@ def answer(query,data,root,*,budget=2048,dense_scores=None,section_id=None,selec
     base['selection_state']=selection_state
     if candidates is None and selection_state=='unavailable':
         candidates=definition_rows(query,data)
+        if not candidates and original_plan['intent']=='comparison' and len(original_plan['topics'])>=2:
+            # When the selector is temporarily unavailable, reconstruct a
+            # comparison from each requested topic's source definition. This
+            # keeps both sides present without generating any new facts.
+            combined=[];seen=set()
+            for topic in original_plan['topics']:
+                for row in definition_rows(f'{topic} sort คือ',data):
+                    if row['id'] not in seen:
+                        seen.add(row['id']);combined.append(row)
+            candidates=combined
+            if candidates:
+                selection_state='local_comparison_fallback'
+                base['selection_state']=selection_state
         if not candidates:
             return dict(base,status='search_unavailable',answer='ตอนนี้ AI ยังเลือกหลักฐานที่ตรงคำถามไม่ได้ครับ กรุณาลองใหม่อีกครั้ง ข้อผิดพลาดนี้ไม่ได้หมายความว่าไม่มีเนื้อหาในหนังสือ')
     if candidates is None:candidates=retrieve(query,data,dense_scores=dense_scores,section_id=section_id)
