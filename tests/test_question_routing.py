@@ -66,6 +66,21 @@ class GeminiFirstRoutingTests(unittest.TestCase):
         self.assertEqual(result['retrieval_method'], 'prepared_answer')
         self.assertIn('การเรียงลำดับข้อมูล', result['answer'])
 
+    def test_local_first_natural_definitions_do_not_call_gemini(self):
+        for question in ('อยากทราบว่า Bubble Sort คืออะไรครับ',
+                         'ช่วยบอกความหมายของ Selection Sort คืออะไรครับ'):
+            with self.subTest(question=question):
+                result=answering.answer_question(question,self.data,ROOT,[],
+                    generate=lambda _:self.fail('Clear definition must be local'))
+                self.check_source(result)
+                self.assertEqual(result['retrieval_method'],'local_definition')
+                self.assertLessEqual(len(result['evidence']),5)
+
+    def test_local_first_does_not_guess_on_qualified_question(self):
+        result=answering.answer_question('ทำไม Bubble Sort จึงช้าเมื่อมีข้อมูลมาก',
+            self.data,ROOT,[],generate=None)
+        self.assertEqual(result['status'],'search_unavailable')
+
     def test_unfamiliar_thai_question_uses_gemini_interpretation_and_real_pdf_evidence_without_vectors(self):
         question = 'เหตุผลเชิงประวัติศาสตร์ที่ทำให้การเรียงลำดับสำคัญคืออะไร'
         node = self.node('Why sorting?')

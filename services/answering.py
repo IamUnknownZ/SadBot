@@ -189,6 +189,19 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     rows=source_evidence(question,data)
     if rows:
         return _answer_from_verified_chunks(question,data,root,rows,'common_source_question')
+    # Avoid Gemini for unambiguous, single-topic definitions outside the
+    # prepared templates. Reject qualified questions rather than guessing.
+    from .search import definition_cue,definition_rows
+    local_plan=plan_query(question)
+    if (len(local_plan['topics'])==1
+        and local_plan['topics'][0] in ('bubble','selection','insertion','merge','counting')
+        and local_plan['intent'] in ('fact','explanation')
+        and definition_cue(question)
+        and not re.search(r'\d|\[[^]]*\]|[<>]|\b(?:why|when|which|not|except|if|given|with|without)\b|ทำไม|เพราะ|เมื่อ|กรณี|ตัวอย่าง|ต่าง|เปรียบเทียบ|เทียบ|ข้อดี|ข้อเสีย|เหมาะ|รูป|ภาพ|โค้ด|รหัสเทียม',question,re.I)):
+        local_rows=definition_rows(question,data)
+        if local_rows and len(local_rows)<=5 and all(
+                row.get('topic')==local_plan['topics'][0] for row in local_rows):
+            return _answer_from_verified_chunks(question,data,root,local_rows,'local_definition')
     if not generate:
         return dict(base,status='search_unavailable',question_route_state='unavailable',
                     answer='กรุณาตั้งค่า Gemini API เพื่อให้ระบบอ่านความหมายของคำถามก่อนค้นหนังสือครับ')
