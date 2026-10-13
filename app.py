@@ -91,7 +91,7 @@ def translate_visible(message,shown,key,model,fallback_key=None):
     missing=[e for e in shown if e['id'] not in message['display_text']]
     if missing:
         with st.spinner('กำลังแปลข้อความจากต้นฉบับ…'):
-            generate=generation_provider(key,model,max_output_tokens=1800,fallback_key=fallback_key,timeout_ms=15000,transient_attempts=1)
+            generate=generation_provider(key,model,max_output_tokens=1800,fallback_key=fallback_key,timeout_ms=120000,transient_attempts=1)
             for start in range(0,len(missing),TRANSLATION_BATCH_SIZE):
                 batch=missing[start:start+TRANSLATION_BATCH_SIZE]
                 message['display_text'].update(translate_passages(batch,generate=generate))
