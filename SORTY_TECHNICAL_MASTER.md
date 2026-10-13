@@ -46,7 +46,7 @@ Gemini ไม่เขียนคำตอบข้อเท็จจริง 
 9. [รูปประกอบและการครอปด้วย Python](#9-รูปประกอบและการครอปด้วย-python)
 10. [Citation, การรวมบรรทัด และ PDF.js](#10-citation-การรวมบรรทัด-และ-pdfjs)
 11. [บทสนทนาและหน้าจอ](#11-บทสนทนาและหน้าจอ)
-12. [Embeddings และสถานะที่ยังไม่พร้อม](#12-embeddings-และสถานะที่ยังไม่พร้อม)
+12. [Embeddings และสถานะปัจจุบัน](#12-embeddings-และสถานะปัจจุบัน)
 13. [งานวิจัยและการนำมาใช้ใน Sorty](#13-งานวิจัยและการนำมาใช้ใน-sorty)
 14. [วิธีติดตั้งและเปิดระบบ](#14-วิธีติดตั้งและเปิดระบบ)
 15. [วิธีสแกนและสร้างดัชนีใหม่](#15-วิธีสแกนและสร้างดัชนีใหม่)
@@ -68,7 +68,7 @@ Sorty เป็นแอป Streamlit ที่ค้นจาก PDF ภาษ�
 | เส้นทางคำถามที่ตรวจทานไว้ | 113 query guidance routes ซึ่งชี้ไปยังหัวข้อ/หลักฐาน ไม่ได้เก็บคำตอบสำเร็จรูป |
 | รูปที่ผ่านการทบทวน | 48 รูป WebP เชื่อมกับหน้าและหัวข้อใน PDF |
 | คำถาม/คำตอบเสริมใน PDF | ลบออกจาก PDF ที่ใช้งานแล้ว; สแกนปัจจุบันพบหัวข้อดังกล่าว 0 รายการ |
-| Embedding index | 0/868 เวกเตอร์; สถานะไม่สมบูรณ์และมีข้อผิดพลาดผู้ให้บริการ 429 ในสถานะที่บันทึกไว้ |
+| Embedding index | ครบ 868/868 เวกเตอร์, `gemini-embedding-001`, 768 มิติ, revision ตรงกับ Dataset ปัจจุบัน |
 | โมเดลข้อความ | ตรึงใน `app.py` เป็น `gemini-3.1-flash-lite`; ค่า `GEMINI_MODEL` ภายนอกไม่เปลี่ยน Runtime |
 | PDF.js | vendored ใน `ui/pdf_viewer/` รุ่น 6.4.299; runtime ไม่ดาวน์โหลดจาก CDN |
 
@@ -281,11 +281,11 @@ CropBox/rotation ทำให้การพลิกแกนด้วย `page
 - ถ้าแปล code/formula ไม่ปลอดภัย แสดงต้นฉบับอังกฤษและบอกข้อจำกัด text layer เมื่อจำเป็น
 - การเปลี่ยน revision/hash Dataset จะล้าง session เดิมเพื่อป้องกัน citation เก่าชี้ไปยังข้อมูลใหม่ผิดชุด
 
-## 12. Embeddings และสถานะที่ยังไม่พร้อม
+## 12. Embeddings และสถานะปัจจุบัน
 
 ### อธิบายแบบง่าย: ตอนนี้จำเป็นต้องใช้ Vector ไหม
 
-**ยังไม่จำเป็นสำหรับการเปิดระบบตอนนี้** และความจริงคือระบบยังไม่ได้ใช้ Vector Search อยู่ การค้นจากหนังสือทำได้ด้วยวิธีอื่นที่ตรงกับโจทย์หนังสือเล่มเดียวและตรวจหลักฐานกลับไปยังหน้า PDF ได้ ส่วน Vector เป็นเครื่องมือเสริมที่อาจช่วยตอนผู้ใช้ถามด้วยสำนวนที่ไม่ใช้คำเดียวกับหนังสือ
+**Vector Search เปิดใช้เป็นส่วนเสริมแล้วในสำเนา `aichatbot-vector`** โดยรวมคะแนนกับ BM25 เมื่อ query embedding พร้อม การค้นจากหนังสือยังคงใช้ exact heading, aliases และ BM25 ได้เอง เพื่อให้ระบบไม่หยุดเมื่อโควตา embedding จำกัดหรือผู้ให้บริการไม่พร้อม
 
 ลองนึกว่าหนังสือ 100 หน้าเป็นห้องสมุดเล็ก ๆ:
 
@@ -304,9 +304,9 @@ Vector Search ทำงานเป็นสองส่วนที่ต้อ
 4. เมื่อเปิดใช้ API โมเดลข้อความเดิมจะเลือก ID และช่วงบรรทัดจาก candidate pool ที่จำกัดไม่เกิน 48 chunks/18,000 ตัวอักษร ระบบตรวจว่า ID และบรรทัดมีอยู่จริง แล้วขยายย่อหน้าให้ครบก่อนแสดงหลักฐาน
 5. จากนั้น API จึงช่วยแปลข้อความต้นฉบับที่เลือกเป็นภาษาไทย ข้อเท็จจริงและ Citation ยังคงมาจากข้อความอังกฤษใน PDF
 
-**สถานะยืนยันจากไฟล์ปัจจุบัน:** `vector_store/status.json` ระบุ `incomplete`, `completed: 0`, `expected: 868` และการสร้างล่าสุดได้รับ HTTP 429; ใน `vector_store/` มีเพียงไฟล์สถานะ ไม่มี `text_index.json` ที่แอปจะโหลดได้ ดังนั้นตอนนี้ไม่มีทั้ง embedding index ที่พร้อมใช้และ Vector Search ขณะถาม จำนวน 868 เป็นจำนวน chunk ของ Dataset เวอร์ชันปัจจุบัน ไม่ใช่จำนวนเวกเตอร์ที่สร้างสำเร็จ
+**สถานะยืนยันจากไฟล์ปัจจุบัน:** `vector_store/status.json` ระบุ `complete`, `completed: 868`, `expected: 868`; `vector_store/text_index.json` มีเวกเตอร์ครบ 868 แถวจาก `gemini-embedding-001` ที่ 768 มิติ และผูกกับ revision ปัจจุบัน แอปจึงเปิด Hybrid Vector Search ได้เมื่อมีคีย์สำหรับ embed คำถาม โดยยังคง exact heading, aliases และ BM25 เป็น fallback หาก API หรือ quota ไม่พร้อม
 
-สาเหตุทันทีที่ไม่ได้ใช้ Vector คือผู้ให้บริการตอบ 429 ระหว่างสร้าง embeddings จึงไม่มีดัชนีครบให้แอปโหลด ไม่ใช่เพราะเราทดสอบแล้วพบว่า Vector Search แย่กว่า BM25 ส่วนที่ทำให้แอปยังค้นได้คือมีทางสำรอง exact heading/phrase และ BM25 ที่ไม่ต้องพึ่งเวกเตอร์
+ดัชนีรอบแรกเคยหยุดที่ 429 แต่สำเนา `aichatbot-vector` ใช้ `GEMINI_EMBEDDING_API_KEY` แยกจากคีย์สร้างข้อความ พร้อม batch, checkpoint, delay และ transient retry จนสร้างครบ ระบบยังค้นได้ด้วย exact heading/phrase และ BM25 เมื่อ query embedding ใช้งานไม่ได้
 
 #### แนวทางปัจจุบันถูกหลักไหม
 
@@ -335,7 +335,7 @@ Vector Search ทำงานเป็นสองส่วนที่ต้อ
 
 มีโค้ดรองรับ `gemini-embedding-001`, output 768 มิติ, normalization เป็น unit vector, `RETRIEVAL_DOCUMENT` ตอนสร้าง และ `RETRIEVAL_QUERY` ตอนถาม การค้นเช็ก model, fingerprint/revision, chunk IDs ครบ, dimensions และ task labels ก่อนใช้ และค้นข้ามไทย/อังกฤษได้ตามความสามารถ multilingual ของ embedding model
 
-แต่สถานะจริงใน `vector_store/status.json` คือ **incomplete: 0 จาก 868 embeddings**, มี provider status 429 ในการสร้างล่าสุดที่บันทึกไว้ ดังนั้นแอปปัจจุบันพึ่ง exact headings, full-vocabulary BM25/aliases และเมื่อมี key อาจแปล query เป็นอังกฤษก่อนค้น ไม่ควรบอกผู้ใช้ว่า multilingual vectors พร้อมแล้ว
+สถานะใน `vector_store/status.json` คือ **complete: 868 จาก 868 embeddings** และ index ผ่าน model/revision/ID/dimension/task checks แล้ว แอปใช้ query embedding ร่วมกับ BM25 เมื่อคีย์ embedding พร้อม; หากเรียก API ไม่สำเร็จจะกลับไปใช้ exact headings, full-vocabulary BM25 และ aliases โดยไม่ปิดการตอบทั้งหมด ความสามารถกับคำถามไทยยังต้องวัดด้วย held-out relevance set ก่อนอ้างความแม่นยำ
 
 เมื่อ API quota พร้อม `scripts/build_vectors.py` แบ่งงานเป็น batch, เก็บ progress ผูกกับ revision/model/ID/dimensions และเขียน index ฉบับสมบูรณ์แบบ atomic ก่อนเปลี่ยนสถานะ การขาด batch, เปลี่ยน PDF หรือ fingerprint ไม่ตรงจะทำให้ index ถูกปฏิเสธ ห้ามยกเลิก validation เพียงเพื่อให้ UI แสดงว่า index พร้อม
 
@@ -348,7 +348,7 @@ Vector Search ทำงานเป็นสองส่วนที่ต้อ
 | งาน/แหล่ง | แนวคิดที่แหล่งนั้นเสนอหรือศึกษา | นำมาใช้ตรงไหนใน Sorty | สถานะ/ข้อจำกัด |
 |---|---|---|---|
 | [Lewis et al. (2020), RAG](https://arxiv.org/abs/2005.11401) | ดึงเอกสารภายนอกมาเสริมคำตอบของโมเดล เพื่อเชื่อมความรู้ที่พารามิเตอร์โมเดลจำกับแหล่งตรวจสอบได้ | ภาพรวมของการค้น PDF ก่อนสร้างผลตอบ; `services/search.py`, `services/answering.py` | ใช้แนวคิด retrieval-grounded QA. ไม่ใช้ pipeline RAG แบบสร้างคำตอบอิสระจาก context ตาม paper; Sorty เน้นเลือก source spans และแปล |
-| [Karpukhin et al. (2020), DPR](https://aclanthology.org/2020.emnlp-main.550/) | dual-encoder dense passage retrieval เทียบคำถามกับ passage ใน embedding space | `services/vectors.py` ออกแบบ document/query task แยกกัน; เส้นทาง dense retrieval เมื่อ index พร้อม | **ยังไม่ active** เพราะ 0/868 vectors. DPR paper ไม่ใช่ผลประเมิน Gemini หรือภาษาไทยของ Sorty |
+| [Karpukhin et al. (2020), DPR](https://aclanthology.org/2020.emnlp-main.550/) | dual-encoder dense passage retrieval เทียบคำถามกับ passage ใน embedding space | `services/vectors.py` ออกแบบ document/query task แยกกัน; เส้นทาง dense retrieval เมื่อ index พร้อม | **active ในสำเนา `aichatbot-vector` เมื่อ query embedding API พร้อม; index ครบ 868/868.** DPR paper ไม่ใช่ผลประเมิน Gemini หรือภาษาไทยของ Sorty |
 | [Robertson & Zaragoza (2009), BM25](https://doi.org/10.1561/1500000019) | probabilistic relevance framework และ BM25 term weighting สำหรับจัดอันดับเอกสาร | lexical retrieval ใน `services/search.py`, ค่า k1/b และ full-vocabulary index | ใช้ BM25 concept/สูตรจัดอันดับ ค่าที่ตั้งเป็น project choice; ไม่อ้างว่าค่าที่เลือก optimal |
 | [Thakur et al. (2021), BEIR](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/65b9eea6e1cc6bb9f0cd2a47751a186f-Abstract-round2.html) | benchmark เปรียบเทียบ retrieval หลายชนิดบน 18 ชุดข้อมูล และพบว่าไม่มีวิธีเดียวชนะทุกงาน; BM25 เป็น baseline ที่แข็งแรง | ใช้สนับสนุนการคง BM25 และวัดกับชุดคำถามจริงก่อนเลือกว่าจะเปิด vector หรือ hybrid | เป็น benchmark หลายโดเมน ไม่ใช่ผลทดสอบกับหนังสือหรือคำถามไทยของ Sorty |
 | [Wang et al. (2023), Query2doc](https://aclanthology.org/2023.emnlp-main.585/) | ใช้ LLM สร้าง pseudo-document เพื่อขยาย query ก่อนส่งไปค้นด้วย lexical/dense retriever | เป็นทางเลือกงานวิจัยสำหรับ LLM ช่วย BM25 ด้วย token ปกติ โดยยังค้นจากต้นฉบับ | **ยังไม่ได้ implement** ใน Sorty; ผล 3–15% เป็นผลบน MS MARCO/TREC DL ของผู้วิจัยเท่านั้น |
@@ -360,7 +360,7 @@ Vector Search ทำงานเป็นสองส่วนที่ต้อ
 | [Liu et al. (2024), Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) | วิเคราะห์ว่าตำแหน่งข้อมูลใน long context มีผลต่อการใช้ข้อมูลของโมเดล | เหตุผลประกอบการค้นเฉพาะ candidate และแบ่งผลยาวเป็นส่วน แทนส่งหนังสือ 100 หน้าให้ LLM ทุกคำถาม | เป็นแรงจูงใจเชิงออกแบบ ไม่ใช่ผล benchmark ว่า Sorty ลด latency/token หรือดีกว่าแน่นอน |
 | [Günther et al. (2024), Late Chunking](https://arxiv.org/abs/2409.04701) | สร้าง contextual token representations ก่อน pool เป็น chunk embeddings | ใช้เทียบแนวทาง structure-aware chunking และบันทึก heading path ในข้อมูลที่จะ embed | Sorty embed ข้อความ chunk พร้อม heading path ตามปกติ ไม่ได้เรียก token pooling API หรือ implement late chunking |
 | [Rastogi (2026), QASC](https://arxiv.org/abs/2605.22834) (arXiv preprint) | เสนอ query-adaptive chunk expansion รอบ sentence seeds และรายงานผลบนชุด technical docs/queries ของผู้เขียน | เป็นแนวทางที่เกี่ยวข้องกับการขยายบริบทตามคำถาม; Sorty ทำ paragraph completion จาก paragraph ID และ parent metadata | ไม่ใช่ QASC: ไม่มี embedding sentence seeds หรือ score aggregation ตามบทความ; ผล F1 ใน preprint ไม่ใช่ผล Sorty |
-| [Lee et al. (2025), Gemini Embedding](https://arxiv.org/abs/2503.07891) และ [Gemini API docs](https://ai.google.dev/gemini-api/docs/embeddings) | อธิบาย embedding model, task types, dimensions และกรณีใช้งาน retrieval/multilingual | `services/vectors.py` เลือก `gemini-embedding-001`, task `RETRIEVAL_DOCUMENT/QUERY`, 768 dimensions, revision checks | API design รองรับ แต่ index ปัจจุบันยัง 0 แถว; ความสามารถ multilingual ของรุ่นโมเดลไม่ใช่ผลทดสอบระบบเรา |
+| [Lee et al. (2025), Gemini Embedding](https://arxiv.org/abs/2503.07891) และ [Gemini API docs](https://ai.google.dev/gemini-api/docs/embeddings) | อธิบาย embedding model, task types, dimensions และกรณีใช้งาน retrieval/multilingual | `services/vectors.py` เลือก `gemini-embedding-001`, task `RETRIEVAL_DOCUMENT/QUERY`, 768 dimensions, revision checks | index ปัจจุบันครบ 868 แถวและ query path ใช้งานได้; ความสามารถ multilingual ของรุ่นโมเดลยังไม่ใช่ผล benchmark ของ Sorty |
 | [Jearanaitanakij et al. (2024), Thai QA](https://ph01.tci-thaijo.org/index.php/ecticit/article/view/256043) | ค้นคู่ QA ภาษาไทยด้วย embeddings/FAISS แล้วใช้โมเดลเลือกคู่คำตอบ | ใช้ประกอบการทบทวนแนวคิดการค้นคำถามไทยและการลดงาน LLM | Sorty ไม่มี QA pair answers/FAISS index แบบงานนี้; ค้น PDF อังกฤษและอ้างข้อความต้นฉบับ |
 | [Nakwijit & Purver (2022), Misspelling Semantics in Thai](https://aclanthology.org/2022.lrec-1.24/) | ศึกษาการแทน/เข้าใจความหมายคำสะกดผิดภาษาไทย | ใช้เป็นบริบทว่าคำสะกดผิดเป็นปัญหา retrieval จริง; ในระบบใช้ typo correction ที่จำกัดกับชื่อหัวข้ออังกฤษและ aliases ที่ทบทวนแล้ว | ไม่ได้ใช้โมเดล/วิธีของบทความ และไม่ได้ทำ Thai spell correction ทั่วไปด้วย embedding |
 | [Tate et al. (2019), VSTF](https://doi.org/10.1080/10888438.2018.1561700) | จัดบรรทัดตามขอบเขตวลี/อนุประโยคและทำให้โครงสร้างมองเห็น โดยคง content/vocabulary/syntax เดิม; randomized study ในเด็ก grade 7–8 รายงานผลขนาดเล็กในบางคะแนน | รองรับเหตุผลในการแยกการนำเสนอจากข้อความ และศึกษา whitespace/paragraphing ที่คง source text | ไม่ใช่ LLM rewrite; ไม่ได้นำ parser/VSTF เต็มรูปแบบมาใช้; ผลผู้เรียนภาษาอังกฤษไม่เท่ากับผลของ UI ไทย |
@@ -397,7 +397,7 @@ python3 -m venv venv                 # ทำเฉพาะเครื่อ�
 cp .env.example .env                 # ทำเฉพาะเมื่อยังไม่มี .env; ห้ามเขียนทับ key เดิม
 ```
 
-ใส่ `GEMINI_API_KEY` และ `GEMINI_API_KEY_FALLBACK` ใน `.env` บนเครื่องผู้ใช้เอง (อย่าใส่ใน Git/เอกสาร/ภาพหน้าจอ) โมเดลถูกตรึงใน `app.py`; การเปลี่ยน `GEMINI_MODEL` ใน `.env` ไม่มีผล จากนั้นเปิดด้วย:
+ใส่ `GEMINI_API_KEY`, `GEMINI_API_KEY_FALLBACK` และ `GEMINI_EMBEDDING_API_KEY` ใน `.env` บนเครื่องผู้ใช้เอง (อย่าใส่ใน Git/เอกสาร/ภาพหน้าจอ) โมเดลถูกตรึงใน `app.py`; การเปลี่ยน `GEMINI_MODEL` ใน `.env` ไม่มีผล จากนั้นเปิดด้วย:
 
 ```bash
 ./run.sh
@@ -429,13 +429,13 @@ cp .env.example .env                 # ทำเฉพาะเมื่อย�
 
 ไฟล์ JSON หลักถูกเขียน `.pending` แล้ว rename ทีละไฟล์เพื่อป้องกันไฟล์รายตัวเขียนค้าง แต่การ rebuild ทั้งชุดไม่ใช่ transaction ครอบคลุมทุก metadata file หาก process หยุดกลางคัน ให้รันสแกนใหม่ครบและตรวจรายงานก่อนเปิดระบบ
 
-### สร้าง embedding index (เมื่อ quota พร้อม)
+### สร้าง embedding index ใหม่เมื่อ Dataset หรือ revision เปลี่ยน
 
 ```bash
 ./venv/bin/python scripts/build_vectors.py
 ```
 
-สคริปต์ใช้ batch และ progress ที่ผูกกับ revision/model/IDs; จะตรวจจำนวน 868 vectors, dimensions และ task types ก่อนประกาศ complete. หาก provider 429 ให้หยุดที่ incomplete และใช้ search ปกติ; ห้ามสร้างสถานะ complete ด้วยมือ
+สคริปต์ใช้ batch และ progress ที่ผูกกับ revision/model/IDs; จะตรวจจำนวน 868 vectors, dimensions และ task types ก่อนประกาศ complete. หาก provider ตอบ 429/5xx สคริปต์จะรอตาม backoff และบันทึก checkpoint; หากยังไม่สำเร็จจะคงสถานะ incomplete และใช้ search ปกติ ห้ามสร้างสถานะ complete ด้วยมือ
 
 ### ลบกลุ่ม Q&A จาก PDF ในอนาคต
 
@@ -494,13 +494,13 @@ node tests/test_pdf_loader.mjs
 | รูปล้น/รูปจากบทสนทนากลายเป็นภาพหลักฐาน | ภาพไม่ผูกกับ source section/ชนิดหรือ CSS ไม่จำกัดกรอบ | เลือกเฉพาะ crop ที่ verified/hash ตรง/chunk ตรง และกำหนด max width/object-fit; ไม่มีรูปก็ไม่แสดง |
 | มีปุ่มหลักฐานซ้ำทั้งที่ข้อความติดกัน | line evidence แสดงเป็นหน่วยเดี่ยวและ pagination ตัดคนละกลุ่ม | รวม contiguous evidence และทำหนึ่ง control ต่อหน้า PDF ที่มองเห็น โดยเก็บ highlight rect แยกตามช่วงจริง |
 | ข้อความ “Semantic questions and answers” ปนเนื้อหาค้น | Supplement Q&A เคยอยู่ใน source text ทำให้สแกนเป็น passage | ลบ PDF blocks จริงแบบ redaction โดยพิสูจน์ตำแหน่ง/หน้า; เก็บเฉพาะ query route ที่ชี้หัวข้อ ไม่มีคำตอบ Q&A ใน runtime |
-| embeddings ไม่ช่วยค้นในขณะนี้ | provider บันทึก status 429 และ index ค้าง 0/868 | ใช้ keyword/heading path ต่อ และสร้าง index ใหม่เมื่อ quota อนุญาต; ไม่แสดงสถานะ semantic index พร้อมก่อนตรวจครบ |
+| query embedding ใช้ไม่ได้ชั่วคราว | quota หรือ provider ของคีย์ embedding ไม่พร้อม | fallback ไป keyword/heading path/BM25; index ที่สร้างครบยังอยู่และกลับมาใช้ได้เมื่อ API พร้อม |
 
 รายงานรายละเอียดตามหัวข้ออยู่ใน `docs/PARAGRAPH_COMPLETION_FIX_TH.md`, `docs/PDF_QA_REMOVAL_TH.md`, `docs/ENGLISH_SOURCE_REBUILD_REPORT_TH.md` และ JSON audit ที่กล่าวไว้ เอกสารนี้รวบรวมสาระไว้เพื่อ handoff โดยไม่ต้องเปิดทุกไฟล์ก่อนเข้าใจ flow
 
 ## 18. ข้อจำกัดและงานต่อ
 
-1. Embeddings ยัง 0/868; multilingual dense retrieval ยังไม่ผ่าน integration สำหรับ corpus ปัจจุบัน
+1. Embeddings ครบ 868/868 และ integration เปิดใช้แล้ว แต่ยังไม่มี held-out benchmark ที่พิสูจน์คุณภาพ dense retrieval สำหรับคำถามไทย
 2. การค้นคำถามธรรมชาติยังขึ้นกับ candidate recall และการเลือกของ LLM; exact source offsets ไม่ได้แปลว่าหลักฐานนั้นตอบตรงที่สุดทุกครั้ง
 3. คำแปลไทยผ่าน checks บางอย่างแต่ยังไม่มี human evaluation ครบเล่ม และ numeric marker validation ไม่รับรองความเท่าเทียมเชิงความหมาย
 4. PDF text layer มีสูตร/glyph ที่ซับซ้อนซึ่งต้องตรวจจากภาพ; ไม่ได้รัน OCR/vision model ตรวจทุกหน้า
@@ -511,7 +511,7 @@ node tests/test_pdf_loader.mjs
 9. ประวัติ Git ใน repository มีงาน migration เก่าและไฟล์ staged/dirty จากการทำงานก่อนหน้า ห้าม reset/stage/commit กลุ่มงานโดยไม่ทบทวน diff และ secrets ก่อน
 10. เคยมี ZIP handoff เก่าที่ไม่ถือเป็น artifact ล่าสุด งานนี้เป็นคู่มือ Markdown ไฟล์เดียวตามที่ร้องขอ ไม่ได้สร้าง ZIP ใหม่
 
-ลำดับงานที่แนะนำ: (ก) คืน quota แล้วสร้าง/ตรวจ vectors โดยเก็บ fallback keyword (ข) ทำ held-out query set สำหรับทุก algorithm และหัวข้อข้ามหน้า (ค) ทบทวนคำแปล/สูตรกับคน (ง) ถ้าต้องการ formatter AI ให้เชื่อมแบบเลือก breakpoint → reconstruct source → strict text invariant และ A/B test กับกฎ manual ก่อนเปิดเป็นค่าเริ่มต้น
+ลำดับงานที่แนะนำ: (ก) วัด vectors ที่สร้างครบแล้วกับ held-out questions โดยเก็บ fallback keyword (ข) ทำ held-out query set สำหรับทุก algorithm และหัวข้อข้ามหน้า (ค) ทบทวนคำแปล/สูตรกับคน (ง) ถ้าต้องการ formatter AI ให้เชื่อมแบบเลือก breakpoint → reconstruct source → strict text invariant และ A/B test กับกฎ manual ก่อนเปิดเป็นค่าเริ่มต้น
 
 ## 19. บรรณานุกรมและเอกสารทางการ
 

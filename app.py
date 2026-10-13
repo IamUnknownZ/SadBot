@@ -67,7 +67,19 @@ def configuration():
     return key,fallback_key,model
 
 
-def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=True,section_id=None,fallback_key=None):
+def embedding_configuration(primary_key,fallback_key):
+    """Use a separately budgeted key for vectors when one is configured."""
+    local=dotenv_values(ROOT/'.env')
+    embedding_key=os.getenv('GEMINI_EMBEDDING_API_KEY') or local.get('GEMINI_EMBEDDING_API_KEY')
+    try:
+        embedding_key=st.secrets.get('GEMINI_EMBEDDING_API_KEY') or embedding_key
+    except (FileNotFoundError,KeyError):
+        pass
+    return embedding_key or fallback_key or primary_key
+
+
+def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=True,section_id=None,
+           fallback_key=None,embedding_key=None):
     history=st.session_state.messages
     casual=smalltalk(question)
     if casual and not section_id:
@@ -77,7 +89,7 @@ def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=Tr
     # Routing returns only three JSON fields; a small output budget shortens
     # latency without restricting the PDF evidence shown to the reader.
     interpreter=generation_provider(key,model,max_output_tokens=300,fallback_key=fallback_key) if key else None
-    dense_search=(lambda query:search_index(query,data,indexes['en'],embed=provider(key))) if key and indexes.get('en') else None
+    dense_search=(lambda query:search_index(query,data,indexes['en'],embed=provider(embedding_key))) if embedding_key and indexes.get('en') else None
     # Preserve the user's wording while resolving explicit follow-ups to the
     # last answered book topic. New independent questions remain unchanged.
     lookup_question=question if section_id else resolve_query(question,history)
@@ -209,6 +221,7 @@ def run():
     if st.session_state.get('revision')!=revision:clear();st.session_state.revision=revision
     st.session_state.setdefault('messages',[])
     key,fallback_key,model=configuration()
+    embedding_key=embedding_configuration(key,fallback_key)
     with st.sidebar:
         st.title('📖 Sorty');st.caption('อ่าน เข้าใจ และตรวจสอบจากหนังสือ')
         st.divider()
@@ -230,7 +243,8 @@ def run():
         st.button('เริ่มบทสนทนาใหม่',on_click=clear,width='stretch')
     question=st.chat_input('ถามเรื่องอัลกอริทึม หรือหัวข้อในหนังสือ')
     if question:
-        with st.spinner('กำลังค้นหลักฐานจากหนังสือ…'):submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai,fallback_key=fallback_key)
+        with st.spinner('กำลังค้นหลักฐานจากหนังสือ…'):submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai,
+            fallback_key=fallback_key,embedding_key=embedding_key)
     if not st.session_state.messages:
         st.markdown('## ผม Sorty ยินดีให้บริการ')
         st.write('ความรู้เรื่องอัลกอริทึมการเรียงลำดับ')
@@ -243,7 +257,8 @@ def run():
                 selected=st.selectbox('หัวข้อที่พบ',range(len(choices)),key=f'choice-{i}',
                     format_func=lambda n:' › '.join(choices[n]['heading_path'][1:])+f" · หน้า {choices[n]['page_start']}–{choices[n]['page_end']}")
                 if st.button('อ่านหัวข้อนี้',key=f'read-choice-{i}'):
-                    submit(message['query']['original'],catalogs,'en',use_ai,key,model,indexes,format_with_ai,section_id=choices[selected]['id'],fallback_key=fallback_key);st.rerun()
+                    submit(message['query']['original'],catalogs,'en',use_ai,key,model,indexes,format_with_ai,
+                           section_id=choices[selected]['id'],fallback_key=fallback_key,embedding_key=embedding_key);st.rerun()
                 continue
             if message['status']!='answered':st.write(message['answer']);continue
             if message.get('selection_state')=='unavailable':

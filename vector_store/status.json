@@ -1,10 +1,10 @@
 {
-  "state": "incomplete",
+  "state": "complete",
   "model": "gemini-embedding-001",
   "dimensions": 768,
   "revision": "c73107ea3ea3de5527e18be713f620301ce758d4672172c9b515758f09dbbc41",
   "source_language": "en",
   "expected": 868,
-  "completed": 0,
-  "error": "Embedding provider unavailable (status 429); offline search remains available"
+  "completed": 868,
+  "error": null
 }

@@ -53,7 +53,7 @@ Embeddings เป็นส่วนเสริม ระบบยังค้�
 | จำนวนครั้งต่อ key สำหรับแปล | `1` | ไม่คูณเวลารอเมื่อผู้ให้บริการไม่พร้อม |
 | ขนาด Chunk สูงสุด | `1,800 ตัวอักษร` | รักษาขอบเขตข้อความและจำกัด candidate context |
 | Dataset | `868 chunks`, `100 หน้า`, `48 รูป` | จำนวนจาก `metadata/dataset.json` ปัจจุบัน |
-| Embedding index | `0/868` | ยังไม่พร้อมเพราะสถานะล่าสุดบันทึกข้อผิดพลาด 429 |
+| Embedding index | `868/868`, 768 มิติ | สร้างครบด้วย `gemini-embedding-001`; ใช้ร่วมกับ BM25 แบบ hybrid และยัง fallback เป็น keyword ได้ |
 
 ตัวเลขเหล่านี้เป็นค่าทางวิศวกรรมของระบบปัจจุบัน ไม่ใช่ผลพิสูจน์ว่าเป็นค่าที่ดีที่สุดสำหรับทุกคำถาม
 
@@ -73,7 +73,7 @@ venv/bin/pip install -r requirements.txt
 cp .env.example .env
 ```
 
-ใส่ `GEMINI_API_KEY` และ `GEMINI_API_KEY_FALLBACK` ใน `.env` ห้าม commit `.env`
+ใส่ `GEMINI_API_KEY`, `GEMINI_API_KEY_FALLBACK` และ `GEMINI_EMBEDDING_API_KEY` ใน `.env` ห้าม commit `.env` โดยคีย์ embedding แยกโควตาจากงานสร้างข้อความได้
 
 ## ตั้งค่า Streamlit Community Cloud
 
@@ -82,6 +82,7 @@ cp .env.example .env
 ```toml
 GEMINI_API_KEY = "ใส่คีย์หลัก"
 GEMINI_API_KEY_FALLBACK = "ใส่คีย์สำรอง"
+GEMINI_EMBEDDING_API_KEY = "ใส่คีย์สำหรับ Vector Search"
 ```
 
 ไม่ต้องใส่ `GEMINI_MODEL` เพราะโค้ดตรึงรุ่น `gemini-3.1-flash-lite` ไว้แล้ว
@@ -98,7 +99,7 @@ Runtime ใช้ `book_data/Cormen_Basic_Sorting_100_Pages.pdf` เท่าน
 venv/bin/python scripts/rescan.py --language=en
 ```
 
-สร้าง embeddings เมื่อ quota พร้อม:
+สร้าง embeddings ใหม่เมื่อ Dataset เปลี่ยนหรือ revision ไม่ตรง:
 
 ```bash
 venv/bin/python scripts/build_vectors.py --language=en
@@ -110,7 +111,7 @@ venv/bin/python scripts/build_vectors.py --language=en
 - การตรวจ ID, offsets และตัวเลขไม่ได้รับประกันว่าคำแปลไทยถูกความหมาย 100%
 - Text layer ของสูตรบางส่วนต้องตรวจเทียบภาพ PDF
 - ผล audit 16 คำถามเป็นชุดตรวจขนาดจำกัด ไม่รับประกันทุกคำถาม
-- Vector Search ยังไม่ทำงานจนกว่าจะสร้างครบ 868 vectors และผ่าน revision checks
+- Vector Search ต้องใช้ API เพื่อ embed คำถามแต่ละครั้ง; ถ้า quota ไม่พร้อม ระบบจะ fallback ไป exact heading, aliases และ BM25
 
 ## เอกสารหลัก
 
