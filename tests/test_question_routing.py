@@ -56,7 +56,7 @@ class GeminiFirstRoutingTests(unittest.TestCase):
         self.check_source(result)
         self.assertEqual(result['retrieval_method'], 'prepared_answer')
         self.assertLessEqual(len(result['evidence']), 3)
-        self.assertIn('Bubble Sort', result['answer'])
+        self.assertIn('Bubblesort is a popular', result['answer'])
 
     def test_common_typo_in_prepared_sorting_question_uses_cached_answer(self):
         result = answering.answer_question(
@@ -116,6 +116,9 @@ class GeminiFirstRoutingTests(unittest.TestCase):
         with patch.dict('os.environ', {'GEMINI_API_KEY': 'test-key'}), \
              patch('services.conversation.generation_provider', return_value=generate):
             app = AppTest.from_file(str(ROOT/'app.py'), default_timeout=30).run()
+            # This test asserts the routing path, not the new default-on
+            # Thai translation which independently calls Gemini.
+            app.toggle[0].set_value(False).run()
             app.chat_input[0].set_value(QUESTION).run()
         self.assertFalse(app.exception)
         result = app.session_state['messages'][-1]

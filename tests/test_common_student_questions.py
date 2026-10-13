@@ -176,6 +176,82 @@ class TranslationDiagnosticsTests(unittest.TestCase):
         self.assertGreaterEqual(len(calls),2)
         self.assertTrue(any('ข้อมูลเรียงลำดับจากต้นฉบับ' in m.value for m in app.markdown))
 
+    def test_default_thai_reading_of_bare_algorithms_has_no_literal_escaped_newlines(self):
+        from streamlit.testing.v1 import AppTest
+        for question,expected_pages in (
+            ('bubble sort',{34}),
+            ('merge sort',{72}),
+            ('counting sort',{90}),
+            ('What is Bubble Sort?',{34}),
+        ):
+            with self.subTest(question=question):
+                app=AppTest.from_file(str(ROOT/'app.py'),default_timeout=30).run()
+                self.assertTrue(app.toggle[0].value)
+                app.chat_input[0].set_value(question).run()
+                self.assertFalse(app.exception)
+                msg=app.session_state['messages'][-1]
+                self.assertEqual(msg['status'],'answered')
+                self.assertTrue(msg['translate_enabled'])
+                self.assertEqual({x['page'] for x in msg['evidence']},expected_pages)
+                for item in msg['evidence']:
+                    shown=msg['display_text'][item['id']]
+                    self.assertTrue(shown['translated'],question+' '+item['id'])
+                    self.assertNotIn(r'\n',shown['text'])
+                self.assertTrue(any('Bubble Sort' in m.value or 'Merge Sort' in m.value or 'Counting Sort' in m.value
+                                    for m in app.markdown))
+
+    def test_simple_bubble_definition_does_not_show_trace_internals(self):
+        result=answer_question('What is Bubble Sort?',self.data,ROOT,[],generate=None)
+        self.assertEqual(result['status'],'answered')
+        self.assertEqual([row['id'] for row in result['evidence']],['p34-c0344'])
+        self.assertNotIn('CLRS direction',result['answer'])
+        mechanism=answer_question('Bubble Sort ทำงานอย่างไร',self.data,ROOT,[],generate=None)
+        self.assertEqual({row['id'] for row in mechanism['evidence']},{'p34-c0344','p36-c0370'})
+
+    def test_simple_merge_definition_contains_divide_conquer_combine(self):
+        result=answer_question('merge sort',self.data,ROOT,[],generate=None)
+        self.assertEqual(result['status'],'answered')
+        self.assertEqual({row['id'] for row in result['evidence']},
+                         {'p72-c0759','p72-c0760','p72-c0761','p72-c0762'})
+        self.assertIn('Divide:',result['answer'])
+        self.assertIn('Conquer:',result['answer'])
+        self.assertIn('Combine:',result['answer'])
+
+    def test_source_locked_translation_rejects_changed_formula_numbers(self):
+        from unittest.mock import patch
+        chunk=next(x for x in self.data['chunks'] if x['id']=='p40-c0415')
+        sha,thai=LOCAL_SOURCE_TRANSLATIONS[chunk['id']]
+        with patch.dict(LOCAL_SOURCE_TRANSLATIONS,{chunk['id']:(sha,thai+' 999') } ):
+            output=translate_passages([chunk],generate=None)[chunk['id']]
+        self.assertFalse(output['translated'])
+        self.assertEqual(output['reason'],'translation_requires_provider')
+
+    def test_pairwise_bubble_merge_keeps_formulas_in_thai_without_model(self):
+        result=answer_question('เปรียบเทียบ Bubble Sort กับ Merge Sort',self.data,ROOT,[],generate=None)
+        self.assertEqual(result['status'],'answered')
+        translations=translate_passages(result['evidence'],generate=None)
+        self.assertTrue(all(t['translated'] for t in translations.values()))
+        bubble=translations['p40-c0415']['text']
+        merge=translations['p78-c0826']['text']
+        self.assertIn('Theta(n^2)',bubble)
+        self.assertIn('n(n-1)/2',bubble)
+        self.assertIn('Θ(n lg n)',merge)
+        self.assertIn('Θ(n²)',merge)
+        self.assertNotIn(r'\n',bubble)
+        self.assertNotIn(r'\n',merge)
+
+    def test_fallback_only_api_key_is_accepted_without_primary(self):
+        import os
+        from unittest.mock import patch
+        import app
+        with patch.object(app,'dotenv_values',return_value={}), \
+             patch.object(app.st,'secrets',{}), \
+             patch.dict(os.environ,{'GEMINI_API_KEY':'','GEMINI_API_KEY_FALLBACK':'test-backup-key'}):
+            key,fallback,model=app.configuration()
+        self.assertEqual(key,'test-backup-key')
+        self.assertIsNone(fallback)
+        self.assertEqual(model,'gemini-3.1-flash-lite')
+
     def test_provider_503_is_not_wrongly_reported_as_missing_dataset(self):
         source=dict(id='plain',kind='paragraph',text='Sorting compares neighboring items.')
         def unavailable(_):raise ValueError('Model unavailable (status 503)')

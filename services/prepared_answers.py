@@ -66,5 +66,15 @@ def answer_for(question,data):
     # A prepared answer without source evidence is not a valid PDF answer.
     # Let the normal Gemini-to-PDF retrieval path handle it instead.
     if not evidence or len(evidence)!=len(row['evidence_ids']): return None
-    answer=row.get('answer') or '\n\n'.join(c['text'] for c in evidence)
+    if row.get('record_id')=='SORT-0018' and _is_short_bubble_definition(question):
+        # A one-line definition does not need scan direction, recursion,
+        # invariants or an extra 400-word source passage. Only include the
+        # second source paragraph when the user explicitly asks how it works.
+        normalized=compact(question)
+        mechanism=any(compact(term) in normalized for term in (
+            'ทำงาน','หลักการ','work','operation'))
+        evidence=evidence[:2] if mechanism else evidence[:1]
+        answer='\n\n'.join(c['text'] for c in evidence)
+    else:
+        answer=row.get('answer') or '\n\n'.join(c['text'] for c in evidence)
     return dict(query=plan_query(question),status='answered',answer=answer,evidence=evidence,image=None,choices=[],prepared=True,retrieval_method='prepared_answer')

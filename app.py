@@ -219,10 +219,12 @@ def run():
             file_name=Path(data['document']['file']).name,mime='application/pdf',width='stretch')
         st.divider()
         use_ai=bool(key)
-        format_with_ai=st.toggle('แปลคำตอบเป็นภาษาไทย',value=False)
+        # Thai is the default reading language; users may explicitly switch
+        # back to original English while keeping all PDF evidence unchanged.
+        format_with_ai=st.toggle('แปลคำตอบเป็นภาษาไทย',value=True)
         if not key:st.caption('ไม่มี Gemini API: แปลได้เฉพาะข้อความที่มีคำแปลในเครื่อง ส่วนอื่นยังแสดงต้นฉบับอังกฤษ')
-        st.caption('Gemini อ่านความหมายของคำถามก่อนค้นหลักฐานจากหนังสือ')
-        st.caption(f'โมเดลเดิม: {model}')
+        st.caption('คำถามพื้นฐานค้นจาก PDF ได้โดยตรง · Gemini ช่วยตีความคำถามที่ซับซ้อน')
+        st.caption(f'โมเดลที่ใช้: {model}')
         st.caption('ค้นจากหัวข้อ ข้อความ และความหมายใน PDF' if indexes.get('en') else 'ค้นจากหัวข้อและข้อความใน PDF')
         st.caption('ไม่มีบัญชีผู้ใช้หรือฐานข้อมูล บทสนทนาอยู่ชั่วคราวในรอบใช้งานนี้')
         st.button('เริ่มบทสนทนาใหม่',on_click=clear,width='stretch')
@@ -267,6 +269,24 @@ def run():
                          if t in ('bubble','selection','insertion','merge','counting')]
             show_pair_labels=(message.get('retrieval_method')=='common_source_question'
                               and len(pair_topics)==2)
+            # A small source-grounded comparison answers the learner's question
+            # directly, before the exact verifiable PDF passages appear below.
+            # Only enable the authored table for a fully verified four-chunk
+            # Bubble/Merge pair; never extrapolate it to arbitrary questions.
+            source_ids={e['id'] for e in evidence}
+            if (show_pair_labels and set(pair_topics)=={'bubble','merge'} and
+                source_ids=={'p34-c0344','p40-c0415','p72-c0759','p78-c0826'}):
+                if message.get('translate_enabled'):
+                    st.markdown('''| ประเด็น | Bubble Sort | Merge Sort |
+|---|---|---|
+| หลักการ | สลับสมาชิกที่อยู่ติดกันเมื่อเรียงผิดลำดับ | ใช้แนวคิด Divide and Conquer |
+| เวลาทำงานกรณีแย่ที่สุด | `Theta(n^2)` สำหรับแบบวนรอบตายตัว | `Θ(n lg n)` |''')
+                else:
+                    st.markdown('''| Aspect | Bubble Sort | Merge Sort |
+|---|---|---|
+| Method | Swap adjacent out-of-order elements | Divide and conquer |
+| Worst-case time | `Theta(n^2)` for fixed-loop version | `Θ(n lg n)` |''')
+                st.caption('สรุปจากหลักฐานใน PDF หน้า 34, 40, 72 และ 78 · เปิดดูข้อความต้นฉบับด้านล่าง')
             last_pair_topic=None
             for group in shown_groups:
                 if show_pair_labels and group.get('members'):

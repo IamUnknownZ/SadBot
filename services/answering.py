@@ -143,8 +143,23 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     if question.strip().casefold() in ('อัลกอริทึมคืออะไร','อัลกอริทึมหมายถึงอะไร'):
         rows=source_evidence(question,data)
         if rows:return _answer_from_verified_chunks(question,data,root,rows,'common_source_question')
+    # Explicit brief teaching requests should not expand a whole chapter.
+    # E.g. 'อธิบาย Merge Sort' previously produced >100 unrelated chunks,
+    # exhausting translation tokens and hiding the useful introduction.
+    if question.strip().casefold().startswith(('อธิบาย ','explain ')):
+        rows=source_evidence(question,data)
+        if rows:return _answer_from_verified_chunks(question,data,root,rows,'common_source_question')
     topic=known_topic(question)
     if topic:
+        # Source-only aliases for the most common definitions should be
+        # useful on their own: e.g. the first Merge Sort sentence says only
+        # that details follow, so include its Divide/Conquer/Combine clauses.
+        if topic['canonical'] in ('merge sort','counting sort'):
+            rows=source_evidence(topic['canonical'],data)
+            if rows:
+                result=_answer_from_verified_chunks(question,data,root,rows,'known_topic_alias')
+                result['query']['original']=question
+                return result
         result=answer(topic['canonical'],data,root,section_id=topic['section_id'])
         result['query']['original']=question
         result['prepared']=True

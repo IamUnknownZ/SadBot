@@ -39,7 +39,7 @@ class EnglishUITests(OfflineAITestCase):
             app=AppTest.from_file(str(ROOT/'app.py'),default_timeout=30).run()
         self.assertFalse(app.exception)
         self.assertEqual(len(app.toggle),1)
-        self.assertFalse(app.toggle[0].value)
+        self.assertTrue(app.toggle[0].value)
 
     def test_source_pseudocode_stays_indented_in_a_labeled_code_block(self):
         from services.ingest import load_dataset
@@ -105,7 +105,7 @@ class EnglishUITests(OfflineAITestCase):
             app.chat_input[0].set_value('bubble sort คือ อะไร').run()
         self.assertFalse(app.exception)
         message=app.session_state['messages'][-1]
-        self.assertEqual([e['page'] for e in message['evidence']],[34,36,36])
+        self.assertEqual([e['page'] for e in message['evidence']],[34])
         self.assertEqual(message['retrieval_method'],'prepared_answer')
         self.assertTrue(any('สลับสมาชิกที่อยู่ติดกัน' in m.value for m in app.markdown))
         self.assertFalse(any('**S2.' in m.value or '**Correctness' in m.value for m in app.markdown))
