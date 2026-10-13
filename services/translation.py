@@ -10,6 +10,35 @@ NUMBER=re.compile(r'\d+(?:[.,]\d+)*')
 PLACEHOLDER=re.compile(r'⟦KEEP_\d+⟧')
 UNSAFE=re.compile(r'[\x00-\x08\x0b-\x1f\x7f-\x9fŒ‚]')
 
+# Human-reviewed translations for common prepared answers.  Each entry keeps
+# the exact English source beside its Thai rendering so a rebuilt dataset cannot
+# accidentally reuse a stale translation under the same chunk ID.
+REVIEWED_TRANSLATIONS={
+    'p46-c0492': {
+        'source': (
+            'Selection rather than adjacent exchange\n'
+            'Selection sort divides the array into a finalized sorted prefix and an unresolved suffix. On pass i,\n'
+            'inspect every record in the suffix and remember the position of a smallest key. Exchange that\n'
+            'record with A[i]. Continue until only one unresolved record remains.\n'
+            'The scan determines where the minimum is; it does not need to rearrange the array while\n'
+            'searching. This is the essential distinction from bubble sort, which performs local exchanges\n'
+            'during its scan. Both can move a minimum to the left boundary, but selection uses one direct\n'
+            'exchange rather than a chain of adjacent exchanges.'
+        ),
+        'thai': (
+            'การเลือกแทนการสลับสมาชิกที่อยู่ติดกัน\n\n'
+            'Selection Sort แบ่งอาร์เรย์ออกเป็นส่วนต้นที่เรียงลำดับเรียบร้อยแล้ว '
+            'และส่วนท้ายที่ยังไม่ได้เรียงลำดับ ในรอบที่ i ให้ตรวจสอบรายการข้อมูลทุกตัวในส่วนท้าย '
+            'และจดจำตำแหน่งของค่าที่ใช้เปรียบเทียบ (คีย์) ที่น้อยที่สุด จากนั้นสลับรายการข้อมูลนั้นกับ A[i] '
+            'ทำต่อไปจนเหลือรายการข้อมูลที่ยังไม่ได้เรียงลำดับเพียงหนึ่งรายการ\n\n'
+            'การสแกนมีหน้าที่หาตำแหน่งของค่าต่ำสุด จึงไม่จำเป็นต้องจัดตำแหน่งสมาชิกในอาร์เรย์ใหม่ระหว่างการค้นหา '
+            'จุดนี้คือความแตกต่างสำคัญจาก Bubble Sort ซึ่งสลับสมาชิกที่อยู่ติดกันระหว่างการสแกน '
+            'ทั้งสองวิธีสามารถย้ายค่าต่ำสุดไปยังขอบด้านซ้ายได้ แต่ Selection Sort ใช้การสลับโดยตรงหนึ่งครั้ง '
+            'แทนการสลับสมาชิกที่อยู่ติดกันต่อเนื่องหลายครั้ง'
+        ),
+    },
+}
+
 
 def mask_source(row):
     text=row['text']
@@ -26,7 +55,13 @@ def mask_source(row):
 
 def translate_passages(rows,*,generate):
     result={r['id']:dict(text=r['text'],translated=False,reason='source_original') for r in rows}
-    eligible=[r for r in rows if r.get('kind') not in ('code','table','formula','figure_label') and not UNSAFE.search(mask_source(r)[0])]
+    reviewed_ids=set()
+    for row in rows:
+        reviewed=REVIEWED_TRANSLATIONS.get(row['id'])
+        if reviewed and row['text']==reviewed['source']:
+            result[row['id']]=dict(text=reviewed['thai'],translated=True,reason='human_reviewed')
+            reviewed_ids.add(row['id'])
+    eligible=[r for r in rows if r['id'] not in reviewed_ids and r.get('kind') not in ('code','table','formula','figure_label') and not UNSAFE.search(mask_source(r)[0])]
     if not eligible:return result
     masked={r['id']:mask_source(r) for r in eligible}
     def retry_individually():
