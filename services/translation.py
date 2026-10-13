@@ -38,8 +38,6 @@ REVIEWED_TRANSLATIONS={
         ),
     },
 }
-
-
 def mask_source(row):
     text=row['text']
     spans=sorted({s.strip() for s in row.get('protected_spans',[]) if s.strip()},key=len,reverse=True)
@@ -53,16 +51,22 @@ def mask_source(row):
     return regex.sub(replace,text),kept
 
 
-def translate_passages(rows,*,generate):
+def translate_passages(rows,*,generate=None):
     result={r['id']:dict(text=r['text'],translated=False,reason='source_original') for r in rows}
     reviewed_ids=set()
     for row in rows:
         reviewed=REVIEWED_TRANSLATIONS.get(row['id'])
-        if reviewed and row['text']==reviewed['source']:
+        reviewed_source=reviewed.get('source','') if reviewed else ''
+        # Definition retrieval may remove the leading in-chunk heading. The
+        # remaining evidence is still safe to use when it is a literal slice
+        # of the reviewed English source.
+        reviewed_matches=bool(reviewed_source and
+            (row['text']==reviewed_source or row['text'] in reviewed_source))
+        if reviewed and reviewed_matches:
             result[row['id']]=dict(text=reviewed['thai'],translated=True,reason='human_reviewed')
             reviewed_ids.add(row['id'])
     eligible=[r for r in rows if r['id'] not in reviewed_ids and r.get('kind') not in ('code','table','formula','figure_label') and not UNSAFE.search(mask_source(r)[0])]
-    if not eligible:return result
+    if not eligible or generate is None:return result
     masked={r['id']:mask_source(r) for r in eligible}
     def retry_individually():
         if len(eligible) <= 1:

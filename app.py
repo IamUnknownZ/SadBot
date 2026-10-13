@@ -81,17 +81,20 @@ def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=Tr
     result=answer_question(question,data,ROOT,history,generate=interpreter,select_generate=interpreter,
                            dense_search=dense_search,section_id=section_id)
     result['query']['original']=question;result['source_language']='en';result['steps']=[]
-    result['display_text']={};result['translate_enabled']=bool(format_with_ai and key)
+    # Human-reviewed translations work without an API. Gemini is only needed
+    # for passages that do not have a source-locked reviewed translation.
+    result['display_text']={};result['translate_enabled']=bool(format_with_ai)
     history.append(result)
 
 
 def translate_visible(message,shown,key,model,fallback_key=None):
     from services.translation import translate_passages
-    if not message.get('translate_enabled') or not key:return
+    if not message.get('translate_enabled'):return
     missing=[e for e in shown if e['id'] not in message['display_text']]
     if missing:
         with st.spinner('กำลังแปลข้อความจากต้นฉบับ…'):
-            generate=generation_provider(key,model,max_output_tokens=1800,fallback_key=fallback_key,timeout_ms=120000,transient_attempts=1)
+            generate=(generation_provider(key,model,max_output_tokens=1800,fallback_key=fallback_key,
+                        timeout_ms=120000,transient_attempts=1) if key else None)
             for start in range(0,len(missing),TRANSLATION_BATCH_SIZE):
                 batch=missing[start:start+TRANSLATION_BATCH_SIZE]
                 message['display_text'].update(translate_passages(batch,generate=generate))
