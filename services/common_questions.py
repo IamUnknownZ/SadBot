@@ -88,6 +88,15 @@ def source_ids_for(question):
         return ('p28-c0269',)
     if q in {normalize(x) for x in ('what is divide and conquer','divide and conquer คืออะไร','แบ่งแยกและเอาชนะคืออะไร')}:
         return ('p72-c0755','p72-c0756','p72-c0757','p72-c0758')
+    # Numeric-looking strings use their comparator's ordering, which can
+    # differ from numeric value ordering. The reviewed source gives the exact
+    # "10" versus "2" example, so this family does not need Gemini routing.
+    numeric_string_cues=('numeric string','number string','strings','string order','lexicographic',
+                         'สตริง','ข้อความ','ตัวเลขแบบข้อความ')
+    ordering_cues=('sort','order','differ','compare','เรียง','ลำดับ','ต่าง','เปรียบเทียบ')
+    if ('10' in q and '2' in q and any(cue in q for cue in numeric_string_cues)
+        and any(cue in q for cue in ordering_cues)):
+        return ('p26-c0246',)
     if q in {normalize(x) for x in ('what makes an algorithm correct','what is algorithm correctness','ความถูกต้องของอัลกอริทึมคืออะไร')}:
         return ('p6-c0051',)
     if q in {normalize(x) for x in ('what is big theta','what is theta notation','theta notation คืออะไร')}:
