@@ -41,6 +41,22 @@ def _sorting_intro_evidence(question,data):
             for c in opening]
 
 
+def _answer_from_verified_chunks(question,data,root,rows,method):
+    """Return only immutable, page-offset-verified English PDF text."""
+    from .context import token_count
+    evidence=sorted(rows,key=lambda c:c['order'])
+    for c in evidence:
+        page=data['pages'][c['page']-1]
+        if c['text']!=page['text'][c['char_start']:c['char_end']]:
+            raise ValueError('Answer evidence was modified')
+    im=select_image(question,evidence,data)
+    if im:safe_path(root,im['file'])
+    text='\n\n'.join(c['text'] for c in evidence)
+    return dict(query=plan_query(question),status='answered',answer=text,
+                evidence=evidence,image=im,choices=[],retrieval_method=method,
+                budget=dict(limit=2048,used=token_count(text),unit='source tokens; paginated, not truncated'))
+
+
 def answer_question(question,data,root,history,*,generate,select_generate=None,dense_search=None,section_id=None):
     """Gemini routes first; factual answers are reconstructed from the PDF only."""
     from .question_routing import interpret_question
@@ -121,6 +137,12 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     # must run before exact-heading expansion: e.g. "bubble sort" is also a
     # chapter title, but opening that chapter would be needlessly long.
     from .known_topics import known_topic
+    # A plain algorithm-definition question must not expand all 53 chunks of
+    # its parent chapter when the first two source paragraphs suffice.
+    from .common_questions import source_evidence
+    if question.strip().casefold() in ('อัลกอริทึมคืออะไร','อัลกอริทึมหมายถึงอะไร'):
+        rows=source_evidence(question,data)
+        if rows:return _answer_from_verified_chunks(question,data,root,rows,'common_source_question')
     topic=known_topic(question)
     if topic:
         result=answer(topic['canonical'],data,root,section_id=topic['section_id'])
@@ -146,6 +168,12 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
         if result['status']=='answered':
             result['retrieval_method']='exact_heading_parent_children'
         return result
+    # Unambiguous definition, mechanism, complexity, stability and simple
+    # two-method comparisons should not depend on provider uptime or quota.
+    from .common_questions import source_evidence
+    rows=source_evidence(question,data)
+    if rows:
+        return _answer_from_verified_chunks(question,data,root,rows,'common_source_question')
     if not generate:
         return dict(base,status='search_unavailable',question_route_state='unavailable',
                     answer='กรุณาตั้งค่า Gemini API เพื่อให้ระบบอ่านความหมายของคำถามก่อนค้นหนังสือครับ')

@@ -104,6 +104,16 @@ def translate_visible(message,shown,key,model,fallback_key=None):
 
 
 
+def retry_failed_translations(message_index,chunk_ids):
+    """Let the user retry 503/invalid-model translations without a new question."""
+    messages=st.session_state.get('messages',[])
+    if not 0<=message_index<len(messages):return
+    translations=messages[message_index].get('display_text',{})
+    for chunk_id in chunk_ids:
+        if not translations.get(chunk_id,{}).get('translated'):
+            translations.pop(chunk_id,None)
+
+
 def change_part(index,total,direction):
     name=f'part-{index}'
     st.session_state[name]=max(0,min(total-1,st.session_state.get(name,0)+direction))
@@ -209,7 +219,8 @@ def run():
             file_name=Path(data['document']['file']).name,mime='application/pdf',width='stretch')
         st.divider()
         use_ai=bool(key)
-        format_with_ai=st.toggle('แปลคำตอบเป็นภาษาไทย',value=False,disabled=not key)
+        format_with_ai=st.toggle('แปลคำตอบเป็นภาษาไทย',value=False)
+        if not key:st.caption('ไม่มี Gemini API: แปลได้เฉพาะข้อความที่มีคำแปลในเครื่อง ส่วนอื่นยังแสดงต้นฉบับอังกฤษ')
         st.caption('Gemini อ่านความหมายของคำถามก่อนค้นหลักฐานจากหนังสือ')
         st.caption(f'โมเดลเดิม: {model}')
         st.caption('ค้นจากหัวข้อ ข้อความ และความหมายใน PDF' if indexes.get('en') else 'ค้นจากหัวข้อและข้อความใน PDF')
@@ -250,7 +261,19 @@ def run():
             visible_image_ids=(set(im['linked_chunk_ids']) if im and
                                set(im['linked_chunk_ids']).intersection(e['id'] for e in shown) else set())
             translate_visible(message,shown,key,model,fallback_key=fallback_key)
+            # Group a plain pairwise comparison by the two requested sorting
+            # methods, without rewriting the evidence or inventing a fact.
+            pair_topics=[t for t in message.get('query',{}).get('topics',[])
+                         if t in ('bubble','selection','insertion','merge','counting')]
+            show_pair_labels=(message.get('retrieval_method')=='common_source_question'
+                              and len(pair_topics)==2)
+            last_pair_topic=None
             for group in shown_groups:
+                if show_pair_labels and group.get('members'):
+                    group_topic=group['members'][0].get('topic')
+                    if group_topic in pair_topics and group_topic!=last_pair_topic:
+                        st.markdown(f'#### {group_topic.title()} Sort')
+                        last_pair_topic=group_topic
                 for e in group['members']:
                     display=message.get('display_text',{}).get(e['id'],dict(text=e['text'],translated=False))
                     if e.get('kind')=='figure_label' and e['id'] in visible_image_ids:
@@ -270,17 +293,30 @@ def run():
                         reason=display.get('reason','')
                         if reason=='translation_unavailable':
                             st.caption('แปลข้อความส่วนนี้ไม่สำเร็จในรอบนี้ จึงแสดงต้นฉบับภาษาอังกฤษ')
-                        elif reason not in ('source_original',):
-                            # Only show the "contains symbols" caption when the text
-                            # was actually rejected by the protected-token validator,
-                            # not for passages that were simply never sent for translation
-                            # (e.g. UNSAFE-flagged or non-eligible kinds).
-                            st.caption('คงข้อความต้นฉบับส่วนนี้ เพราะมีสัญลักษณ์ที่ต้องตรวจจาก PDF')
+                        elif reason=='unsafe_pdf_text':
+                            st.caption('ส่วนนี้มีอักขระจาก PDF ที่อ่านได้ไม่แน่นอน จึงยังไม่แปล กรุณาตรวจจากต้นฉบับ')
+                        elif reason=='protected_source_kind':
+                            st.caption('คงโค้ด ตาราง หรือสูตรในรูปแบบต้นฉบับเพื่อป้องกันความคลาดเคลื่อน')
+                        elif reason=='translation_requires_provider':
+                            st.caption('ยังแปลส่วนนี้ไม่ได้ เพราะไม่มีบริการแปลที่ใช้งานได้')
+                        elif reason in ('protected_tokens_mismatch','numeric_tokens_mismatch','invalid_translation_ids','empty_translation','translation_not_thai'):
+                            st.caption('ระบบตรวจพบว่าคำแปลอาจทำให้ตัวเลข สูตร หรือข้อความสำคัญคลาดเคลื่อน จึงแสดงต้นฉบับเพื่อความถูกต้อง')
                 numbers=[int(l.split('-l')[-1]) for l in group['line_ids']]
                 label=f"ดูหลักฐาน · หน้า {group['page']} · บรรทัด {min(numbers)}–{max(numbers)}"
                 if st.button(label,key=f'e-{i}-{group["id"]}'):
                     st.session_state.selected_evidence=group
                     st.session_state.selected_evidence_language='en'
+            # A failed translation was cached for this chat turn. Expose an
+            # explicit retry after a provider outage instead of requiring the
+            # learner to retype the exact same question or clear the session.
+            retryable_reasons={'translation_unavailable','protected_tokens_mismatch',
+                               'numeric_tokens_mismatch','invalid_translation_ids',
+                               'empty_translation','translation_not_thai',
+                               'translation_requires_provider'}
+            retryable=[e['id'] for e in shown if message.get('display_text',{}).get(e['id'],{}).get('reason') in retryable_reasons]
+            if message.get('translate_enabled') and key and retryable:
+                st.button('ลองแปลข้อความที่ยังไม่สำเร็จอีกครั้ง',key=f'retry-translation-{i}-{part}',
+                          on_click=retry_failed_translations,args=(i,retryable))
             if im and visible_image_ids:
                 st.image(safe_path(ROOT,im['file']).read_bytes(),caption=f"{im['title']} · หน้า {im['page']}",width='stretch')
             if total>1:

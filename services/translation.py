@@ -5,6 +5,8 @@ Failed/uncertain units are shown verbatim; originals and citations never change.
 """
 import json
 import re
+import logging
+from hashlib import sha256
 
 NUMBER=re.compile(r'\d+(?:[.,]\d+)*')
 PLACEHOLDER=re.compile(r'⟦KEEP_\d+⟧')
@@ -38,6 +40,53 @@ REVIEWED_TRANSLATIONS={
         ),
     },
 }
+# Additional limited, source-locked Thai readings for high-frequency definitions.
+# These are locally authored learning translations (not an AI guarantee or a
+# claim of professional review). The SHA-256 of each full English chunk must
+# match the actual source; changed or sliced chunks are left to the usual API.
+LOCAL_SOURCE_TRANSLATIONS={
+    'p5-c0045': ('d56687e107c0c9d4e3e4df3180a444bba3e583b091131b781c464a5e5cc73b7c',
+        '1.1 อัลกอริทึม\\n\\nกล่าวอย่างไม่เป็นทางการ อัลกอริทึมคือกระบวนการคำนวณที่กำหนดไว้อย่างชัดเจน '
+        'ซึ่งรับค่าหนึ่งค่าหรือหลายค่าเป็นข้อมูลนำเข้า (Input) แล้วให้ค่าหนึ่งค่าหรือหลายค่าเป็นผลลัพธ์ (Output) '
+        'ดังนั้น อัลกอริทึมจึงเป็นลำดับขั้นตอนการคำนวณที่แปลงข้อมูลนำเข้าให้เป็นผลลัพธ์'),
+    'p5-c0046': ('0c15d7712d186cdb50ea53415ec7d2338f148ce3a8f55b736c1aa792f5a77755',
+        'เรามองอัลกอริทึมเป็นเครื่องมือแก้ปัญหาการคำนวณที่ระบุไว้อย่างชัดเจนได้เช่นกัน '
+        'คำอธิบายปัญหาจะกำหนดความสัมพันธ์ที่ต้องการระหว่างข้อมูลนำเข้าและผลลัพธ์ในภาพรวม '
+        'ส่วนอัลกอริทึมจะอธิบายกระบวนการคำนวณเฉพาะที่ใช้ทำให้ได้ความสัมพันธ์นั้น'),
+    'p5-c0047': ('1611efca56a7e683b97b07ff94f5903c72abb8d911e510fc1b2b1bd27656ad64',
+        'ตัวอย่างเช่น เราอาจต้องเรียงชุดตัวเลขให้อยู่ในลำดับที่ไม่ลดลง '
+        'ปัญหานี้พบได้บ่อยในทางปฏิบัติ และเหมาะสำหรับการแนะนำเทคนิคการออกแบบอัลกอริทึมและเครื่องมือวิเคราะห์มาตรฐานหลายอย่าง '
+        'ต่อไปนี้คือคำนิยามอย่างเป็นทางการของปัญหาการเรียงลำดับ:'),
+    'p5-c0049': ('9ef8c18ff2a0f684fff12a5b2085b99c38ce6966ebea9313fba88744643e967c',
+        'ตัวอย่างเช่น เมื่อได้รับลำดับข้อมูล ⟨31, 41, 59, 26, 41, 58⟩ '
+        'อัลกอริทึมการเรียงลำดับจะให้ผลลัพธ์ ⟨26, 31, 41, 41, 58, 59⟩ '
+        'ข้อมูลนำเข้าในลักษณะนี้เรียกว่าอินสแตนซ์ (Instance) ของปัญหาการเรียงลำดับ '
+        'โดยทั่วไป อินสแตนซ์ของปัญหาคือข้อมูลนำเข้าที่สอดคล้องกับข้อจำกัดในโจทย์และจำเป็นต่อการคำนวณหาคำตอบ'),
+    'p34-c0344': ('38fd7eae2c36ed807444c48977560b50e835f1c0e9dd5d0d8255bc2544dc7ea3',
+        'ความถูกต้องของ Bubble Sort\\n\\nBubble Sort เป็นอัลกอริทึมการเรียงลำดับที่รู้จักกันแพร่หลาย '
+        'แต่มีประสิทธิภาพต่ำ โดยทำงานด้วยการสลับสมาชิกที่อยู่ติดกันซ้ำ ๆ เมื่อสมาชิกคู่นั้นเรียงลำดับไม่ถูกต้อง'),
+    'p36-c0370': ('53c525ab0431d77298d8504446bf4bbbe54ffa76a17f6f4b71453de9ad6fac80',
+        'การทำงานพื้นฐาน\\n\\nBubble Sort ตรวจสอบสมาชิกที่อยู่ติดกันซ้ำ ๆ และสลับคู่นั้นเมื่อเรียงลำดับไม่ถูกต้อง '
+        'สำหรับการเรียงจากน้อยไปมาก จะสลับเฉพาะเมื่อคีย์ด้านซ้ายมากกว่าด้านขวา '
+        'การสลับหนึ่งครั้งจะลดจำนวนคู่ผกผัน (Inversion) ลงหนึ่งคู่พอดี '
+        'เพราะสมาชิกอยู่ติดกันและมีเพียงลำดับสัมพัทธ์ของสมาชิกสองตัวนี้ที่เปลี่ยนไป '
+        'ส่วนการสลับสมาชิกที่ไม่ได้อยู่ติดกันไม่มีคุณสมบัติการลดคู่ผกผันหนึ่งคู่นี้เสมอไป'),
+    'p55-c0598': ('e80bf71d3387fb69369381ca11df6d09fe862e610d1298d46aacbcc3734b6aea',
+        'เริ่มต้นด้วย Insertion Sort ซึ่งมีประสิทธิภาพสำหรับการเรียงข้อมูลจำนวนไม่มาก '
+        'วิธีนี้คล้ายกับการจัดไพ่ในมือ เริ่มจากมือซ้ายที่ว่างและกองไพ่คว่ำอยู่บนโต๊ะ '
+        'จากนั้นหยิบไพ่จากโต๊ะทีละใบและแทรกเข้าไปในตำแหน่งที่ถูกต้องในมือซ้าย '
+        'ในการหาตำแหน่งที่เหมาะสม เราเปรียบเทียบไพ่ใบใหม่กับไพ่ที่อยู่ในมือแล้วจากขวาไปซ้าย ดังแสดงในรูป 2.1 '
+        'ไพ่ที่อยู่ในมือซ้ายจะเรียงลำดับอยู่เสมอ และไพ่เหล่านี้เดิมเป็นไพ่จากส่วนบนของกองที่วางอยู่บนโต๊ะ'),
+    'p72-c0759': ('9f4cfddf69c00cd3512d006eb2e22b4f83b95e9c1911e7f1c81fe23d6b13428f',
+        'อัลกอริทึม Merge Sort ใช้แนวคิดแบ่งแยกแล้วเอาชนะ (Divide and Conquer) อย่างใกล้ชิด '
+        'โดยอธิบายแนวทางการทำงานได้ดังต่อไปนี้'),
+    'p90-c0970': ('34e0701c5929b1d71547244a3a0338f1f21ee7c3b53a0dc9e6dbb57b46c75bfb',
+        '8.2 Counting Sort\\n\\nCounting Sort สมมติว่าข้อมูลนำเข้าแต่ละตัวจากทั้งหมด n ตัว '
+        'เป็นจำนวนเต็มในช่วง 0 ถึง k สำหรับจำนวนเต็ม k ค่าใดค่าหนึ่ง '
+        'เมื่อ k = O(n) อัลกอริทึมจะใช้เวลา Θ(n)'),
+}
+
+
 def mask_source(row):
     text=row['text']
     spans=sorted({s.strip() for s in row.get('protected_spans',[]) if s.strip()},key=len,reverse=True)
@@ -55,6 +104,11 @@ def translate_passages(rows,*,generate=None):
     result={r['id']:dict(text=r['text'],translated=False,reason='source_original') for r in rows}
     reviewed_ids=set()
     for row in rows:
+        curated=LOCAL_SOURCE_TRANSLATIONS.get(row['id'])
+        if curated and sha256(row['text'].encode('utf-8')).hexdigest()==curated[0]:
+            result[row['id']]=dict(text=curated[1],translated=True,reason='local_source_locked')
+            reviewed_ids.add(row['id'])
+            continue
         reviewed=REVIEWED_TRANSLATIONS.get(row['id'])
         reviewed_source=reviewed.get('source','') if reviewed else ''
         # Definition retrieval may remove the leading in-chunk heading. The
@@ -65,8 +119,17 @@ def translate_passages(rows,*,generate=None):
         if reviewed and reviewed_matches:
             result[row['id']]=dict(text=reviewed['thai'],translated=True,reason='human_reviewed')
             reviewed_ids.add(row['id'])
-    eligible=[r for r in rows if r['id'] not in reviewed_ids and r.get('kind') not in ('code','table','formula','figure_label') and not UNSAFE.search(mask_source(r)[0])]
-    if not eligible or generate is None:return result
+    eligible=[]
+    for row in rows:
+        if row['id'] in reviewed_ids:continue
+        if row.get('kind') in ('code','table','formula','figure_label'):
+            result[row['id']]['reason']='protected_source_kind'
+        elif UNSAFE.search(mask_source(row)[0]):
+            result[row['id']]['reason']='unsafe_pdf_text'
+        elif generate is None:
+            result[row['id']]['reason']='translation_requires_provider'
+        else:eligible.append(row)
+    if not eligible:return result
     masked={r['id']:mask_source(r) for r in eligible}
     def retry_individually():
         if len(eligible) <= 1:
@@ -82,21 +145,30 @@ def translate_passages(rows,*,generate=None):
         translations=response['translations']
         if [t['id'] for t in translations]!=[r['id'] for r in eligible]:
             if retry_individually(): return result
+            for row in eligible:result[row['id']]['reason']='invalid_translation_ids'
             return result
         for row,t in zip(eligible,translations):
             text=t['text'];source,kept=masked[row['id']]
-            if not isinstance(text,str) or not text.strip():continue
+            if not isinstance(text,str) or not text.strip():
+                result[row['id']]['reason']='empty_translation'
+                continue
             # Verify every placeholder appears exactly once, in the same order.
-            if PLACEHOLDER.findall(text)!=[k for k,v in kept]:continue
+            if PLACEHOLDER.findall(text)!=[k for k,v in kept]:
+                result[row['id']]['reason']='protected_tokens_mismatch'
+                continue
             # Restore protected tokens BEFORE digit-leak check so the guard runs on
             # the final surface form, not the masked text (which itself contains
             # digits inside __KEEP_N__ tokens and would always trigger the guard).
             for marker,value in kept:text=text.replace(marker,value)
-            if NUMBER.findall(text)!=NUMBER.findall(row['text']):continue
-            if not re.search(r'[\u0e00-\u0e7f]',text):continue
+            if NUMBER.findall(text)!=NUMBER.findall(row['text']):
+                result[row['id']]['reason']='numeric_tokens_mismatch'
+                continue
+            if not re.search(r'[\u0e00-\u0e7f]',text):
+                result[row['id']]['reason']='translation_not_thai'
+                continue
             result[row['id']]=dict(text=text,translated=True,reason='protected_tokens_verified')
     except (ValueError,KeyError,TypeError,AttributeError) as exc:
-        print(f"DEBUG translate_passages caught exception: {type(exc).__name__}: {exc}", flush=True)
+        logging.getLogger(__name__).warning('Translation could not complete: %s',type(exc).__name__)
         # The provider itself is unavailable. Retrying every passage would
         # multiply a timeout, without making a response more likely.
         for row in eligible:result[row['id']]['reason']='translation_unavailable'

@@ -8,6 +8,8 @@
 
 - ลำดับปัจจุบัน: small talk → prepared answer → known negative → known topic → exact heading → Gemini question routing
 - ชื่ออัลกอริทึมตรง ๆ และคำถามที่เตรียมไว้ตอบได้เร็วโดยไม่รอ API
+- ชุดคำถามพื้นฐาน 83 รูปแบบ (5 วิธี × 9 แบบ, 10 คู่ × 2 ภาษา, แนวคิดทั่วไป 18 ข้อ) มีเส้นทาง Source-bound ใน `services/common_questions.py` และทดสอบใน `tests/test_common_student_questions.py`; ดู `docs/QUESTION_AUDIT_2026-10-14_TH.md`
+- Toggle แปลไทยปิดเป็นค่าเริ่มต้น; เมื่อเปิดและมี API ข้อความที่ไม่อยู่ในคลังคำแปลต้องเรียก Gemini คลังคำแปล `LOCAL_SOURCE_TRANSLATIONS` ใช้ SHA-256 ของข้อความต้นฉบับควบคุมเวอร์ชัน กรณี API ล่มหรือ Marker/ตัวเลขไม่ผ่านจะคงข้อความอังกฤษและแจ้งเหตุผล พร้อมปุ่มลองแปลใหม่
 - นิยาม Sorting Algorithms แบบพื้นฐาน (รวมคำถาม `What is Sorting algorithms`) ให้ใช้ห้าย่อหน้าแรกของหัวข้อ `1.1 Algorithms` หน้า 5 จาก PDF จริง ไม่ใช่หัวข้อซ้ำ `Sorting algorithms` ในหน้าอื่น และไม่เปิดเมนูเลือกหัวข้อย่อย แม้ Gemini ตอบ 503 ก็ต้องอ่านหลักฐานนี้ได้
 - หัวข้อใหญ่ที่ผู้ใช้ระบุชัดเจน เช่น `1.1 Algorithms` แสดงข้อความส่วนเริ่มต้นทันที ไม่แสดงปุ่มเลือกหัวข้อย่อยบังคับ ส่วนการเปิด section ผ่าน ID ยังคงให้ดูเนื้อหาทั้ง section ได้
 - คำถามใหม่ส่งเข้า `services.question_routing.interpret_question` แล้ว Gemini คืนเฉพาะ `mode`, `search_query`, `section_id`
