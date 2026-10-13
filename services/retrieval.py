@@ -9,12 +9,24 @@ from collections import Counter
 from difflib import get_close_matches
 
 TOPICS = {
-    'bubble': ['bubble sort', 'bubble', 'บับเบิล', 'บับเบิ้ล', 'บับเบิลซอส', 'บับเบิลซอร์ต', 'บับเบิลซอร์ท', 'ฟอง', 'bubbel sort','สลับตัวติดกัน','สลับเพื่อนข้าง'],
-    'selection': ['selection sort', 'selection', 'ซีเลกชัน', 'เลือก'],
-    'insertion': ['insertion sort', 'insertion', 'อินเซอร์ชัน', 'แทรก','จัดไพ่ในมือ'],
-    'merge': ['merge sort', 'merge', 'เมิร์จ', 'ผสาน'],
-    'counting': ['counting sort', 'counting', 'เคาน์ติง', 'นับจำนวน'],
-    'principles': ['หลักการเรียง', 'การเรียงลำดับ', 'sorting', 'big o', 'big-o', 'สัญกรณ์','อัลกอริทึม','algorithm'],
+    'bubble': ['bubble sort','bubble sorting','bubble','buble sort','buble','bubbel sort','bubbel','buble sord',
+               'บับเบิล','บับเบิ้ล','บเบิล','บับเบิลซอส','บับเบิลซอร์ต','บับเบิลซอร์ท',
+               'บับเบิลซอท','บับเบิ้ลซอร์ท','แบบฟอง','ฟองสบู่','เรียงแบบฟอง',
+               'สลับตัวติดกัน','สลับคู่ติดกัน'],
+    'selection': ['selection sort','selection sorting','selection','select sort','seletion sort','selction sort','secletion sort',
+                  'ซีเลกชัน','ซีเล็กชัน','ซีเล็กชั่น','ซีเลคชัน','เซเล็กชัน',
+                  'ซีเล็กชันซอร์ท','ซีเล็กชั่นซอร์ท','ซีเลคชันซอร์ท',
+                  'แบบเลือก','เรียงแบบเลือก','เลือกค่าต่ำสุด','เลือกค่าน้อยสุด'],
+    'insertion': ['insertion sort','insertion sorting','insertion','insert sort','insertions sort','instertion sort','inserton sort',
+                  'อินเซอร์ชัน','อินเซิร์ชัน','อินเซอร์ชั่น','อินเซอชัน','อินเซอร์ชันซอร์ท',
+                  'แบบแทรก','เรียงแบบแทรก','แทรกค่า','จัดไพ่ในมือ'],
+    'merge': ['merge sort','merge sorting','merge','merg sort','marge sort','merch sort',
+              'เมิร์จ','เมอร์จ','เมิจ','เมิร์จซอร์ท','เมอร์จซอร์ท','แบบผสาน','เรียงแบบผสาน','แบ่งแล้วรวม'],
+    'counting': ['counting sort','counting sorting','counting','count sort','couting sort','countin sort','conuting sort',
+                 'เคาน์ติง','เคาน์ทิง','เคาติ้ง','เคาน์ติ้งซอร์ท','เคาน์ทิงซอร์ท',
+                 'แบบนับ','เรียงแบบนับ','นับความถี่','นับจำนวนแล้วเรียง'],
+    'principles': ['หลักการเรียง','การเรียงลำดับ','เรียงลำดับข้อมูล','sorting','sorting algorithm','sort algorithm',
+                   'big o','big-o','สัญกรณ์','อัลกอริทึม','อัลกอลิทึม','อัลกอริทึ่ม','algorithm'],
 }
 INTENTS = {
     'comparison': [
@@ -22,6 +34,7 @@ INTENTS = {
         'ดีกว่า','เร็วกว่า','ช้ากว่า','เหมาะกว่า','ประหยัดกว่า',
         'เหมือนกันไหม','เหมือนหรือต่าง',
         'compare','comparison','versus',' vs ','difference between','different from',
+        'ข้อดีข้อเสีย','ข้อดีและข้อเสีย','แต่ละแบบ','แต่ละตัว','อันไหนดีกว่า','ตัวไหนดีกว่า',
         'which is better','better than','pros and cons','advantages and disadvantages',
     ],
     'stability': ['เสถียร','stable','stability','คีย์เท่ากัน'],
@@ -30,13 +43,19 @@ INTENTS = {
     'code': ['โค้ด','รหัสเทียม','โปรแกรม','code','pseudocode'],
     'steps': ['ทีละขั้น','ขั้นตอน','แต่ละรอบ','ไล่','ตัวอย่าง','step','trace','tee la khan'],
     'explanation': [
-        'อธิบาย','ทำไม','ทำไมถึง','อย่างไร','ยังไง','เพราะ','เหตุผล',
+        'อธิบาย','อธิบายหน่อย','เล่าให้ฟัง','สรุปให้ฟัง','ทำไม','ทำไมถึง','อย่างไร','ยังไง','เพราะ','เหตุผล',
         'ข้อดี','ข้อเสีย','ข้อจำกัด','จุดเด่น','จุดด้อย','ประโยชน์',
         'เหมาะกับ','เหมาะเมื่อ','ควรใช้','ควรเลือก','ควรใช้เมื่อ','ใช้ตอนไหน','ใช้เมื่อไร','เลือกใช้',
-        'why','how','reason','advantage','disadvantage','limitation','benefit',
+        'why','how','explain','explanation','describe','tell me about','reason','advantage','disadvantage','limitation','benefit',
         'strength','weakness','when to use','suitable for','tam ngai',
     ],
 }
+
+BROAD_COMPARISON_CUES = (
+    'แต่ละตัว', 'แต่ละแบบ', 'แต่ละชนิด', 'ทุกตัว', 'ทุกแบบ', 'ทุกชนิด',
+    'มีอะไรบ้าง', 'ตัวไหนเหมาะ', 'ตัวไหนดี', 'ควรเลือกตัวไหน', 'all sorting algorithms',
+    'each sorting algorithm', 'sorting algorithms compare',
+)
 
 SORT_KEYWORD_RE = re.compile(
     r'^\s*(?:s[\s.-]*o[\s.-]*r[\s.-]*t|sort|sorting|ซอส|ซอท|ซอร์ต|ซอร์ท)'
@@ -91,9 +110,23 @@ def plan_query(query):
             if not one_edit and not re.search(r'\b'+re.escape(word)+r'\s+sort\b',normalized):continue
             normalized=re.sub(r'\b'+re.escape(word)+r'\b',match[0],normalized)
     topics=[key for key,values in TOPICS.items() if any(compact(v) in compact(normalized) for v in values+lexicon()['topics'].get(key,[]))]
+    # The ordinary Thai verb "เลือก" in a recommendation question is
+    # not a reference to Selection Sort.
+    explicit_selection=any(compact(value) in compact(normalized) for value in TOPICS['selection'] if value!='เลือก')
+    if 'selection' in topics and not explicit_selection and any(
+        cue in compact(normalized) for cue in ('ควรเลือก','เลือกใช้','เลือกตัวไหน')):
+        topics.remove('selection')
+    broad_sort=bool(re.search(r'\b(?:sort|sorting)\b|algorithm\s+ตัว|การเรียงลำดับ|อัลกอริทึมการเรียง',normalized,re.I))
+    collective=any(compact(cue) in compact(normalized) for cue in BROAD_COMPARISON_CUES)
+    if broad_sort and collective and not [topic for topic in topics if topic!='principles']:
+        topics=['principles']
     if len(topics)>1 and 'principles' in topics:
         topics.remove('principles')
     intent=next((i for i,words in INTENTS.items() if any(compact(w) in compact(normalized) for w in words+lexicon()['intents'].get(i,[]))), 'fact')
+    # A collective request asks for a comparison even when it does not name
+    # individual algorithms (for example, "sort แต่ละตัว").
+    if 'principles' in topics and collective:
+        intent='comparison'
     # Mentioning multiple sorting methods in an otherwise plain request implies
     # that the user wants them related or contrasted, even without the literal
     # word "compare" (for example, "bubble กับ selection อันไหนดีกว่า").
@@ -101,6 +134,12 @@ def plan_query(query):
     example=query_examples().get(compact(query))
     if example:topics=[example['topic']];intent=example['intent']
     return dict(original=query, normalized=normalized, topics=topics, intent=intent)
+
+
+def is_broad_sort_comparison(query):
+    plan=plan_query(query)
+    return plan['intent']=='comparison' and plan['topics']==['principles'] and any(
+        compact(cue) in compact(plan['normalized']) for cue in BROAD_COMPARISON_CUES)
 
 
 def features(text):

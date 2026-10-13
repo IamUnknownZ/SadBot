@@ -6,6 +6,15 @@ from collections import Counter
 
 # Human-reviewed query synonyms, not a translated corpus or answer source.
 ALIASES={
+ 'บับเบิลซอร์ท':['bubble sort'], 'บับเบิลซอร์ต':['bubble sort'],
+ 'บับเบิลซอส':['bubble sort'], 'เรียงแบบฟอง':['bubble sort'], 'ฟองสบู่':['bubble sort'],
+ 'ซีเล็กชันซอร์ท':['selection sort'], 'ซีเล็กชั่นซอร์ท':['selection sort'],
+ 'ซีเลคชันซอร์ท':['selection sort'], 'เรียงแบบเลือก':['selection sort'], 'เลือกค่าต่ำสุด':['selection sort'],
+ 'อินเซอร์ชันซอร์ท':['insertion sort'], 'อินเซิร์ชันซอร์ท':['insertion sort'],
+ 'เรียงแบบแทรก':['insertion sort'], 'จัดไพ่ในมือ':['insertion sort'],
+ 'เมิร์จซอร์ท':['merge sort'], 'เมอร์จซอร์ท':['merge sort'], 'เรียงแบบผสาน':['merge sort'],
+ 'เคาน์ติ้งซอร์ท':['counting sort'], 'เคาน์ทิงซอร์ท':['counting sort'],
+ 'เรียงแบบนับ':['counting sort'], 'นับความถี่':['counting sort'],
  'ประสิทธิภาพต่ำ':['inefficient','quadratic','running time','comparisons'],
  'ประสิทธิภาพ':['efficiency','performance'], 'สมรรถนะ':['efficiency','performance'], 'performance':['inefficiency'],
  'inefficient':['quadratic','running time','comparisons'], 'inefficiency':['quadratic','running time','comparisons'],

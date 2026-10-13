@@ -34,6 +34,33 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     from .known_questions import known_negative_question
     if known_negative_question(question):
         return base
+    # Broad requests such as "compare every sort" have a dedicated source
+    # summary and running-time table. Opening that compact section is faster
+    # and more relevant than asking the selector to combine arbitrary mentions
+    # of comparison, traces and exercises from across the book.
+    from .retrieval import is_broad_sort_comparison
+    if is_broad_sort_comparison(question):
+        from .search import heading_name
+        summary=next((node for node in data.get('nodes',[])
+                      if node.get('kind') in ('section','subsection')
+                      and heading_name(node.get('title',''))=='sorting algorithms'
+                      and node.get('chunk_ids')),None)
+        if summary:
+            result=answer(question,data,root,section_id=summary['id'])
+            # The original overview predates the book's labeled Bubble and
+            # Selection supplements. Add their compact, source-backed direct
+            # comparison so "every sort" does not silently omit both topics.
+            local_pair=next((chunk for chunk in data.get('chunks',[])
+                             if chunk.get('kind')=='paragraph'
+                             and 'fixed-loop bubble and standard selection' in chunk.get('text','').casefold()),None)
+            if result.get('status')=='answered' and local_pair:
+                result['evidence']=sorted([*result['evidence'],local_pair],key=lambda row:row['order'])
+                result['answer']='\n\n'.join(row['text'] for row in result['evidence'])
+                result['budget']['used']=token_count(result['answer'])
+            result['query']['original']=question
+            result['prepared']=True
+            result['retrieval_method']='broad_comparison_summary'
+            return result
     # A bare algorithm name is a request for its concise definition.  This
     # must run before exact-heading expansion: e.g. "bubble sort" is also a
     # chapter title, but opening that chapter would be needlessly long.

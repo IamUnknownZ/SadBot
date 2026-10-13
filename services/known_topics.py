@@ -33,7 +33,7 @@ TOPICS = (
         'section_id': None,
         'aliases': (
             'bubble', 'bubble sort', 'bubble sorting', 'buble', 'buble sort',
-            'bubbel', 'bubbel sort', 'บับเบิลซอร์ท', 'บับเบิ้ลซอร์ท',
+            'bubbel', 'bubbel sort', 'buble sord', 'บับเบิลซอร์ท', 'บับเบิ้ลซอร์ท',
             'บับเบิลซอร์ต', 'บับเบิ้ลซอร์ต', 'บับเบิลซอท', 'บับเบิ้ลซอท',
             'บับเบิลซอด', 'บับเบิล ซอร์ท', 'บับเบิ้ล ซอร์ท',
             'เรียงแบบฟองสบู่', 'ฟองสบู่', 'การเรียงแบบฟองสบู่',
@@ -45,6 +45,7 @@ TOPICS = (
         'section_id': None,
         'aliases': (
             'selection', 'selection sort', 'selection sorting', 'select sort',
+            'seletion sort', 'selction sort', 'secletion sort',
             'ซีเล็กชันซอร์ท', 'ซีเล็กชั่นซอร์ท', 'ซีเลคชันซอร์ท',
             'ซีเลคชั่นซอร์ท', 'เซเล็กชันซอร์ท', 'เซเล็กชั่นซอร์ท',
             'ซีเล็กชันซอท', 'ซีเล็กชั่นซอท', 'การเรียงแบบเลือก',
@@ -56,6 +57,7 @@ TOPICS = (
         'section_id': None,
         'aliases': (
             'insertion', 'insertion sort', 'insertion sorting', 'insert sort',
+            'instertion sort', 'inserton sort', 'insertions sort',
             'อินเซอร์ชันซอร์ท', 'อินเซิร์ชันซอร์ท', 'อินเซอชันซอร์ท',
             'อินเซอชั่นซอร์ท', 'อินเซอร์ชั่นซอร์ท', 'อินเซิร์ชั่นซอร์ท',
             'อินเซอร์ชันซอท', 'อินเซิร์ชันซอท', 'การเรียงแบบแทรก',
@@ -66,7 +68,8 @@ TOPICS = (
         'canonical': 'merge sort',
         'section_id': None,
         'aliases': (
-            'merge', 'merge sort', 'merge sorting', 'เมิร์จซอร์ท',
+            'merge', 'merge sort', 'merge sorting', 'merg sort', 'marge sort',
+            'merch sort', 'เมิร์จซอร์ท',
             'เมอร์จซอร์ท', 'เมิร์กซอร์ท', 'เมิจก์ซอร์ท', 'เมิร์จซอท',
             'เมอร์จซอท', 'การเรียงแบบผสาน', 'เรียงแบบผสาน',
             'การเรียงแบบรวม', 'แบ่งแล้วรวม', 'แบ่งครึ่งแล้วรวม', 'แบบผสาน',
@@ -77,6 +80,7 @@ TOPICS = (
         'section_id': None,
         'aliases': (
             'counting', 'counting sort', 'counting sorting', 'count sort',
+            'couting sort', 'countin sort', 'conuting sort',
             'เคาน์ติ้งซอร์ท', 'เคาน์ทิงซอร์ท', 'เคาน์ติ้งซอท',
             'เคาท์ติ้งซอร์ท', 'เคาน์ทิงซอท', 'เคาน์ติ้ง ซอร์ท',
             'เคาน์ทิง ซอร์ท', 'การเรียงแบบนับ', 'เรียงแบบนับ',

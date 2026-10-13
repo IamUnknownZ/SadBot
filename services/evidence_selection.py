@@ -42,6 +42,11 @@ def candidate_pool(query,data,dense_scores=None,limit=48,max_chars=18000,section
     specific=topics-{'principles'}
     compact=re.sub(r'\s+','',normalize(query))
     plan=plan_query(query)
+    # Comparisons need balanced evidence for the requested sides, but not the
+    # full general-purpose pool. A smaller prompt reduces routing latency and
+    # the chance that unrelated traces distract the selector.
+    effective_limit=min(limit,28) if plan['intent']=='comparison' else limit
+    effective_max_chars=min(max_chars,12000) if plan['intent']=='comparison' else max_chars
     bare=(len(specific)==1 and re.sub(r'\s+','',plan['normalized']) in
           {re.sub(r'\s+','',normalize(a)) for a in TOPICS[next(iter(specific))]})
     basic_definition=(plan['intent'] not in ('steps','comparison','code','complexity','stability') and
@@ -56,11 +61,13 @@ def candidate_pool(query,data,dense_scores=None,limit=48,max_chars=18000,section
         if not is_guided and basic_definition and re.search(r'\b(?:correctness|invariant|proof|induction|complexity|costs|bounds)\b',
                                           ' '.join(row['heading_path']),re.I):continue
         if not is_guided and len(specific)==1 and row.get('topic') not in specific|{'principles'}:continue
+        if (not is_guided and plan['intent']=='comparison' and len(specific)>=2
+            and row.get('topic') not in specific|{'principles'}):continue
         if not is_guided and not exercise_requested and row['kind'] in ('paragraph','list') and re.search(
             r'\b(?:write pseudocode|prove that|show that|what loop invariant|give the best-case)\b',row['text'],re.I):continue
-        if row['kind']=='heading' or len(chosen)>=limit:continue
+        if row['kind']=='heading' or len(chosen)>=effective_limit:continue
         if row.get('contains_heading') and len(row['line_ids'])==1:continue
-        if size+len(row['text'])>max_chars:continue
+        if size+len(row['text'])>effective_max_chars:continue
         chosen.append(row);size+=len(row['text'])
     return chosen
 
@@ -84,6 +91,8 @@ def select_evidence(question,candidates,data,*,generate):
         'exclude advanced proofs, unrelated exercises and a whole chapter. For steps include the requested complete procedure/trace; '
         'For definition questions do not include code, pseudocode, complexity analysis or advanced proof details unless explicitly asked. '
         'for comparison cover each requested side. For code keep the complete code block and its indentation. '
+        'For comparison prefer concise definitions, running-time or property summaries, and passages that directly distinguish the requested sides. '
+        'Exclude worked traces, operation-counter examples, exercises and unrelated algorithms unless the question explicitly asks for them. '
         'Exclude comparisons with other algorithms unless asked; never choose an exercise prompt as an explanation. '
         'Include all necessary qualifications, conditions and continuations. Prefer original source only when equally suitable; '
         'labeled supplements may supply necessary explanation. Do not select a heading alone. '
