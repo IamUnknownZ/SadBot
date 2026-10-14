@@ -34,5 +34,8 @@ OLD/
 tmp/
 vector_store/progress.json
 vector_store/*.pending
+vector_store/query_cache.sqlite3
+vector_store/query_cache.sqlite3-shm
+vector_store/query_cache.sqlite3-wal
 
 .streamlit/secrets.toml

@@ -238,7 +238,8 @@ def answer_question(question,data,root,history,*,generate,select_generate=None,d
     # mechanism, not every exercise inside an algorithm chapter Gemini named.
     is_short_definition=bool(definition_rows(question,data))
     scores=None
-    if dense_search:
+    from .search import needs_dense_search
+    if dense_search and needs_dense_search(route['search_query'],data):
         try:scores=dense_search(route['search_query'])
         except ValueError:
             logging.getLogger(__name__).warning('Vector search unavailable; using source keyword retrieval')

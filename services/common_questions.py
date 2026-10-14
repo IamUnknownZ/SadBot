@@ -134,6 +134,13 @@ def source_ids_for(question):
             rest=rest.replace(word,' ')
         if rest.strip():return None
         a,b=topics
+        if set(topics)=={'bubble','merge'}:
+            # These two shared source passages add the missing comparison
+            # dimensions: tie stability and auxiliary storage.  Without them
+            # the prepared UI table looked complete while covering only the
+            # mechanism and worst-case time.
+            return ('p27-c0257','p28-c0269',*INTRO[a][:1],*TIME[a][:1],
+                    *INTRO[b][:1],*TIME[b][:1])
         # One introductory explanation and one running-time source per method.
         return (*INTRO[a][:1],*TIME[a][:1],*INTRO[b][:1],*TIME[b][:1])
     if len(topics)!=1:return None

@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import sqlite3
 from pathlib import Path
 
 MODEL='gemini-embedding-001'
@@ -34,13 +35,40 @@ def build_index(data,*,embed):
                 rows=[dict(id=c['id'],vector=v) for c,v in zip(chunks,rows)])
 
 
-def search_index(query,data,index,*,embed):
+def _cached_query_vector(query,index,embed,cache_path):
+    """Return a revision-bound vector while storing only a hash of the query."""
+    if cache_path is None:
+        response=embed([query],'RETRIEVAL_QUERY')
+        return response[0] if len(response)==1 else None
+    path=Path(cache_path);path.parent.mkdir(parents=True,exist_ok=True)
+    key=hashlib.sha256(query.strip().casefold().encode()).hexdigest()
+    with sqlite3.connect(path,timeout=10) as db:
+        db.execute('CREATE TABLE IF NOT EXISTS query_vectors '
+                   '(cache_key TEXT PRIMARY KEY, revision TEXT NOT NULL, model TEXT NOT NULL, '
+                   'dimensions INTEGER NOT NULL, vector TEXT NOT NULL, used_at INTEGER NOT NULL DEFAULT 0)')
+        row=db.execute('SELECT vector FROM query_vectors WHERE cache_key=? AND revision=? '
+                       'AND model=? AND dimensions=?',(key,index['revision'],MODEL,index['dimensions'])).fetchone()
+        if row:
+            db.execute('UPDATE query_vectors SET used_at=unixepoch() WHERE cache_key=?',(key,))
+            return json.loads(row[0])
+        response=embed([query],'RETRIEVAL_QUERY')
+        if len(response)!=1:return None
+        vector=response[0]
+        db.execute('INSERT OR REPLACE INTO query_vectors '
+                   '(cache_key,revision,model,dimensions,vector,used_at) VALUES (?,?,?,?,?,unixepoch())',
+                   (key,index['revision'],MODEL,index['dimensions'],json.dumps(vector,separators=(',',':'))))
+        db.execute('DELETE FROM query_vectors WHERE cache_key IN '
+                   '(SELECT cache_key FROM query_vectors ORDER BY used_at DESC LIMIT -1 OFFSET 1000)')
+        return vector
+
+
+def search_index(query,data,index,*,embed,cache_path=None):
     expected=[c['id'] for c in data['chunks'] if c['curriculum_status']=='primary']
     if (index['revision']!=fingerprint(data) or index['model']!=MODEL
         or [r['id'] for r in index['rows']]!=expected):raise ValueError('Stale or incomplete vector index')
-    response=embed([query],'RETRIEVAL_QUERY')
-    if len(response)!=1:raise ValueError('Invalid query embedding')
-    q=unit(response[0]);scores={}
+    vector=_cached_query_vector(query,index,embed,cache_path)
+    if vector is None:raise ValueError('Invalid query embedding')
+    q=unit(vector);scores={}
     if len(q)!=index['dimensions']:raise ValueError('Query dimensions differ')
     for row in index['rows']:
         v=unit(row['vector'])

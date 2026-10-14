@@ -89,7 +89,8 @@ def submit(question,catalogs,language,use_ai,key,model,indexes,format_with_ai=Tr
     # Routing returns only three JSON fields; a small output budget shortens
     # latency without restricting the PDF evidence shown to the reader.
     interpreter=generation_provider(key,model,max_output_tokens=300,fallback_key=fallback_key) if key else None
-    dense_search=(lambda query:search_index(query,data,indexes['en'],embed=provider(embedding_key))) if embedding_key and indexes.get('en') else None
+    dense_search=(lambda query:search_index(query,data,indexes['en'],embed=provider(embedding_key),
+                  cache_path=ROOT/'vector_store'/'query_cache.sqlite3')) if embedding_key and indexes.get('en') else None
     # Preserve the user's wording while resolving explicit follow-ups to the
     # last answered book topic. New independent questions remain unchanged.
     lookup_question=question if section_id else resolve_query(question,history)
@@ -286,22 +287,30 @@ def run():
                               and len(pair_topics)==2)
             # A small source-grounded comparison answers the learner's question
             # directly, before the exact verifiable PDF passages appear below.
-            # Only enable the authored table for a fully verified four-chunk
+            # Only enable the authored table for a fully verified source set
             # Bubble/Merge pair; never extrapolate it to arbitrary questions.
             source_ids={e['id'] for e in evidence}
             if (show_pair_labels and set(pair_topics)=={'bubble','merge'} and
-                source_ids=={'p34-c0344','p40-c0415','p72-c0759','p78-c0826'}):
+                source_ids=={'p27-c0257','p28-c0269','p34-c0344','p40-c0415','p72-c0759','p78-c0826'}):
                 if message.get('translate_enabled'):
                     st.markdown('''| ประเด็น | Bubble Sort | Merge Sort |
 |---|---|---|
 | หลักการ | สลับสมาชิกที่อยู่ติดกันเมื่อเรียงผิดลำดับ | ใช้แนวคิด Divide and Conquer |
-| เวลาทำงานกรณีแย่ที่สุด | `Theta(n^2)` สำหรับแบบวนรอบตายตัว | `Θ(n lg n)` |''')
+| เวลาที่ดีที่สุด | `Theta(n^2)` สำหรับแบบวนรอบตายตัว; `Theta(n)` สำหรับแบบหยุดเมื่อไม่มีการสลับ | `Θ(n lg n)` สำหรับ Merge Sort มาตรฐาน |
+| เวลาที่แย่ที่สุด | `Theta(n^2)` | `Θ(n lg n)` |
+| พื้นที่เพิ่มเติม | `O(1)` | `O(n)` สำหรับอาร์เรย์ชั่วคราว และสแตกเรียกซ้ำลึก `O(log n)` |
+| ความเสถียร | เสถียรเมื่อสลับเฉพาะคู่ที่ซ้ายมากกว่าขวาอย่างเคร่งครัด | เสถียรเมื่อคีย์เท่ากันแล้วเลือกข้อมูลจากฝั่งซ้ายก่อน |
+| ข้อแลกเปลี่ยนหลัก | ใช้พื้นที่เพิ่มน้อย แต่เวลาโตแบบกำลังสอง | เวลาโตแบบ `n lg n` แต่ต้องมีพื้นที่สำหรับผสานข้อมูล |''')
                 else:
                     st.markdown('''| Aspect | Bubble Sort | Merge Sort |
 |---|---|---|
 | Method | Swap adjacent out-of-order elements | Divide and conquer |
-| Worst-case time | `Theta(n^2)` for fixed-loop version | `Θ(n lg n)` |''')
-                st.caption('สรุปจากหลักฐานใน PDF หน้า 34, 40, 72 และ 78 · เปิดดูข้อความต้นฉบับด้านล่าง')
+| Best-case time | `Theta(n^2)` fixed-loop; `Theta(n)` with early exit | `Θ(n lg n)` for standard merge sort |
+| Worst-case time | `Theta(n^2)` | `Θ(n lg n)` |
+| Auxiliary space | `O(1)` | `O(n)` temporary array and `O(log n)` recursion depth |
+| Stability | Stable with strict adjacent swaps | Stable when ties take from the left run first |
+| Main tradeoff | Constant extra space, but quadratic growth | `n lg n` growth, but requires merge storage |''')
+                st.caption('สรุปจากหลักฐานใน PDF หน้า 27, 28, 34, 40, 72 และ 78 · เปิดดูข้อความต้นฉบับด้านล่าง')
             last_pair_topic=None
             for group in shown_groups:
                 if show_pair_labels and group.get('members'):

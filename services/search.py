@@ -242,6 +242,29 @@ def lexical_index(data):
                 document_frequency=dict(df),documents={k:dict(v) for k,v in docs.items()})
 
 
+def needs_dense_search(query,data):
+    """Reserve query embeddings for searches that local BM25 cannot cover."""
+    if matched_headings(query,data) or definition_rows(query,data) or exact_phrase_lookup(query,data):
+        return False
+    query_terms={t for t in terms(expanded(query))
+                 if t not in STOP and re.search(r'[a-z]',t)}
+    if not query_terms:
+        return True
+    rows=hybrid_retrieve(query,data,limit=8,candidate_mode=True)
+    if not rows:
+        return True
+    # Continuation chunks can share a paragraph and match list. Compare unique
+    # terms so paragraph splitting cannot inflate lexical confidence.
+    matches=[set(row.get('matched_terms',[])) for row in rows]
+    best=max(matches,key=len,default=set())
+    covered=set().union(*matches[:4]) if matches else set()
+    coverage=len(covered & query_terms)/len(query_terms)
+    best_coverage=len(best & query_terms)/len(query_terms)
+    if len(query_terms)<=2:
+        return not query_terms.issubset(covered)
+    return not (best_coverage>=0.60 or (len(best)>=2 and coverage>=0.75))
+
+
 def hybrid_retrieve(query,data,limit=12,dense_scores=None,section_id=None,candidate_mode=False):
     from .retrieval import plan_query
     query=plan_query(query)['normalized']
